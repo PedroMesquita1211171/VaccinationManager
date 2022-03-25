@@ -34,6 +34,7 @@ Alphabet(in order to be easily guided into introducing something in the glossary
 | **Vaccination Center**      | **Centro de Vacinação**      | Location used in order to provide _Covid-19 Vaccines_/_Flu Vaccines_(most common and problematic deseases).                                                  |
 | **Vaccination Certificate** | **Certificado de Vacinação** | Normally a piece of paper, but can be digital and its purpose is to                                                                                          |
 | **Vaccine**                 | **Vacina**                   | The product that we can inject in our system/bloodstream in order to overcome deseases.                                                                      |
+| **_Visual Studio Code_**    | **_Visual Studio Code_**     | A more general IDE(unlike the others mentioned) that can be used to program in a big variety of languages.                                                   |
 | **...**                     | **...**                      | ...                                                                                                                                                          |
 
 
