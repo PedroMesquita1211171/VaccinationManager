@@ -35,7 +35,6 @@ Alphabet(in order to be easily guided into introducing something in the glossary
 | **Vaccination Certificate** | **Certificado de Vacinação** | Normally a piece of paper, but can be digital and its purpose is to                                                                                          |
 | **Vaccine**                 | **Vacina**                   | The product that we can inject in our system/bloodstream in order to overcome deseases.                                                                      |
 | **...**                     | **...**                      | ...                                                                                                                                                          |
-| **...**                     | **...**                      | ...                                                                                                                                                          |
 
 
 
