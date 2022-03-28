@@ -10,33 +10,43 @@ To identify domain conceptual classes, start by making a list of candidate conce
 
 **Business Transactions**
 
-*
+* Schedule a vaccine
+* Getting the vaccine
 
 ---
 
-**Transaction Line Itemss**
+**Transaction Line Items**
 
-*
+* Vaccine
 
 ---
 
 **Product/Service related to a Transaction or Transaction Line Item**
 
-*  
+* Vaccine
+* SNS number of client
+* Administering the vaccine
 
 ---
 
 
 **Transaction Records**
 
-*  
-
+* 
 ---  
 
 
 **Roles of People or Organizations**
 
-* 
+* Administrator is responsible for properly configuring and managing the core information (e.g.:
+  type of vaccines, vaccines, vaccination centers, employees) and can use the
+  application to register centers, SNS users, center coordinators, receptionists, and nurses enrolled in
+  the vaccination process.
+* Nurse is responsible for callin SNS users that are present in the vaccination center to take the vaccine, for administering the vaccine, helping some users schedulling the vaccine
+  * Nurses working in the healthcare centers can issue and deliver on site a vaccination certificate whenever a SNS user asks for it.
+* Receptionist confirms if the client has the vaccine scheduled for that day and time using his SNS number
+* Center Coordinator monitors the vaccination process, to see statistics and charts, to evaluate the performance of the vaccination process, generate reports and
+  analyze data from other centers, including data from law systems.
 
 
 ---
@@ -44,7 +54,8 @@ To identify domain conceptual classes, start by making a list of candidate conce
 
 **Places**
 
-*  
+* Vaccination center
+* Healthcare center
 
 ---
 
@@ -57,14 +68,14 @@ To identify domain conceptual classes, start by making a list of candidate conce
 
 **Physical Objects**
 
-*
+* Vaccine
 
 ---
 
 
 **Descriptions of Things**
 
-*  
+*  Vaccine - The product that we can inject in our system/bloodstream in order to overcome diseases.
 
 
 ---
@@ -93,7 +104,7 @@ To identify domain conceptual classes, start by making a list of candidate conce
 
 **Organizations**
 
-*  
+*  DGS
 
 ---
 
