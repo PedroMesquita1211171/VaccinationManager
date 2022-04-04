@@ -23,7 +23,7 @@ _Specifies functionalities that:_
 ###Reporting
 - Use Javadoc to generate useful documentation for Java code;
 
-- ##Scheduling
+## Scheduling
 - When SNS user schedules application should check availability of the chosen center
 - The application should check the vaccination center capacity for that day/time and, if possible, confirm that the vaccination is scheduled and inform the user that (s)he should be at the selected vaccination center at the scheduled day and time
 - Administrators use the application to register centers, SNS users, center coordinators, receptionists, and nurses enrolled in the vaccination process
@@ -43,7 +43,7 @@ fax number, a website address, opening and closing hours, slot duration and the 
 
 - When Sns user goes to get the vaccine the receptionist:
     - Registers the arrival of SNS user
-    - Ask SNS User for number his number
+    - Ask SNS User for his number
     - Confirm if sns user has vaccine scheduled for the that day and time
     - If information is correct tells the system user is ready to take vaccine
     - Sends SNS user to waiting room
