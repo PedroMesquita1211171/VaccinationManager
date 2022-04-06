@@ -27,7 +27,6 @@ package System{
    package VaccinationProccess{
       usecase UC12 as "Ask SNS user for his number"
       usecase UC13 as "Confirm if that user has a vaccination scheduled for that day and time"
-      usecase UC14 as "Send SNS user to waiting room"
       usecase UC18 as "Monitors the vaccination process and the healthcare center"
    }
 
@@ -72,11 +71,9 @@ adm --> (UC17)
 
 nur --> (UC03)
 nur --> (UC04)
-nur --> (UC01)
 rcp --> (UC11)
 rcp --> (UC12)
 rcp --> (UC13)
-rcp --> (UC14)
 nur --> (UC15)
 
 
