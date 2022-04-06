@@ -5,24 +5,53 @@ actor "Receptionist" as rcp
 actor "User" as user
 actor "Center Coordinator" as cc
 
-usecase UC01 as "Schedule vaccination"
-usecase UC02 as "Obtain vaccination certificate"
-usecase UC03 as "Deliver vaccination certificate"
-usecase UC04 as "Acess all user's health data"
-usecase UC05 as "Register centers"
-usecase UC06 as "Register SNS users"
-usecase UC07 as "Register center coordinators"
-usecase UC08 as "Register receptionists"
-usecase UC09 as "Register nurses"
-usecase UC10 as "Configuring and managing the core information"
-usecase UC11 as "Register the arrival of SNS user"
-usecase UC12 as "Ask SNS user for his number"
-usecase UC13 as "Confirm if that user has a vaccination scheduled for that day and time"
-usecase UC14 as "Send SNS user to waiting room"
-usecase UC15 as "Register vaccine type, name and lot number used"
-usecase UC16 as "Register new vaccine"
-usecase UC17 as "Register new vaccine type"
-usecase UC18 as "Monitors the vaccination process and the healthcare center"
+package System{
+   package Registering{
+    package RegisteringVaccines{
+        usecase UC15 as "Register vaccine type, name and lot number used"
+        usecase UC16 as "Register new vaccine"
+        usecase UC17 as "Register new vaccine type"
+    }
+    package RegisteringWork{
+        usecase UC07 as "Register center coordinators"
+        usecase UC08 as "Register receptionists"
+        usecase UC09 as "Register nurses"
+        usecase UC05 as "Register centers"
+    }
+    package RegisteringClients{
+        usecase UC06 as "Register SNS users"
+        usecase UC11 as "Register the arrival of SNS user"
+    }
+
+ }
+   package VaccinationProccess{
+      usecase UC12 as "Ask SNS user for his number"
+      usecase UC13 as "Confirm if that user has a vaccination scheduled for that day and time"
+      usecase UC14 as "Send SNS user to waiting room"
+      usecase UC18 as "Monitors the vaccination process and the healthcare center"
+   }
+
+
+package App{
+     package BeforeVaccination{
+         usecase UC01 as "Schedule vaccination"
+     }
+     package AfterVaccination{
+         usecase UC02 as "Obtain vaccination certificate"
+         usecase UC03 as "Deliver vaccination certificate"
+     }
+     package MainInfo{
+             usecase UC04 as "Acess all user's health data"
+             usecase UC10 as "Configuring and managing the core information"
+     }
+
+}
+
+
+
+}
+
+
 
 
 left to right direction
@@ -49,6 +78,8 @@ rcp --> (UC12)
 rcp --> (UC13)
 rcp --> (UC14)
 nur --> (UC15)
+
+
 cc --> (UC18)
 
 @enduml do ano passado
