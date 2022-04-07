@@ -85,11 +85,11 @@ class VaccinationCenter {
   - coordinator
 }
 
-Administrator --> Nurse
-Administrator --> CenterCoordinator
-Administrator --> Receptionist
-Administrator --> SNSUser
-Administrator --> VaccinationCenter
+Administrator "*"--"*" Nurse : registers >
+Administrator --> CenterCoordinator : registers >
+Administrator --> Receptionist : registers >
+Administrator --> SNSUser : registers >
+Administrator --> VaccinationCenter : registers >
 Administrator --> App
 SNSUser --> App
 VaccinationCenter --> App
@@ -107,6 +107,9 @@ App --> EmailMessage
 App --> ScheduleVaccine
 App --> SMSMessage
 App --> CovidDigitalCertificate
+DGS --> HealthCareCenter
+DGS --> MassiveVaccinationCenter
+ScheduleVaccine --> CheckCenterCapacity
 
 
 
