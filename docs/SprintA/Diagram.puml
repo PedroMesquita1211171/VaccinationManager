@@ -1,4 +1,5 @@
 @startuml
+
 actor "Admin" as adm
 actor "Nurse" as nur
 actor "Receptionist" as rcp
@@ -75,4 +76,4 @@ rcp --> (UC13)
 
 cc --> (UC18)
 
-@enduml do ano passado
+@enduml

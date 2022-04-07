@@ -85,4 +85,29 @@ class VaccinationCenter {
   - coordinator
 }
 
-@enduml
+Administrator --> Nurse
+Administrator --> CenterCoordinator
+Administrator --> Receptionist
+Administrator --> SNSUser
+Administrator --> VaccinationCenter
+Administrator --> App
+SNSUser --> App
+VaccinationCenter --> App
+Nurse --> App
+Receptionist --> SNSUser
+Receptionist --> VaccinationCenter
+Receptionist --> DGS
+Nurse --> DGS
+Administrator --> DGS
+CenterCoordinator --> DGS
+Nurse --> Vaccine
+Vaccine --> VaccineType
+Vaccine --> VaccineTime
+App --> EmailMessage
+App --> ScheduleVaccine
+App --> SMSMessage
+App --> CovidDigitalCertificate
+
+
+
+@endum
