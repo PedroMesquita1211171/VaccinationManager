@@ -32,13 +32,9 @@ package System{
 
 
 package App{
-     package BeforeVaccination{
+
          usecase UC01 as "Schedule vaccination"
-     }
-     package AfterVaccination{
-         usecase UC02 as "Obtain vaccination certificate"
          usecase UC03 as "Deliver vaccination certificate"
-     }
      package MainInfo{
              usecase UC04 as "Acess all user's health data"
              usecase UC10 as "Configuring and managing the core information"
@@ -55,7 +51,6 @@ package App{
 
 left to right direction
 user --> (UC01)
-user --> (UC02)
 user --> (UC06)
 
 

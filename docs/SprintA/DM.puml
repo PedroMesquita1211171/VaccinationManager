@@ -1,0 +1,88 @@
+@startuml
+skinparam classAttributeIconSize 0
+hide methods
+
+class Administrator{
+}
+
+class Nurse{
+}
+
+class SNSUser{
+}
+
+class Receptionist{
+}
+
+class CenterCoordinator{
+}
+
+class HealthCareCenter {
+}
+
+class DGS {
+}
+
+class MassiveVaccinationCenter {
+}
+
+class CovidDigitalCertificate {
+}
+
+class App{
+}
+
+class SMSMessage {
+- informationAppointment
+- timeRecovery
+}
+
+class EmailMessage {
+- informationAppointment
+- timeRecovery
+}
+
+class Vaccine {
+- vaccineName
+- lot
+}
+
+class VaccineType {
+- ageGroup
+- dose
+- vaccineDosage
+}
+
+class VaccineTime {
+- timeBetweenDose
+}
+
+class CheckCenterCapacity {
+- centerCapacity
+- date
+- time
+}
+
+class ScheduleVaccine {
+- userNumberSNS
+- vaccinationCenter
+- date
+- time
+- typeOfVaccine
+}
+
+class VaccinationCenter {
+  - name
+  - address
+  - emailAddress
+  - phoneNumber
+  - faxNumber
+  - websiteAddress
+  - openingHours
+  - closingHours
+  - slotDuration
+  - maxVaccines
+  - coordinator
+}
+
+@enduml
