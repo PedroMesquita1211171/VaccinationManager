@@ -102,15 +102,15 @@ Receptionist "*"---"*" SNSUser : gives info >
 Receptionist "*"---"*" VaccinationCenter : works at >
 Receptionist "*"---"*" DGS : works for >
 CenterCoordinator "1"--"*" DGS : works for >
-DGS "1"---"1" MassiveVaccinationCenter
-Vaccine "*"---"1" VaccineType : has >
-Vaccine "*"---"1" VaccineTime : has >
-App "*"---"1" ScheduleVaccine : does >
-App "*"---"1" SMSMessage : sends >
-App "*"---"1" HealthCareCenter
-App "*"---"1" CovidDigitalCertificate : emits >
-App "*"---"1" EmailMessage : sends >
-ScheduleVaccine "1"---"1" CheckCenterCapacity
+DGS "1"--"1" MassiveVaccinationCenter
+Vaccine "*"--"1" VaccineType : has >
+Vaccine "*"--"1" VaccineTime : has >
+App "*"--"1" ScheduleVaccine : does >
+App "*"--"1" SMSMessage : sends >
+App "*"--"1" HealthCareCenter
+App "*"--"1" CovidDigitalCertificate : emits >
+App "*"--"1" EmailMessage : sends >
+ScheduleVaccine "1"--"1" CheckCenterCapacity
 
 
 
