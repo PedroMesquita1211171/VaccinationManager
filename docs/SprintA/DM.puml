@@ -85,31 +85,32 @@ class VaccinationCenter {
   - coordinator
 }
 
-Administrator "*"--"*" Nurse : registers >
-Administrator --> CenterCoordinator : registers >
-Administrator --> Receptionist : registers >
-Administrator --> SNSUser : registers >
-Administrator --> VaccinationCenter : registers >
-Administrator --> App
-SNSUser --> App
-VaccinationCenter --> App
-Nurse --> App
-Receptionist --> SNSUser
-Receptionist --> VaccinationCenter
-Receptionist --> DGS
-Nurse --> DGS
-Administrator --> DGS
-CenterCoordinator --> DGS
-Nurse --> Vaccine
-Vaccine --> VaccineType
-Vaccine --> VaccineTime
-App --> EmailMessage
-App --> ScheduleVaccine
-App --> SMSMessage
-App --> CovidDigitalCertificate
-DGS --> HealthCareCenter
-DGS --> MassiveVaccinationCenter
-ScheduleVaccine --> CheckCenterCapacity
+Administrator "*"---"*" Nurse : registers >
+Administrator "*"---"1" CenterCoordinator : registers >
+Administrator "*"---"1" Receptionist : registers >
+Administrator "*"---"*" SNSUser : registers >
+Administrator "*"---"*" VaccinationCenter : registers >
+Administrator "*"---"*" App : manages >
+Administrator "*"---"*" DGS : works for >
+SNSUser "1"---"*" App : uses >
+VaccinationCenter "1"---"*" App
+Nurse "*"---"*" App
+Nurse "*"---"*" DGS : works for >
+Nurse "*"---"1" Vaccine : administrates >
+Nurse "*"---"*" VaccinationCenter : works at >
+Receptionist "*"---"*" SNSUser : gives info >
+Receptionist "*"---"*" VaccinationCenter : works at >
+Receptionist "*"---"*" DGS : works for >
+CenterCoordinator "1"--"*" DGS : works for >
+DGS "1"---"1" MassiveVaccinationCenter
+Vaccine "*"---"1" VaccineType : has >
+Vaccine "*"---"1" VaccineTime : has >
+App "*"---"1" ScheduleVaccine : does >
+App "*"---"1" SMSMessage : sends >
+App "*"---"1" HealthCareCenter
+App "*"---"1" CovidDigitalCertificate : emits >
+App "*"---"1" EmailMessage : sends >
+ScheduleVaccine "1"---"1" CheckCenterCapacity
 
 
 
