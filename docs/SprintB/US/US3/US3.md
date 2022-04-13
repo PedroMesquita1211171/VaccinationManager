@@ -2,53 +2,64 @@
 
 ## 1. Requirements Engineering
 
-*In this section, it is suggested to capture the requirement description and specifications as provided by the client as well as any further clarification on it. It is also suggested to capture the requirements acceptance criteria and existing dependencies to other requirements. At last, identify the involved input and output data and depicted an Actor-System interaction in order to fulfill the requirement.*
-
-
 ### 1.1. User Story Description
 
 *As a receptionist, I want to register an SNS User.*
 
 ### 1.2. Customer Specifications and Clarifications 
 
-*Our interpretation of this User Story is that we should create a class that represents the SNS User , which will be instantiated by a Receptionist that will use the already existent "auth" component in the given repository.*
+**From the Specifications Document:**
+
+
+> Each SNS User is followed by its SNS number.
+
+
+
+**From the client clarifications:**
+
+
+> **Question: What are the necessary components in order to register an SNS User?** 
+>
+> **Answer:**
 
 ### 1.3. Acceptance Criteria
 
-*The SNS User must become a System User.The "auth" component available on the repository must be reused(without modifications).*
+> - *AC1: The SNS User must become a System User.The "auth" component available on the repository must be reused(without modifications).*
 
 ### 1.4. Found out Dependencies
 
-*Identify here any found out dependency to other US and/or requirements.*
+*No dependencies were found.*
 
 ### 1.5 Input and Output Data
 
-*Identity here the data to be inputted by the system actor as well as the output data that the system have/needs to present in order to properly support the actor actions. Regarding the inputted data, it is suggested to distinguish between typed data and selected data (e.g. from a list)*
+**Input Data:**
+* Typed Data:
+    *
+    *
+* Selected Data: (none)
 
+**Output Data:**
+* (In)Success of the operation
+* Confirmation of SNS User registration(SNS User data)
 
 ### 1.6. System Sequence Diagram (SSD)
-
-*Insert here a SSD depicting the envisioned Actor-System interactions and throughout which data is inputted and outputted to fulfill the requirement. All interactions must be numbered.*
 
 ![USXXX-SSD](USXXX-SSD.svg)
 
 
 ### 1.7 Other Relevant Remarks
 
-*Use this section to capture other relevant information that is related with this US such as (i) special requirements ; (ii) data and/or technology variations; (iii) how often this US is held.* 
-
+-
 
 ## 2. OO Analysis
 
 ### 2.1. Relevant Domain Model Excerpt 
-*In this section, it is suggested to present an excerpt of the domain model that is seen as relevant to fulfill this requirement.* 
 
 ![USXXX-MD](USXXX-MD.svg)
 
 ### 2.2. Other Remarks
 
-*Use this section to capture some aditional notes/remarks that must be taken into consideration into the design activity. In some case, it might be usefull to add other analysis artifacts (e.g. activity or state diagrams).* 
-
+n/a
 
 
 ## 3. Design - User Story Realization 
