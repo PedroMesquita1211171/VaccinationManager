@@ -34,8 +34,8 @@
 
 **Input Data:**
 * Typed Data:
-    *
-    *
+    * SNS Number (String that will be converted to char array then int array(because the SNS Number might start with 0)) 
+    * 
 * Selected Data: (none)
 
 **Output Data:**
@@ -44,7 +44,7 @@
 
 ### 1.6. System Sequence Diagram (SSD)
 
-![USXXX-SSD](USXXX-SSD.svg)
+![US003_SSD](US003_SSD.svg)
 
 
 ### 1.7 Other Relevant Remarks
@@ -55,7 +55,7 @@
 
 ### 2.1. Relevant Domain Model Excerpt 
 
-![USXXX-MD](USXXX-MD.svg)
+![US003_MD](US003_MD.svg)
 
 ### 2.2. Other Remarks
 

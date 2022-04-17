@@ -1,0 +1,36 @@
+@startuml
+hide methods
+left to right direction
+skinparam classAttributeIconSize 0
+
+
+class Company {
+  -designation
+}
+
+class Receptionist {
+  -username
+  -password
+}
+
+class SNSUser {
+  -SNS Number
+}
+
+class Administrator {
+  -username
+  -password
+}
+
+Company "1"--"*" Receptionist : knows >
+Company "1"---"*" SNSUser : knows >
+Company "1"---"*" Administrator : knows >
+Receptionist "1"--"*" SNSUser : registers >
+Administrator "1"--"*" Receptionist : registers >
+
+
+
+
+
+
+@enduml

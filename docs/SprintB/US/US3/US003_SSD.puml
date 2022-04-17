@@ -1,0 +1,28 @@
+@startuml
+autonumber
+actor "Receptionist" as rcp
+
+activate rcp
+rcp -> ":System" : Logs into the system
+activate ":System"
+":System" --> rcp : confirms that the receptionist used the correct login credentials
+deactivate ":System"
+
+rcp -> ":System" : starts registering a new SNS User
+activate ":System"
+":System" --> rcp : requests data (SNS Number)
+deactivate ":System"
+
+rcp -> ":System" : types requested data
+activate ":System"
+":System" --> rcp : shows the data and requests a confirmation
+deactivate ":System"
+
+rcp -> ":System" : confirms the data
+activate ":System"
+":System" --> rcp : informs operation success
+deactivate ":System"
+
+deactivate rcp
+
+@enduml
