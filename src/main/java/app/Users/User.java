@@ -20,28 +20,23 @@ public abstract class User {
     }
 
     public void changeUsername(String username) {
-        try{
-            if(username.isEmpty()) {
+            if(username.isBlank()) {
                 throw new IllegalArgumentException();
-            }else{
+            }else if(username == null){
+                throw new NullPointerException();
+            } else{
                 this.username = username;
             }
-        }catch (IllegalArgumentException e) {
-            System.out.println("Username cannot be empty!");
-        }
-
     }
 
     public void changePassword(String password) {
-        try {
-            if(password.isEmpty()) {
+            if(password.isBlank()) {
                 throw new IllegalArgumentException();
-            }else{
+            }else if(password == null) {
+                throw new NullPointerException();
+            } else{
                 this.password = password;
             }
-        }catch (IllegalArgumentException e) {
-            System.out.println("Password cannot be empty!");
-        }
     }
 
     @Override

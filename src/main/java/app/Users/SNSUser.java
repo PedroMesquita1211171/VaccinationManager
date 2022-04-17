@@ -10,7 +10,7 @@ public class SNSUser extends User {
 
     public SNSUser(String username, String password, String snsNumber) {
         super(username, password);
-        this.SnsNumber = snsNumber;
+        changeSnsNumber(snsNumber);
     }
 
     public String showSnsNumber() {
@@ -18,7 +18,12 @@ public class SNSUser extends User {
     }
 
     public void changeSnsNumber(String snsNumber) {
-
-        SnsNumber = snsNumber;
-    }
+        if(snsNumber.length() == 11) {
+            this.SnsNumber = snsNumber;
+        }else if(snsNumber == null){
+            throw new NullPointerException();
+        }else if(snsNumber.length() != 11){
+            throw new IllegalArgumentException();
+          }
+        }
 }
