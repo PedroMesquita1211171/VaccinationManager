@@ -10,7 +10,7 @@ deactivate ":System"
 
 rcp -> ":System" : starts registering a new SNS User
 activate ":System"
-":System" --> rcp : requests data (SNS Number)
+":System" --> rcp : requests data (SNS Number, Phone Number, Email Address, \n Username, Password)
 deactivate ":System"
 
 rcp -> ":System" : types requested data

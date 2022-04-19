@@ -3,6 +3,12 @@ autonumber
 actor "Administrator" as ADM
 
 activate ADM
+
+ADM -> ":System" : Logs into the system
+activate ":System"
+":System" --> ADM : confirms that the receptionist used the correct login credentials
+deactivate ":System"
+
 ADM -> ":System" : starts specifying a new vaccine type
 activate ":System"
 ":System" --> ADM : requests data (code, designation, whold)
