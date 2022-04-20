@@ -91,6 +91,8 @@ Administrator "1"---"*" CenterCoordinator : registers >
 Administrator "1"---"*" Receptionist : registers >
 Administrator "1"---"*" SNSUser : registers >
 Administrator "1"---"*" VaccinationCenter : registers >
+Administrator "1"---"*" HealthCareCenter : registers >
+Administrator "1"---"*" VaccineType : registers >
 Administrator "*"---"1" App : manages >
 SNSUser "*"---"1" App : uses >
 VaccinationCenter "*"---"1" App
