@@ -3,11 +3,6 @@ autonumber
 actor "Receptionist" as rcp
 
 activate rcp
-rcp -> ":System" : Logs into the system
-activate ":System"
-":System" --> rcp : confirms that the receptionist used the correct login credentials
-deactivate ":System"
-
 rcp -> ":System" : starts registering a new SNS User
 activate ":System"
 ":System" --> rcp : requests data (SNS Number, Phone Number, Email Address, \n Username, Password)

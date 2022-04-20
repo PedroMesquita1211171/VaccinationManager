@@ -22,8 +22,7 @@ class Administrator {
   -password
 }
 
-Company "1"--"*" Receptionist : knows >
-Company "1"---"*" SNSUser : knows >
+SNSUser "*"---"1" Company : is client >
 Company "1"---"*" Administrator : knows >
 Receptionist "1"--"*" SNSUser : registers >
 Administrator "1"--"*" Receptionist : registers >

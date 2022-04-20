@@ -86,42 +86,37 @@ class VaccinationCenter {
   - coordinator
 }
 
-Administrator "*"---"*" Nurse : registers >
-Administrator "*"---"*" CenterCoordinator : registers >
-Administrator "*"---"*" Receptionist : registers >
-Administrator "*"---"*" SNSUser : registers >
-Administrator "*"---"*" VaccinationCenter : registers >
-
+Administrator "1"---"*" Nurse : registers >
+Administrator "1"---"*" CenterCoordinator : registers >
+Administrator "1"---"*" Receptionist : registers >
+Administrator "1"---"*" SNSUser : registers >
+Administrator "1"---"*" VaccinationCenter : registers >
 Administrator "*"---"1" App : manages >
-Company "1"---"*" Administrator : knows >
-SNSUser "*"---"1" Company : is client >
-
 SNSUser "*"---"1" App : uses >
 VaccinationCenter "*"---"1" App
-Nurse "*"---"1" App
-
+Nurse "*"---"1" App : uses >
+Nurse "*"---"1" Company : works for >
 Nurse "*"---"*" Vaccine : administrates >
 Nurse "*"---"1" VaccinationCenter : works at >
-
-Receptionist "*"---"*" SNSUser : gives info >
+Receptionist "1"---"*" SNSUser : registers >
 Receptionist "*"---"1" VaccinationCenter : works at >
-
+Receptionist "*"---"1" Company : works for >
 CenterCoordinator "*"--"1" Company : works for >
 Company "1"--"*" MassiveVaccinationCenter : owns >
+Company "1"--"*" Administrator : knows >
 Vaccine "1"--"1" VaccineType : is of >
 Vaccine "*"--"1" VaccineTime : has >
-
 App "1"--"*" ScheduleVaccine : does >
 App "1"--"*" SMSMessage : sends >
 App "1"--"*" HealthCareCenter : manages >
 App "1"--"*" CovidDigitalCertificate : emits >
 App "1"--"*" EmailMessage : sends >
-
 ScheduleVaccine "1"--"*" CheckCenterCapacity : verifies >
 HealthCareCenter "*"---"*" Vaccine : stores >
 VaccineType "*"--"1" Administrator : created by >
 Vaccine "*"--"1" Administrator : created by >
+SMSMessage "1"--"1" SNSUser : is sent to >
 
 
 
-@endum
+@enduml
