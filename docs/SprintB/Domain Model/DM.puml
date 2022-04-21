@@ -5,16 +5,35 @@ hide methods
 class Administrator{
 }
 
-class Nurse{
-}
 
 class SNSUser{
 }
 
+class Nurse{
+-ID
+-name
+-citizenCardNumber
+-phoneNumber
+-Adress
+-E-mail
+}
+
 class Receptionist{
+-ID
+-name
+-citizenCardNumber
+-phoneNumber
+-Adress
+-E-mail
 }
 
 class CenterCoordinator{
+-ID
+-name
+-citizenCardNumber
+-phoneNumber
+-Adress
+-E-mail
 }
 
 class HealthCareCenter {
