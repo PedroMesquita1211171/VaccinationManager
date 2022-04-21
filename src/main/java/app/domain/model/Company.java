@@ -1,7 +1,10 @@
 package app.domain.model;
 
+import app.VaccineRelated.VaccineType;
 import pt.isep.lei.esoft.auth.AuthFacade;
 import org.apache.commons.lang3.StringUtils;
+
+import java.util.List;
 
 /**
  *
@@ -11,6 +14,7 @@ public class Company {
 
     private String designation;
     private AuthFacade authFacade;
+    private List<VaccineType> vaccineTypeList;
 
     public Company(String designation)
     {
@@ -28,4 +32,21 @@ public class Company {
     public AuthFacade getAuthFacade() {
         return authFacade;
     }
+
+    public VaccineType createVaccineType (String code, String designation, String whoId) {
+        return new VaccineType(code, designation, whoId);
+    }
+
+    public boolean validateVaccineType (VaccineType vt) {
+        if (vt == null)
+            return false;
+        return ! this.vaccineTypeList.contains(vt);
+    }
+
+    public boolean saveVaccineType (VaccineType vt) {
+        if (!validateVaccineType(vt))
+            return false;
+        return this.vaccineTypeList.add(vt);
+    }
+
 }
