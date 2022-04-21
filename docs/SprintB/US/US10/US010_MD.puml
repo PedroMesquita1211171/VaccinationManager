@@ -1,0 +1,40 @@
+@startuml
+hide methods
+left to right direction
+skinparam classAttributeIconSize 0
+
+class Administrator{
+}
+
+class Receptionist{
+-ID
+-name
+-citizenCardNumber
+-phoneNumber
+-Adress
+-E-mail
+}
+class Nurse{
+-ID
+-name
+-citizenCardNumber
+-phoneNumber
+-Adress
+-E-mail
+}
+class CenterCoordinator{
+-ID
+-name
+-citizenCardNumber
+-phoneNumber
+-Adress
+-E-mail
+}
+
+
+
+Administrator "1"--"*" Receptionist : registers >
+Administrator "1"--"*" Nurse : registers >
+Administrator "1"--"*" CenterCoordinator : registers >
+
+@enduml

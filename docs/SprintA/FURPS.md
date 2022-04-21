@@ -7,8 +7,6 @@ _Specifies functionalities that:_
 - _are common across several US/UC;_
 - _are not related to US/UC, namely: Audit, Reporting and Security._
 
-- (US)Nurses working in the healthcare centers can issue and deliver on site a vaccination certificate whenever an SNS user asks for it.
-- (US)Furthermore, receptionists and nurses registered in the application will work in the vaccination process
 ###Authentication
 - SNS user schedules vaccine online with the following info:
   - SNS number
@@ -59,19 +57,20 @@ fax number, a website address, opening and closing hours, slot duration and the 
 ## Reliability
 _Refers to the integrity, compliance and interoperability of the software. The requirements to be considered are: frequency and severity of failure, possibility of recovery, possibility of prediction, accuracy, average time between failures._
 
-
+N/A
 
 
 ## Performance
 _Evaluates the performance requirements of the software, namely: response time, start-up time, recovery time, memory consumption, CPU usage, load capacity and application availability._
 
-
-(fill in here )
+N/A
 
 ## Supportability
 _The supportability requirements gathers several characteristics, such as:
 testability, adaptability, maintainability, compatibility,
 configurability, installability, scalability and more._ 
+
+N/A
 
 ###Testability
 - Unit tests must be implemented for all methods, excluding those that implement Input/Output operations;
@@ -126,7 +125,7 @@ database integrity, resource limits, operating system._
   - String coordinator
 - The application should implement a bruteforce algorithm (an algorithm which examines all the contiguous subsequences) to determine the efficiency of the vaccination center during  predetermined period of time;
 - The implemented algorithm should be analyzed in terms of its worst-case time complexity, and it should be compared to a benchmark algorithm provided;
-- 
+
 
 
 
@@ -143,4 +142,4 @@ system being developed with other external systems._
 
 _Specifies a limitation or physical requirement regarding the hardware used to house the system, as for example: material, shape, size or weight._
 
-(fill in here )
+N/A
