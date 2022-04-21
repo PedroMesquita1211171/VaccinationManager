@@ -4,6 +4,7 @@ import app.VaccineRelated.VaccineType;
 import pt.isep.lei.esoft.auth.AuthFacade;
 import org.apache.commons.lang3.StringUtils;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -14,7 +15,7 @@ public class Company {
 
     private String designation;
     private AuthFacade authFacade;
-    private List<VaccineType> vaccineTypeList;
+    private List<VaccineType> vaccineTypeList = new ArrayList<>();
 
     public Company(String designation)
     {
@@ -38,9 +39,8 @@ public class Company {
     }
 
     public boolean validateVaccineType (VaccineType vt) {
-        if (vt == null)
-            return false;
-        return ! this.vaccineTypeList.contains(vt);
+        if (vt == null) return false;
+        return !this.vaccineTypeList.contains(vt);
     }
 
     public boolean saveVaccineType (VaccineType vt) {
