@@ -3,9 +3,13 @@ autonumber
 actor "Administrator" as ADM
 
 activate ADM
-ADM -> ":System" : starts specifying a new vaccine type
+ADM -> ":System" : starts specifying a vaccine center
 activate ":System"
-":System" --> ADM : requests data (code, designation, whold)
+":System" --> ADM : requests data (type of vaccine center)
+deactivate ":System"
+ADM -> ":System" :types requested data
+
+":System" --> ADM : requests data (name, address, phone number, e-mail, fax, website, opening and closing hours, slot duration, maximum number of vaccines given per slot)
 deactivate ":System"
 
 ADM -> ":System" : types requested data

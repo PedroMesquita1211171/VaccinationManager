@@ -1,0 +1,35 @@
+@startuml
+hide methods
+left to right direction
+skinparam classAttributeIconSize 0
+
+
+class Company {
+  -designation
+}
+
+class VaccineCenter {
+  -name
+  -address
+  -phone number
+  -e-mail
+  -fax
+  -website
+  -opening and closing hours
+  -slot duration
+  -maximum number of vaccines per slot
+
+}
+
+class Administrator {
+-username
+-password
+}
+
+
+
+
+
+
+
+@enduml
