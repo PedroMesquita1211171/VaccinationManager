@@ -24,7 +24,7 @@
 
 ### 1.3. Acceptance Criteria
 
-> - *AC1: The SNS User must become a System User.The "auth" component available on the repository must be reused(without modifications).*
+> - *AC1: The SNS User must become a System User. The "auth" component available on the repository must be reused(without modifications).*
 
 ### 1.4. Found out Dependencies
 

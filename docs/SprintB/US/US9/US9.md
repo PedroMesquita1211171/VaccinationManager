@@ -9,8 +9,24 @@
 *As an Administrator, I want to register a vaccination center to respond to a certain pandemic.*
 
 ### 1.2. Customer Specifications and Clarifications 
+**From the Specifications Document:**
 
--
+>- *"[...]The main difference between the two kinds of centers is
+  that a healthcare center is associated with a given ARS (Administração Regional de Saúde) and
+  AGES (Agrupamentos de Centros de Saúde), and it can administer any type of vaccines[...]"*
+>- *"[...]Both kinds of
+  vaccination centers are characterized by a name, an address, a phone number, an e-mail address, a
+  fax number, a website address, opening and closing hours, slot duration (e.g.: 5 minutes) and the
+  maximum number of vaccines that can be given per slot[...]"*
+
+**From the client clarifications:**
+
+
+> **Question:** Should the system ask for the specific type of the vaccine on the creation of a Vaccination Center?
+
+> **Question** Which field can we use as a key to validate if a given vaccination center is already registered?
+
+> **Question** Are there any acceptance criteria for the data such as number of digits, usual of specific characters.
 
 ### 1.3. Acceptance Criteria
 
@@ -22,6 +38,15 @@
 
 ### 1.5 Input and Output Data
 
+**Input Data:**
+* Typed Data:
+  *
+  *
+* Selected Data: (none)
+
+**Output Data:**
+* (In)Success of the operation
+* List of existing specified vaccine center
 -
 
 
@@ -29,7 +54,7 @@
 
 *Insert here a SSD depicting the envisioned Actor-System interactions and throughout which data is inputted and outputted to fulfill the requirement. All interactions must be numbered.*
 
-![USXXX-SSD](USXXX-SSD.svg)
+![US009_SSD](US009_SSD.svg)
 
 
 ### 1.7 Other Relevant Remarks
@@ -42,7 +67,7 @@
 ### 2.1. Relevant Domain Model Excerpt 
 *In this section, it is suggested to present an excerpt of the domain model that is seen as relevant to fulfill this requirement.* 
 
-![USXXX-MD](USXXX-MD.svg)
+![US009_MD](US009_MD.svg)
 
 ### 2.2. Other Remarks
 
