@@ -1,4 +1,4 @@
-package app.VaccineRelated;
+package app.domain.model;
 
 import org.junit.platform.commons.util.StringUtils;
 

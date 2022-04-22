@@ -74,6 +74,9 @@ public class App {
     private void bootstrap()
     {
         this.authFacade.addUserRole(Constants.ROLE_ADMIN,Constants.ROLE_ADMIN);
+        this.authFacade.addUserRole(Constants.ROLE_NURSE,Constants.ROLE_NURSE);
+        this.authFacade.addUserRole(Constants.ROLE_RECEPTIONIST,Constants.ROLE_RECEPTIONIST);
+        this.authFacade.addUserRole(Constants.ROLE_CENTER_CORDINATOR,Constants.ROLE_CENTER_CORDINATOR);
 
         this.authFacade.addUserWithRole("Main Administrator", "admin@lei.sem2.pt", "123456",Constants.ROLE_ADMIN);
     }

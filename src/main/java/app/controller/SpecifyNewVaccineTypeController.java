@@ -1,6 +1,6 @@
 package app.controller;
 
-import app.VaccineRelated.VaccineType;
+import app.domain.model.VaccineType;
 import app.domain.model.Company;
 
 public class SpecifyNewVaccineTypeController {

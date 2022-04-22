@@ -24,15 +24,6 @@ class Company {
 - designation
 }
 
-class MassiveVaccinationCenter {
-}
-
-class CovidDigitalCertificate {
-}
-
-class App{
-}
-
 class SMSMessage {
 - informationAppointment
 - timeRecovery
@@ -92,13 +83,11 @@ Administrator "*"---"*" Receptionist : registers >
 Administrator "*"---"*" SNSUser : registers >
 Administrator "*"---"*" VaccinationCenter : registers >
 
-Administrator "*"---"1" App : manages >
+
 Company "1"---"*" Administrator : knows >
 SNSUser "*"---"1" Company : is client >
 
-SNSUser "*"---"1" App : uses >
-VaccinationCenter "*"---"1" App
-Nurse "*"---"1" App
+
 
 Nurse "*"---"*" Vaccine : administrates >
 Nurse "*"---"1" VaccinationCenter : works at >
@@ -107,20 +96,19 @@ Receptionist "*"---"*" SNSUser : gives info >
 Receptionist "*"---"1" VaccinationCenter : works at >
 
 CenterCoordinator "*"--"1" Company : works for >
-Company "1"--"*" MassiveVaccinationCenter : owns >
 Vaccine "1"--"1" VaccineType : is of >
 Vaccine "*"--"1" VaccineTime : has >
-
-App "1"--"*" ScheduleVaccine : does >
-App "1"--"*" SMSMessage : sends >
-App "1"--"*" HealthCareCenter : manages >
-App "1"--"*" CovidDigitalCertificate : emits >
-App "1"--"*" EmailMessage : sends >
 
 ScheduleVaccine "1"--"*" CheckCenterCapacity : verifies >
 HealthCareCenter "*"---"*" Vaccine : stores >
 VaccineType "*"--"1" Administrator : created by >
 Vaccine "*"--"1" Administrator : created by >
+
+Receptionist "1"--"*" ScheduleVaccine : does >
+ScheduleVaccine "1"--"1" EmailMessage : emits >
+ScheduleVaccine "1"--"1" SMSMessage : emits >
+SNSUser "1"--"*" ScheduleVaccine : does >
+Administrator "1"--"*" HealthCareCenter : registers >
 
 
 

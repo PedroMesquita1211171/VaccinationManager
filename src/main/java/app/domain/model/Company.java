@@ -1,6 +1,5 @@
 package app.domain.model;
 
-import app.VaccineRelated.VaccineType;
 import pt.isep.lei.esoft.auth.AuthFacade;
 import org.apache.commons.lang3.StringUtils;
 
