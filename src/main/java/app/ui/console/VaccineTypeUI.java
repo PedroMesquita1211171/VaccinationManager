@@ -13,21 +13,22 @@ public class VaccineTypeUI implements Runnable {
 
     @Override
     public void run() {
+        if (ctrl.createVaccineType(askCode(), askDesignation(), askWhoId())) {
+            String opt = SaveOrNot();
 
-        ctrl.createVaccineType(askCode(), askDesignation(), askWhoId());
-        String opt = SaveOrNot();
-
-        if(opt.equalsIgnoreCase("yes")){
-            if(ctrl.saveVaccineType()) {
-                System.out.println("Vaccine Type saved successfully");
+            if(opt.equalsIgnoreCase("yes")){
+                if(ctrl.saveVaccineType()) {
+                    System.out.println("Vaccine Type saved successfully");
+                }else{
+                    System.out.println("Vaccine Type not saved since it already exists or invalid data");
+                }
+            }else if(opt.equalsIgnoreCase("no")){
+                System.out.println("Vaccine Type not saved");
             }else{
-                System.out.println("Vaccine Type not saved since it already exists or invalid data");
+                System.out.println("\nInvalid option\nVaccine Type not saved");
             }
-        }else if(opt.equalsIgnoreCase("no")){
-            System.out.println("Vaccine Type not saved");
-        }else{
-            System.out.println("\nInvalid option\nVaccine Type not saved");
         }
+
     }
 
     public String askCode(){
