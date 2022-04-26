@@ -14,6 +14,9 @@ public class VaccineTypeUI implements Runnable {
     @Override
     public void run() {
         if (ctrl.createVaccineType(askCode(), askDesignation(), askWhoId())) {
+
+            System.out.println(ctrl.showVaccineType());
+
             String opt = SaveOrNot();
 
             if(opt.equalsIgnoreCase("yes")){

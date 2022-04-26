@@ -13,7 +13,7 @@ public class SNSUser {
 
     private static final String GENDER_BY_DEFAULT = "UNDEFINED";
 
-    public SNSUser(String name, String address, int genderOption, String phoneNumber, String email, String birthDate, String SNSNumber, String CCNumber){
+    public SNSUser(String name, String address, String genderOption, String phoneNumber, String email, String birthDate, String SNSNumber, String CCNumber){
         checkNameRules(name);
         checkAddressRules(address);
         checkPhoneNumber(phoneNumber);
@@ -39,17 +39,15 @@ public class SNSUser {
         }
     }
 
-    private String checkGenderRules(int genderOption){
-        if (genderOption == 1) {
+    private String checkGenderRules(String genderOption){
+        if (genderOption.equals("1")){
             return "male";
-        } else if (genderOption == 2) {
+        } else if (genderOption.equals("2")) {
             return "female";
-        } else if (genderOption == 3) {
+        } else if (genderOption.equals("3")) {
             return "non-binary";
-        } else if (genderOption == 4) {
-            return GENDER_BY_DEFAULT;
         } else {
-            throw new IllegalArgumentException("Invalid Gender");
+            return GENDER_BY_DEFAULT;
         }
     }
 
@@ -59,5 +57,48 @@ public class SNSUser {
        }
     }
 
+    public String getName() {
+        return name;
+    }
 
+    public String getAddress() {
+        return address;
+    }
+
+    public String getGender() {
+        return gender;
+    }
+
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public String getBirthDate() {
+        return birthDate;
+    }
+
+    public String getSNSNumber() {
+        return SNSNumber;
+    }
+
+    public String getCCNumber() {
+        return CCNumber;
+    }
+
+    @Override
+    public String toString() {
+        return  "\nInfo: " +
+                "Name: " + name + "\n" +
+                "Address: " + address + "\n" +
+                "Gender: " + gender + "\n" +
+                "Phone Number: " + phoneNumber + "\n" +
+                "Email: " + email + "\n" +
+                "Birth Date: " + birthDate + "\n" +
+                "SNS Number: " + SNSNumber + "\n" +
+                "Citizen Card Number: " + CCNumber + "\n\n";
+    }
 }

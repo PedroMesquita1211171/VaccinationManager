@@ -27,4 +27,10 @@ public class VaccineType {
         if (designation.length() > 40)
             throw new IllegalArgumentException("Designation must have less than 40 chars.");
     }
+    public String toString() {
+        return "\n\nInfo: " + "\n" +
+                "Code: " + code + "\n" +
+                "Designation: " + designation + "\n" +
+                "WHOId: " + whoId + "\n\n";
+    }
 }

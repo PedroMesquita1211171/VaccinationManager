@@ -14,7 +14,8 @@ public class Company {
 
     private String designation;
     private AuthFacade authFacade;
-    private List<VaccineType> vaccineTypeList = new ArrayList<>();
+    private List<VaccineType> vaccineTypeList;
+    private List<SNSUser> clients;
 
     public Company(String designation)
     {
@@ -23,6 +24,8 @@ public class Company {
 
         this.designation = designation;
         this.authFacade = new AuthFacade();
+        vaccineTypeList = new ArrayList<>();
+        clients = new ArrayList<>();
     }
 
     public String getDesignation() {
@@ -48,4 +51,22 @@ public class Company {
         return this.vaccineTypeList.add(vt);
     }
 
+    public boolean validateSNSUser (SNSUser snsUser) {
+        if (snsUser == null) return false;
+        return !this.clients.contains(snsUser);
+    }
+
+    public boolean saveSNSUser (SNSUser snsUser) {
+        if (!validateSNSUser(snsUser))
+            return false;
+        return this.clients.add(snsUser);
+    }
+
+    public List<VaccineType> getVaccineTypeList() {
+        return vaccineTypeList;
+    }
+
+    public List<SNSUser> getClients() {
+        return clients;
+    }
 }

@@ -1,5 +1,6 @@
 package app.controller;
 
+import app.domain.model.SNSUser;
 import app.domain.model.VaccineType;
 import app.domain.model.Company;
 
@@ -22,5 +23,9 @@ public class SpecifyNewVaccineTypeController {
     }
     public boolean saveVaccineType() {
         return this.company.saveVaccineType(vt);
+    }
+
+    public String showVaccineType() {
+        return this.vt.toString();
     }
 }
