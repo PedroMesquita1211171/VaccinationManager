@@ -1,20 +1,18 @@
 package app.controller;
 
+import app.domain.model.Company;
 import app.domain.model.Employee;
 import app.domain.shared.Constants;
 
 public class SpecifyNewEmployeeController {
 
-    private Employee emp;
+    private final Company company;
 
     public SpecifyNewEmployeeController() {
-        this.emp=null;
+        this(App.getInstance().getCompany());
     }
 
-    public boolean createEmployee(String role , String Name, String Ccardnumber, String Phonenumber, String Adress, String Email) {
-        return this.
-    }
-    public boolean saveNewEmployee() {
-        return
+    public SpecifyNewEmployeeController(Company company) {
+        this.company = company;
     }
 }
