@@ -8,15 +8,13 @@ activate ":System"
 ":System" --> ADM : requests data (type of vaccine center)
 deactivate ":System"
 ADM -> ":System" :types requested data
-
+activate ":System"
 ":System" --> ADM : requests data (name, address, phone number, e-mail, fax, website, opening and closing hours, slot duration, maximum number of vaccines given per slot)
 deactivate ":System"
-
 ADM -> ":System" : types requested data
 activate ":System"
 ":System" --> ADM : shows the data and requests a confirmation
 deactivate
-
 ADM -> ":System" : confirms the data
 activate ":System"
 ":System" --> ADM : informs operation success

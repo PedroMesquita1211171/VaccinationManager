@@ -8,25 +8,45 @@ class Company {
   -designation
 }
 
-class VaccineCenter {
-  -name
-  -address
-  -phone number
-  -e-mail
-  -fax
-  -website
-  -opening and closing hours
-  -slot duration
-  -maximum number of vaccines per slot
-
+class VaccinationCenter {
+  - name
+  - address
+  - emailAddress
+  - phoneNumber
+  - faxNumber
+  - websiteAddress
+  - openingHours
+  - closingHours
+  - slotDuration
+  - maxVaccines
+  - coordinator
 }
+
+class HealthCareCenter {
+  - name
+    - address
+    - emailAddress
+    - phoneNumber
+    - faxNumber
+    - websiteAddress
+    - openingHours
+    - closingHours
+    - slotDuration
+    - maxVaccines
+    - coordinator
+    -AGES
+    -ARS
+  }
+
 
 class Administrator {
 -username
 -password
 }
 
-
+Company "1"---"*" Administrator : knows >
+Administrator "1"--"*" VaccinationCenter : registers >
+Administrator "1"--"*" HealthCareCenter : registers >
 
 
 

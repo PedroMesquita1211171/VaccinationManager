@@ -28,6 +28,11 @@
 
 > **Question** Are there any acceptance criteria for the data such as number of digits, usual of specific characters.
 
+> **Question** Regarding each center's schedule, I would like to know if the schedule varies for each day (week day and weekend for example) or if it's the same for everyday.
+I would also like to know if the slot duration and number of vaccines per slot varies by day or stays constant.
+
+>**Question** Does the opening hour has to be a smaler number number than the closing hour (ex: opens at 8:00 and closes at 21:00), or can it also be have night hours (ex: opens at 20:00 and closes at 7:00)?
+
 ### 1.3. Acceptance Criteria
 
 *No given Acceptance Criteria until now.*

@@ -17,9 +17,6 @@ class Receptionist{
 class CenterCoordinator{
 }
 
-class HealthCareCenter {
-}
-
 class Company {
 - designation
 }
@@ -76,13 +73,29 @@ class VaccinationCenter {
   - maxVaccines
   - coordinator
 }
+class HealthCareCenter {
+  - name
+    - address
+    - emailAddress
+    - phoneNumber
+    - faxNumber
+    - websiteAddress
+    - openingHours
+    - closingHours
+    - slotDuration
+    - maxVaccines
+    - coordinator
+    -AGES
+    -ARS
+  }
+
 
 Administrator "*"---"*" Nurse : registers >
 Administrator "*"---"*" CenterCoordinator : registers >
 Administrator "*"---"*" Receptionist : registers >
 Administrator "*"---"*" SNSUser : registers >
 Administrator "*"---"*" VaccinationCenter : registers >
-
+Administrator "*"---"*" HealthCareCenter : registers >
 
 Company "1"---"*" Administrator : knows >
 SNSUser "*"---"1" Company : is client >
