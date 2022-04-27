@@ -9,7 +9,7 @@ activate ":System"
 deactivate ":System"
 ADM -> ":System" :types requested data
 activate ":System"
-":System" --> ADM : requests data (name, address, phone number, e-mail, fax, website, opening and closing hours, slot duration, maximum number of vaccines given per slot)
+":System" --> ADM : requests data (name, address, phone number, e-mail, fax, website, \n opening and closing hours, slot duration, maximum number of vaccines given per slot)
 deactivate ":System"
 ADM -> ":System" : types requested data
 activate ":System"
