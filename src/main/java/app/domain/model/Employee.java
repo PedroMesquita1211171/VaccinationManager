@@ -84,4 +84,15 @@ public class Employee {
             throw new IllegalArgumentException("Invalid Citizen Card Number");
         }
     }
+
+    @Override
+    public String toString() {
+        return "\n\nName: " + name + "\n" +
+                "Email: " + email + "\n" +
+                "Address: " + address + "\n" +
+                "Phone Number: " + phoneNumber + "\n" +
+                "Citizen Card Number: " + citizenCardNumber + "\n" +
+                "EmployeeID: " + employeeID + "\n" +
+                "Role: " + role + "\n\n";
+    }
 }

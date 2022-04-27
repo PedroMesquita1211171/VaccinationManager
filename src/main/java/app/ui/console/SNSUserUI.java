@@ -13,16 +13,15 @@ public class SNSUserUI implements Runnable{
 
     @Override
     public void run() {
-         if(ctrl.createSNSUser(askname(), askaddress(), askgenderoption(), askPhoneNumber(), askEmail(), askBirthDate(), askSNSNumber(), askCCNumber())) {;
+        if (ctrl.createSNSUser(askname(), askaddress(), askgenderoption(), askPhoneNumber(), askEmail(), askBirthDate(), askSNSNumber(), askCCNumber())) {;
 
-             String opt = SaveOrNot();
+            System.out.println(ctrl.showSNSUser());
+
+            String opt = SaveOrNot();
 
              if(opt.equalsIgnoreCase("yes")){
-                 if(ctrl.saveSNSUser()) {
+                 ctrl.saveSNSUser();
                      System.out.println("SNS User saved successfully");
-                 }else{
-                     System.out.println("SNS User not saved since it already exists or invalid data");
-                 }
              }else if(opt.equalsIgnoreCase("no")){
                  System.out.println("SNS User not saved");
              }else{
@@ -67,7 +66,7 @@ public class SNSUserUI implements Runnable{
 
     public String SaveOrNot(){
 
-        System.out.println(ctrl.showSNSUser());
+      //  System.out.println(ctrl.showSNSUser());
 
         String opt;
         opt = Utils.readLineFromConsole("Save SNS User? (yes/no)");

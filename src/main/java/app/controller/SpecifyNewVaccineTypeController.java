@@ -1,6 +1,5 @@
 package app.controller;
 
-import app.domain.model.SNSUser;
 import app.domain.model.VaccineType;
 import app.domain.model.Company;
 
@@ -18,11 +17,23 @@ public class SpecifyNewVaccineTypeController {
         this.vt = null;
     }
     public boolean createVaccineType(String code, String designation, String whoId) {
-        this.vt = this.company.createVaccineType(code, designation, whoId);
-        return this.company.validateVaccineType(vt);
+        try{
+            this.vt = new VaccineType(code, designation, whoId);
+        }catch (IllegalArgumentException e){
+            System.out.println(e.getMessage());
+            return false;
+        }
+
+        return validateVaccineType(vt);
     }
-    public boolean saveVaccineType() {
-        return this.company.saveVaccineType(vt);
+
+    public boolean validateVaccineType (VaccineType vt) {
+        if (vt == null) return false;
+        return company.getVaccineTypeStore().getVaccineTypeList().contains(vt);
+    }
+
+    public void addVaccineType() {
+        this.company.addVaccineType(vt);
     }
 
     public String showVaccineType() {

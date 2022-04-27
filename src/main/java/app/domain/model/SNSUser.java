@@ -52,9 +52,9 @@ public class SNSUser {
     }
 
     private void checkPhoneNumber(String phoneNumber){
-     if(phoneNumber.charAt(0) != '9' && phoneNumber.length() != 9){
-         throw new IllegalArgumentException("Invalid Phone Number");
-       }
+        if(phoneNumber.charAt(0) != '9' && phoneNumber.length() != 9){
+            throw new IllegalArgumentException("Invalid Phone Number");
+        }
     }
 
     public String getName() {
