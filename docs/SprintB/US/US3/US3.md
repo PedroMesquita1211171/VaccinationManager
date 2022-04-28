@@ -30,7 +30,7 @@
 
 ### 1.4. Found out Dependencies
 
-*US9, since it is necessary for the system to have a Receptionist Menu, we need to have US9 done in order to register a Receptionist.*
+*US10, since it is necessary for the system to have a Receptionist Menu, we need to have US10 done in order to register a Receptionist.*
 
 ### 1.5 Input and Output Data
 
@@ -94,13 +94,13 @@ n/a
 
 According to the taken rationale, the conceptual classes promoted to software classes are: 
 
- * Class1
- * Class2
- * Class3
+ * Company
+ * SNSUserStore
+ * SNSUser
 
 Other software classes (i.e. Pure Fabrication) identified: 
- * xxxxUI  
- * xxxxController
+ * SNSUserUI  
+ * SpecifyNewSNSUserController
 
 ## 3.2. Sequence Diagram (SD)
 
@@ -112,7 +112,7 @@ Other software classes (i.e. Pure Fabrication) identified:
 
 *In this section, it is suggested to present an UML static view representing the main domain related software classes that are involved in fulfilling the requirement as well as and their relations, attributes and methods.*
 
-![USXXX-CD](USXXX-CD.svg)
+![US003_CD](US003_CD.svg)
 
 # 4. Tests 
 *In this section, it is suggested to systematize how the tests were designed to allow a correct measurement of requirements fulfilling.* 

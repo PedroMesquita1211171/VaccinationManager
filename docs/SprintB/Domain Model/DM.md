@@ -58,7 +58,7 @@ To identify domain conceptual classes, start by making a list of candidate conce
 
 ** Noteworthy Events**
 
-* VaccineCertificateEmission
+
 
 ---
 
@@ -110,7 +110,7 @@ To identify domain conceptual classes, start by making a list of candidate conce
 
 **Other External/Collaborating Systems**
 
-*  
+* VaccineCertificateEmission
 
 
 ---
@@ -154,7 +154,7 @@ An association is a relationship between instances of objects that indicates a r
 | Concept (A) 		        |                                                       Association   	                                                       |                                                                                                                              Concept (B) |
 |-----------------------|:---------------------------------------------------------------------------------------------------------------------------:|-----------------------------------------------------------------------------------------------------------------------------------------:|
 | Admin  	              | -registers<br/>-registers<br/>-registers<br/>-registers<br/>-registers<br/>-registers<br/>-configures<br/>-works for   		 	 |   -nurses<br/>-vaccination centers<br/>-receptionists<br/>-vaccines<br/>-vaccine types<br/>-SNS users<br/>-core app information<br/>-DGS |
-| Center Coordinator  	 |                                           -monitors<br/>-monitors<br/>-works for                                            |                                                                             -vacination process<br/>-healthcare cneter activity<br/>-DGS |
+| Center Coordinator  	 |                                           -monitors<br/>-monitors<br/>-works for                                            |                                                                            -vaccination process<br/>-healthcare center activity<br/>-DGS |
 | Nurse	                |     -registers<br/>-has<br/>-schedules<br/>-emits<br/>-works for                                                  		 	      | -type, lot and number of vaccine used<br/>-acess to all of the user's health data<br/>-vaccination<br/>-vaccination certificate<br/>-DGS |
 | User	                 |                                         -registers<br/>-schedules<br/>-recieves		 	                                         |                                                        -their personal data<br/>vaccination<br/>vaccination certificate by e-mail or sms |
 | Receptionist 	        |                                                 -confirms<br/>-asks    		 	                                                 |                                                                                   -vaccination scheduling<br/>-SNS user for their number |
