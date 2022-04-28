@@ -5,7 +5,7 @@ import app.ui.console.utils.Utils;
 
 public class VaccineTypeUI implements Runnable {
 
-    private SpecifyNewVaccineTypeController ctrl ;
+    private final SpecifyNewVaccineTypeController ctrl ;
 
     public VaccineTypeUI() {
        ctrl = new SpecifyNewVaccineTypeController();
@@ -20,16 +20,15 @@ public class VaccineTypeUI implements Runnable {
             String opt = SaveOrNot();
 
             if(opt.equalsIgnoreCase("yes")){
-                if(ctrl.saveVaccineType()) {
+                ctrl.addVaccineType();
                     System.out.println("Vaccine Type saved successfully");
-                }else{
-                    System.out.println("Vaccine Type not saved since it already exists or invalid data");
-                }
             }else if(opt.equalsIgnoreCase("no")){
                 System.out.println("Vaccine Type not saved");
             }else{
                 System.out.println("\nInvalid option\nVaccine Type not saved");
             }
+        }else{
+            System.out.println("\nVaccine Type not saved since it already exists or data is invalid\n");
         }
 
     }

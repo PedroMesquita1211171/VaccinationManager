@@ -20,22 +20,30 @@
 
 > **Question: What are the necessary components in order to register an SNS User?** 
 >
-> **Answer:**
+> **Answer: The attributes that should be used to describe a SNS user are: Name, Address, Sex, Phone Number, E-mail, Birth Date, SNS User Number and Citizen Card Number.**
 
 ### 1.3. Acceptance Criteria
 
-> - *AC1: The SNS User must become a System User. The "auth" component available on the repository must be reused(without modifications).*
+ - *AC1: The SNS User must become a System User. The "auth" component available on the repository must be reused(without modifications).*
+ - *AC2: The Sex attribute is optional. All other fields are required.*
+ - *AC3: The E-mail, Phone Number, Citizen Card Number and SNS User Number should be unique for each SNS user.*
 
 ### 1.4. Found out Dependencies
 
-*No dependencies were found.*
+*US9, since it is necessary for the system to have a Receptionist Menu, we need to have US9 done in order to register a Receptionist.*
 
 ### 1.5 Input and Output Data
 
 **Input Data:**
 * Typed Data:
-    * SNS Number (String that will be converted to char array then int array(because the SNS Number might start with 0)) 
-    * 
+    * Name
+    * Address
+    * Sex(Optional)
+    * Phone Number
+    * E-mail
+    * Birth Date
+    * SNS User Number
+    * Citizen Card Number
 * Selected Data: (none)
 
 **Output Data:**

@@ -1,5 +1,8 @@
 package app.domain.model;
 
+import app.domain.Store.EmployeeStore;
+import app.domain.Store.SNSUserStore;
+import app.domain.Store.VaccineTypeStore;
 import pt.isep.lei.esoft.auth.AuthFacade;
 import org.apache.commons.lang3.StringUtils;
 
@@ -14,8 +17,11 @@ public class Company {
 
     private String designation;
     private AuthFacade authFacade;
-    private List<VaccineType> vaccineTypeList;
-    private List<SNSUser> clients;
+    private VaccineTypeStore vaccineTypeStore;
+    private EmployeeStore employeeStore;
+    private SNSUserStore snsUserStore;
+    /*private List<VaccineType> vaccineTypeList;
+    private List<SNSUser> clients;*/
 
     public Company(String designation)
     {
@@ -24,8 +30,10 @@ public class Company {
 
         this.designation = designation;
         this.authFacade = new AuthFacade();
-        vaccineTypeList = new ArrayList<>();
-        clients = new ArrayList<>();
+        this.vaccineTypeStore = new VaccineTypeStore();
+        this.employeeStore = new EmployeeStore();
+        /*vaccineTypeList = new ArrayList<>();
+        clients = new ArrayList<>();*/
     }
 
     public String getDesignation() {
@@ -36,16 +44,32 @@ public class Company {
         return authFacade;
     }
 
-    public VaccineType createVaccineType (String code, String designation, String whoId) {
-        return new VaccineType(code, designation, whoId);
+    public void addVaccineType (VaccineType vt) {
+        vaccineTypeStore.addVaccineType(vt);
     }
 
-    public boolean validateVaccineType (VaccineType vt) {
-        if (vt == null) return false;
-        return !this.vaccineTypeList.contains(vt);
+    public VaccineTypeStore getVaccineTypeStore() {
+        return vaccineTypeStore;
     }
 
-    public boolean saveVaccineType (VaccineType vt) {
+    public EmployeeStore getEmployeeStore() {
+        return employeeStore;
+    }
+
+    public void addEmployee (Employee e) {
+        employeeStore.addEmployee(e);
+    }
+
+    public SNSUserStore getSNSUserStore() {
+        return snsUserStore;
+    }
+
+    public void addSNSUser (SNSUser snsu) {
+        snsUserStore.addSNSUser(snsu);
+    }
+
+
+   /* public boolean saveVaccineType (VaccineType vt) {
         if (!validateVaccineType(vt))
             return false;
         return this.vaccineTypeList.add(vt);
@@ -68,5 +92,5 @@ public class Company {
 
     public List<SNSUser> getClients() {
         return clients;
-    }
+    }*/
 }
