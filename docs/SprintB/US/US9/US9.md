@@ -45,13 +45,25 @@ I would also like to know if the slot duration and number of vaccines per slot v
 
 **Input Data:**
 * Typed Data:
-  *
-  *
+  * type of center
+  * address
+  * emailAddress
+  * phoneNumber
+  * faxNumber
+  * websiteAddress
+  * openingHours
+  * closingHours
+  * slotDuration
+  * maxVaccines
+  * coordinator
+  * AGES
+  * ARS
+
 * Selected Data: (none)
 
 **Output Data:**
 * (In)Success of the operation
-* List of existing specified vaccine center
+* Confirmation of vaccination center registration 
 -
 
 
