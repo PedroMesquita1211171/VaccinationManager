@@ -8,13 +8,8 @@ _Specifies functionalities that:_
 - _are not related to US/UC, namely: Audit, Reporting and Security._
 
 ###Authentication
-- SNS user schedules vaccine online with the following info:
-  - SNS number
-  - Vaccination Center
-  - Date And Hour	(LocalDateTime)
-  - Type of Vaccine (System gives a default vaccine that is related to the current outbreak)
-  - Authorize DGS to send SMS with information
-  - If possible the application should inform the SNS User via SMS (If it's authorized);
+N/A
+
 ###Security
 - Only the nurses are allowed to access all user’s health data;
 - All those who wish to use the application must be authenticated with a password holding seven alphanumeric characters, including three capital letters and two digits;
@@ -111,18 +106,7 @@ _Specifies or constraints the code or construction of a system such
 database integrity, resource limits, operating system._
 
 
-- Information associated with vaccination centers :
-  - String name 
-  - String address
-  - String email_address
-  - Integer phone_number
-  - Integer/String fax_number
-  - String website_address
-  - LocalTime opening_hours
-  - LocalTime closing_hours
-  - Integer slot_duration
-  - Integer max_vaccines
-  - String coordinator
+- All the images/figures produced during the software development process should be recorded in SVG format.
 - The application should implement a bruteforce algorithm (an algorithm which examines all the contiguous subsequences) to determine the efficiency of the vaccination center during  predetermined period of time;
 - The implemented algorithm should be analyzed in terms of its worst-case time complexity, and it should be compared to a benchmark algorithm provided;
 

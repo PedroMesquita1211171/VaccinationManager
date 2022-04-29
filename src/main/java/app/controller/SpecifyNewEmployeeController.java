@@ -37,6 +37,7 @@ public class SpecifyNewEmployeeController {
 
     public void addEmployee() {
         this.company.getEmployeeStore().addEmployee(emp);
+        String password;
     }
 
     public String showEmployee() {
