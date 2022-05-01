@@ -68,4 +68,4 @@ Report "*"---"*" PerformanceAnalysis : about >
 Receptionist "*"---"1" DGS : works for <
 
 
-@endumlml
+@enduml

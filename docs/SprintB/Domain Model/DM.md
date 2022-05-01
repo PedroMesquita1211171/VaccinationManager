@@ -10,7 +10,7 @@ To identify domain conceptual classes, start by making a list of candidate conce
 
 **Business Transactions**
 
-* Scheduling
+* ScheduleVaccine
 * RegisteringVaccine
 
 ---
@@ -34,7 +34,8 @@ To identify domain conceptual classes, start by making a list of candidate conce
 
 **Transaction Records**
 
-* OrderOfVaccination
+* Report
+* PerformanceAnalysis
 ---  
 
 
@@ -52,7 +53,7 @@ To identify domain conceptual classes, start by making a list of candidate conce
 **Places**
 
 * VaccinationCenter
-* HealthcareCenter
+* HealthCareCenter
 
 ---
 
@@ -104,13 +105,15 @@ To identify domain conceptual classes, start by making a list of candidate conce
 
 **Organizations**
 
-*  DGS
+* DGS
+* AGES
+* ARS
 
 ---
 
 **Other External/Collaborating Systems**
 
-* VaccineCertificateEmission
+* CovidDigitalCertificate
 
 
 ---
