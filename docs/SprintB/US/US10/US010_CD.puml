@@ -24,8 +24,8 @@ class Employee{
 }
 
 class Company{
-VaccineTypeStore vaccineTypeStore
-+addVaccineType(vt)
+EmployeeStore employeeStore
++addEmployee(e)
 }
 
 class EmployeeStore{}
