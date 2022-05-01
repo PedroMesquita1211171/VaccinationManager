@@ -2,16 +2,16 @@
 autonumber
 actor "Admin" as admin
 
-participant ": RegistersSNSuserUI" as UI
-participant ": RegistersSNSuserController" as Controller
+participant ": ListEmployeesUI" as UI
+participant ": ListEmployeesController" as Controller
 participant ": Company" as Company
-participant "SNSUser" as SNSUser
-participant ": AuthFacade" as auth
+participant "Employees" as Employees
+participant ": EmployeesStore" as store
 
-activate recep
-recep -> UI :  starts the registration of a new SNS user
+activate admin
+admin -> UI :  starts operation of asking for list of employees with a given role
 activate UI
-UI --> recep : requests data (name,SNS number,birth date,citizen card number,sex,phone number,address,e-mail,password)
+UI --> admin : requests role (Nurse, Receptionist, Center Coordinator, all)
 deactivate UI
 
 recep -> UI : types requested data

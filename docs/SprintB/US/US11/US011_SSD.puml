@@ -2,17 +2,17 @@
 autonumber
 actor "Admin" as rcp
 
-activate rcp
-rcp -> ":System" : starts operation of asking for list of employees with a given role
+activate adm
+adm -> ":System" : starts operation of asking for list of employees with a given role
 activate ":System"
-":System" --> rcp : requests role (Nurse, Receptionist, Center Coordinator, all)
+":System" --> adm : requests role (Nurse, Receptionist, Center Coordinator, all)
 deactivate ":System"
 
-rcp -> ":System" : types requested data
+adm -> ":System" : types requested data
 activate ":System"
-":System" --> rcp : shows the list of employees with chosen role
+":System" --> adm : shows the list of employees with chosen role
 deactivate ":System"
 
-deactivate rcp
+deactivate adm
 
-@endum
+@enduml
