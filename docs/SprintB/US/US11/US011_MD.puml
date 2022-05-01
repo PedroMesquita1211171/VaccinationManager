@@ -8,24 +8,40 @@ class Company {
   -designation
 }
 
-class Receptionist {
-  -username
-  -password
-}
-
-class SNSUser {
-  -SNS Number
-}
-
 class Administrator {
   -username
   -password
 }
 
-SNSUser "*"---"1" Company : is client >
+class Receptionist {
+  -username
+  -password
+}
+
+class CenterCoordinator {
+  -username
+  -password
+}
+
+class Nurse {
+  -username
+  -password
+}
+
+class Employee {
+  -username
+  -password
+}
+
+
 Company "1"---"*" Administrator : knows >
-Receptionist "1"--"*" SNSUser : registers >
 Administrator "1"--"*" Receptionist : registers >
+Administrator "1"--"*" CenterCoordinator : registers >
+Administrator "1"--"*" Nurse : registers >
+Receptionist "1"--"1" Employee : is a >
+CenterCoordinator "1"--"1" Employee : is a >
+Nurse "1"--"1" Employee : is a >
+Administrator "1"--"*" Employee : gets list of >
 
 
 

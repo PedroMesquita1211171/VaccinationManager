@@ -4,58 +4,31 @@ actor "Admin" as admin
 
 participant ": ListEmployeesUI" as UI
 participant ": ListEmployeesController" as Controller
-participant ": Company" as Company
-participant "Employees" as Employees
 participant ": EmployeesStore" as store
 
 activate admin
 admin -> UI :  starts operation of asking for list of employees with a given role
 activate UI
-UI --> admin : requests role (Nurse, Receptionist, Center Coordinator, all)
+UI --> admin : requests role (opt :int)
 deactivate UI
 
-recep -> UI : types requested data
+admin -> UI : types requested data
 activate UI
 
-UI -> Controller : createSNSuser(name,SNS number,birth date,citizen card number,sex,phone number,address,e-mail,password)
+UI -> Controller : ctrl.redirectToList(opt :int)
 activate Controller
 
 
-Controller -> SNSUser : snsu = new SNSUser(name, address, genderOption, phoneNumber, email, birthDate, SNSNumber, citizenCardNumber)
-activate SNSUser
-deactivate SNSUser
+Controller -> Controller : getReceptionistsList()
+Controller -> Controller : getNurseList()
+Controller -> Controller : getCenterCoordinatorList()
+Controller -> Controller : getAll()
+store --> Controller : returns list of employees to be filtered
+Controller --> UI : returns list of employees desired
+UI --> admin : Shows list of Employees desired
 
 
-Controller -> Controller : validateSNSuser()
-
-UI --> recep : shows the data and requests a confirmation
 deactivate UI
 deactivate Controller
 
-recep -> UI : confirms the data
-activate UI
-
-UI -> Controller : saveSNSuser(snsu)
-activate Controller
-
-
-Controller -> Company : addSNSUser(snsu)
-activate Company
-
-
-Company -> SNSuserStore : addSNSUser(snsu)
-activate SNSuserStore
-deactivate SNSuserStore
-
-Company -> auth : addUserWithRole(snsu.getName(), snsu.getEmail(),generateRandomPassword(), Constants.ROLE_SNSUSER)
-activate auth
-deactivate auth
-
-deactivate Controller
-deactivate Company
-
-UI --> recep : informs operation success
-
-deactivate UI
-deactivate recep
 @enduml
