@@ -1,0 +1,54 @@
+@startuml
+  skinparam classAttributeIconSize 0
+
+  class ListEmployeesUI{
+
+    ListEmployeesController ctrl
+
+  }
+
+  class ListEmployeesController{
+
+  Company company
+  +redirectToList(opt)
+  +getReceptionistsList()
+  +getNurseList()
+  +getCenterCoordinatorList()
+  +getAll()
+
+  }
+
+  class Company{
+
+  EmployeeStore employeeStore
+  +getEmployeeStore()
+
+  }
+
+  class EmployeeStore{
+
+  List<Employee> employeeList
+  +getEmployeeList()
+
+  }
+
+  class Employee{
+
+  -name
+  -email
+  -address
+  -phoneNumber
+  -citizenCardNumber
+  -employeeID
+  -role
+
+  }
+
+  ListEmployeesUI ..> ListEmployeesController
+  ListEmployeesController ..> EmployeeStore
+  ListEmployeesController ..> Company
+  Company "1" -- "1" EmployeeStore : has a >
+  EmployeeStore "1" -- "*" Employee : stores >
+
+
+  @enduml
