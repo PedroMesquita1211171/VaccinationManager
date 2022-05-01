@@ -1,0 +1,62 @@
+@startuml
+autonumber
+actor "Administrator" as adm
+
+participant ": RegistersVaccinationCenterUI" as UI
+participant ": RegistersVaccinationCenterController" as Controller
+participant ": Company" as Company
+participant "VaccinationCenter" as VaccinationCenter
+participant ": AuthFacade" as auth
+
+activate adm
+adm -> UI :  starts the registration of a new Vaccination Center
+activate UI
+UI --> adm : requests data (type of center)
+deactivate UI
+
+adm -> UI : types requested data
+activate UI
+UI --> adm : requests data (name,address,emailAddress,phoneNumber,faxNumber,websiteAddress,openingHours,closingHours,slotDuration,maxVaccines,coordinator,AGES,ARS)
+deactivate UI
+
+adm -> UI : types requested data
+activate UI
+
+UI -> Controller : createVaccinationCenter(name,address,emailAddress,phoneNumber,faxNumber,websiteAddress,openingHours,closingHours,slotDuration,maxVaccines,coordinator,AGES,ARS)
+activate Controller
+
+
+Controller -> VaccinationCenter : vacCenter = new vacCenter(name,address,emailAddress,phoneNumber,faxNumber,websiteAddress,openingHours,closingHours,slotDuration,maxVaccines,coordinator,AGES,ARS)
+activate VaccinationCenter
+deactivate VaccinationCenter
+
+
+Controller -> Controller : validateVaccinationCenter()
+
+UI --> adm : shows the data and requests a confirmation
+deactivate UI
+deactivate Controller
+
+adm -> UI : confirms the data
+activate UI
+
+UI -> Controller : saveVaccinationCenter(vacCenter)
+activate Controller
+
+
+Controller -> Company : addVaccinationCenter(vacCenter)
+activate Company
+
+
+Company -> VaccinationCenterStore : addVaccinationCenter(vacCenter)
+activate VaccinationCenterStore
+deactivate VaccinationCenterStore
+
+deactivate Controller
+deactivate Company
+
+UI --> adm : informs operation success
+
+deactivate UI
+deactivate adm
+@enduml

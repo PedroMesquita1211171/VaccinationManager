@@ -21,17 +21,16 @@
 
 **From the client clarifications:**
 
-
 > **Question:** Should the system ask for the specific type of the vaccine on the creation of a Vaccination Center?
 
-> **Question** Which field can we use as a key to validate if a given vaccination center is already registered?
+> **Question:** Which field can we use as a key to validate if a given vaccination center is already registered?
 
-> **Question** Are there any acceptance criteria for the data such as number of digits, usual of specific characters.
+> **Question:** Are there any acceptance criteria for the data such as number of digits, usual of specific characters.
 
-> **Question** Regarding each center's schedule, I would like to know if the schedule varies for each day (week day and weekend for example) or if it's the same for everyday.
+> **Question:** Regarding each center's schedule, I would like to know if the schedule varies for each day (week day and weekend for example) or if it's the same for everyday.
 I would also like to know if the slot duration and number of vaccines per slot varies by day or stays constant.
 
->**Question** Does the opening hour has to be a smaler number number than the closing hour (ex: opens at 8:00 and closes at 21:00), or can it also be have night hours (ex: opens at 20:00 and closes at 7:00)?
+>**Question:** Does the opening hour has to be a smaler number number than the closing hour (ex: opens at 8:00 and closes at 21:00), or can it also be have night hours (ex: opens at 20:00 and closes at 7:00)?
 
 ### 1.3. Acceptance Criteria
 
@@ -127,13 +126,13 @@ Other software classes (i.e. Pure Fabrication) identified:
 
 *In this section, it is suggested to present an UML dynamic view stating the sequence of domain related software objects' interactions that allows to fulfill the requirement.* 
 
-![USXXX-SD](USXXX-SD.svg)
+![US009_SD](US009_SD.svg)
 
 ## 3.3. Class Diagram (CD)
 
 *In this section, it is suggested to present an UML static view representing the main domain related software classes that are involved in fulfilling the requirement as well as and their relations, attributes and methods.*
 
-![USXXX-CD](USXXX-CD.svg)
+![US009_CD](US009_CD.svg)
 
 # 4. Tests 
 *In this section, it is suggested to systematize how the tests were designed to allow a correct measurement of requirements fulfilling.* 

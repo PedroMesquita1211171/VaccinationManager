@@ -6,7 +6,7 @@ class VaccinationCenterUI{}
 class SpecifyNewVaccinationCenterController{}
 class VaccinationCenterStore{}
 class Company{}
-class AuthFacade{}
+
 
 
 VaccinationCenterUI ..> SpecifyNewVaccinationCenterController
@@ -15,6 +15,7 @@ VaccinationCenterStore "1"-->"*" VaccinationCenter : keeps info >
 SpecifyNewVaccinationCenterController ..> Company
 SpecifyNewVaccinationCenterController ..> VaccinationCenterStore
 SpecifyNewVaccinationCenterController ..> VaccinationCenter
-Company -- AuthFacade : registers VaccinationCenter >
+
 
 @enduml
+
