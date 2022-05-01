@@ -10,13 +10,9 @@ _Specifies functionalities that:_
 - (US)Nurses working in the healthcare centers can issue and deliver on site a vaccination certificate whenever an SNS user asks for it.
 - (US)Furthermore, receptionists and nurses registered in the application will work in the vaccination process
 ###Authentication
-- SNS user schedules vaccine online with the following info:
-  - SNS number
-  - Vaccination Center
-  - Date And Hour	(LocalDateTime)
-  - Type of Vaccine (System gives a default vaccine that is related to the current outbreak)
-  - Authorize DGS to send SMS with information
-  - If possible the application should inform the SNS User via SMS (If it's authorized);
+- Each User can have a unique username and a generated password.
+- Given the User Role, the User will be redirected to the corresponding User Interface.
+- The User has 3 tries to log in.
 ###Security
 - Only the nurses are allowed to access all user’s health data;
 - All those who wish to use the application must be authenticated with a password holding seven alphanumeric characters, including three capital letters and two digits;

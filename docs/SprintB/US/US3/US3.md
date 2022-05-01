@@ -76,18 +76,16 @@ n/a
 
 **The rationale grounds on the SSD interactions and the identified input/output data.**
 
-| Interaction ID | Question: Which class is responsible for... | Answer  | Justification (with patterns)  |
-|:-------------  |:--------------------- |:------------|:---------------------------- |
-| Step 1  		 |							 |             |                              |
-| Step 2  		 |							 |             |                              |
-| Step 3  		 |							 |             |                              |
-| Step 4  		 |							 |             |                              |
-| Step 5  		 |							 |             |                              |
-| Step 6  		 |							 |             |                              |              
-| Step 7  		 |							 |             |                              |
-| Step 8  		 |							 |             |                              |
-| Step 9  		 |							 |             |                              |
-| Step 10  		 |							 |             |                              |  
+| Interaction ID | Question: Which class is responsible for...                             | Answer                      | Justification (with patterns)                                                                                                                         |
+|:---------------|:------------------------------------------------------------------------|:----------------------------|:------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Step 1  		     | 			requesting data?				                                                 | SNSUserUI                   | Asks attributes through functions with the help of the class Utils.                                                                                   |
+| Step 2  		     | 			creating an SNS User instance?		                                     | SpecifyNewSNSUserController | Creates an Instance of an SNS User(which self verifies and sends an exception in case of invalid data).                                               |
+| Step 3  		     | 			validating SNS User?				                                             | SpecifyNewSNSUserController | Returns a boolean that checks if the user is already existent or not or that it is null.                                                              |
+| Step 4  		     | 			showing the info to the Receptionist in order to verify?				         | SNSUserUI                   | Gets the info from the controller in order to display it to the Receptionist.                                                                         |
+| Step 5  		     | 			calling the controller for it to transport its info and save it?				 | SNSUserUI                   | After the Receptionist confirms the info, the UI is responsible to call the controller in order to pass the info into the store(future).              |
+| Step 6  		     | 			receiving the controller info in order to store it?				              | Company                     | The Company class is responsible for receiving the controller info and saving it into the store.                                                      |              
+| Step 7  		     | 			saving the SNS User?				                                             | SNSUserStore                | It has an arrayList of SNS Users and has an add method which will store the SNS User into the List.                                                   |
+| Step 8  		     | 			turning the SNS User into a System User?				                         | AuthFacade                  | It has a function called addUserWithRole which will store the SNS User name, email and generate a password, while giving it the SNS User System role. |
 
 
 ### Systematization ##
