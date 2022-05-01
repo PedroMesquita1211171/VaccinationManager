@@ -5,7 +5,7 @@ actor "Admin" as rcp
 activate rcp
 rcp -> ":System" : starts operation of asking for list of employees with a given role
 activate ":System"
-":System" --> rcp : requests role (Nurse, Receptionist, Center Coordinator)
+":System" --> rcp : requests role (Nurse, Receptionist, Center Coordinator, all)
 deactivate ":System"
 
 rcp -> ":System" : types requested data
