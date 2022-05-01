@@ -1,97 +1,17 @@
 @startuml
-skinparam classAttributeIconSize 0
-hide methods
 
-class Administrator{
+class SNSUser{}
+class VaccineType{
+ - ageGroup
+ - dose
+ - vaccineDosage
 }
-
-
-class SNSUser{
-}
-
-class Nurse{
--ID
--name
--citizenCardNumber
--phoneNumber
--Adress
--E-mail
-}
-
-class Receptionist{
--ID
--name
--citizenCardNumber
--phoneNumber
--Adress
--E-mail
-}
-
-class CenterCoordinator{
--ID
--name
--citizenCardNumber
--phoneNumber
--Adress
--E-mail
-}
-
-class HealthCareCenter {
-}
-
-class Company {
-- designation
-}
-
-class MassiveVaccinationCenter {
-}
-
-class CovidDigitalCertificate {
-}
-
-class App{
-}
-
-class SMSMessage {
-- informationAppointment
-- timeRecovery
-}
-
-class EmailMessage {
-- informationAppointment
-- timeRecovery
-}
-
-class Vaccine {
-- vaccineName
-- lot
-}
-
-class VaccineType {
-- ageGroup
-- dose
-- vaccineDosage
-}
-
-class VaccineTime {
-- timeBetweenDose
-}
-
-class CheckCenterCapacity {
-- centerCapacity
-- date
-- time
-}
-
-class ScheduleVaccine {
-- userNumberSNS
-- vaccinationCenter
-- date
-- time
-- typeOfVaccine
-}
-
-class VaccinationCenter {
+class Vaccine{}
+class Admin{}
+class HealthCareCenter{}
+class ARS{}
+class AGES{}
+class VaccinationCenter{
   - name
   - address
   - emailAddress
@@ -104,40 +24,48 @@ class VaccinationCenter {
   - maxVaccines
   - coordinator
 }
-
-Administrator "1"---"*" Nurse : registers >
-Administrator "1"---"*" CenterCoordinator : registers >
-Administrator "1"---"*" Receptionist : registers >
-Administrator "1"---"*" SNSUser : registers >
-Administrator "1"---"*" VaccinationCenter : registers >
-Administrator "1"---"*" HealthCareCenter : registers >
-Administrator "1"---"*" VaccineType : registers >
-Administrator "*"---"1" App : manages >
-SNSUser "*"---"1" App : uses >
-VaccinationCenter "*"---"1" App
-Nurse "*"---"1" App : uses >
-Nurse "*"---"1" Company : works for >
-Nurse "*"---"*" Vaccine : administrates >
-Nurse "*"---"1" VaccinationCenter : works at >
-Receptionist "1"---"*" SNSUser : registers >
-Receptionist "*"---"1" VaccinationCenter : works at >
-Receptionist "*"---"1" Company : works for >
-CenterCoordinator "*"--"1" Company : works for >
-Company "1"--"*" MassiveVaccinationCenter : owns >
-Company "1"--"*" Administrator : knows >
-Vaccine "1"--"1" VaccineType : is of >
-Vaccine "*"--"1" VaccineTime : has >
-App "1"--"*" ScheduleVaccine : does >
-App "1"--"*" SMSMessage : sends >
-App "1"--"*" HealthCareCenter : manages >
-App "1"--"*" CovidDigitalCertificate : emits >
-App "1"--"*" EmailMessage : sends >
-ScheduleVaccine "1"--"*" CheckCenterCapacity : verifies >
-HealthCareCenter "*"---"*" Vaccine : stores >
-VaccineType "*"--"1" Administrator : created by >
-Vaccine "*"--"1" Administrator : created by >
-SMSMessage "1"--"1" SNSUser : is sent to >
+class ScheduleVaccine{
+- userNumberSNS
+- vaccinationCenter
+- date
+- time
+- typeOfVaccine
+}
+class DGS{}
+class Nurse{}
+class CovidDigitalCertificate{}
+class Receptionist{}
+class Vaccination{}
+class DGS{}
+class PerformanceAnalysis{}
+class Report{}
 
 
+Admin "1"---"1" CenterCoordinator : registers >
+Admin "1"---"*" SNSUser : registers >
+Admin "1"---"*" Vaccine : manages >
+SNSUser "*"---"1" Vaccination : administered on <
+SNSUser "*"---"1" CovidDigitalCertificate : asks for >
+SNSUser "*"---"1" ScheduleVaccine : does >
+Nurse "*"---"*" CovidDigitalCertificate : isses >
+Nurse "*"---"*" Vaccination : performs >
+Nurse "*"---"*" VaccineType : confirms >
+Vaccination "1"---"1" ScheduleVaccine : fulfilling >
+ScheduleVaccine "1"---"*" VaccineType : for taking >
+Vaccine "*"---"*" VaccineType : depends on >
+VaccinationCenter "*"---"*" Vaccine : administers >
+VaccinationCenter "*"---"*" HealthCareCenter : is a <
+VaccinationCenter "*"---"1" CenterCoordinator : has a >
+DGS "1"---"*" Admin : employs >
+DGS "1"---"*" VaccinationCenter : owns >
+DGS "1"---"*" SNSUser : is registered on <
+HealthCareCenter "*"---"1" ARS : associated with >
+HealthCareCenter "*"---"1" AGES : associated with >
+Receptionist "*"---"*" VaccinationCenter : works at >
+CenterCoordinator "1"---"*" PerformanceAnalysis : makes >
+CenterCoordinator "1"---"*" Report : generates <
+Report "*"---"*" PerformanceAnalysis : about >
+Receptionist "*"---"1" DGS : works for <
 
-@enduml
+
+@endumlml
