@@ -1,0 +1,23 @@
+@startuml
+autonumber
+actor "Administrator" as ADM
+
+activate ADM
+ADM -> ":System" : starts specifying a new vaccine
+activate ":System"
+":System" --> ADM : requests data (name, id, brand, numDoses, dosage, recoveryPeriod, doseInterval) and type selection
+deactivate ":System"
+
+ADM -> ":System" : selects and types data
+activate ":System"
+":System" --> ADM : shows the data and requests a confirmation
+deactivate
+
+ADM -> ":System" : confirms the data
+activate ":System"
+":System" --> ADM : informs operation success
+deactivate ":System"
+
+deactivate ADM
+
+@enduml

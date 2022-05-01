@@ -1,0 +1,68 @@
+@startuml
+autonumber
+'hide footbox
+actor "Administrator" as ADM
+
+participant ":NewVaccineUI" as UI
+participant ":NewVaccineController" as CTRL
+participant ":Company" as COMP
+participant ":VaccineStore" as STORE
+participant "Vaccine" as VCC
+participant ":VaccineTypeStore" as TYPES
+
+
+
+activate ADM
+ADM -> UI : asks to create a new vaccine
+activate UI
+UI -> CTRL : getVaccineTypeList()
+activate CTRL
+CTRL -> COMP : getVaccineTypeList()
+deactivate CTRL
+
+activate COMP
+COMP -> TYPES : getVaccineTypeList()
+deactivate COMP
+
+UI --> ADM :  requests data (name, id, brand, numDoses, dosage, recoveryPeriod, doseInterval) and type selection
+
+deactivate UI
+
+
+
+ADM -> UI : selects and types requested data
+activate UI
+
+UI -> CTRL : createVaccine(name, id, brand, numDoses, dosage, recoveryPeriod, doseInterval, typeCode)
+
+activate CTRL
+CTRL -> VCC : vcc = new Vaccine(name, id, brand, numDoses, dosage, recoveryPeriod, doseInterval, typeCode)
+activate VCC
+VCC -> VCC : validateVaccine()
+deactivate VCC
+
+UI --> ADM : displays data waiting for confirmation
+deactivate CTRL
+deactivate UI
+
+ADM -> UI : confirms vaccine and administration data
+activate UI
+
+UI -> CTRL : addVaccine()
+activate CTRL
+CTRL -> COMP : addVaccine(vcc)
+deactivate CTRL
+
+
+activate COMP
+COMP -> STORE : addVaccine(vcc)
+deactivate COMP
+
+activate STORE
+deactivate STORE
+
+UI --> ADM : informs success
+deactivate UI
+deactivate ADM
+
+@enduml
