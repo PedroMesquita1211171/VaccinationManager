@@ -95,4 +95,32 @@ public class Employee {
                 "EmployeeID: " + employeeID + "\n" +
                 "Role: " + role + "\n\n";
     }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public String getCitizenCardNumber() {
+        return citizenCardNumber;
+    }
+
+    public int getEmployeeID() {
+        return employeeID;
+    }
+
+    public String getRole() {
+        return role;
+    }
 }

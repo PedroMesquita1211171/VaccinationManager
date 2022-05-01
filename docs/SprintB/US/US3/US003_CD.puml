@@ -2,17 +2,44 @@
 skinparam classAttributeIconSize 0
 left to right direction
 
-class SNSUserUI{}
-class SpecifyNewSNSUserController{}
-class SNSUserStore{}
-class Company{}
-class SNSUser{}
-class AuthFacade{}
+class SNSUserUI{
+SpecifyNewSNSUserController ctrl
+}
+class SpecifyNewSNSUserController{
+ Company company
+ SNSUser snsu
+ +createSNSUser(name, address, genderOption, phoneNumber, \nemail, birthDate, SNSNumber, citizenCardNumber)
+ +saveSNSUser()
+}
+class SNSUserStore{
+List<SNSUser> snsUserList
++addSNSUser(snsu)
++generateRandomPassword()
+}
+class Company{
+ SNSUserStore snsUserStore
+ +saveSNSUser()
+}
+
+class SNSUser{
+ - name
+ - email
+ - address
+ - phoneNumber
+ - gender
+ - birthDate
+ - SNSNumber
+ - citizenCardNumber
+}
+
+class AuthFacade{
+ +addUserWithRole(name, email, pwd, roleId)
+}
 
 
 SNSUserUI ..> SpecifyNewSNSUserController
 Company "1"-->"*" SNSUserStore : has a >
-SNSUserStore "1"-->"*" SNSUser : keeps info >
+SNSUserStore "1"--"*" SNSUser : keeps info >
 SpecifyNewSNSUserController ..> Company
 SpecifyNewSNSUserController ..> SNSUserStore
 SpecifyNewSNSUserController ..> SNSUser

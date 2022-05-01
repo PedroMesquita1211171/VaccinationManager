@@ -9,11 +9,11 @@ public class SNSUser {
     private String email;
     private String birthDate;
     private String SNSNumber;
-    private String CCNumber;
+    private String citizenCardNumber;
 
     private static final String GENDER_BY_DEFAULT = "UNDEFINED";
 
-    public SNSUser(String name, String address, String genderOption, String phoneNumber, String email, String birthDate, String SNSNumber, String CCNumber){
+    public SNSUser(String name, String address, String genderOption, String phoneNumber, String email, String birthDate, String SNSNumber, String citizenCardNumber){
         checkNameRules(name);
         checkAddressRules(address);
         checkPhoneNumber(phoneNumber);
@@ -24,7 +24,7 @@ public class SNSUser {
         this.email = email;
         this.birthDate = birthDate;
         this.SNSNumber = SNSNumber;
-        this.CCNumber = CCNumber;
+        this.citizenCardNumber = citizenCardNumber;
     }
 
     private void checkNameRules(String name){
@@ -85,8 +85,8 @@ public class SNSUser {
         return SNSNumber;
     }
 
-    public String getCCNumber() {
-        return CCNumber;
+    public String getCitizenCardNumber() {
+        return citizenCardNumber;
     }
 
     @Override
@@ -99,6 +99,6 @@ public class SNSUser {
                 "Email: " + email + "\n" +
                 "Birth Date: " + birthDate + "\n" +
                 "SNS Number: " + SNSNumber + "\n" +
-                "Citizen Card Number: " + CCNumber + "\n\n";
+                "Citizen Card Number: " + citizenCardNumber + "\n\n";
     }
 }

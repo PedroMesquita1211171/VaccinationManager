@@ -3,11 +3,10 @@ package app.domain.model;
 import app.domain.Store.EmployeeStore;
 import app.domain.Store.SNSUserStore;
 import app.domain.Store.VaccineTypeStore;
+import app.domain.shared.Constants;
 import pt.isep.lei.esoft.auth.AuthFacade;
 import org.apache.commons.lang3.StringUtils;
-
-import java.util.ArrayList;
-import java.util.List;
+import java.security.SecureRandom;
 
 /**
  *
@@ -20,8 +19,6 @@ public class Company {
     private VaccineTypeStore vaccineTypeStore;
     private EmployeeStore employeeStore;
     private SNSUserStore snsUserStore;
-    /*private List<VaccineType> vaccineTypeList;
-    private List<SNSUser> clients;*/
 
     public Company(String designation)
     {
@@ -32,8 +29,6 @@ public class Company {
         this.authFacade = new AuthFacade();
         this.vaccineTypeStore = new VaccineTypeStore();
         this.employeeStore = new EmployeeStore();
-        /*vaccineTypeList = new ArrayList<>();
-        clients = new ArrayList<>();*/
     }
 
     public String getDesignation() {
@@ -44,7 +39,7 @@ public class Company {
         return authFacade;
     }
 
-    public void addVaccineType (VaccineType vt) {
+    public void  addVaccineType(VaccineType vt) {
         vaccineTypeStore.addVaccineType(vt);
     }
 
@@ -58,6 +53,7 @@ public class Company {
 
     public void addEmployee (Employee e) {
         employeeStore.addEmployee(e);
+        authFacade.addUserWithRole(e.getName(), e.getEmail(),generateRandomPassword(), e.getRole() );
     }
 
     public SNSUserStore getSNSUserStore() {
@@ -66,31 +62,32 @@ public class Company {
 
     public void addSNSUser (SNSUser snsu) {
         snsUserStore.addSNSUser(snsu);
+        authFacade.addUserWithRole(snsu.getName(), snsu.getEmail(),generateRandomPassword(), Constants.ROLE_SNSUSER);
+
     }
 
+    public static String generateRandomPassword()
+    {
+        int len = (int) ((Math.random() * (20 - 8)) + 8);
+        // ASCII range – alphanumeric (0-9, a-z, A-Z)
+        //special characters: !@#$%^&*
+        final String chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*";
 
-   /* public boolean saveVaccineType (VaccineType vt) {
-        if (!validateVaccineType(vt))
-            return false;
-        return this.vaccineTypeList.add(vt);
+        SecureRandom random = new SecureRandom();
+        StringBuilder sb = new StringBuilder();
+
+        // each iteration of the loop randomly chooses a character from the given
+        // ASCII range and appends it to the `StringBuilder` instance
+
+        for (int i = 0; i < len; i++)
+        {
+            int randomIndex = random.nextInt(chars.length());
+            sb.append(chars.charAt(randomIndex));
+        }
+
+        return sb.toString();
     }
 
-    public boolean validateSNSUser (SNSUser snsUser) {
-        if (snsUser == null) return false;
-        return !this.clients.contains(snsUser);
-    }
-
-    public boolean saveSNSUser (SNSUser snsUser) {
-        if (!validateSNSUser(snsUser))
-            return false;
-        return this.clients.add(snsUser);
-    }
-
-    public List<VaccineType> getVaccineTypeList() {
-        return vaccineTypeList;
-    }
-
-    public List<SNSUser> getClients() {
-        return clients;
-    }*/
 }
+
+

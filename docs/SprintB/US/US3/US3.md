@@ -44,7 +44,7 @@
     * Birth Date
     * SNS User Number
     * Citizen Card Number
-* Selected Data: (none)
+* Selected Data: password(generated)
 
 **Output Data:**
 * (In)Success of the operation
@@ -106,7 +106,7 @@ Other software classes (i.e. Pure Fabrication) identified:
 
 *In this section, it is suggested to present an UML dynamic view stating the sequence of domain related software objects' interactions that allows to fulfill the requirement.* 
 
-![USXXX-SD](USXXX-SD.svg)
+![US003_SD](US003_SD.svg)
 
 ## 3.3. Class Diagram (CD)
 

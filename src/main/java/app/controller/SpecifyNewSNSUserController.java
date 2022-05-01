@@ -18,14 +18,9 @@ public class SpecifyNewSNSUserController {
         this.snsu = null;
     }
 
-    public boolean createSNSUser(String name, String address, String genderOption, String phoneNumber, String email, String birthDate, String SNSNumber, String CCNumber){
-        this.snsu = new SNSUser(name, address, genderOption, phoneNumber, email, birthDate, SNSNumber, CCNumber);
-        for (SNSUser other : company.getSNSUserStore().getSNSUserList()) {
-            if(other.getSNSNumber().equals(this.snsu.getSNSNumber()) || other.getCCNumber().equals(this.snsu.getCCNumber()) || other.getEmail().equals(this.snsu.getEmail()) || other.getPhoneNumber().equals(this.snsu.getPhoneNumber())){
-                return false;
-            }
-        }
-        return true;
+    public boolean createSNSUser(String name, String address, String genderOption, String phoneNumber, String email, String birthDate, String SNSNumber, String citizenCardNumber){
+        this.snsu = new SNSUser(name, address, genderOption, phoneNumber, email, birthDate, SNSNumber, citizenCardNumber);
+        return validateSNSUser();
     }
 
     public void saveSNSUser(){
@@ -34,6 +29,15 @@ public class SpecifyNewSNSUserController {
 
     public String showSNSUser(){
         return this.snsu.toString();
+    }
+
+    public boolean validateSNSUser(){
+        for (SNSUser other : company.getSNSUserStore().getSNSUserList()) {
+            if(other.getSNSNumber().equals(this.snsu.getSNSNumber()) || other.getCitizenCardNumber().equals(this.snsu.getCitizenCardNumber()) || other.getEmail().equals(this.snsu.getEmail()) || other.getPhoneNumber().equals(this.snsu.getPhoneNumber())){
+                return false;
+            }
+        }
+        return true;
     }
 
 }

@@ -9,6 +9,7 @@ public class Constants {
     public static final String ROLE_RECEPTIONIST = "RECEPTIONIST";
     public static final String ROLE_NURSE = "NURSE";
     public static final String ROLE_CENTER_CORDINATOR = "CENTER_CORDINATOR";
+    public static final String ROLE_SNSUSER = "SNSUSER";
 
 
     public static final String PARAMS_FILENAME = "config.properties";

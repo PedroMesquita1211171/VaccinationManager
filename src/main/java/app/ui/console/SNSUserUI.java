@@ -66,8 +66,6 @@ public class SNSUserUI implements Runnable{
 
     public String SaveOrNot(){
 
-      //  System.out.println(ctrl.showSNSUser());
-
         String opt;
         opt = Utils.readLineFromConsole("Save SNS User? (yes/no)");
         if(opt.equalsIgnoreCase("yes") || opt.equalsIgnoreCase("no")){
