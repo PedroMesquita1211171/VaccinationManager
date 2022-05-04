@@ -2,12 +2,22 @@ package app.domain.model;
 
 import org.junit.platform.commons.util.StringUtils;
 
+/**
+ * @author Henrique Pinto - 1211201
+ */
 public class VaccineType {
 
     private String code;
     private String designation;
     private String whoId;
 
+    /**
+     * Instantiates a new Vaccine type.
+     *
+     * @param code        the code
+     * @param designation the designation
+     * @param whoId       the whoId
+     */
     public VaccineType (String code, String designation, String whoId) {
         checkCodeRules(code);
         checkDesignationRules(designation);
@@ -15,6 +25,10 @@ public class VaccineType {
         this.designation = designation;
         this.whoId = whoId;
     }
+
+    /**
+     * Checks if VaccineType parameters are valid.
+     */
     private void checkCodeRules(String code) {
         if (StringUtils.isBlank(code))
             throw new IllegalArgumentException("Code cannot be blank.");

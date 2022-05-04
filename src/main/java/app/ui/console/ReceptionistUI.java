@@ -20,7 +20,8 @@ public class ReceptionistUI implements Runnable{
         int option = 0;
         do
         {
-            option = Utils.showAndSelectIndex(options, "\n\nAdmin Menu:");
+            option = Utils.showAndSelectIndex(options, "\n\nReceptionist" +
+                    " Menu:");
 
             if ( (option >= 0) && (option < options.size()))
             {

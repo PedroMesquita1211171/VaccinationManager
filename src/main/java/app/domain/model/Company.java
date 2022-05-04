@@ -6,6 +6,9 @@ import app.domain.Store.VaccineTypeStore;
 import app.domain.shared.Constants;
 import pt.isep.lei.esoft.auth.AuthFacade;
 import org.apache.commons.lang3.StringUtils;
+
+import java.io.FileWriter;
+import java.io.IOException;
 import java.security.SecureRandom;
 
 /**
@@ -13,6 +16,8 @@ import java.security.SecureRandom;
  * @author Paulo Maio <pam@isep.ipp.pt>
  */
 public class Company {
+
+    FileWriter writer;
 
     private String designation;
     private AuthFacade authFacade;
@@ -29,6 +34,7 @@ public class Company {
         this.authFacade = new AuthFacade();
         this.vaccineTypeStore = new VaccineTypeStore();
         this.employeeStore = new EmployeeStore();
+        this.snsUserStore = new SNSUserStore();
     }
 
     public String getDesignation() {
@@ -39,10 +45,6 @@ public class Company {
         return authFacade;
     }
 
-    public void  addVaccineType(VaccineType vt) {
-        vaccineTypeStore.addVaccineType(vt);
-    }
-
     public VaccineTypeStore getVaccineTypeStore() {
         return vaccineTypeStore;
     }
@@ -51,19 +53,42 @@ public class Company {
         return employeeStore;
     }
 
-    public void addEmployee (Employee e) {
-        employeeStore.addEmployee(e);
-        authFacade.addUserWithRole(e.getName(), e.getEmail(),generateRandomPassword(), e.getRole() );
-    }
-
     public SNSUserStore getSNSUserStore() {
         return snsUserStore;
     }
 
-    public void addSNSUser (SNSUser snsu) {
-        snsUserStore.addSNSUser(snsu);
-        authFacade.addUserWithRole(snsu.getName(), snsu.getEmail(),generateRandomPassword(), Constants.ROLE_SNSUSER);
+    public void addEmployee(Employee e) {
+        String password = generateRandomPassword();
+        employeeStore.addEmployee(e);
+        authFacade.addUserWithRole(e.getName(), e.getEmail(),password, e.getRole());
+        try {
+            writer = new FileWriter("Employees.txt", true);
+            writer.write("\n\n" + "Employee" +"\n" + "Email: " + e.getEmail() + "\n" + "Name: " + e.getName() + "\n" + "Password: " + password + "\n" + "Role: " + e.getRole() + "\n");
+            writer.close();
+            System.out.println("\n" + "Email: " + e.getEmail() + "\n" + "Password: " + password+ "\n");
+        } catch (IOException ex) {
+            System.out.println("Error while creating file\nEmployee not added");
+            authFacade.removeUser(e.getEmail());
+        }
+    }
 
+    public void addSNSUser (SNSUser snsu) {
+        String password = generateRandomPassword();
+        snsUserStore.addSNSUser(snsu);
+        authFacade.addUserWithRole(snsu.getName(), snsu.getEmail(),password, Constants.ROLE_SNSUSER);
+        try {
+            writer = new FileWriter("SNSUsers.txt", true);
+            writer.write("\n\n" + "SNS User" + "\n" + "Email: " + snsu.getEmail() + "\n" + "Name: " + snsu.getName() + "\n" + "Password: " + password + "\n");
+            writer.close();
+        } catch (IOException ex) {
+            System.out.println("Error while creating file\nSNS User not added");
+            authFacade.removeUser(snsu.getEmail());
+        }
+
+    }
+
+    public void  addVaccineType(VaccineType vt) {
+        vaccineTypeStore.addVaccineType(vt);
     }
 
     public static String generateRandomPassword()
@@ -87,6 +112,7 @@ public class Company {
 
         return sb.toString();
     }
+
 
 }
 

@@ -6,7 +6,8 @@ import app.domain.shared.Constants;
 import app.ui.console.utils.Utils;
 import pt.isep.lei.esoft.auth.AuthFacade;
 
-public class RegisterEmployeeUi implements Runnable{
+public class
+RegisterEmployeeUi implements Runnable{
 
     private SpecifyNewEmployeeController ctrl ;
     private final AuthFacade authFacade;
@@ -25,20 +26,20 @@ public class RegisterEmployeeUi implements Runnable{
         try{
             switch(optRole) {
                 case 1:
-                    role = Constants.ROLE_NURSE;
-                    break;
-                case 2:
                     role = Constants.ROLE_RECEPTIONIST;
                     break;
-                case 3:
+                case 2:
                     role = Constants.ROLE_CENTER_CORDINATOR;
+                    break;
+                case 3:
+                    role = Constants.ROLE_NURSE;
                     break;
                 default:
                     throw new IllegalArgumentException("Invalid Role");
             }
 
 
-            if(ctrl.createEmployee(askName(), askEmail(),askAddress(),askPhoneNumber(),askCitizenCard(),askEmployeeID(),role)){
+            if(ctrl.createEmployee(askName(), askEmail(),askAddress(),askPhoneNumber(),askCitizenCard(),askEmployeeID(), role)){
 
                 String opt= SaveOrNot();
 
@@ -54,6 +55,8 @@ public class RegisterEmployeeUi implements Runnable{
             }else{
                 System.out.println("\nEmployee not saved since it already exists or data is invalid\n");
             }
+        }catch(NumberFormatException nfe){
+            System.out.println("Invalid Role");
         }catch(IllegalArgumentException iae){
             System.out.println(iae.getMessage());
         }
@@ -71,7 +74,7 @@ public class RegisterEmployeeUi implements Runnable{
 
     public String SaveOrNot(){
         String opt;
-        opt = Utils.readLineFromConsole("Save Vaccine Type? (yes/no)");
+        opt = Utils.readLineFromConsole("Register Employee (yes/no)");
         if(opt.equalsIgnoreCase("yes") || opt.equalsIgnoreCase("no")){
             return opt;
         }else{

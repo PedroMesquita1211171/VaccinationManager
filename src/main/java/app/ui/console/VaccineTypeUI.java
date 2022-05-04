@@ -3,13 +3,25 @@ package app.ui.console;
 import app.controller.SpecifyNewVaccineTypeController;
 import app.ui.console.utils.Utils;
 
+/**
+ * UI used to specify a new vaccine type.
+ *
+ * @author Henrique Pinto - 1211201
+ */
 public class VaccineTypeUI implements Runnable {
 
-    private final SpecifyNewVaccineTypeController ctrl ;
+    /**
+     * Controller used to specify a new Vaccine Type.
+     */
+    private SpecifyNewVaccineTypeController ctrl ;
 
     public VaccineTypeUI() {
        ctrl = new SpecifyNewVaccineTypeController();
     }
+
+    /**
+     * Runnable that is used to activate the UI.
+     */
 
     @Override
     public void run() {
@@ -33,18 +45,38 @@ public class VaccineTypeUI implements Runnable {
 
     }
 
+    /**
+     * Asks code.
+     *
+     * @return Vaccine Type code
+     */
     public String askCode(){
        return Utils.readLineFromConsole("Enter Vaccine Type Code");
     }
 
+    /**
+     * Asks designation.
+     *
+     * @return Vaccine Type designation
+     */
     public String askDesignation(){
        return Utils.readLineFromConsole("Enter Vaccine Type Designation");
     }
 
+    /**
+     * Asks whoId.
+     *
+     * @return Vaccine Type whoId
+     */
     public String askWhoId(){
        return Utils.readLineFromConsole("Enter Vaccine Type Who Id");
     }
 
+    /**
+     * Save or not data.
+     *
+     * @return yes, no or error
+     */
     public String SaveOrNot(){
         String opt;
             opt = Utils.readLineFromConsole("Save Vaccine Type? (yes/no)");
