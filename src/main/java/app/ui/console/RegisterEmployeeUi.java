@@ -9,6 +9,9 @@ import pt.isep.lei.esoft.auth.AuthFacade;
 public class
 RegisterEmployeeUi implements Runnable{
 
+    /**
+     * Controller used to specify a new employee.
+     */
     private SpecifyNewEmployeeController ctrl ;
     private final AuthFacade authFacade;
 
@@ -16,6 +19,10 @@ RegisterEmployeeUi implements Runnable{
         ctrl= new SpecifyNewEmployeeController();
         authFacade = App.getInstance().getCompany().getAuthFacade();
     }
+
+    /**
+     * Runnable that is used to activate the UI.
+     */
 
     public void run() {
 
@@ -63,15 +70,50 @@ RegisterEmployeeUi implements Runnable{
 
     }
 
+    /**
+     * Asks name.
+     *
+     * @return name
+     */
     public String askName(){
         return Utils.readLineFromConsole("Name?");
     }
+    /**
+     * Asks email.
+     *
+     * @return email
+     */
     public String askEmail(){return Utils.readLineFromConsole("E-mail: ");}
+    /**
+     * Asks adress.
+     *
+     * @return adress
+     */
     public String askAddress(){return Utils.readLineFromConsole("Address: ");}
+    /**
+     * Asks phonenumber.
+     *
+     * @return phonenumber
+     */
     public String askPhoneNumber(){return Utils.readLineFromConsole("Phone Number: ");}
+    /**
+     * Asks citizen card number.
+     *
+     * @return citizen card number
+     */
     public String askCitizenCard(){return Utils.readLineFromConsole("Citizen Card Number: ");}
+    /**
+     * Asks employee ID.
+     *
+     * @return employee ID
+     */
     public int askEmployeeID(){return Utils.readIntegerFromConsole("Employee ID: ");}
 
+    /**
+     * Save or not data.
+     *
+     * @return yes, no or error
+     */
     public String SaveOrNot(){
         String opt;
         opt = Utils.readLineFromConsole("Register Employee (yes/no)");

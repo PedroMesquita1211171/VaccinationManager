@@ -57,6 +57,10 @@ public class Company {
         return snsUserStore;
     }
 
+    /**
+     * Adds a new employee
+     * @param e
+     */
     public void addEmployee(Employee e) {
         String password = generateRandomPassword();
         employeeStore.addEmployee(e);
@@ -91,6 +95,10 @@ public class Company {
         vaccineTypeStore.addVaccineType(vt);
     }
 
+    /**
+     * Generates a random password
+     * @return sb.toString
+     */
     public static String generateRandomPassword()
     {
         int len = (int) ((Math.random() * (20 - 8)) + 8);

@@ -15,6 +15,18 @@ public class Employee {
     private int employeeID;
     private String role;
 
+    /**
+     * Instanciates a new Employee object
+     *
+     * @param name              employee's name
+     * @param email             employee's email
+     * @param address           employee's address
+     * @param phoneNumber       employee's phone number
+     * @param citizenCardNumber employee's citizen card number
+     * @param employeeID        employee's ID
+     * @param role              employee's role
+     */
+
     public Employee(String name, String email, String address, String phoneNumber, String citizenCardNumber, int employeeID, String role) {
         checkName(name);
         checkEmail(email);
@@ -30,6 +42,10 @@ public class Employee {
         this.employeeID = employeeID;
         this.role = role;
     }
+
+    /**
+     * Checks if Employee parameters are valid.
+     */
 
     private void checkName(String name) {
         if (name == null)
@@ -85,6 +101,11 @@ public class Employee {
         }
     }
 
+    /**
+     *Returns the Employee object as a String
+     * @return employee as a String
+     */
+
     @Override
     public String toString() {
         return "\n\nName: " + name + "\n" +
@@ -96,29 +117,71 @@ public class Employee {
                 "Role: " + role + "\n\n";
     }
 
+    /**
+     * Gets employee name.
+     *
+     * @return the name
+     */
+
     public String getName() {
         return name;
     }
+
+    /**
+     * Gets employee email.
+     *
+     * @return the email
+     */
 
     public String getEmail() {
         return email;
     }
 
+    /**
+     * Gets employee address.
+     *
+     * @return the address
+     */
+
     public String getAddress() {
         return address;
     }
+
+    /**
+     * Gets employee phone number.
+     *
+     * @return the phone number
+     */
 
     public String getPhoneNumber() {
         return phoneNumber;
     }
 
+    /**
+     * Gets employee citizen card number.
+     *
+     * @return the citizen card number
+     */
+
     public String getCitizenCardNumber() {
         return citizenCardNumber;
     }
 
+    /**
+     * Gets employee ID.
+     *
+     * @return the employee ID
+     */
+
     public int getEmployeeID() {
         return employeeID;
     }
+
+    /**
+     * Gets employee role.
+     *
+     * @return the role
+     */
 
     public String getRole() {
         return role;
