@@ -32,11 +32,11 @@ public class SpecifyNewEmployeeController {
 
     public boolean validateEmployee (Employee emp) {
         if (emp == null) return false;
-        return !company.getEmployeeStore().getEmployeeList().contains(emp);
+        return company.getEmployeeStore().getEmployeeList().contains(emp);
     }
 
     public void addEmployee() {
-        this.company.addEmployee(emp);
+        this.company.getEmployeeStore().addEmployee(emp);
         String password;
     }
 

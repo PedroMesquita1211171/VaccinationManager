@@ -28,10 +28,7 @@ EmployeeStore employeeStore
 +addEmployee(e)
 }
 
-class EmployeeStore{
-List<Employee> employeeList
-+addEmployee(e)
-}
+class EmployeeStore{}
 
 RegisterEmployeeTypeUI ..> SpecifyNewEmployeeController
 Company "1"--"*" EmployeeStore : has a >
