@@ -80,7 +80,7 @@ public class Employee {
             throw new IllegalArgumentException("Address Can't Have More Than 50 Characters");
     }
 
-    private void checkPhoneNumber(String phoneNumber) {
+    private void checkPhoneNumber2(String phoneNumber) {
         if (phoneNumber == null) throw new IllegalArgumentException("Phone Number Can't Be Null!");
         String phoneNumberRegex = "^[0-9]{9}$";
 
@@ -88,6 +88,12 @@ public class Employee {
 
         if (!pattern.matcher(phoneNumber).matches()) {
             throw new IllegalArgumentException("Phone Number Is Not Valid!");
+        }
+    }
+
+    private void checkPhoneNumber(String phoneNumber){
+        if(phoneNumber.length() != 9 || phoneNumber.charAt(0) != '9'){
+            throw new IllegalArgumentException("Invalid Phone Number");
         }
     }
 

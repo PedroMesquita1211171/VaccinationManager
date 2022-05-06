@@ -83,12 +83,19 @@ public class SNSUser {
         }
     }
 
-    private void checkPhoneNumber(String phoneNumber){
+    private void checkPhoneNumber2(String phoneNumber){
         String phoneNumberRegex = "^[0-9]{8}$";
-        String phoneNumber8last = phoneNumber.substring(1, phoneNumber.length()-1);
+        String phoneNumber8last = phoneNumber.substring(1);
+        System.out.println(phoneNumber8last);
 
         Pattern pattern = Pattern.compile(phoneNumberRegex);
         if(!pattern.matcher(phoneNumber8last).matches() && phoneNumber.charAt(0) != '9'){
+            throw new IllegalArgumentException("Invalid Phone Number");
+        }
+    }
+
+    private void checkPhoneNumber(String phoneNumber){
+        if(phoneNumber.length() != 9 || phoneNumber.charAt(0) != '9'){
             throw new IllegalArgumentException("Invalid Phone Number");
         }
     }
