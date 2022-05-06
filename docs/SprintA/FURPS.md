@@ -70,6 +70,7 @@ N/A
 ###Testability
 - Unit tests must be implemented for all methods, excluding those that implement Input/Output operations;
 - The JaCoCo plugin should be used to generate the coverage report
+- The unit tests should be implemented using the JUnit 5 framework
 ##Localization
 - The application must support, at least, the Portuguese and the English languages
 
