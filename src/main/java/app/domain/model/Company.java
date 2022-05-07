@@ -2,6 +2,7 @@ package app.domain.model;
 
 import app.domain.Store.EmployeeStore;
 import app.domain.Store.SNSUserStore;
+import app.domain.Store.VaccinationCenterStore;
 import app.domain.Store.VaccineTypeStore;
 import app.domain.shared.Constants;
 import pt.isep.lei.esoft.auth.AuthFacade;
@@ -24,6 +25,7 @@ public class Company {
     private VaccineTypeStore vaccineTypeStore;
     private EmployeeStore employeeStore;
     private SNSUserStore snsUserStore;
+    private VaccinationCenterStore vaccinationCenterStore;
 
     public Company(String designation)
     {
@@ -56,6 +58,7 @@ public class Company {
     public SNSUserStore getSNSUserStore() {
         return snsUserStore;
     }
+    public VaccinationCenterStore getVaccinationCenterStore(){return vaccinationCenterStore;}
 
     /**
      * Adds a new employee
@@ -94,6 +97,7 @@ public class Company {
     public void  addVaccineType(VaccineType vt) {
         vaccineTypeStore.addVaccineType(vt);
     }
+    public void addVaccinationCenter(VaccinationCenter vac){vaccinationCenterStore.addVaccinationCenter((vac));}
 
     /**
      * Generates a random password

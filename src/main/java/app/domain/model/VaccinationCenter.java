@@ -4,7 +4,7 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.regex.Pattern;
 
-public class HealtcareCenter {
+public class VaccinationCenter {
     private String address;
     private String emailAddress;
     private String phoneNumber;
@@ -17,23 +17,47 @@ public class HealtcareCenter {
     private String coordinator;
     private String ages;
     private String ars;
+    private String typeOfCenter;
+
     /**
-     * Instanciates a new HealthcareCenter object
+     * Instanciates a new Vaccination Center object
      *
-     * @param emailAddress   HealthcareCenter's email address
-     * @param address        HealthcareCenter's address
-     * @param phoneNumber    HealthcareCenter's phone number
-     * @param faxNumber      HealthcareCenter's fax number
-     * @param websiteAddress HealthcareCenter's website adress
-     * @param openingHours   HealthcareCenter's opening hours
-     * @param closingHours   HealthcareCenter's closing hours
-     * @param slotDuration   HealthcareCenter's slot duration
-     * @param maxVaccines    HealthcareCenter's max vaccines
-     * @param coordinator    HealthcareCenter's coordinator
-     * @param ages           HealthcareCenter's ages
-     * @param ars            HealthcareCenter's ars
+     * @param emailAddress   VaccinationCenter's email address
+     * @param address        VaccinationCenter's address
+     * @param phoneNumber    VaccinationCenter's phone number
+     * @param faxNumber      VaccinationCenter's fax number
+     * @param websiteAddress VaccinationCenter's website adress
+     * @param openingHours   VaccineCenter's opening hours
+     * @param closingHours   VaccinationCenter's closing hours
+     * @param slotDuration   VaccinationCenter's slot duration
+     * @param maxVaccines    VaccinationCenter's max vaccines
+     * @param coordinator    VaccinationCenter's coordinator
      */
-    public HealtcareCenter(String address, String emailAddress, String phoneNumber, String faxNumber, String websiteAddress, String openingHours, String closingHours, int slotDuration, int maxVaccines, String coordinator, String ages, String ars) {
+    public VaccinationCenter(String address, String emailAddress, String phoneNumber, String faxNumber, String websiteAddress, String openingHours, String closingHours, int slotDuration, int maxVaccines, String coordinator) {
+        checkAdress(address);
+        checkEmailAddress(emailAddress);
+        checkPhoneNumber(phoneNumber);
+        checkFaxNumber(faxNumber);
+        checkWebsiteAddress(websiteAddress);
+        checkOpeningHours(openingHours);
+        checkClosingHours(closingHours);
+        checkSlotDuration(slotDuration);
+        checkMaxVaccines(maxVaccines);
+        checkCoordinator(coordinator);
+
+        this.address = address;
+        this.emailAddress = emailAddress;
+        this.phoneNumber = phoneNumber;
+        this.faxNumber = faxNumber;
+        this.websiteAddress = websiteAddress;
+        this.openingHours = openingHours;
+        this.closingHours = closingHours;
+        this.slotDuration = slotDuration;
+        this.maxVaccines = maxVaccines;
+        this.coordinator = coordinator;
+        this.typeOfCenter = "Mass Community Vaccination Center";
+    }
+    public VaccinationCenter(String address, String emailAddress, String phoneNumber, String faxNumber, String websiteAddress, String openingHours, String closingHours, int slotDuration, int maxVaccines, String coordinator, String ages, String ars) {
         checkAdress(address);
         checkEmailAddress(emailAddress);
         checkPhoneNumber(phoneNumber);
@@ -59,10 +83,11 @@ public class HealtcareCenter {
         this.coordinator = coordinator;
         this.ages = ages;
         this.ars = ars;
+        this.typeOfCenter = "Healthcare center";
     }
 
     /**
-     * Checks if HealthcareCenter parameters are valid.
+     * Checks if VaccinationCenter parameters are valid.
      */
     private void checkAdress(String address) {
         if (address == null)
@@ -148,8 +173,8 @@ public class HealtcareCenter {
             throw new IllegalArgumentException("ARS can't be null or empty");
     }
     /**
-     *Returns the Healthcare Center object as a String
-     * @return Healthcare Center as a String
+     *Returns the Vaccination Center object as a String
+     * @return Vaccination center as a String
      */
 
     @Override
@@ -165,12 +190,13 @@ public class HealtcareCenter {
                 "Max vaccines: " + maxVaccines + "\n" +
                 "Coordinator: " + coordinator + "\n" +
                 "ARES: " + ages + "\n" +
-                "ARS: " + ars + "\n\n";
+                "ARS: " + ars + "\n" +
+                "Type of center: " + typeOfCenter + "\n\n";
 
     }
 
     /**
-     * Gets Healthcare Center fax number.
+     * Gets Vaccination Center fax number.
      *
      * @return the fax number
      */
@@ -180,7 +206,7 @@ public class HealtcareCenter {
     }
 
     /**
-     * Gets Healthcare Center email.
+     * Gets Vaccination Center email.
      *
      * @return the email
      */
@@ -190,7 +216,7 @@ public class HealtcareCenter {
     }
 
     /**
-     * Gets Healthcare Center address.
+     * Gets Vaccination Center address.
      *
      * @return the address
      */
@@ -200,7 +226,7 @@ public class HealtcareCenter {
     }
 
     /**
-     * Gets Healthcare Center phone number.
+     * Gets Vaccination Center phone number.
      *
      * @return the phone number
      */
@@ -210,7 +236,7 @@ public class HealtcareCenter {
     }
 
     /**
-     * Gets Healthcare Center website address.
+     * Gets Vaccination Center website address.
      *
      * @return the website address
      */
@@ -220,7 +246,7 @@ public class HealtcareCenter {
     }
 
     /**
-     * Gets Healthcare Center opening hours.
+     * Gets Vaccination Center opening hours.
      *
      * @return the opening hours
      */
@@ -230,7 +256,7 @@ public class HealtcareCenter {
     }
 
     /**
-     * Gets Healthcare Center closing hours.
+     * Gets Vaccination Center closing hours.
      *
      * @return the closing hours
      */
@@ -240,7 +266,7 @@ public class HealtcareCenter {
     }
 
     /**
-     * Gets Healthcare Center slot duration.
+     * Gets Vaccination Center slot duration.
      *
      * @return the slot duration
      */
@@ -250,7 +276,7 @@ public class HealtcareCenter {
     }
 
     /**
-     * Gets Healthcare Center max vaccines.
+     * Gets Vaccination Center max vaccines.
      *
      * @return the max vaccines
      */
@@ -260,7 +286,7 @@ public class HealtcareCenter {
     }
 
     /**
-     * Gets Healthcare Center coordinator.
+     * Gets Vaccination Center coordinator.
      *
      * @return the coordinator
      */
@@ -268,6 +294,9 @@ public class HealtcareCenter {
     public String getCoordinator() {
         return coordinator;
     }
+    public String getAges(){return ages;}
+    public String getArs(){return ars;}
+    public String getTypeOfCenter(){return typeOfCenter;}
 
 
 
