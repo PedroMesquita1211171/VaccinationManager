@@ -6,7 +6,6 @@ participant ": RegistersVaccinationCenterUI" as UI
 participant ": RegistersVaccinationCenterController" as Controller
 participant ": Company" as Company
 participant "VaccinationCenter" as VaccinationCenter
-participant ": AuthFacade" as auth
 
 activate adm
 adm -> UI :  starts the registration of a new Vaccination Center

@@ -32,6 +32,11 @@ I would also like to know if the slot duration and number of vaccines per slot v
 
 >**Question:** Does the opening hour has to be a smaler number number than the closing hour (ex: opens at 8:00 and closes at 21:00), or can it also be have night hours (ex: opens at 20:00 and closes at 7:00)?
 
+>**Question:** As specified in the given user story: "As an administrator, I want to register a vaccination center to respond to a certain pandemic" when it is sad "to respond to a certain pandemic" is this referring only to the community mass vaccination centers or also to the healthcare centers?
+
+>**Question:** Are there any acceptance criteria for the data such as number of digits, usual of specific characters?
+
+>**Question:** Since the main difference between the two types of vaccination center (HealthCare Center and Community Mass Vaccination Center) is that the community mass vaccination centers are facilities specifically created to administer vaccines of a single type as response to an ongoing disease outbreak, should the system ask for the specific type of the vaccine on the creation of a Community Mass Vaccination Center?
 ### 1.3. Acceptance Criteria
 
 *No given Acceptance Criteria until now.*
