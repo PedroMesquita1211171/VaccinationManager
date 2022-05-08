@@ -212,7 +212,7 @@ public class SNSUser {
 
     @Override
     public String toString() {
-        return  "\nInfo: " +
+        return  "\nInfo: " + "\n" +
                 "Name: " + name + "\n" +
                 "Address: " + address + "\n" +
                 "Gender: " + gender + "\n" +

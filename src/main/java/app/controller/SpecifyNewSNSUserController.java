@@ -45,7 +45,14 @@ public class SpecifyNewSNSUserController {
      * @return the boolean
      */
     public boolean createSNSUser(String name, String address, String genderOption, String phoneNumber, String email, String birthDate, String SNSNumber, String citizenCardNumber){
-        this.snsu = new SNSUser(name, address, genderOption, phoneNumber, email, birthDate, SNSNumber, citizenCardNumber);
+        try{
+            this.snsu = new SNSUser(name, address, genderOption, phoneNumber, email, birthDate, SNSNumber, citizenCardNumber);
+        }catch(IllegalArgumentException iae){
+            System.out.println(iae.getMessage());
+            return false;
+        }
+
+
         return validateSNSUser();
     }
 
@@ -72,6 +79,7 @@ public class SpecifyNewSNSUserController {
      */
     public boolean validateSNSUser(){
         if(this.snsu == null)return false;
+        if(company.getSNSUserStore().getSNSUserList().contains(this.snsu)) return false;
         for (SNSUser other : company.getSNSUserStore().getSNSUserList()) {
             if(other.getSNSNumber().equals(this.snsu.getSNSNumber()) || other.getCitizenCardNumber().equals(this.snsu.getCitizenCardNumber()) || other.getEmail().equals(this.snsu.getEmail()) || other.getPhoneNumber().equals(this.snsu.getPhoneNumber())){
                 return false;

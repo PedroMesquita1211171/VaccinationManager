@@ -66,7 +66,8 @@ public class SNSUserUI implements Runnable{
      * @return gender
      */
     public String askgenderoption() {
-        System.out.println("\n1. Male");
+        System.out.println("\nChoose your gender.");
+        System.out.println("1. Male");
         System.out.println("2. Female");
         System.out.println("3. Non-binary");
         System.out.println("other - I don't want to specify");

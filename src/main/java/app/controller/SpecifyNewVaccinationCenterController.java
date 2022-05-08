@@ -62,7 +62,7 @@ public class SpecifyNewVaccinationCenterController {
             return false;
         }
 
-        return validateVaccinationCenter(vac);
+        return validateVaccinationCenter();
     }
 
     /**
@@ -89,13 +89,11 @@ public class SpecifyNewVaccinationCenterController {
             return false;
         }
 
-        return validateVaccinationCenter(vac);
+        return validateVaccinationCenter();
     }
 
     /**
-     * Validates vaccination center boolean.
-     *
-     * @param vac the vac
+     * Validates vaccination center boolean
      * @return the boolean
      */
     public boolean validateVaccinationCenter () {

@@ -58,15 +58,15 @@ public class SpecifyNewEmployeeController {
      */
     public boolean validateEmployee (Employee emp) {
         if (emp == null) return false;
-        return company.getEmployeeStore().getEmployeeList().contains(emp);
+        return !company.getEmployeeStore().getEmployeeList().contains(emp);
     }
 
     /**
      * Adds employee.
      */
     public void addEmployee() {
-        this.company.getEmployeeStore().addEmployee(emp);
-        String password;
+        this.company.addEmployee(emp);
+
     }
 
     /**

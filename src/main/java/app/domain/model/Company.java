@@ -71,29 +71,17 @@ public class Company {
         String password = generateRandomPassword();
         employeeStore.addEmployee(e);
         authFacade.addUserWithRole(e.getName(), e.getEmail(),password, e.getRole());
-        try {
-            writer = new FileWriter("Employees.txt", true);
-            writer.write("\n\n" + "Employee" +"\n" + "Email: " + e.getEmail() + "\n" + "Name: " + e.getName() +"\n"+"EmployeeID"+employeeID+ "\n" + "Password: " + password + "\n" + "Role: " + e.getRole() + "\n");
-            writer.close();
-            System.out.println("\n" + "Email: " + e.getEmail() + "\n" + "Password: " + password+ "\n");
-        } catch (IOException ex) {
-            System.out.println("Error while creating file\nEmployee not added");
-            authFacade.removeUser(e.getEmail());
-        }
+
+        writeEmployeeToFile(e, password, employeeID);
+
     }
 
     public void addSNSUser (SNSUser snsu) {
         String password = generateRandomPassword();
         snsUserStore.addSNSUser(snsu);
         authFacade.addUserWithRole(snsu.getName(), snsu.getEmail(),password, Constants.ROLE_SNSUSER);
-        try {
-            writer = new FileWriter("SNSUsers.txt", true);
-            writer.write("\n\n" + "SNS User" + "\n" + "Email: " + snsu.getEmail() + "\n" + "Name: " + snsu.getName() + "\n" + "Password: " + password + "\n");
-            writer.close();
-        } catch (IOException ex) {
-            System.out.println("Error while creating file\nSNS User not added");
-            authFacade.removeUser(snsu.getEmail());
-        }
+
+        writeSNSUserToFile(snsu,password);
 
     }
 
