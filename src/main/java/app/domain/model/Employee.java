@@ -12,7 +12,6 @@ public class Employee {
     private String address;
     private String phoneNumber;
     private String citizenCardNumber;
-    private int employeeID;
     private String role;
 
     /**
@@ -23,11 +22,10 @@ public class Employee {
      * @param address           employee's address
      * @param phoneNumber       employee's phone number
      * @param citizenCardNumber employee's citizen card number
-     * @param employeeID        employee's ID
      * @param role              employee's role
      */
 
-    public Employee(String name, String email, String address, String phoneNumber, String citizenCardNumber, int employeeID, String role) {
+    public Employee(String name, String email, String address, String phoneNumber, String citizenCardNumber, String role) {
         checkName(name);
         checkEmail(email);
         checkAddress(address);
@@ -39,7 +37,6 @@ public class Employee {
         this.address = address;
         this.phoneNumber = phoneNumber;
         this.citizenCardNumber = citizenCardNumber;
-        this.employeeID = employeeID;
         this.role = role;
     }
 
@@ -48,11 +45,8 @@ public class Employee {
      */
 
     private void checkName(String name) {
-        if (name == null)
-            throw new IllegalArgumentException("Name Can't Be Null!");
-
-        if (name.isEmpty())
-            throw new IllegalArgumentException("Name Can't Be Empty!");
+        if (name.length() < 3)
+            throw new IllegalArgumentException("Name is too short!");
 
         if (name.length() > 20)
             throw new IllegalArgumentException("Name Can't Have More Than 20 Characters");
@@ -70,14 +64,11 @@ public class Employee {
     }
 
     private void checkAddress(String address) {
-        if (address == null)
-            throw new IllegalArgumentException("Address Can't Be Null!");
-
-        if (address.isEmpty())
-            throw new IllegalArgumentException("Address Can't Be Empty!");
+        if (address.length() < 3)
+            throw new IllegalArgumentException("Address is too short!");
 
         if (address.length() > 50)
-            throw new IllegalArgumentException("Address Can't Have More Than 50 Characters");
+            throw new IllegalArgumentException("Address is too long!");
     }
 
     private void checkPhoneNumber2(String phoneNumber) {
@@ -106,6 +97,11 @@ public class Employee {
             throw new IllegalArgumentException("Invalid Citizen Card Number");
         }
     }
+    private void checkEmployeeID(String employeeID){
+        if(employeeID.length() != 9 || employeeID.charAt(0) != '9'){
+            throw new IllegalArgumentException("Invalid EmployeeID");
+        }
+    }
 
     /**
      *Returns the Employee object as a String
@@ -119,7 +115,6 @@ public class Employee {
                 "Address: " + address + "\n" +
                 "Phone Number: " + phoneNumber + "\n" +
                 "Citizen Card Number: " + citizenCardNumber + "\n" +
-                "EmployeeID: " + employeeID + "\n" +
                 "Role: " + role + "\n\n";
     }
 
@@ -173,15 +168,6 @@ public class Employee {
         return citizenCardNumber;
     }
 
-    /**
-     * Gets employee ID.
-     *
-     * @return the employee ID
-     */
-
-    public int getEmployeeID() {
-        return employeeID;
-    }
 
     /**
      * Gets employee role.

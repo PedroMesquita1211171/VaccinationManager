@@ -46,7 +46,7 @@ RegisterEmployeeUi implements Runnable{
             }
 
 
-            if(ctrl.createEmployee(askName(), askEmail(),askAddress(),askPhoneNumber(),askCitizenCard(),askEmployeeID(), role)){
+            if(ctrl.createEmployee(askName(), askEmail(),askAddress(),askPhoneNumber(),askCitizenCard(), role)){
 
                 String opt= SaveOrNot();
 

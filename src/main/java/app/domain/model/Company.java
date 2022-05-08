@@ -65,12 +65,13 @@ public class Company {
      * @param e
      */
     public void addEmployee(Employee e) {
+        String employeeID=generateEmployeeID();
         String password = generateRandomPassword();
         employeeStore.addEmployee(e);
         authFacade.addUserWithRole(e.getName(), e.getEmail(),password, e.getRole());
         try {
             writer = new FileWriter("Employees.txt", true);
-            writer.write("\n\n" + "Employee" +"\n" + "Email: " + e.getEmail() + "\n" + "Name: " + e.getName() + "\n" + "Password: " + password + "\n" + "Role: " + e.getRole() + "\n");
+            writer.write("\n\n" + "Employee" +"\n" + "Email: " + e.getEmail() + "\n" + "Name: " + e.getName() +"\n"+"EmployeeID"+employeeID+ "\n" + "Password: " + password + "\n" + "Role: " + e.getRole() + "\n");
             writer.close();
             System.out.println("\n" + "Email: " + e.getEmail() + "\n" + "Password: " + password+ "\n");
         } catch (IOException ex) {
@@ -124,7 +125,25 @@ public class Company {
 
         return sb.toString();
     }
+    public static String generateEmployeeID()
+    {
+        int len = 8;
+        final String chars = "0123456789";
 
+        SecureRandom random = new SecureRandom();
+        StringBuilder sb = new StringBuilder();
+
+        // each iteration of the loop randomly chooses a character from the given
+        // ASCII range and appends it to the `StringBuilder` instance
+
+        for (int i = 0; i < len; i++)
+        {
+            int randomIndex = random.nextInt(chars.length());
+            sb.append(chars.charAt(randomIndex));
+        }
+
+        return sb.toString();
+    }
 
 }
 

@@ -36,13 +36,12 @@ public class SpecifyNewEmployeeController {
      * @param address           employee's address
      * @param phoneNumber       employee's phone number
      * @param citizenCardNumber employee's citizen card number
-     * @param employeeID        employee's ID
      * @param role              employee's role
      * @return the boolean
      */
-    public boolean createEmployee(String name, String email, String address, String phoneNumber, String citizenCardNumber, int employeeID, String role) {
+    public boolean createEmployee(String name, String email, String address, String phoneNumber, String citizenCardNumber, String role) {
         try{
-            this.emp = new Employee(name, email, address, phoneNumber, citizenCardNumber, employeeID, role);
+            this.emp = new Employee(name, email, address, phoneNumber, citizenCardNumber, role);
         }catch (IllegalArgumentException e){
             System.out.println(e.getMessage());
             return false;

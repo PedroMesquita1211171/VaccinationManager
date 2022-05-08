@@ -1,8 +1,6 @@
 package app.TestingPackage;
 
 import app.domain.model.Employee;
-
-import app.domain.model.SNSUser;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -12,60 +10,66 @@ public class EmployeeTest {
     void testInvalidName() {
         //Invalid name testing
         Throwable thrown = assertThrows(IllegalArgumentException.class, () -> {
-            SNSUser emp = new SNSUser("", "Rua x", "1", "912345678", "example@gmail.com", "1-1-2000", "123456789", "10102020");
+            Employee emp = new Employee("A", "example@gmail.com", "Rua x", "912345678", "10102020", "Nurse");
         });
-        assertEquals("Name is too short", thrown.getMessage());
+        assertEquals("Name is too short!", thrown.getMessage());
     }
-
     @Test
-    void testInvalidAddress() {
-        //Invalid address testing
-        Throwable thrown2 = assertThrows(IllegalArgumentException.class, () -> {
-            SNSUser emp = new SNSUser("Example", "", "1", "912345678", "example@gmail.com", "1-1-2000", "123456789", "10102020");
+    void testInvalidName3() {
+        //Invalid name testing
+        Throwable thrown11 = assertThrows(IllegalArgumentException.class, () -> {
+            Employee emp = new Employee("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA", "example@gmail.com", "Rua x", "912345678", "10102020", "Nurse");
         });
-        assertEquals("Address is too short", thrown2.getMessage());
+        assertEquals("Name Can't Have More Than 20 Characters", thrown11.getMessage());
     }
-
-    @Test
-    void testInvalidPhoneNumber() {
-        //Invalid phone number testing
-        Throwable thrown3 = assertThrows(IllegalArgumentException.class, () -> {
-            SNSUser user = new SNSUser("Example", "Rua x", "1", "9123456789", "example@gmail.com", "1-1-2000", "123456789", "10102020");
-        });
-        assertEquals("Invalid Phone Number", thrown3.getMessage());
-    }
-
     @Test
     void testInvalidEmail() {
         //Invalid email testing
-        Throwable thrown4 = assertThrows(IllegalArgumentException.class, () -> {
-            SNSUser user = new SNSUser("Example", "Rua x", "1", "912345678", "examplegmailcom", "1-1-2000", "123456789", "10102020");
+        Throwable thrown2 = assertThrows(IllegalArgumentException.class, () -> {
+            Employee emp = new Employee("Test", "examplegmailcom", "Rua x", "912345678", "10102020", "Nurse");
         });
-        assertEquals("Email Is Not Valid!", thrown4.getMessage());
+        assertEquals("Email Is Not Valid!", thrown2.getMessage());
     }
 
     @Test
     void testInvalidEmail2() {
         //Invalid email testing
-        Throwable thrown44 = assertThrows(IllegalArgumentException.class, () -> {
-            SNSUser user = new SNSUser("Example", "Rua x", "1", "912345678", "", "1-1-2000", "123456789", "10102020");
+        Throwable thrown22 = assertThrows(IllegalArgumentException.class, () -> {
+            Employee emp = new Employee("Test", "", "Rua x", "912345678", "10102020", "Nurse");
         });
-        assertEquals("Email Can't Be Null Or Empty!", thrown44.getMessage());
+        assertEquals("Email Can't Be Null Or Empty!", thrown22.getMessage());
     }
     @Test
-    void testInvalidEmployeeID() {
-        //Invalid SNS Number testing
-        Throwable thrown5 = assertThrows(IllegalArgumentException.class, () -> {
-            SNSUser user = new SNSUser("Example", "Rua x", "1", "912345678", "example@gmail.com", "1-1-2000", "12345678", "10102020");
+    void testInvalidAddress() {
+        //Invalid Citizen Card Number testing
+        Throwable thrown3 = assertThrows(IllegalArgumentException.class, () -> {
+            Employee emp = new Employee("Test", "example@gmail.com", "R", "912345678", "10102020", "Nurse");
         });
-        assertEquals("Invalid Employee ID", thrown5.getMessage());
+        assertEquals("Address is too short!", thrown3.getMessage());
+    }
+    @Test
+    void testInvalidAddress2() {
+        //Invalid Citizen Card Number testing
+        Throwable thrown33 = assertThrows(IllegalArgumentException.class, () -> {
+            Employee emp = new Employee("Test", "example@gmail.com", "Rua xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx", "912345678", "10102020", "Nurse");
+        });
+        assertEquals("Address is too long!", thrown33.getMessage());
+    }
+    @Test
+    void testInvalidPhonenumber() {
+        //Invalid Citizen Card Number testing
+        Throwable thrown4 = assertThrows(IllegalArgumentException.class, () -> {
+            Employee emp = new Employee("Test", "example@gmail.com", "Rua x", "9123456789", "10102020", "Nurse");
+        });
+        assertEquals("Invalid Phone Number", thrown4.getMessage());
     }
     @Test
     void testInvalidCitizenCardNumber() {
         //Invalid Citizen Card Number testing
-        Throwable thrown6 = assertThrows(IllegalArgumentException.class, () -> {
-            SNSUser user = new SNSUser("Example", "Rua x", "1", "912345678", "example@gmail.com", "1-1-2000", "123456789", "1010202");
+        Throwable thrown5 = assertThrows(IllegalArgumentException.class, () -> {
+            Employee emp = new Employee("Test", "example@gmail.com", "Rua x", "912345678", "1010", "Nurse");
         });
-        assertEquals("Invalid Citizen Card Number", thrown6.getMessage());
+        assertEquals("Invalid Citizen Card Number", thrown5.getMessage());
     }
+
 }
