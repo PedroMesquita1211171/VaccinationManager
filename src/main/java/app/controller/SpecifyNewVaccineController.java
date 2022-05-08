@@ -27,10 +27,21 @@ public class SpecifyNewVaccineController {
         this.company = company;
         this.vaccine = null;
     }
-  
-    public boolean createVaccine(String name, int id, int doses,int recovery, int doseinterval) {
+    /**
+     * Creates vaccine.
+     *
+     * @param name         the name
+     * @param id           the id
+     * @param brand        the brand
+     * @param doses        the doses
+     * @param dosage       the dosage
+     * @param recovery     the recovery
+     * @param doseinterval the doseinterval
+     * @return the boolean
+     */
+    public boolean createVaccine(String name, int id, String brand, int doses,int dosage, int recovery, int doseinterval) {
         try {
-            this.vaccine = new Vaccine(name, id, doses, recovery, doseinterval);
+            this.vaccine = new Vaccine(name, id,brand, doses,dosage, recovery, doseinterval);
         } catch (IllegalArgumentException e){
             System.out.println(e.getMessage());
             return false;

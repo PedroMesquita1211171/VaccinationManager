@@ -42,7 +42,9 @@ public class Vaccine {
 
         this.name = name;
         this.ID = ID;
+        this.brand = brand;
         this.doses = doses;
+        this.dosage = dosage;
         this.recovery = recovery;
         this.doseinterval = doseinterval;
 

@@ -77,6 +77,19 @@ public class VaccineUI implements Runnable {
     public int askDoses(){
         return Utils.readIntegerFromConsole("Enter Vaccine's Number of Doses");
     }
+
+    /**
+     * Ask dosage int.
+     *
+     * @return the int
+     */
+    public int askDosage() {return Utils.readIntegerFromConsole("Enter Vaccine's Dosage");}
+
+    /**
+     * Ask recovery int.
+     *
+     * @return the int
+     */
     public int askRecovery(){
         return Utils.readIntegerFromConsole("Enter Vaccine's Recovery Period");
     }
@@ -89,6 +102,7 @@ public class VaccineUI implements Runnable {
     public int askDoseInterval(){
         return Utils.readIntegerFromConsole("Enter Vaccine's Dose Interval");
     }
+
 
     /**
      * Save or not string.
