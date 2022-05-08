@@ -12,7 +12,11 @@ public class RegisterVaccinationCenterUI implements Runnable{
      */
     private SpecifyNewVaccinationCenterController ctrl ;
 
+    /**
+     * Instantiates a new Register vaccination center controller.
+     */
     public RegisterVaccinationCenterUI(){
+
         ctrl= new SpecifyNewVaccinationCenterController();
     }
     public void run() {
@@ -76,73 +80,84 @@ public class RegisterVaccinationCenterUI implements Runnable{
     /**
      * Asks adress.
      *
-     * @return adress
+     * @return adress string
      */
     public String askAddress(){return Utils.readLineFromConsole("Address: ");}
+
     /**
      * Asks email.
      *
-     * @return email
+     * @return email string
      */
     public String askEmailAdress(){return Utils.readLineFromConsole("E-mail: ");}
+
     /**
      * Asks phone number.
      *
      * @return phone number
      */
     public String askPhoneNumber(){return Utils.readLineFromConsole("Phone Number: ");}
+
     /**
      * Asks fax number.
      *
      * @return fax number.
      */
     public String askFaxNumber(){return Utils.readLineFromConsole("Fax number: ");}
+
     /**
      * Asks website address.
      *
      * @return website address
      */
     public String askWebsiteAddress(){return Utils.readLineFromConsole("Website Address: ");}
+
     /**
      * Asks Opening hours.
      *
      * @return opening hours
      */
     public String askOpeningHours(){return Utils.readLineFromConsole("Opening hours: ");}
+
     /**
      * Asks Closing hours.
      *
      * @return closing hours
      */
     public String askClosingHours(){return Utils.readLineFromConsole("Closing hours: ");}
+
     /**
      * Asks Slot duration.
      *
      * @return slot duration
      */
     public int askSlotDuration(){return Utils.readIntegerFromConsole("Slot duration: ");}
+
     /**
      * Asks max vaccines.
      *
      * @return max vaccines
      */
     public int askMaxVaccines(){return Utils.readIntegerFromConsole("Max vaccines: ");}
+
     /**
      * Asks Opening hours.
      *
      * @return opening hours
      */
     public String askCoordinator(){return Utils.readLineFromConsole("Coordinator: ");}
+
     /**
      * Asks AGES.
      *
-     * @return AGES
+     * @return AGES string
      */
     public String askAges(){return Utils.readLineFromConsole("AGES: ");}
+
     /**
      * Asks ARS.
      *
-     * @return ARS
+     * @return ARS string
      */
     public String askArs(){return Utils.readLineFromConsole("ARS: ");}
 

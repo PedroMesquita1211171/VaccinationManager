@@ -4,6 +4,9 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.regex.Pattern;
 
+/**
+ * The type Vaccination center.
+ */
 public class VaccinationCenter {
     private String address;
     private String emailAddress;
@@ -22,8 +25,8 @@ public class VaccinationCenter {
     /**
      * Instanciates a new Vaccination Center object
      *
-     * @param emailAddress   VaccinationCenter's email address
      * @param address        VaccinationCenter's address
+     * @param emailAddress   VaccinationCenter's email address
      * @param phoneNumber    VaccinationCenter's phone number
      * @param faxNumber      VaccinationCenter's fax number
      * @param websiteAddress VaccinationCenter's website adress
@@ -34,7 +37,7 @@ public class VaccinationCenter {
      * @param coordinator    VaccinationCenter's coordinator
      */
     public VaccinationCenter(String address, String emailAddress, String phoneNumber, String faxNumber, String websiteAddress, String openingHours, String closingHours, int slotDuration, int maxVaccines, String coordinator) {
-        checkAdress(address);
+        checkAddress(address);
         checkEmailAddress(emailAddress);
         checkPhoneNumber(phoneNumber);
         checkFaxNumber(faxNumber);
@@ -57,8 +60,25 @@ public class VaccinationCenter {
         this.coordinator = coordinator;
         this.typeOfCenter = "Mass Community Vaccination Center";
     }
+
+    /**
+     * Instantiates a new Vaccination center.
+     *
+     * @param address        the address
+     * @param emailAddress   the email address
+     * @param phoneNumber    the phone number
+     * @param faxNumber      the fax number
+     * @param websiteAddress the website address
+     * @param openingHours   the opening hours
+     * @param closingHours   the closing hours
+     * @param slotDuration   the slot duration
+     * @param maxVaccines    the max vaccines
+     * @param coordinator    the coordinator
+     * @param ages           the ages
+     * @param ars            the ars
+     */
     public VaccinationCenter(String address, String emailAddress, String phoneNumber, String faxNumber, String websiteAddress, String openingHours, String closingHours, int slotDuration, int maxVaccines, String coordinator, String ages, String ars) {
-        checkAdress(address);
+        checkAddress(address);
         checkEmailAddress(emailAddress);
         checkPhoneNumber(phoneNumber);
         checkFaxNumber(faxNumber);
@@ -89,22 +109,18 @@ public class VaccinationCenter {
     /**
      * Checks if VaccinationCenter parameters are valid.
      */
-    private void checkAdress(String address) {
-        if (address == null)
-            throw new IllegalArgumentException("Address can't be null!");
-        if (address.isEmpty())
-            throw new IllegalArgumentException("Address can´t be empty!");
+    private void checkAddress(String address) {
+        if (address == null ||address.isEmpty())
+            throw new IllegalArgumentException("Address can't be null or empty!");
         if (address.length() > 50)
-            throw new IllegalArgumentException("Address Can't Have More Than 50 Characters");
+            throw new IllegalArgumentException("Address can't have more than 50 characters!");
+        if (address.length()<3)
+            throw new IllegalArgumentException("Address can´t have less than 3 characters!");
     }
 
     private void checkEmailAddress(String emailAddress) {
         if (emailAddress == null || emailAddress.isEmpty())
             throw new IllegalArgumentException("Email address can't be null or empty!");
-        if (emailAddress.length() > 320)
-            throw new IllegalArgumentException("Email address can't have more than 320 characters!");
-        if (emailAddress.length() < 3)
-            throw new IllegalArgumentException("Email address can't have less than 3 characters!");
         String emailRegex = "^[a-zA-Z0-9_+&*-]+(?:\\." + "[a-zA-Z0-9_+&*-]+)*@" + "(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,7}$";
         Pattern pattern = Pattern.compile(emailRegex);
         if (!pattern.matcher(emailAddress).matches()) {
@@ -114,22 +130,20 @@ public class VaccinationCenter {
     }
 
     private void checkPhoneNumber(String phoneNumber) {
-        if (phoneNumber == null)
-            throw new IllegalArgumentException("Phone number can't be null!");
-        if (phoneNumber.isEmpty())
-            throw new IllegalArgumentException("Phone number can't be empty!");
-        if(phoneNumber.length()<9)
+        if (phoneNumber == null||phoneNumber.isEmpty())
+            throw new IllegalArgumentException("Phone number can't be null or empty!");
+        if(phoneNumber.length()!=9)
             throw new IllegalArgumentException("Phone number has to have 9 numbers!");
     }
     private void checkFaxNumber(String faxNumber){
         if (faxNumber== null || faxNumber.isEmpty())
             throw new IllegalArgumentException("Fax number can't be null or empty!");
-        if (faxNumber.length()<9)
+        if (faxNumber.length()!=9)
             throw new IllegalArgumentException("Fax number has to have 9 numbers!");
     }
     private void checkWebsiteAddress(String websiteAddress) {
         if (websiteAddress== null|| websiteAddress.isEmpty())
-            throw new IllegalArgumentException("Website address can't be null or empty");
+            throw new IllegalArgumentException("Website address can't be null or empty!");
         try {
             URL u = new URL(websiteAddress);
         } catch (MalformedURLException e) {
@@ -140,13 +154,13 @@ public class VaccinationCenter {
         if (openingHours== null|| openingHours.isEmpty())
             throw new IllegalArgumentException("Opening Hours can't be null or empty");
         if (openingHours.length() != 5)
-            throw new IllegalArgumentException("Invalid opening hours!");
+            throw new IllegalArgumentException("Invalid format for opening hours! Try XX:XX.");
     }
     private void checkClosingHours(String closingHours){
         if (closingHours== null|| closingHours.isEmpty())
             throw new IllegalArgumentException("Closing hours can't be null or empty");
         if (closingHours.length() != 5)
-            throw new IllegalArgumentException("Invalid closing hours!");
+            throw new IllegalArgumentException("Invalid format for closing hours! Try XX:XX.");
     }
     private void checkSlotDuration (int slotDuration){
         if (slotDuration==0)
@@ -200,7 +214,6 @@ public class VaccinationCenter {
      *
      * @return the fax number
      */
-
     public String getFaxNumber() {
         return faxNumber;
     }
@@ -210,7 +223,6 @@ public class VaccinationCenter {
      *
      * @return the email
      */
-
     public String getEmailAddress() {
         return emailAddress;
     }
@@ -220,7 +232,6 @@ public class VaccinationCenter {
      *
      * @return the address
      */
-
     public String getAddress() {
         return address;
     }
@@ -230,7 +241,6 @@ public class VaccinationCenter {
      *
      * @return the phone number
      */
-
     public String getPhoneNumber() {
         return phoneNumber;
     }
@@ -240,7 +250,6 @@ public class VaccinationCenter {
      *
      * @return the website address
      */
-
     public String getWebsiteAddress() {
         return websiteAddress;
     }
@@ -250,7 +259,6 @@ public class VaccinationCenter {
      *
      * @return the opening hours
      */
-
     public String getOpeningHours() {
         return openingHours;
     }
@@ -260,7 +268,6 @@ public class VaccinationCenter {
      *
      * @return the closing hours
      */
-
     public String getClosingHours() {
         return closingHours;
     }
@@ -270,7 +277,6 @@ public class VaccinationCenter {
      *
      * @return the slot duration
      */
-
     public int getSlotDuration() {
         return slotDuration;
     }
@@ -280,7 +286,6 @@ public class VaccinationCenter {
      *
      * @return the max vaccines
      */
-
     public int getMaxVaccines() {
         return maxVaccines;
     }
@@ -290,12 +295,29 @@ public class VaccinationCenter {
      *
      * @return the coordinator
      */
-
     public String getCoordinator() {
         return coordinator;
     }
+
+    /**
+     * Get ages string.
+     *
+     * @return the string
+     */
     public String getAges(){return ages;}
+
+    /**
+     * Get ars string.
+     *
+     * @return the string
+     */
     public String getArs(){return ars;}
+
+    /**
+     * Get type of center string.
+     *
+     * @return the string
+     */
     public String getTypeOfCenter(){return typeOfCenter;}
 
 

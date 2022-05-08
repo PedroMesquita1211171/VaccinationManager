@@ -5,7 +5,10 @@ import app.domain.model.VaccinationCenter;
 
 import java.util.ArrayList;
 import java.util.List;
+
 /**
+ * The type Vaccination center store.
+ *
  * @author Luís Monteiro - 1211250
  */
 public class VaccinationCenterStore {
@@ -18,9 +21,8 @@ public class VaccinationCenterStore {
     /**
      * Declares the vaccinationCenterList as an ArrayList of type VaccinationCenter.
      */
-
     public VaccinationCenterStore(){
-        vaccinationCenterList = new ArrayList<>();
+        this.vaccinationCenterList = new ArrayList<>();
     }
 
     /**
@@ -32,6 +34,11 @@ public class VaccinationCenterStore {
         return vaccinationCenterList;
     }
 
+    /**
+     * Add vaccination center.
+     *
+     * @param vac the vac
+     */
     public void addVaccinationCenter(VaccinationCenter vac){
         this.vaccinationCenterList.add(vac);
     }

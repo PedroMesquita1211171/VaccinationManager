@@ -3,7 +3,10 @@ package app.controller;
 import app.domain.model.Company;
 import app.domain.model.VaccinationCenter;
 import app.domain.model.VaccineType;
+
 /**
+ * The type Specify new vaccination center controller.
+ *
  * @author Luís Monteiro - 1211250
  */
 public class SpecifyNewVaccinationCenterController {
@@ -23,6 +26,11 @@ public class SpecifyNewVaccinationCenterController {
         this(App.getInstance().getCompany());
     }
 
+    /**
+     * Instantiates a new Specify new vaccination center controller.
+     *
+     * @param company the company
+     */
     public SpecifyNewVaccinationCenterController(Company company) {
         this.company = company;
         this.vac = null;
@@ -31,8 +39,8 @@ public class SpecifyNewVaccinationCenterController {
     /**
      * Creates and verifies Vaccination Center.
      *
-     * @param emailAddress   VaccinationCenter's email address
      * @param address        VaccinationCenter's address
+     * @param emailAddress   VaccinationCenter's email address
      * @param phoneNumber    VaccinationCenter's phone number
      * @param faxNumber      VaccinationCenter's fax number
      * @param websiteAddress VaccinationCenter's website adress
@@ -41,6 +49,8 @@ public class SpecifyNewVaccinationCenterController {
      * @param slotDuration   VaccinationCenter's slot duration
      * @param maxVaccines    VaccinationCenter's max vaccines
      * @param coordinator    VaccinationCenter's coordinator
+     * @param ages           the ages
+     * @param ars            the ars
      * @return the boolean
      */
     public boolean createHealthcareCenter(String address, String emailAddress, String phoneNumber, String faxNumber, String websiteAddress, String openingHours, String closingHours, int slotDuration, int maxVaccines, String coordinator,String ages,String ars) {
@@ -54,6 +64,22 @@ public class SpecifyNewVaccinationCenterController {
 
         return validateVaccinationCenter(vac);
     }
+
+    /**
+     * Create community center boolean.
+     *
+     * @param address        the address
+     * @param emailAddress   the email address
+     * @param phoneNumber    the phone number
+     * @param faxNumber      the fax number
+     * @param websiteAddress the website address
+     * @param openingHours   the opening hours
+     * @param closingHours   the closing hours
+     * @param slotDuration   the slot duration
+     * @param maxVaccines    the max vaccines
+     * @param coordinator    the coordinator
+     * @return the boolean
+     */
     public boolean createCommunityCenter(String address, String emailAddress, String phoneNumber, String faxNumber, String websiteAddress, String openingHours, String closingHours, int slotDuration, int maxVaccines, String coordinator) {
 
         try {
@@ -65,15 +91,16 @@ public class SpecifyNewVaccinationCenterController {
 
         return validateVaccinationCenter(vac);
     }
+
     /**
      * Validates vaccination center boolean.
      *
      * @param vac the vac
      * @return the boolean
      */
-    public boolean validateVaccinationCenter (VaccinationCenter vac) {
-        if (vac == null) return false;
-        return company.getVaccinationCenterStore().getVaccinationCenterList().contains(vac);
+    public boolean validateVaccinationCenter () {
+        if (this.vac == null) return false;
+        return !company.getVaccinationCenterStore().getVaccinationCenterList().contains(this.vac);
     }
 
     /**

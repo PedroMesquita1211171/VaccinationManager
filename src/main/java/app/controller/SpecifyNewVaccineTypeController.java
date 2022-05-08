@@ -55,7 +55,7 @@ public class SpecifyNewVaccineTypeController {
      */
     public boolean validateVaccineType (VaccineType vt) {
         if (vt == null) return false;
-        return company.getVaccineTypeStore().getVaccineTypeList().contains(vt);
+        return !company.getVaccineTypeStore().getVaccineTypeList().contains(vt);
     }
 
     /**

@@ -41,7 +41,7 @@ public class EmployeeTest {
     }
     @Test
     void testInvalidAddress() {
-        //Invalid Citizen Card Number testing
+        //Invalid Address testing
         Throwable thrown3 = assertThrows(IllegalArgumentException.class, () -> {
             Employee emp = new Employee("Test", "example@gmail.com", "R", "912345678", "10102020", "Nurse");
         });
