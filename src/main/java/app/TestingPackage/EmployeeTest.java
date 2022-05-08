@@ -15,7 +15,7 @@ public class EmployeeTest {
         assertEquals("Name is too short!", thrown.getMessage());
     }
     @Test
-    void testInvalidName3() {
+    void testInvalidName2() {
         //Invalid name testing
         Throwable thrown11 = assertThrows(IllegalArgumentException.class, () -> {
             Employee emp = new Employee("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA", "example@gmail.com", "Rua x", "912345678", "10102020", "Nurse");

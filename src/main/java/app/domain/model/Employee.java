@@ -86,6 +86,11 @@ public class Employee {
         if(phoneNumber.length() != 9 || phoneNumber.charAt(0) != '9'){
             throw new IllegalArgumentException("Invalid Phone Number");
         }
+        try{
+            Integer.parseInt(phoneNumber);
+        }catch (NumberFormatException e){
+            throw new IllegalArgumentException("Invalid Phone Number");
+        }
     }
 
     private void checkCitizenCardNumber(String citizenCardNumber) {
