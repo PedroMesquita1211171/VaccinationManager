@@ -43,7 +43,7 @@ public class SpecifyNewVaccinationCenterController {
      * @param coordinator    VaccinationCenter's coordinator
      * @return the boolean
      */
-    public boolean createVaccination(String address, String emailAddress, String phoneNumber, String faxNumber, String websiteAddress, String openingHours, String closingHours, int slotDuration, int maxVaccines, String coordinator,String ages,String ars) {
+    public boolean createHealthcareCenter(String address, String emailAddress, String phoneNumber, String faxNumber, String websiteAddress, String openingHours, String closingHours, int slotDuration, int maxVaccines, String coordinator,String ages,String ars) {
 
         try{
             this.vac = new VaccinationCenter(address, emailAddress, phoneNumber, faxNumber, websiteAddress, openingHours, closingHours, slotDuration, maxVaccines, coordinator,ages,ars);
@@ -54,7 +54,17 @@ public class SpecifyNewVaccinationCenterController {
 
         return validateVaccinationCenter(vac);
     }
+    public boolean createCommunityCenter(String address, String emailAddress, String phoneNumber, String faxNumber, String websiteAddress, String openingHours, String closingHours, int slotDuration, int maxVaccines, String coordinator) {
 
+        try {
+            this.vac = new VaccinationCenter(address, emailAddress, phoneNumber, faxNumber, websiteAddress, openingHours, closingHours, slotDuration, maxVaccines, coordinator);
+        } catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
+            return false;
+        }
+
+        return validateVaccinationCenter(vac);
+    }
     /**
      * Validates vaccination center boolean.
      *
