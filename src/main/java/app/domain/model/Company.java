@@ -4,6 +4,7 @@ import app.domain.Store.EmployeeStore;
 import app.domain.Store.SNSUserStore;
 import app.domain.Store.VaccinationCenterStore;
 import app.domain.Store.VaccineTypeStore;
+import app.domain.Store.VaccineStore;
 import app.domain.shared.Constants;
 import pt.isep.lei.esoft.auth.AuthFacade;
 import org.apache.commons.lang3.StringUtils;
@@ -26,6 +27,7 @@ public class Company {
     private EmployeeStore employeeStore;
     private SNSUserStore snsUserStore;
     private VaccinationCenterStore vaccinationCenterStore ;
+    private VaccineStore vaccineStore;
 
     public Company(String designation)
     {
@@ -38,6 +40,7 @@ public class Company {
         this.employeeStore = new EmployeeStore();
         this.snsUserStore = new SNSUserStore();
         this.vaccinationCenterStore = new VaccinationCenterStore();
+        this.vaccineStore = new VaccineStore();
     }
 
     public String getDesignation() {
@@ -61,6 +64,7 @@ public class Company {
     }
 
     public VaccinationCenterStore getVaccinationCenterStore() { return vaccinationCenterStore; }
+    public VaccineStore getVaccineStore(){return vaccineStore;}
 
     /**
      * Adds a new employee
@@ -88,6 +92,7 @@ public class Company {
     public void  addVaccineType(VaccineType vt) { vaccineTypeStore.addVaccineType(vt); }
 
     public void addVaccinationCenter(VaccinationCenter vac) { vaccinationCenterStore.addVaccinationCenter(vac); }
+    public void addVaccine(Vaccine vaccine) {vaccineStore.addVaccine(vaccine);}
 
     /**
      * Writes Employees useful info for login into a text file
