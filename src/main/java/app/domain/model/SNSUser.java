@@ -65,6 +65,10 @@ public class SNSUser {
         }
     }
 
+    /**
+     * Check address rules.
+     * @param address
+     */
     private void checkAddressRules(String address){
         if(address.length() < 2 || address.length() > 40){
             throw new IllegalArgumentException("Address is too short");

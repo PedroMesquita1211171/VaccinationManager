@@ -7,6 +7,7 @@ class VaccineType{
  - vaccineDosage
 }
 class Vaccine{}
+class Employee{}
 class Admin{}
 class HealthCareCenter{}
 class ARS{}
@@ -39,11 +40,17 @@ class Vaccination{}
 class DGS{}
 class PerformanceAnalysis{}
 class Report{}
+class AdministrationProcess{}
 
 
 Admin "1"---"1" CenterCoordinator : registers >
 Admin "1"---"*" SNSUser : registers >
+Admin "1"---"*" VaccineType : specifies >
+Admin "1"---"*" Vaccine : specifies >
+Admin "1"---"*" Receptionist : registers >
+Admin "1"---"*" Nurse : registers >
 Admin "1"---"*" Vaccine : manages >
+Admin "1"---"*" VaccinationCenter : registers >
 SNSUser "*"---"1" Vaccination : administered on <
 SNSUser "*"---"1" CovidDigitalCertificate : asks for >
 SNSUser "*"---"1" ScheduleVaccine : does >
@@ -61,11 +68,24 @@ DGS "1"---"*" VaccinationCenter : owns >
 DGS "1"---"*" SNSUser : is registered on <
 HealthCareCenter "*"---"1" ARS : associated with >
 HealthCareCenter "*"---"1" AGES : associated with >
-Receptionist "*"---"*" VaccinationCenter : works at >
 CenterCoordinator "1"---"*" PerformanceAnalysis : makes >
 CenterCoordinator "1"---"*" Report : generates <
 Report "*"---"*" PerformanceAnalysis : about >
 Receptionist "*"---"1" DGS : works for <
+Receptionist "1"---"*" SNSUser : registers >
+Admin "1"---"*" Employee : registers >
+Admin "1"---"*" Employee : gets list of >
+Receptionist "*"---"1" Employee : is a >
+Nurse "*"---"1" Employee : is a >
+CenterCoordinator "*"---"1" Employee : is a >
+Vaccine "1"---"1" AdministrationProcess : has a >
+SNSUser "1"---"1" Vaccine : schedules >
+Receptionist "*"---"1" VaccinationCenter : works at >
+Receptionist "*"---"1" Vaccine : schedules >
+Receptionist "*"---"*" SNSUser: registers arrival >
+Nurse "*"---"*" SNSUser : consults list of users present in the waiting room >
+Admin "*"---"*" SNSUser : Loads a set through CSV file >
+
 
 
 @enduml
