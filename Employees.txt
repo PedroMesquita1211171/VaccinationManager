@@ -1,0 +1,8 @@
+
+
+Employee
+Email: olaaaa@gmail.com
+Name: Luis
+EmployeeID 59966623
+Password: 1T8Oi6KQvFAC0eHT
+Role: RECEPTIONIST
