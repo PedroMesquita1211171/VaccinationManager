@@ -20,6 +20,7 @@ To identify domain conceptual classes, start by making a list of candidate conce
 * ScheduleInformation
 * VaccineSpecification
 * PlaceTimeVaccination
+* AdministrationProcess
 
 ---
 

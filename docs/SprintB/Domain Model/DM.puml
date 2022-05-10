@@ -85,7 +85,7 @@ Receptionist "*"---"1" Vaccine : schedules >
 Receptionist "*"---"*" SNSUser: registers arrival >
 Nurse "*"---"*" SNSUser : consults list of users present in the waiting room >
 Admin "*"---"*" SNSUser : Loads a set through CSV file >
-
+Vaccine "1"---"1" VaccineType : has a >
 
 
 @enduml
