@@ -1,0 +1,61 @@
+@startuml
+autonumber
+actor "Receptionist" as recep
+
+participant ": RegistersSNSuserUI" as UI
+participant ": RegistersSNSuserController" as Controller
+participant ": Company" as Company
+participant "SNSUser" as SNSUser
+participant ": AuthFacade" as auth
+
+activate recep
+recep -> UI :  starts the registration of a new SNS user
+activate UI
+UI --> recep : requests data (name,SNS number,birth date,citizen card number,sex,phone number,address,e-mail,password)
+deactivate UI
+
+recep -> UI : types requested data
+activate UI
+
+UI -> Controller : createSNSuser(name,SNS number,birth date,citizen card number,sex,phone number,address,e-mail,password)
+activate Controller
+
+
+Controller -> SNSUser : snsu = new SNSUser(name, address, genderOption, phoneNumber, email, birthDate, SNSNumber, citizenCardNumber)
+activate SNSUser
+deactivate SNSUser
+
+
+Controller -> Controller : validateSNSuser()
+
+UI --> recep : shows the data and requests a confirmation
+deactivate UI
+deactivate Controller
+
+recep -> UI : confirms the data
+activate UI
+
+UI -> Controller : saveSNSuser(snsu)
+activate Controller
+
+
+Controller -> Company : addSNSUser(snsu)
+activate Company
+
+
+Company -> SNSuserStore : addSNSUser(snsu)
+activate SNSuserStore
+deactivate SNSuserStore
+
+Company -> auth : addUserWithRole(snsu.getName(), snsu.getEmail(),generateRandomPassword(), Constants.ROLE_SNSUSER)
+activate auth
+deactivate auth
+
+deactivate Controller
+deactivate Company
+
+UI --> recep : informs operation success
+
+deactivate UI
+deactivate recep
+@enduml

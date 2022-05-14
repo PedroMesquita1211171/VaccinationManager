@@ -1,0 +1,34 @@
+@startuml
+autonumber
+actor "Admin" as admin
+
+participant ": ListEmployeesUI" as UI
+participant ": ListEmployeesController" as Controller
+participant ": EmployeesStore" as store
+
+activate admin
+admin -> UI :  starts operation of asking for list of employees with a given role
+activate UI
+UI --> admin : requests role (opt :int)
+deactivate UI
+
+admin -> UI : types requested data
+activate UI
+
+UI -> Controller : ctrl.redirectToList(opt :int)
+activate Controller
+
+
+Controller -> Controller : getReceptionistsList()
+Controller -> Controller : getNurseList()
+Controller -> Controller : getCenterCoordinatorList()
+Controller -> Controller : getAll()
+store --> Controller : returns list of employees to be filtered
+Controller --> UI : returns list of employees desired
+UI --> admin : Shows list of Employees desired
+
+
+deactivate UI
+deactivate Controller
+
+@enduml

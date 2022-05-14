@@ -1,0 +1,59 @@
+@startuml
+autonumber
+'hide footbox
+actor "Administrator" as ADM
+
+participant ":VaccineTypeUI" as UI
+participant ":SpecifyNewVaccineTypeController" as CTRL
+participant ":Company" as COMP
+participant ":VaccineTypeStore" as STORE
+participant "VaccineType" as VTYPE
+
+
+
+activate ADM
+ADM -> UI : asks to create a new task
+activate UI
+UI --> ADM : requests data (code, designation, whoId)
+deactivate UI
+
+ADM -> UI : types requested data
+activate UI
+
+UI -> CTRL : ctrl.createVaccineType(askCode(), askDesignation(), askWhoId())
+
+activate CTRL
+CTRL -> VTYPE : vt = new VaccineType(code, designation, whoId)
+activate VTYPE
+deactivate VTYPE
+
+CTRL -> CTRL : validateVaccineType(vt)
+
+
+
+
+UI --> ADM : displays data waiting for confirmation
+deactivate CTRL
+deactivate UI
+
+ADM -> UI : confirms data of VaccineType
+activate UI
+
+UI -> CTRL : ctrl.addVaccineType()
+activate CTRL
+deactivate CTRL
+
+CTRL -> COMP : company.addVaccineType(vt)
+activate COMP
+deactivate COMP
+
+
+COMP -> STORE : vaccineTypeStore.addVaccineType(vt)
+activate STORE
+deactivate STORE
+
+UI --> ADM : informs success
+deactivate UI
+deactivate ADM
+
+@enduml

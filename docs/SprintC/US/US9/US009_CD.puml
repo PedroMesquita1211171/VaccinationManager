@@ -1,0 +1,48 @@
+@startuml
+skinparam classAttributeIconSize 0
+left to right direction
+
+class VaccinationCenterUI{
+SpecifyNewVaccinationCenterController ctrl
+}
+class SpecifyNewVaccinationCenterController{
+Company company
+ VaccinationCenterController vacCenter
+ +createVaccinationCenter(name,address,emailAddress,phoneNumber,faxNumber,websiteAddress,openingHours,closingHours,slotDuration,maxVaccines,coordinator,AGES,ARS)
+ +saveVaccinationCenter()
+ }
+class VaccinationCenterStore{
+List<VaccinationCenter> vacCenteList
++addVaccinationCenter(vacCenter)
+}
+class Company{
+VaccinationCenterStore vaccinationCenterStore
+ +saveVaccinationCenter()
+ }
+class VaccinationCenter {
+-type of center
+-address
+-emailAddress
+-phoneNumber
+-faxNumber
+-websiteAddress
+-openingHours
+-closingHours
+-slotDuration
+-maxVaccines
+-coordinator
+-AGES
+-ARS
+}
+
+
+VaccinationCenterUI ..> SpecifyNewVaccinationCenterController
+Company "1"-->"*" VaccinationCenterStore : has a >
+VaccinationCenterStore "1"-->"*" VaccinationCenter : keeps info >
+SpecifyNewVaccinationCenterController ..> Company
+SpecifyNewVaccinationCenterController ..> VaccinationCenterStore
+SpecifyNewVaccinationCenterController ..> VaccinationCenter
+
+
+@enduml
+
