@@ -60,7 +60,11 @@ class DGS{}
 class PerformanceAnalysis{}
 class Report{}
 class AdministrationProcess{}
-
+class User{
+-username
+-password
+-email
+}
 
 Admin "1"---"1" CenterCoordinator : registers >
 Admin "1"---"*" SNSUser : registers >
@@ -109,6 +113,7 @@ Company "1"---"*" Admin : knows >
 SNSUser "*"---"1" Company : is client >
 Company "1"---"*" VaccineType : promotes administration >
 Company "1"---"*" VaccineType : promotes administration >
-
+Employee "*"---"1" User : is a >
+SNSUser "*"---"1" User : is a >
 
 @enduml

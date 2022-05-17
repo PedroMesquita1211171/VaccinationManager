@@ -1,5 +1,7 @@
 package app.domain.model;
 
+import app.domain.shared.Constants;
+
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.regex.Pattern;
@@ -21,6 +23,8 @@ public class VaccinationCenter {
     private String ages;
     private String ars;
     private String typeOfCenter;
+
+
 
     /**
      * Instanciates a new Vaccination Center object
@@ -58,6 +62,8 @@ public class VaccinationCenter {
         this.slotDuration = slotDuration;
         this.maxVaccines = maxVaccines;
         this.coordinator = coordinator;
+        this.ages = Constants.AGES_BY_DEFAULT;
+        this.ars = Constants.ARS_BY_DEFAULT;
         this.typeOfCenter = "Mass Community Vaccination Center";
     }
 
@@ -203,7 +209,7 @@ public class VaccinationCenter {
                 "Slot duration: " + slotDuration + "\n" +
                 "Max vaccines: " + maxVaccines + "\n" +
                 "Coordinator: " + coordinator + "\n" +
-                "ARES: " + ages + "\n" +
+                "AGES: " + ages + "\n" +
                 "ARS: " + ars + "\n" +
                 "Type of center: " + typeOfCenter + "\n\n";
 

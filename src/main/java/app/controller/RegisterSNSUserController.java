@@ -2,12 +2,14 @@ package app.controller;
 
 import app.domain.model.Company;
 import app.domain.model.SNSUser;
+import app.domain.shared.Constants;
+import app.ui.console.utils.Generators;
 
 
 /**
  * @author Henrique Pinto - 1211201
  */
-public class SpecifyNewSNSUserController {
+public class RegisterSNSUserController {
 
 
     /**
@@ -21,12 +23,12 @@ public class SpecifyNewSNSUserController {
     /**
      *Constructors.
      */
-    public SpecifyNewSNSUserController(){
+    public RegisterSNSUserController(){
         this(App.getInstance().getCompany());
     }
 
 
-    public SpecifyNewSNSUserController(Company company) {
+    public RegisterSNSUserController(Company company) {
         this.company = company;
         this.snsu = null;
     }
@@ -46,21 +48,23 @@ public class SpecifyNewSNSUserController {
      */
     public boolean createSNSUser(String name, String address, String genderOption, String phoneNumber, String email, String birthDate, String SNSNumber, String citizenCardNumber){
         try{
-            this.snsu = new SNSUser(name, address, genderOption, phoneNumber, email, birthDate, SNSNumber, citizenCardNumber);
+            this.snsu = this.company.getSNSUserStore().createSNSUser(name, address, genderOption, phoneNumber, email, birthDate, SNSNumber, citizenCardNumber);
         }catch(IllegalArgumentException iae){
             System.out.println(iae.getMessage());
             return false;
         }
 
 
-        return validateSNSUser();
+        return this.company.getSNSUserStore().validateSNSUser(this.snsu);
     }
 
     /**
      * Saves sns user.
      */
     public void saveSNSUser(){
-        this.company.addSNSUser(snsu);
+        String password = Generators.generateRandomPassword();
+        this.company.getSNSUserStore().addSNSUser(snsu);
+        this.company.getAuthFacade().addUserWithRole(snsu.getName(), snsu.getEmail(),password, Constants.ROLE_SNSUSER);
     }
 
     /**
@@ -71,21 +75,4 @@ public class SpecifyNewSNSUserController {
     public String showSNSUser(){
         return this.snsu.toString();
     }
-
-    /**
-     * Validates sns user boolean.
-     *
-     * @return if user is valid or not
-     */
-    public boolean validateSNSUser(){
-        if(this.snsu == null)return false;
-        if(company.getSNSUserStore().getSNSUserList().contains(this.snsu)) return false;
-        for (SNSUser other : company.getSNSUserStore().getSNSUserList()) {
-            if(other.getSNSNumber().equals(this.snsu.getSNSNumber()) || other.getCitizenCardNumber().equals(this.snsu.getCitizenCardNumber()) || other.getEmail().equals(this.snsu.getEmail()) || other.getPhoneNumber().equals(this.snsu.getPhoneNumber())){
-                return false;
-            }
-        }
-        return true;
-    }
-
 }

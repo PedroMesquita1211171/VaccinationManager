@@ -41,4 +41,23 @@ public class VaccineTypeStore {
         this.vaccineTypeList.add(vaccineType);
     }
 
+    /**
+     * Validates vaccine type boolean.
+     *
+     * @param vt the vt
+     * @return the boolean
+     */
+    public boolean validateVaccineType (VaccineType vt) {
+        if (vt == null) return false;
+        return !getVaccineTypeList().contains(vt);
+    }
+    /**
+     * Creates a new VaccineType Object.
+     *
+     * @return VaccineType Object
+     */
+    public VaccineType createVaccineType(String code, String designation, String whoId) {
+        return new VaccineType(code, designation, whoId);
+    }
+
 }

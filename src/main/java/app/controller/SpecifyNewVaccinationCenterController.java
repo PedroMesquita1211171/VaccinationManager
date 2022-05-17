@@ -56,13 +56,13 @@ public class SpecifyNewVaccinationCenterController {
     public boolean createHealthcareCenter(String address, String emailAddress, String phoneNumber, String faxNumber, String websiteAddress, String openingHours, String closingHours, int slotDuration, int maxVaccines, String coordinator,String ages,String ars) {
 
         try{
-            this.vac = new VaccinationCenter(address, emailAddress, phoneNumber, faxNumber, websiteAddress, openingHours, closingHours, slotDuration, maxVaccines, coordinator,ages,ars);
+            this.vac = this.company.getVaccinationCenterStore().createHealthcareCenter(address, emailAddress, phoneNumber, faxNumber, websiteAddress, openingHours, closingHours, slotDuration, maxVaccines, coordinator,ages,ars);
         }catch (IllegalArgumentException e){
             System.out.println(e.getMessage());
             return false;
         }
 
-        return validateVaccinationCenter();
+        return this.company.getVaccinationCenterStore().validateVaccinationCenter(this.vac);
     }
 
     /**
@@ -83,29 +83,22 @@ public class SpecifyNewVaccinationCenterController {
     public boolean createCommunityCenter(String address, String emailAddress, String phoneNumber, String faxNumber, String websiteAddress, String openingHours, String closingHours, int slotDuration, int maxVaccines, String coordinator) {
 
         try {
-            this.vac = new VaccinationCenter(address, emailAddress, phoneNumber, faxNumber, websiteAddress, openingHours, closingHours, slotDuration, maxVaccines, coordinator);
+            this.vac = this.company.getVaccinationCenterStore().createCommunityCenter(address, emailAddress, phoneNumber, faxNumber, websiteAddress, openingHours, closingHours, slotDuration, maxVaccines, coordinator);
         } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
             return false;
         }
 
-        return validateVaccinationCenter();
+        return this.company.getVaccinationCenterStore().validateVaccinationCenter(this.vac);
     }
 
-    /**
-     * Validates vaccination center boolean
-     * @return the boolean
-     */
-    public boolean validateVaccinationCenter () {
-        if (this.vac == null) return false;
-        return !company.getVaccinationCenterStore().getVaccinationCenterList().contains(this.vac);
-    }
+
 
     /**
      * Adds vaccination center.
      */
     public void addVaccinationCenter() {
-        this.company.addVaccinationCenter(vac);
+        this.company.getVaccinationCenterStore().addVaccinationCenter(vac);
     }
 
     /**

@@ -13,7 +13,7 @@ public class ReceptionistUI implements Runnable{
     @Override
     public void run() {
         List<MenuItem> options = new ArrayList<MenuItem>();
-        options.add(new MenuItem("Register a new SNS User/Client ", new SNSUserUI()));
+        options.add(new MenuItem("Register a new SNS User/Client ", new RegisterSNSUserUI()));
         options.add(new MenuItem("Option 2 ", new ShowTextUI("You Chose Option 2")));
 
 

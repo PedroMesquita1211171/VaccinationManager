@@ -38,31 +38,20 @@ public class SpecifyNewVaccineTypeController {
      */
     public boolean createVaccineType(String code, String designation, String whoId) {
         try{
-            this.vt = new VaccineType(code, designation, whoId);
+            this.vt = this.company.getVaccineTypeStore().createVaccineType(code, designation, whoId);
         }catch (IllegalArgumentException e){
             System.out.println(e.getMessage());
             return false;
         }
 
-        return validateVaccineType(vt);
-    }
-
-    /**
-     * Validates vaccine type boolean.
-     *
-     * @param vt the vt
-     * @return the boolean
-     */
-    public boolean validateVaccineType (VaccineType vt) {
-        if (vt == null) return false;
-        return !company.getVaccineTypeStore().getVaccineTypeList().contains(vt);
+        return this.company.getVaccineTypeStore().validateVaccineType(vt);
     }
 
     /**
      * Adds vaccine type.
      */
     public void addVaccineType() {
-        this.company.addVaccineType(vt);
+        this.company.getVaccineTypeStore().addVaccineType(vt);
     }
 
     /**

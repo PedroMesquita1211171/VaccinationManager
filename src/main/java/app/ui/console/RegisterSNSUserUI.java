@@ -1,6 +1,6 @@
 package app.ui.console;
 
-import app.controller.SpecifyNewSNSUserController;
+import app.controller.RegisterSNSUserController;
 import app.ui.console.utils.Utils;
 
 /**
@@ -8,15 +8,15 @@ import app.ui.console.utils.Utils;
  *
  * @author Henrique Pinto - 1211201
  */
-public class SNSUserUI implements Runnable{
+public class RegisterSNSUserUI implements Runnable{
 
     /**
      * Controller used to specify a new SNS user.
      */
-    private SpecifyNewSNSUserController ctrl;
+    private RegisterSNSUserController ctrl;
 
-    public SNSUserUI() {
-        ctrl = new SpecifyNewSNSUserController();
+    public RegisterSNSUserUI() {
+        ctrl = new RegisterSNSUserController();
     }
 
     /**
