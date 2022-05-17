@@ -48,22 +48,20 @@
 ### 1.5 Input and Output Data
 
 **Input data:**
-* Vaccination Center
+* Vaccination Center in which the nurse is working.
 
 **Output data:**
-* List of users in the waiting room of a vaccination center
+* List of users in the waiting room of a vaccination center.
 
 ### 1.6. System Sequence Diagram (SSD)
 
 *Insert here a SSD depicting the envisioned Actor-System interactions and throughout which data is inputted and outputted to fulfill the requirement. All interactions must be numbered.*
 
-![USXXX-SSD](USXXX-SSD.svg)
-
+![US005_SSD](US005_SSD.svg)
 
 ### 1.7 Other Relevant Remarks
 
-*Use this section to capture other relevant information that is related with this US such as (i) special requirements ; (ii) data and/or technology variations; (iii) how often this US is held.* 
-
+*n/a*
 
 ## 2. OO Analysis
 
