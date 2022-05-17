@@ -1,6 +1,10 @@
 package app.domain.model;
 
+import app.domain.shared.Constants;
+
+import java.lang.invoke.ConstantBootstraps;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.regex.Pattern;
 
 /**
@@ -17,11 +21,10 @@ public class SNSUser {
     private String gender;
     private String phoneNumber;
     private String email;
-    private String birthDate;
+    private Date birthDate;
     private String SNSNumber;
     private String citizenCardNumber;
 
-    private static final String GENDER_BY_DEFAULT = "UNDEFINED";
 
     /**
      * Instantiates a new SNSUser.
@@ -35,7 +38,7 @@ public class SNSUser {
      * @param SNSNumber         the sns number
      * @param citizenCardNumber the citizen card number
      */
-    public SNSUser(String name, String address, String genderOption, String phoneNumber, String email, String birthDate, String SNSNumber, String citizenCardNumber){
+    public SNSUser(String name, String address, String genderOption, String phoneNumber, String email, Date birthDate, String SNSNumber, String citizenCardNumber){
         checkNameRules(name);
         checkAddressRules(address);
         checkPhoneNumber(phoneNumber);
@@ -83,7 +86,7 @@ public class SNSUser {
         } else if (genderOption.equals("3")) {
             return "non-binary";
         } else {
-            return GENDER_BY_DEFAULT;
+            return Constants.GENDER_BY_DEFAULT;
         }
     }
 
@@ -185,7 +188,7 @@ public class SNSUser {
      *
      * @return the birth date
      */
-    public String getBirthDate() {
+    public Date getBirthDate() {
         return birthDate;
     }
 

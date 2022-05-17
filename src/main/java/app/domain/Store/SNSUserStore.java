@@ -5,6 +5,7 @@ import app.domain.model.SNSUser;
 import app.domain.shared.Constants;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -63,7 +64,7 @@ public class SNSUserStore {
      *
      * @return the SNSUser object created
      */
-    public SNSUser createSNSUser(String name, String address, String genderOption, String phoneNumber, String email, String birthDate, String SNSNumber, String citizenCardNumber) {
+    public SNSUser createSNSUser(String name, String address, String genderOption, String phoneNumber, String email, Date birthDate, String SNSNumber, String citizenCardNumber) {
         return new SNSUser(name, address, genderOption, phoneNumber, email, birthDate, SNSNumber, citizenCardNumber);
     }
 

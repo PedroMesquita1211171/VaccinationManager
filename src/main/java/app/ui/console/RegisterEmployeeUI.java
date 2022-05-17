@@ -1,22 +1,21 @@
 package app.ui.console;
 
 import app.controller.App;
-import app.controller.SpecifyNewEmployeeController;
+import app.controller.RegisterEmployeeController;
 import app.domain.shared.Constants;
 import app.ui.console.utils.Utils;
 import pt.isep.lei.esoft.auth.AuthFacade;
 
-public class
-RegisterEmployeeUi implements Runnable{
+public class RegisterEmployeeUI implements Runnable{
 
     /**
      * Controller used to specify a new employee.
      */
-    private SpecifyNewEmployeeController ctrl ;
+    private RegisterEmployeeController ctrl ;
     private final AuthFacade authFacade;
 
-    public RegisterEmployeeUi(){
-        ctrl= new SpecifyNewEmployeeController();
+    public RegisterEmployeeUI(){
+        ctrl= new RegisterEmployeeController();
         authFacade = App.getInstance().getCompany().getAuthFacade();
     }
 
@@ -47,6 +46,8 @@ RegisterEmployeeUi implements Runnable{
 
 
             if(ctrl.createEmployee(askName(), askEmail(),askAddress(),askPhoneNumber(),askCitizenCard(), role)){
+
+                System.out.println(ctrl.showEmployee());
 
                 String opt= SaveOrNot();
 

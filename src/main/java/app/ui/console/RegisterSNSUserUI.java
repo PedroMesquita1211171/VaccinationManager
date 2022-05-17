@@ -3,6 +3,8 @@ package app.ui.console;
 import app.controller.RegisterSNSUserController;
 import app.ui.console.utils.Utils;
 
+import java.util.Date;
+
 /**
  * UI used to specify a new SNS user.
  *
@@ -97,8 +99,8 @@ public class RegisterSNSUserUI implements Runnable{
      *
      * @return birthDate
      */
-    public String askBirthDate(){
-        return Utils.readLineFromConsole("Enter the birth date of the user: ");
+    public Date askBirthDate(){
+        return Utils.readDateFromConsole("Enter the birth date of the user: ");
     }
 
     /**

@@ -1,12 +1,12 @@
 package app.controller;
 
+import app.DTO.EmployeeDTO;
+import app.DTO.Mappers.EmployeeMapper;
 import app.domain.model.Company;
 import app.domain.model.Employee;
-import app.domain.model.VaccineType;
-import app.domain.shared.Constants;
 import app.ui.console.utils.Generators;
 
-public class SpecifyNewEmployeeController {
+public class RegisterEmployeeController {
 
 
     /**
@@ -20,11 +20,11 @@ public class SpecifyNewEmployeeController {
     /**
      * Constructors.
      */
-    public SpecifyNewEmployeeController() {
+    public RegisterEmployeeController() {
         this(App.getInstance().getCompany());
     }
 
-    public SpecifyNewEmployeeController(Company company) {
+    public RegisterEmployeeController(Company company) {
         this.company = company;
         this.emp = null;
     }
@@ -70,14 +70,17 @@ public class SpecifyNewEmployeeController {
         String password = Generators.generateRandomPassword();
         this.company.getEmployeeStore().addEmployee(this.emp);
         this.company.getAuthFacade().addUserWithRole(this.emp.getName(), this.emp.getEmail(),password, this.emp.getRole());
+
+        System.out.println("\nEmployee" +"\n" + "Name: " + this.emp.getName() + "\n" + "Email: " + this.emp.getEmail() + "\n" + "Password: " + password + "\n" + "Role: " + this.emp.getRole() + "\n" + "Employee ID: " + employeeID + "\n");
+
     }
 
     /**
-     * Shows employee object as a String.
+     * Shows employee object formated as a DTO.
      *
-     * @return employee as a String
+     * @return employee
      */
-    public String showEmployee() {
-        return this.emp.toString();
+    public EmployeeDTO showEmployee() {
+        return EmployeeMapper.toDTO(this.emp);
     }
 }

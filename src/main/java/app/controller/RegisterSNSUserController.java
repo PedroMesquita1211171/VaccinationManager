@@ -1,9 +1,15 @@
 package app.controller;
 
+import app.DTO.Mappers.SNSUserMapper;
+import app.DTO.SNSUserDTO;
 import app.domain.model.Company;
 import app.domain.model.SNSUser;
 import app.domain.shared.Constants;
 import app.ui.console.utils.Generators;
+import app.ui.console.utils.Utils;
+
+import java.text.ParseException;
+import java.util.Date;
 
 
 /**
@@ -46,11 +52,11 @@ public class RegisterSNSUserController {
      * @param citizenCardNumber the citizen card number
      * @return the boolean
      */
-    public boolean createSNSUser(String name, String address, String genderOption, String phoneNumber, String email, String birthDate, String SNSNumber, String citizenCardNumber){
+    public boolean createSNSUser(String name, String address, String genderOption, String phoneNumber, String email, Date birthDate, String SNSNumber, String citizenCardNumber){
         try{
             this.snsu = this.company.getSNSUserStore().createSNSUser(name, address, genderOption, phoneNumber, email, birthDate, SNSNumber, citizenCardNumber);
-        }catch(IllegalArgumentException iae){
-            System.out.println(iae.getMessage());
+        }catch(IllegalArgumentException e){
+            System.out.println(e.getMessage());
             return false;
         }
 
@@ -65,14 +71,16 @@ public class RegisterSNSUserController {
         String password = Generators.generateRandomPassword();
         this.company.getSNSUserStore().addSNSUser(snsu);
         this.company.getAuthFacade().addUserWithRole(snsu.getName(), snsu.getEmail(),password, Constants.ROLE_SNSUSER);
+
+        System.out.println("\nSNS User" +"\n" + "Name: " + snsu.getName() + "\n" + "Email: " + snsu.getEmail() + "\n" + "Password: " + password + "\n");
     }
 
     /**
      * Shows sns user function.
      *
-     * @return the SNSUser info in a string format
+     * @return the SNSUser info in a DTO Format
      */
-    public String showSNSUser(){
-        return this.snsu.toString();
+    public SNSUserDTO showSNSUser(){
+        return SNSUserMapper.toDTO(this.snsu);
     }
 }
