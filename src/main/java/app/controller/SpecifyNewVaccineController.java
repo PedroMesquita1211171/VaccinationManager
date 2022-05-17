@@ -41,30 +41,21 @@ public class SpecifyNewVaccineController {
      */
     public boolean createVaccine(String name, int id, String brand, int doses,int dosage, int recovery, int doseinterval) {
         try {
-            this.vaccine = new Vaccine(name, id,brand, doses,dosage, recovery, doseinterval);
+            this.vaccine = this.company.getVaccineStore().createVaccine(name, id, brand, doses, dosage, recovery, doseinterval);
         } catch (IllegalArgumentException e){
             System.out.println(e.getMessage());
             return false;
         }
-        return validateVaccine(vaccine);
+        return this.company.getVaccineStore().validateVaccine(vaccine);
     }
 
-    /**
-     * Validates the created vaccine.
-     *
-     * @param vaccine
-     * @return the boolean
-     */
-    public boolean validateVaccine (Vaccine vaccine){
-        if (vaccine == null) return false;
-        return !company.getVaccineTypeStore().getVaccineTypeList().contains(vaccine);
-    }
+
 
     /**
      * Adds vaccine.
      */
     public void addVaccine() {
-        this.company.addVaccine(vaccine);
+        this.company.getVaccineStore().addVaccine(vaccine);
     }
 
     /**

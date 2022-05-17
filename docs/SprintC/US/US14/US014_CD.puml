@@ -1,0 +1,54 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+hide empty members
+left to right direction
+
+
+class LoadSNSUserFromFileUI{
+}
+
+class LoadSNSUserFromFile{
++LoadOptionOne(File file)
++LoadOptionTwo(File file)
+}
+
+class Company {
+- designation
++ getSNSUserStore()
+}
+
+
+
+class RegisterSNSuserController {
++ createSNSUser(name,SNS number,birth date,citizen card number,sex,phone number,address,e-mail,password)
++ saveSNSUser()
+}
+
+class SNSUser {
+-name/username
+-address
+-gender
+-phoneNumber
+-email
+-birthDate
+-SNSNumber
+-citizenCardNumber
+}
+
+class SNSUserStore {
++ validateSNSUser(SNSUser snsu)
++ addSNSUser(newSnsUser)
+}
+
+class AuthFacade{
++ addUserWithRole(name,e-mail,pwd,"SNS USER")
+}
+
+LoadSNSUserFromFileUI ..> LoadSNSUserFromFile
+LoadSNSUserFromFile ..> RegisterSNSuserController
+RegisterSNSuserController ..> Company
+Company "1" --> "1" SNSUserStore: uses >
+SNSUserStore "1" --> "*" SNSUser: has >
+Company --> AuthFacade : registers SNSUsers into >
+@enduml

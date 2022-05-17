@@ -4,6 +4,7 @@ import app.domain.model.Company;
 import app.domain.model.Employee;
 import app.domain.model.VaccineType;
 import app.domain.shared.Constants;
+import app.ui.console.utils.Generators;
 
 public class SpecifyNewEmployeeController {
 
@@ -65,8 +66,10 @@ public class SpecifyNewEmployeeController {
      * Adds employee.
      */
     public void addEmployee() {
-        this.company.addEmployee(emp);
-
+        String employeeID = Generators.generateEmployeeID();
+        String password = Generators.generateRandomPassword();
+        this.company.getEmployeeStore().addEmployee(this.emp);
+        this.company.getAuthFacade().addUserWithRole(this.emp.getName(), this.emp.getEmail(),password, this.emp.getRole());
     }
 
     /**
