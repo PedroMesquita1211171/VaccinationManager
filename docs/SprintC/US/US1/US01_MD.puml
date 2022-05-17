@@ -1,0 +1,33 @@
+@startuml
+hide methods
+left to right direction
+skinparam classAttributeIconSize 0
+
+class User{
+-ID
+-phoneNumber
+-E-mail
+-Password
+}
+
+class VaccinationCenter{
+   - name
+   - address
+   - openingHours
+   - closingHours
+   - slotDuration
+   - maxVaccines
+}
+
+class Vaccine{
+  -vaccineName
+}
+
+
+
+
+User "1"--"*" VaccinationCenter : chooses >
+User "1"--"*" Vaccine : chooses >
+
+
+@enduml
