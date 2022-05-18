@@ -1,5 +1,6 @@
 package app.ui.console;
 
+import app.DTO.EmployeeDTO;
 import app.controller.ListEmployeesController;
 import app.domain.model.Employee;
 import app.domain.shared.Constants;
@@ -42,7 +43,7 @@ public class ListEmployeesUI implements Runnable{
                     System.out.println("\nReturning to Admin Menu...\n");
                     success = true;
                 }else{
-                    List<Employee> list = ctrl.redirectToList(opt);
+                    List<EmployeeDTO> list = ctrl.redirectToList(opt);
 
                     showList(list);
                     success = true;
@@ -61,8 +62,8 @@ public class ListEmployeesUI implements Runnable{
      *
      * @param list List of Employees to be shown.
      */
-    public void showList(List<Employee> list){
-        for (Employee e : list) {
+    public void showList(List<EmployeeDTO> list){
+        for (EmployeeDTO e : list) {
             System.out.println("\n"+e+"\n");
         }
     }

@@ -4,7 +4,6 @@ package app.ui.console.utils;
 import app.controller.RegisterSNSUserController;
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.sql.SQLOutput;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Scanner;

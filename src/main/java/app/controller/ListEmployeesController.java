@@ -1,5 +1,7 @@
 package app.controller;
 
+import app.DTO.EmployeeDTO;
+import app.DTO.Mappers.EmployeeMapper;
 import app.domain.model.Company;
 import app.domain.model.Employee;
 import app.domain.shared.Constants;
@@ -36,15 +38,15 @@ public class ListEmployeesController {
      * @param opt the option
      * @return the list
      */
-    public List<Employee> redirectToList(String opt){
+    public List<EmployeeDTO> redirectToList(String opt){
         if ("1".equals(opt)) {
-            return getReceptionistsList();
+            return EmployeeMapper.toDTOList(getReceptionistsList());
         } else if ("2".equals(opt)) {
-            return getNurseList();
+            return EmployeeMapper.toDTOList(getNurseList());
         } else if ("3".equals(opt)) {
-            return getCenterCoordinatorList();
+            return EmployeeMapper.toDTOList(getCenterCoordinatorList());
         } else if ("4".equals(opt)) {
-            return getAll();
+            return EmployeeMapper.toDTOList(getAll());
         } else {
             throw new IllegalArgumentException("Not a valid option!");
         }
