@@ -106,13 +106,13 @@ public class Vaccine {
     @Override
     public String toString() {
         return
-                "\n\nName: " + name + '\'' +
-                "ID: " + ID +
-                "Brand: " + brand + '\'' +
-                "Doses: " + doses +
-                "Dosage: " + dosage +
-                "Recovery: " + recovery +
-                "Dose Interval: " + doseinterval + "\n\n"
+                "\n\nName: " + name + "\n" +
+                "ID: " + ID + "\n" +
+                "Brand: " + brand + "\n" +
+                "Doses: " + doses + "\n" +
+                "Dosage: " + dosage + "\n" +
+                "Recovery: " + recovery + "\n" +
+                "Dose Interval: " + doseinterval + "\n"
                 ;
     }
 }
