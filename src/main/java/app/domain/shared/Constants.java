@@ -14,7 +14,7 @@ public class Constants {
     public final static String ARS_BY_DEFAULT = "Undefined";
     public final static String AGES_BY_DEFAULT = "Undefined";
 
-    public static final String GENDER_BY_DEFAULT = "UNDEFINED";
+    public static final String GENDER_BY_DEFAULT = "Other";
 
 
 

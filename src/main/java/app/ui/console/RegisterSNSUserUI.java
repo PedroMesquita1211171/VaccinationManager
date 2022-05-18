@@ -2,7 +2,6 @@ package app.ui.console;
 
 import app.controller.RegisterSNSUserController;
 import app.ui.console.utils.Utils;
-
 import java.util.Date;
 
 /**
@@ -17,6 +16,9 @@ public class RegisterSNSUserUI implements Runnable{
      */
     private RegisterSNSUserController ctrl;
 
+    /**
+     * Constructor.Used in order to instantiate the controller.
+     */
     public RegisterSNSUserUI() {
         ctrl = new RegisterSNSUserController();
     }
@@ -68,12 +70,7 @@ public class RegisterSNSUserUI implements Runnable{
      * @return gender
      */
     public String askgenderoption() {
-        System.out.println("\nChoose your gender.");
-        System.out.println("1. Male");
-        System.out.println("2. Female");
-        System.out.println("3. Non-binary");
-        System.out.println("other - I don't want to specify");
-        return Utils.readLineFromConsole("Select intended option: ");
+        return Utils.readLineFromConsole("Insert Gender(Male/Female/Non-Binary/None): ");
     }
 
     /**

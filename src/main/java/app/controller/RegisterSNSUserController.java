@@ -6,9 +6,6 @@ import app.domain.model.Company;
 import app.domain.model.SNSUser;
 import app.domain.shared.Constants;
 import app.ui.console.utils.Generators;
-import app.ui.console.utils.Utils;
-
-import java.text.ParseException;
 import java.util.Date;
 
 
@@ -27,13 +24,16 @@ public class RegisterSNSUserController {
 
 
     /**
-     *Constructors.
+     *Constructor.
      */
     public RegisterSNSUserController(){
         this(App.getInstance().getCompany());
     }
 
-
+    /**
+     * Constructor.
+     * @param company
+     */
     public RegisterSNSUserController(Company company) {
         this.company = company;
         this.snsu = null;
@@ -65,7 +65,7 @@ public class RegisterSNSUserController {
     }
 
     /**
-     * Saves sns user.
+     * Saves sns user into storage and authFacade.
      */
     public void saveSNSUser(){
         String password = Generators.generateRandomPassword();

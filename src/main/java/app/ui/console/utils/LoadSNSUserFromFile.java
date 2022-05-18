@@ -8,18 +8,38 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Scanner;
 
+
+/**
+ * Pure Fabrication created Class in order to load SNS users from specified file.
+ *
+ * @author Henrique Pinto - 1211201
+ */
 public class LoadSNSUserFromFile {
 
+    /**
+     * Controller used to register SNS users and Date parser.
+     */
     private RegisterSNSUserController ctrl;
+    /**
+     * The Format.
+     */
     SimpleDateFormat format;
 
+    /**
+     * Constructor. Initializes the controller and the date parser.
+     */
     public LoadSNSUserFromFile() {
         this.ctrl = new RegisterSNSUserController();
         this.format = new SimpleDateFormat("dd/MM/yyyy");
     }
 
 
-
+    /**
+     * Loads the file with a specific regex.
+     *
+     * @param file  the file to load
+     * @param regex the regex used in the file
+     */
     public void LoadOption(File file, String regex) {
         try {
             Scanner read = new Scanner(file);
@@ -42,6 +62,7 @@ public class LoadSNSUserFromFile {
                 }
 
             }
+            System.out.println("User(s) loaded successfully.");
         } catch (FileNotFoundException e) {
             System.out.println("\nFile is Invalid or not Accessible.\n");
         }catch (ParseException e) {

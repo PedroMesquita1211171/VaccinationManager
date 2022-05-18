@@ -45,10 +45,11 @@ public class SNSUser {
         checkEmail(email);
         checkCitizenCardNumber(citizenCardNumber);
         checkSNSNumber(SNSNumber);
+        checkGenderRules(genderOption);
 
         this.name = name;
         this.address = address;
-        this.gender = checkGenderRules(genderOption);
+        this.gender = genderOption;
         this.phoneNumber = phoneNumber;
         this.email = email;
         this.birthDate = birthDate;
@@ -57,9 +58,9 @@ public class SNSUser {
     }
 
     /**
+     * Check ame Rules
      *
-     * Checkers(used to verify if SNSUser's parameters are valid)
-     *
+     * @param name
      */
 
     private void checkNameRules(String name){
@@ -78,35 +79,37 @@ public class SNSUser {
         }
     }
 
-    private String checkGenderRules(String genderOption){
-        if (genderOption.equals("1")){
-            return "male";
-        } else if (genderOption.equals("2")) {
-            return "female";
-        } else if (genderOption.equals("3")) {
-            return "non-binary";
-        } else {
-            return Constants.GENDER_BY_DEFAULT;
+    /**
+     * Check gender rules
+     *
+     * @param genderOption
+     */
+    private void checkGenderRules(String genderOption){
+        if(!(genderOption.equalsIgnoreCase("male")||genderOption.equalsIgnoreCase("female")||genderOption.equalsIgnoreCase("non-binary")||genderOption.equalsIgnoreCase("none"))){
+            throw new IllegalArgumentException("Invalid Gender Option");
         }
     }
 
-    private void checkPhoneNumber2(String phoneNumber){
-        String phoneNumberRegex = "^[0-9]{8}$";
-        String phoneNumber8last = phoneNumber.substring(1);
-        System.out.println(phoneNumber8last);
-
-        Pattern pattern = Pattern.compile(phoneNumberRegex);
-        if(!pattern.matcher(phoneNumber8last).matches() && phoneNumber.charAt(0) != '9'){
-            throw new IllegalArgumentException("Invalid Phone Number");
-        }
-    }
-
+    /**
+     * Check if phoneNumber is valid
+     *
+     * @param phoneNumber
+     */
     private void checkPhoneNumber(String phoneNumber){
         if(phoneNumber.length() != 9 || phoneNumber.charAt(0) != '9'){
             throw new IllegalArgumentException("Invalid Phone Number");
         }
+        try{
+            Long.parseLong(phoneNumber);
+        }catch (NumberFormatException e){
+            throw new IllegalArgumentException("Invalid Phone Number");
+        }
     }
 
+    /**
+     * Check if SNSNumber is valid
+     * @param SNSNumber
+     */
     private void checkSNSNumber(String SNSNumber){
         String SNSNumberRegex = "^[0-9]{9}$";
 
@@ -117,6 +120,11 @@ public class SNSUser {
         }
     }
 
+    /**
+     * check if Email is valid
+     *
+     * @param email
+     */
     private void checkEmail(String email) {
         if (email == null || email.isEmpty()) {
             throw new IllegalArgumentException("Email Can't Be Null Or Empty!");
@@ -128,6 +136,10 @@ public class SNSUser {
         }
     }
 
+    /**
+     * Check if citizenCardNumber is valid
+     * @param citizenCardNumber
+     */
     private void checkCitizenCardNumber(String citizenCardNumber) {
         String citizenCardNumberRegex = "^[0-9]{8}$";
 

@@ -1,12 +1,13 @@
 package app.domain.Store;
 
-import app.domain.model.Company;
 import app.domain.model.SNSUser;
-import app.domain.shared.Constants;
-
+import java.io.File;
+import java.io.FileWriter;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  * @author Henrique Pinto - 1211201
@@ -66,6 +67,32 @@ public class SNSUserStore {
      */
     public SNSUser createSNSUser(String name, String address, String genderOption, String phoneNumber, String email, Date birthDate, String SNSNumber, String citizenCardNumber) {
         return new SNSUser(name, address, genderOption, phoneNumber, email, birthDate, SNSNumber, citizenCardNumber);
+    }
+    /**
+     * Used for US03
+     *
+     * @param userEmail email for login
+     * @param pwd       password for login
+     * @param role      assigned to work
+     * @return an email with the required information to login.
+     */
+    public boolean sendAccessDataViaEmail(String userEmail, String pwd, String role) {
+        String designation = "DGS/SNS";
+        if (userEmail == null || userEmail.isEmpty() || pwd == null || pwd.isEmpty() || role == null || role.isEmpty())
+            return false;
+
+        File emailFile = new File("emailAndSMSMessages.txt");
+
+        try (FileWriter writer = new FileWriter(emailFile, true)) {
+            writer.write(String.format("From: %s%nTo: %s%nMessage: Dear %s, your password to gain access to our system is %s%n" +
+                    "Message Type: Email%n%n", designation, userEmail, role, pwd));
+            System.out.print("All data has been sent to your email !\n");
+            return true;
+        } catch (Exception ex) {
+            Logger.getGlobal().log(Level.SEVERE, ex.getMessage());
+        }
+
+        return false;
     }
 
 }
