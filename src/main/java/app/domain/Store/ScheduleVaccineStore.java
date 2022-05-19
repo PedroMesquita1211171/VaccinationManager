@@ -1,6 +1,8 @@
 package app.domain.Store;
 
+import app.domain.model.SNSUser;
 import app.domain.model.ScheduleVaccine;
+import app.domain.model.VaccinationCenter;
 import app.domain.model.Vaccine;
 
 import java.util.ArrayList;
@@ -27,7 +29,7 @@ public class ScheduleVaccineStore {
         return !getVaccineList().contains(scheduleVaccine);
     }
 
-    public ScheduleVaccine createScheduleVaccine(String nameUser, String phoneNumber, String vaccinationCenter, String vaccine, String hour){
-        return new ScheduleVaccine(nameUser, phoneNumber, vaccinationCenter, vaccine, hour);
+    public ScheduleVaccine createScheduleVaccine(SNSUser user, VaccinationCenter v, Vaccine vaccine, String hour){
+        return new ScheduleVaccine(user, v, vaccine, hour);
     }
 }

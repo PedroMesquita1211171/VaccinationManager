@@ -1,10 +1,6 @@
 package app.domain.model;
 
-import app.domain.Store.EmployeeStore;
-import app.domain.Store.SNSUserStore;
-import app.domain.Store.VaccinationCenterStore;
-import app.domain.Store.VaccineTypeStore;
-import app.domain.Store.VaccineStore;
+import app.domain.Store.*;
 import app.domain.shared.Constants;
 import app.ui.console.utils.Generators;
 import pt.isep.lei.esoft.auth.AuthFacade;
@@ -30,6 +26,7 @@ public class Company {
     private SNSUserStore snsUserStore;
     private VaccinationCenterStore vaccinationCenterStore ;
     private VaccineStore vaccineStore;
+    private ScheduleVaccineStore scheduleVaccine;
 
     public Company(String designation)
     {
@@ -43,6 +40,7 @@ public class Company {
         this.snsUserStore = new SNSUserStore();
         this.vaccinationCenterStore = new VaccinationCenterStore();
         this.vaccineStore = new VaccineStore();
+        this.scheduleVaccine= new ScheduleVaccineStore();
     }
 
     public String getDesignation() {
@@ -69,6 +67,7 @@ public class Company {
 
     public VaccineStore getVaccineStore(){ return vaccineStore; }
 
+    public ScheduleVaccineStore getScheduleVaccineStore(){ return scheduleVaccine;}
 
 
 

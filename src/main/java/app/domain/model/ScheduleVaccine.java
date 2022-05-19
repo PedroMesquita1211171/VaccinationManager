@@ -1,28 +1,23 @@
 package app.domain.model;
-import app.DTO.SNSUserDTO;
-import app.domain.model.Vaccine;
-import app.domain.model.SNSUser;
-import app.domain.model.VaccinationCenter;
+
+
+
 
 public class ScheduleVaccine {
-    private String nameUser;
-    private String phoneNumber;
-    private String vaccinationCenter;
-    private String vaccine;
+
+
+    private SNSUser user;
+    private VaccinationCenter v;
+    private Vaccine vaccine;
     private String hour;
 
-    public ScheduleVaccine(String nameUser, String phoneNumber, String vaccinationCenter, String vaccine, String hour) {
+    public ScheduleVaccine(SNSUser user, VaccinationCenter v, Vaccine vaccine, String hour) {
 
-        this.nameUser = nameUser;
-        this.phoneNumber = phoneNumber;
-        this.vaccinationCenter = vaccinationCenter;
+        this.user = user;
+        this.v = v;
         this.vaccine = vaccine;
         this.hour = hour;
 
-    }
-
-     public String getNameUser() {
-        return nameUser;
     }
 
     /**
@@ -31,8 +26,8 @@ public class ScheduleVaccine {
      * @return the email
      */
 
-    public String getPhoneNumber() {
-        return phoneNumber;
+    public SNSUser getSnsUser() {
+        return user;
     }
 
     /**
@@ -41,8 +36,8 @@ public class ScheduleVaccine {
      * @return the address
      */
 
-    public String getVaccinationCenter() {
-        return vaccinationCenter;
+    public VaccinationCenter getVaccinationCenter() {
+        return v;
     }
 
     /**
@@ -51,7 +46,7 @@ public class ScheduleVaccine {
      * @return the phone number
      */
 
-    public String getVaccine() {
+    public Vaccine getVaccine() {
         return vaccine;
     }
 
