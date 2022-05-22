@@ -12,11 +12,12 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class SNSUserTest {
 
-    SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-    Date date = sdf.parse("01/01/2020");
+    SimpleDateFormat sdf;
+    Date date;
 
     SNSUserTest() throws ParseException {
-
+        sdf = new SimpleDateFormat("dd/MM/yyyy");
+        date = sdf.parse("01/01/2020");
     }
 
     @Test
@@ -81,6 +82,15 @@ class SNSUserTest {
             SNSUser user = new SNSUser("Example", "Rua x", "1", "912345678", "example@gmail.com", date, "123456789", "1010202");
         });
         assertEquals("Invalid Citizen Card Number", thrown6.getMessage());
+    }
+
+    @Test
+    void testBirthDate() {
+        //Invalid Birth Date testing
+        Throwable thrown = assertThrows(ParseException.class, () -> {
+            SNSUser user = new SNSUser("Henrique", "Rua x", "1", "912345678", "example@gmail.com", sdf.parse("sefgsefg"), "123456789", "10102020");
+        });
+        assertEquals(ParseException.class, thrown.getClass());
     }
 
 }

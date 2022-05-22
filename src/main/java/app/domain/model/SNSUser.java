@@ -58,7 +58,7 @@ public class SNSUser {
     }
 
     /**
-     * Check ame Rules
+     * Check name Rules
      *
      * @param name
      */

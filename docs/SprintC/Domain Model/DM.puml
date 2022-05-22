@@ -112,7 +112,6 @@ Vaccine "1"---"1" VaccineType : has a >
 Company "1"---"*" Admin : knows >
 SNSUser "*"---"1" Company : is client >
 Company "1"---"*" VaccineType : promotes administration >
-Company "1"---"*" VaccineType : promotes administration >
 Employee "*"---"1" User : is a >
 SNSUser "*"---"1" User : is a >
 

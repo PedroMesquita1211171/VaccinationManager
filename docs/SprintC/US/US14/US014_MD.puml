@@ -25,9 +25,16 @@ class Admin {
 -password
 }
 
+class User{
+-username
+-password
+-email
+}
+
 SNSUser "*"---"1" Company : is client >
 Company "1"---"*" Admin : knows >
 Admin "*"---"*" SNSUser : Loads a set through CSV file >
+SNSUser "*"---"1" User : is a >
 
 
 

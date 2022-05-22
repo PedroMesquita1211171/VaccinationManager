@@ -67,12 +67,17 @@ public class RegisterSNSUserController {
     /**
      * Saves sns user into storage and authFacade.
      */
-    public void saveSNSUser(){
+    public boolean saveSNSUser(){
         String password = Generators.generateRandomPassword();
-        this.company.getSNSUserStore().addSNSUser(snsu);
-        this.company.getAuthFacade().addUserWithRole(snsu.getName(), snsu.getEmail(),password, Constants.ROLE_SNSUSER);
 
-        System.out.println("\nSNS User" +"\n" + "Name: " + snsu.getName() + "\n" + "Email: " + snsu.getEmail() + "\n" + "Password: " + password + "\n");
+        boolean a =  this.company.getSNSUserStore().addSNSUser(snsu);
+        boolean b = this.company.getAuthFacade().addUserWithRole(snsu.getName(), snsu.getEmail(),password, Constants.ROLE_SNSUSER);
+
+        if(a && b){
+            System.out.println("\nSNS User" +"\n" + "Name: " + snsu.getName() + "\n" + "Email: " + snsu.getEmail() + "\n" + "Password: " + password + "\n");
+            return true;
+        }
+        return false;
     }
 
     /**

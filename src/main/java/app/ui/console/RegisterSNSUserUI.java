@@ -29,6 +29,7 @@ public class RegisterSNSUserUI implements Runnable{
 
     @Override
     public void run() {
+
         if (ctrl.createSNSUser(askname(), askaddress(), askgenderoption(), askPhoneNumber(), askEmail(), askBirthDate(), askSNSNumber(), askCCNumber())) {;
 
             System.out.println(ctrl.showSNSUser());
@@ -36,15 +37,22 @@ public class RegisterSNSUserUI implements Runnable{
             String opt = SaveOrNot();
 
              if(opt.equalsIgnoreCase("yes")){
-                 ctrl.saveSNSUser();
-                     System.out.println("SNS User saved successfully");
+
+                 if(ctrl.saveSNSUser()){
+                     System.out.println("SNS User saved successfully!");
+                 }else{
+                     System.out.println("SNS User not saved!");
+                 }
+
              }else if(opt.equalsIgnoreCase("no")){
                  System.out.println("SNS User not saved");
              }else{
                  System.out.println("\nInvalid option\nSNS User not saved");
              }
-         }
-         }
+
+          }
+
+    }
 
     /**
      * Asks name.

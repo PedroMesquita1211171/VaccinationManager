@@ -9,8 +9,7 @@ class LoadSNSUserFromFileUI{
 }
 
 class LoadSNSUserFromFile{
-+LoadOptionOne(File file)
-+LoadOptionTwo(File file)
++LoadOption(File file, String regex)
 }
 
 class Company {
@@ -20,15 +19,15 @@ class Company {
 
 
 
-class RegisterSNSuserController {
-+ createSNSUser(name,SNS number,birth date,citizen card number,sex,phone number,address,e-mail,password)
+class RegisterSNSUserController {
++ createSNSUser(name, address, sex, \n phoneNumber, email, birthDate, \n SNSNumber, citizenCardNumber)
 + saveSNSUser()
 }
 
 class SNSUser {
--name/username
+-name
 -address
--gender
+-sex
 -phoneNumber
 -email
 -birthDate
@@ -38,7 +37,8 @@ class SNSUser {
 
 class SNSUserStore {
 + validateSNSUser(SNSUser snsu)
-+ addSNSUser(newSnsUser)
++ addSNSUser(SNSUser snsu)
++ createSNSUser(name, address, sex, \n phoneNumber, email, birthDate, \n SNSNumber, citizenCardNumber)
 }
 
 class AuthFacade{
@@ -46,8 +46,8 @@ class AuthFacade{
 }
 
 LoadSNSUserFromFileUI ..> LoadSNSUserFromFile
-LoadSNSUserFromFile ..> RegisterSNSuserController
-RegisterSNSuserController ..> Company
+LoadSNSUserFromFile ..> RegisterSNSUserController
+RegisterSNSUserController ..> Company
 Company "1" --> "1" SNSUserStore: uses >
 SNSUserStore "1" --> "*" SNSUser: has >
 Company --> AuthFacade : registers SNSUsers into >

@@ -41,8 +41,12 @@ public class SNSUserStore {
      *
      * @param snsu the SNSUser
      */
-    public void addSNSUser(SNSUser snsu) {
-        this.snsUserList.add(snsu);
+    public boolean addSNSUser(SNSUser snsu) {
+        if(validateSNSUser(snsu)){
+            this.snsUserList.add(snsu);
+            return true;
+        }
+        return false;
     }
 
     /**

@@ -10,6 +10,10 @@ deactivate ":System"
 
 adm -> ":System" : types requested data
 activate ":System"
+":System" --> adm : shows the data and asks for confirmation(Y/N)
+deactivate ":System"
+adm -> ":System" : confirms data
+activate ":System"
 ":System" --> adm : requests File Path
 deactivate ":System"
 
@@ -18,7 +22,7 @@ activate ":System"
 ":System" --> adm : shows the data and asks for confirmation(Y/N)
 deactivate ":System"
 
-adm -> ":System" : types Y/N
+adm -> ":System" : confirms data
 activate ":System"
 ":System" --> adm : informs the (in)success of the operation
 deactivate ":System"
