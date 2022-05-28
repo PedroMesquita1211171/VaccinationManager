@@ -9,7 +9,10 @@ class LoadSNSUserFromFileUI{
 }
 
 class LoadSNSUserFromFile{
-+LoadOption(File file, String regex)
++addToList(File file, String regex)
++saveSNSUsers (List<SNSUser> snsUserList)
++validateFile(File file)
++checkfileextension(File file)
 }
 
 class Company {

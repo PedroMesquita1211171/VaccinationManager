@@ -31,10 +31,13 @@ class User{
 -email
 }
 
+note "Concept of the Auth component" as N1
+
 SNSUser "*"---"1" Company : is client >
 Company "1"---"*" Admin : knows >
 Admin "*"---"*" SNSUser : Loads a set through CSV file >
 SNSUser "*"---"1" User : is a >
+User .. N1
 
 
 

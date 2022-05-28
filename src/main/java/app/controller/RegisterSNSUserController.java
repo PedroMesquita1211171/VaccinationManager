@@ -88,4 +88,5 @@ public class RegisterSNSUserController {
     public SNSUserDTO showSNSUser(){
         return SNSUserMapper.toDTO(this.snsu);
     }
+
 }

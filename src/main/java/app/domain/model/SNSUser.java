@@ -223,12 +223,83 @@ public class SNSUser {
     }
 
     /**
+     * Sets name.
+     *
+     * @param name the name
+     */
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    /**
+     * Sets address.
+     *
+     * @param address the address
+     */
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    /**
+     * Sets gender.
+     *
+     * @param gender the gender
+     */
+    public void setGender(String gender) {
+        this.gender = gender;
+    }
+
+    /**
+     * Sets phone number.
+     *
+     * @param phoneNumber the phone number
+     */
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
+
+    /**
+     * Sets email.
+     *
+     * @param email the email
+     */
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    /**
+     * Sets birth date.
+     *
+     * @param birthDate the birth date
+     */
+    public void setBirthDate(Date birthDate) {
+        this.birthDate = birthDate;
+    }
+
+    /**
+     * Sets sns number.
+     *
+     * @param SNSNumber the sns number
+     */
+    public void setSNSNumber(String SNSNumber) {
+        this.SNSNumber = SNSNumber;
+    }
+
+    /**
+     * Sets citizen card number.
+     *
+     * @param citizenCardNumber the citizen card number
+     */
+    public void setCitizenCardNumber(String citizenCardNumber) {
+        this.citizenCardNumber = citizenCardNumber;
+    }
+
+    /**
      *
      * returns the SNSUser object as a string
      *
      * @return SNSUser
      */
-
     @Override
     public String toString() {
         return  "\nInfo: " + "\n" +

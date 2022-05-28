@@ -4,6 +4,7 @@ import app.ui.console.utils.LoadSNSUserFromFile;
 import app.ui.console.utils.Utils;
 
 import java.io.File;
+import java.text.ParseException;
 
 public class LoadSNSUsersUI implements Runnable {
 
@@ -18,29 +19,9 @@ public class LoadSNSUsersUI implements Runnable {
     public void run() {
 
         try{
-            String option, confirmation1, confirmation2;
-
-            do{
-
-                do{
-
-                    option = Utils.readLineFromConsole("What type of file do you want to load?\n1 - “;” separated(with header)\n2 - “,” separated\n");
-
-                    if(!(option.equals("1")||option.equals("2"))){
-                        System.out.println("\nInvalid option.\nTry again.");
-                        option = "invalid";
-                    }
+            String confirmation;
 
 
-                  }while(option.equals("invalid"));
-
-                    confirmation1 = Utils.readLineFromConsole("Is this the correct file type?(y/n)\n");
-
-                    if(!(confirmation1.equalsIgnoreCase("y")||confirmation1.equalsIgnoreCase("yes")||confirmation1.equalsIgnoreCase("n")||confirmation1.equalsIgnoreCase("no"))){
-                        throw new IllegalArgumentException("\nInvalid option in yes or no block.\nReturning to main menu.");
-                    }
-
-            }while(!(confirmation1.equalsIgnoreCase("y")||confirmation1.equalsIgnoreCase("yes")));
 
 
 
@@ -48,26 +29,22 @@ public class LoadSNSUsersUI implements Runnable {
 
                  String fileName = Utils.readLineFromConsole("Enter the file name/path: ");
 
-                 confirmation2 = Utils.readLineFromConsole("Is this the correct file type?(y/n)\n");
+                 confirmation = Utils.readLineFromConsole("Is this the correct file type?(y/n)\n");
 
-                 if(!(confirmation2.equalsIgnoreCase("y")||confirmation2.equalsIgnoreCase("yes")||confirmation2.equalsIgnoreCase("n")||confirmation2.equalsIgnoreCase("no"))){
+                 if(!(confirmation.equalsIgnoreCase("y")||confirmation.equalsIgnoreCase("yes")||confirmation.equalsIgnoreCase("n")||confirmation.equalsIgnoreCase("no"))){
                      throw new IllegalArgumentException("\nInvalid option in yes or no block.\nReturning to main menu.");
                  }
 
-                 if(confirmation2.equalsIgnoreCase("y")||confirmation2.equalsIgnoreCase("yes")){
+                 if(confirmation.equalsIgnoreCase("y")||confirmation.equalsIgnoreCase("yes")){
 
                      File file = new File(fileName);
                      String regex = "";
 
                      if(file.exists()){
-                         if(option.equals("1")){
-                             regex = ";";
-                             this.loadSNSUserFromFile.LoadOption(file, regex);
-
-                         }else if (option.equals("2")){
-                             regex = ",";
-                             this.loadSNSUserFromFile.LoadOption(file, regex);
-
+                         regex = loadSNSUserFromFile.validateFile(file);
+                         if((regex.equals(";")||regex.equals(","))){
+                             regex = loadSNSUserFromFile.validateFile(file);
+                             loadSNSUserFromFile.addToList(file, regex);
                          }
                      }
                      else{
@@ -78,10 +55,10 @@ public class LoadSNSUsersUI implements Runnable {
                  }
 
 
-               }while(!(confirmation2.equalsIgnoreCase("y")||confirmation2.equalsIgnoreCase("yes")));
+               }while(!(confirmation.equalsIgnoreCase("y")||confirmation.equalsIgnoreCase("yes")));
 
 
-        }catch(IllegalArgumentException e){
+        } catch(IllegalArgumentException e){
             System.out.println(e.getMessage());
         }
 

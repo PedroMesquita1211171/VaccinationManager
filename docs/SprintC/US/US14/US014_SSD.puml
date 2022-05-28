@@ -5,15 +5,6 @@ actor "Administrator" as adm
 activate adm
 adm -> ":System" : starts loading a set of Users through a CSV file
 activate ":System"
-":System" --> adm : requests data (CSV Regex(either "," or ";"))
-deactivate ":System"
-
-adm -> ":System" : types requested data
-activate ":System"
-":System" --> adm : shows the data and asks for confirmation(Y/N)
-deactivate ":System"
-adm -> ":System" : confirms data
-activate ":System"
 ":System" --> adm : requests File Path
 deactivate ":System"
 

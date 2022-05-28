@@ -32,7 +32,7 @@ public class Generators {
      */
     public static String generateRandomPassword()
     {
-        int len = (int) ((Math.random() * (20 - 8)) + 8);
+        int len = 7;
         // ASCII range – alphanumeric (0-9, a-z, A-Z)
         //special characters: !@#$%^&*
         final String chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*";
