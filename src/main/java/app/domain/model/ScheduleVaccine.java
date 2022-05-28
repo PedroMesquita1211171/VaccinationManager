@@ -1,7 +1,8 @@
 package app.domain.model;
 
 
-
+import javax.swing.*;
+import java.util.Objects;
 
 public class ScheduleVaccine {
 
@@ -9,55 +10,56 @@ public class ScheduleVaccine {
     private SNSUser user;
     private VaccinationCenter v;
     private Vaccine vaccine;
-    private String hour;
+    private String slot;
 
-    public ScheduleVaccine(SNSUser user, VaccinationCenter v, Vaccine vaccine, String hour) {
+    public ScheduleVaccine(SNSUser user, VaccinationCenter v, Vaccine vaccine, String slot) {
+        checkUser(user);
+        checkVaccinationCenter(v);
+        checkVaccine(vaccine);
 
         this.user = user;
         this.v = v;
         this.vaccine = vaccine;
-        this.hour = hour;
+        this.slot = slot;
 
     }
 
-    /**
-     * Gets employee email.
-     *
-     * @return the email
-     */
 
     public SNSUser getSnsUser() {
         return user;
     }
 
-    /**
-     * Gets employee address.
-     *
-     * @return the address
-     */
-
     public VaccinationCenter getVaccinationCenter() {
         return v;
     }
 
-    /**
-     * Gets employee phone number.
-     *
-     * @return the phone number
-     */
 
     public Vaccine getVaccine() {
         return vaccine;
     }
 
-    /**
-     * Gets employee citizen card number.
-     *
-     * @return the citizen card number
-     */
 
-    public String getHour() {
-        return hour;
+    public String getSlot() {
+        return slot;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof ScheduleVaccine)) return false;
+        ScheduleVaccine that = (ScheduleVaccine) o;
+        return Objects.equals(user, that.user) &&  Objects.equals(vaccine, that.vaccine);
+    }
+
+    public void checkUser(SNSUser user){
+
+    }
+
+    public void checkVaccinationCenter(VaccinationCenter v){
+
+    }
+
+    public void checkVaccine(Vaccine vaccine){
+
+    }
 }

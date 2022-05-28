@@ -1,16 +1,18 @@
 package app.ui.console;
 
-import app.controller.App;
-import app.controller.RegisterEmployeeController;
+import app.DTO.VaccinationCenterDTO;
+import app.DTO.VaccineDTO;
 import app.controller.UserScheduleVaccineController;
-import app.domain.model.ScheduleVaccine;
+import app.domain.model.SNSUser;
+import app.domain.model.VaccinationCenter;
+import app.domain.model.Vaccine;
 import app.ui.console.utils.Utils;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class UserScheduleVaccineUI implements Runnable{
     private UserScheduleVaccineController ctrl;
+
 
     public UserScheduleVaccineUI(){
         ctrl = new UserScheduleVaccineController();
@@ -18,7 +20,7 @@ public class UserScheduleVaccineUI implements Runnable{
     @Override
     public void run() {
 
-        if (ctrl.createSchedule(askAddress(),askVaccine(),askHour())){
+        if (ctrl.createSchedule(ctrl.userLogin(),askVacCenter(),askVaccine(),askSlot())){
             String opt= SaveOrNot();
 
             if(opt.equalsIgnoreCase("yes")){
@@ -33,11 +35,21 @@ public class UserScheduleVaccineUI implements Runnable{
         }
     }
 
-    public String askAddress(){return Utils.readLineFromConsole("Insert vaccination center address");}
 
-    public String askVaccine(){return Utils.readLineFromConsole("Insert vacccine name:");}
 
-    public String askHour(){return Utils.readLineFromConsole("Insert hour of vaccine admnisitration:");}
+    public VaccinationCenterDTO askVacCenter(){
+        List<VaccinationCenterDTO> vacCenters = this.ctrl.showVacCenter();
+        return (VaccinationCenterDTO) Utils.showAndSelectOne(vacCenters, "Choose a vaccination center.");
+    }
+
+    public VaccineDTO askVaccine(){
+        List<VaccineDTO> vaccine = this.ctrl.showVaccine();
+        return (VaccineDTO) Utils.showAndSelectOne(vaccine, "Choose a vaccine.");
+    }
+
+    public String askSlot(){
+        return "a";//Utils.showAndSelectOne(,"Choose a time slot to be Vaccinated.");
+    }
 
     public String SaveOrNot(){
         String opt;
@@ -49,4 +61,8 @@ public class UserScheduleVaccineUI implements Runnable{
         }
 
     }
+
+
+
+
 }

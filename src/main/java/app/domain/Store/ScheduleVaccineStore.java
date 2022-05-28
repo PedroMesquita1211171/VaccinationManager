@@ -1,5 +1,7 @@
 package app.domain.Store;
 
+import app.DTO.VaccinationCenterDTO;
+import app.DTO.VaccineDTO;
 import app.domain.model.SNSUser;
 import app.domain.model.ScheduleVaccine;
 import app.domain.model.VaccinationCenter;
@@ -32,4 +34,5 @@ public class ScheduleVaccineStore {
     public ScheduleVaccine createScheduleVaccine(SNSUser user, VaccinationCenter v, Vaccine vaccine, String hour){
         return new ScheduleVaccine(user, v, vaccine, hour);
     }
+
 }

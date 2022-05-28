@@ -98,6 +98,34 @@ public class Vaccine {
             throw new IllegalArgumentException("Dose interval days must be greater than 0");
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public int getID() {
+        return ID;
+    }
+
+    public String getBrand() {
+        return brand;
+    }
+
+    public int getDoses() {
+        return doses;
+    }
+
+    public int getDosage() {
+        return dosage;
+    }
+
+    public int getRecovery() {
+        return recovery;
+    }
+
+    public int getDoseInterval() {
+        return doseinterval;
+    }
+
     /**
      * returns the vaccine data as a string.
      *

@@ -5,6 +5,7 @@ import app.domain.shared.Constants;
 import app.ui.console.utils.Generators;
 import pt.isep.lei.esoft.auth.AuthFacade;
 import org.apache.commons.lang3.StringUtils;
+import pt.isep.lei.esoft.auth.UserSession;
 
 import java.io.FileWriter;
 import java.io.IOException;
@@ -68,6 +69,7 @@ public class Company {
     public VaccineStore getVaccineStore(){ return vaccineStore; }
 
     public ScheduleVaccineStore getScheduleVaccineStore(){ return scheduleVaccine;}
+
 
 
 

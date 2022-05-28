@@ -98,5 +98,8 @@ public class SNSUserStore {
 
         return false;
     }
+    /**
+     * Check If User is Logged in.
+     */
 
 }
