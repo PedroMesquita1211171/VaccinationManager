@@ -1,11 +1,45 @@
 -@startuml
-'https://plantuml.com/sequence-diagram
+hide methods
+left to right direction
+skinparam classAttributeIconSize 0
 
-autonumber
 
-Alice -> Bob: Authentication Request
-Bob --> Alice: Authentication Response
+class Company {
+  -designation
+}
 
-Alice -> Bob: Another authentication Request
-Alice <-- Bob: another authentication Response
+class Receptionist {
+  -username
+  -password
+}
+
+class SNSUser {
+  -phoneNumber
+  -email
+  -birthDate
+  -SNSNumber
+  -citizenCardNumber
+}
+
+class ScheduleVaccine{
+- userNumberSNS
+- vaccinationCenter
+- date
+- time
+- typeOfVaccine
+}
+class Employee {
+-name
+    -email
+    -address
+    -phoneNumber
+    -citizenCardNumber
+    -role
+    }
+SNSUser "*"---"1" Company : is client >
+Company "1"---"*" Receptionist : knows >
+ScheduleVaccine "1"---"*" SNSUser : for >
+Receptionist "1"---"*" ScheduleVaccine : schedules >
+Receptionist "1"---"*" Employee : is a >
+
 @enduml

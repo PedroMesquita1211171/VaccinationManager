@@ -28,9 +28,21 @@ class Admin{
 -email
 -password
 }
-class HealthCareCenter{}
-class ARS{}
-class AGES{}
+class HealthCareCenter{
+- name
+  - address
+  - emailAddress
+  - phoneNumber
+  - faxNumber
+  - websiteAddress
+  - openingHours
+  - closingHours
+  - slotDuration
+  - maxVaccines
+  - coordinator
+  - ages
+  - ars
+  }
 class VaccinationCenter{
   - name
   - address
@@ -51,7 +63,6 @@ class ScheduleVaccine{
 - time
 - typeOfVaccine
 }
-class DGS{}
 class Nurse{}
 class CovidDigitalCertificate{}
 class Receptionist{}
@@ -102,9 +113,8 @@ Receptionist "*"---"1" Employee : is a >
 Nurse "*"---"1" Employee : is a >
 CenterCoordinator "*"---"1" Employee : is a >
 Vaccine "1"---"1" AdministrationProcess : has a >
-SNSUser "1"---"1" Vaccine : schedules >
 Receptionist "*"---"1" VaccinationCenter : works at >
-Receptionist "*"---"1" Vaccine : schedules >
+Receptionist "*"---"1" ScheduleVaccine : does >
 Receptionist "*"---"*" SNSUser: registers arrival >
 Nurse "*"---"*" SNSUser : consults list of users present in the waiting room >
 Admin "*"---"*" SNSUser : Loads a set through CSV file >
@@ -114,5 +124,8 @@ SNSUser "*"---"1" Company : is client >
 Company "1"---"*" VaccineType : promotes administration >
 Employee "*"---"1" User : is a >
 SNSUser "*"---"1" User : is a >
-
+SNSUser "*"---"1" Company : is client >
+Company "1"---"*" Receptionist : knows >
+ScheduleVaccine "1"---"*" SNSUser : for >
+Receptionist "1"---"*" ScheduleVaccine : schedules >
 @enduml
