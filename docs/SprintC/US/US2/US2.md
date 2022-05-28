@@ -62,8 +62,6 @@ When the user is at the vaccination center to take the vaccine, the nurse select
 
 | Interaction ID | Question: Which class is responsible for...                                    | Answer               | Justification (with patterns)                                                    |
 |:-------------  |:-------------------------------------------------------------------------------|:---------------------|:---------------------------------------------------------------------------------|
-| Step 1  		 | 	requesting the SNS user number?					                                          | ScheduleVaccineUI    | Pure Fabrication                                                                 |
-| Step 2  		 | 	Validating if the SNS user number is associated to a registered SNS User?				 | ScheduleVaccineStore | Information Expert (knows its requirements)                                      |
 | Step 3  		 | 	requesting the data for scheduling?						                                     | ScheduleVaccineUI    | Pure Fabrication                                                                 |
 | Step 4  		 | 	Validating the scheduling of a vaccine?							                                | ScheduleVaccine      | Information Expert (knows its requirements)                                      |
 | Step 5  		 | 	Validating the data globally?(duplicates)						                               | ScheduleVaccineStore | Information Expert(knows all the ScheduleVaccine Objects).                       |

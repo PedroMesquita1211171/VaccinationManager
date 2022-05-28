@@ -1,22 +1,41 @@
 @startuml
-'https://plantuml.com/use-case-diagram
+'https://plantuml.com/class-diagram
 
-:Main Admin: as Admin
-(Use the application) as (Use)
+hide empty members
+left to right direction
 
-User -> (Start)
-User --> (Use)
+class ScheduleVaccineStore {
 
-Admin ---> (Use)
++ validateScheduleVaccine(ScheduleVaccine schd)
++ addScheduleVaccine(ScheduleVaccine schd)
++ createScheduleVaccine(SNSNumber, VaccinationCenter, date, time, typeofvaccine)
+}
 
-note right of Admin : This is an example.
+class ScheduleVaccineUI{
+}
 
-note right of (Use)
-A note can also
-be on several lines
-end note
+class ScheduleVaccineController{
++ createScheduleVaccine(SNSNumber, VaccinationCenter, date, time, typeofvaccine)
++ saveScheduleVaccine ()
+}
 
-note "This note is connected\nto several objects." as N2
-(Start) .. N2
-N2 .. (Use)
+class ScheduleVaccine{
+-SNSNumber
+-VaccinationCenter
+-date
+-time
+-typeofvaccine
+}
+
+class Company {
+- designation
++ getSNSUserStore()
+}
+
+ScheduleVaccineUI ..> ScheduleVaccineController
+ScheduleVaccineController ..> ScheduleVaccine
+ScheduleVaccine ..> Company
+Company "1" --> "1" ScheduleVaccineStore: uses >
+ScheduleVaccineStore "1" --> "*" ScheduleVaccine: has >
+
 @enduml

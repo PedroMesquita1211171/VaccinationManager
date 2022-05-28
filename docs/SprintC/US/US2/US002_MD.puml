@@ -22,7 +22,7 @@ class SNSUser {
 }
 
 class ScheduleVaccine{
-- userNumberSNS
+- SNSNumber
 - vaccinationCenter
 - date
 - time

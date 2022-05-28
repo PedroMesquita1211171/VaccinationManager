@@ -7,17 +7,8 @@ actor "Receptionist" as USER
 activate USER
 USER -> ":System" : starts vaccine scheduling
 activate ":System"
-":System" --> USER :  requests data (SNS user number)
-deactivate ":System"
 
-USER -> ":System" : types requested data
-activate ":System"
-":System" --> USER : shows the data and requests a confirmation
-deactivate ":System"
-
-USER -> ":System" : confirms the data
-activate ":System"
-":System" --> USER : requests data (Vaccination center, Hour of vaccination, Type of Vaccine, Phone number)
+":System" --> USER : requests data (SNS user number, Vaccination center, Hour of vaccination, Type of Vaccine, Phone number)
 deactivate ":System"
 USER -> ":System" : types requested data
 activate ":System"
