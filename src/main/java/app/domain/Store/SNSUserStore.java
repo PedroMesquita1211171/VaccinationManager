@@ -59,7 +59,7 @@ public class SNSUserStore {
         if(getSNSUserList().contains(snsu)) return false;
         for (SNSUser other : getSNSUserList()) {
             if(other.getSNSNumber().equals(snsu.getSNSNumber()) || other.getCitizenCardNumber().equals(snsu.getCitizenCardNumber()) || other.getEmail().equals(snsu.getEmail()) || other.getPhoneNumber().equals(snsu.getPhoneNumber())){
-                throw new IllegalArgumentException("SNS User already exists.\nInterrupting saving process.");
+                return false;
             }
         }
         return true;

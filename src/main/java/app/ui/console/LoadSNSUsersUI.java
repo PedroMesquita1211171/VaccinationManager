@@ -1,10 +1,12 @@
 package app.ui.console;
 
+import app.domain.model.SNSUser;
 import app.ui.console.utils.LoadSNSUserFromFile;
 import app.ui.console.utils.Utils;
 
 import java.io.File;
 import java.text.ParseException;
+import java.util.List;
 
 public class LoadSNSUsersUI implements Runnable {
 
@@ -43,8 +45,13 @@ public class LoadSNSUsersUI implements Runnable {
                      if(file.exists()){
                          regex = loadSNSUserFromFile.validateFile(file);
                          if((regex.equals(";")||regex.equals(","))){
-                             regex = loadSNSUserFromFile.validateFile(file);
-                             loadSNSUserFromFile.addToList(file, regex);
+
+                           List<SNSUser> snsuTempList = loadSNSUserFromFile.addToList(file, regex);
+
+                           if(snsuTempList != null){
+                               loadSNSUserFromFile.saveSNSUsers(snsuTempList);
+                           }
+
                          }
                      }
                      else{
@@ -60,6 +67,7 @@ public class LoadSNSUsersUI implements Runnable {
 
         } catch(IllegalArgumentException e){
             System.out.println(e.getMessage());
+            System.out.println("Interrupting saving process.\n");
         }
 
 

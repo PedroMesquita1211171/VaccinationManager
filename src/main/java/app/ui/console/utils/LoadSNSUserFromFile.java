@@ -50,7 +50,7 @@ public class LoadSNSUserFromFile {
      * @param file  the file to load
      * @param regex the regex used in the file
      */
-    public void addToList(File file, String regex) {
+    public List<SNSUser> addToList(File file, String regex) {
         try {
             Scanner read = new Scanner(file);
 
@@ -58,38 +58,34 @@ public class LoadSNSUserFromFile {
                 String description = read.nextLine();
             }
 
-
+            try {
             while (read.hasNextLine()) {
                 String[] split = read.nextLine().split(regex);
-                try {
+
                     if(split.length == 8) {
 
                             //Name, Address, Sex, Phone Number, E-mail, Birth Date, SNS User Number and Citizen Card Number
-                            if(ctrl.createSNSUser(split[0],split[1],split[2],split[3],split[4],format.parse(split[5]),split[6],split[7])){
+                           //Name0;Sex1;Birth Date2;Address3;Phone Number4;E-mail5;SNS User Number6;Citizen Card Number7
+                            snsUserList.add(new SNSUser(split[0],split[3],split[1],split[4],split[5],format.parse(split[2]),split[6],split[7]));
 
-                                snsUserList.add(new SNSUser(split[0],split[1],split[2],split[3],split[4],format.parse(split[5]),split[6],split[7]));
-
-                            }else{
-                                throw new IllegalArgumentException("User was not saved due to having invalid data.\nInterrupting saving process.\n");
-                            }
                     } else{
                         throw new IllegalArgumentException("Invalid file format.\nInterrupting saving process.\n");
                     }
-                }catch (ParseException e) {
-                    throw new IllegalArgumentException("User was not saved due to having invalid data.\nInterrupting saving process.\n");
 
-                }
 
 
             }
-
-            saveSNSUsers(snsUserList);
+            return snsUserList;
+                 }catch (ParseException e) {
+                    throw new IllegalArgumentException("User was not saved due to having invalid data.\nInterrupting saving process.\n");
+            }
 
         } catch (FileNotFoundException e) {
             System.out.println("\nFile is Invalid or not Accessible.\n");
         }catch(IllegalArgumentException e) {
             System.out.println(e.getMessage());
         }
+        return null;
     }
 
     /**

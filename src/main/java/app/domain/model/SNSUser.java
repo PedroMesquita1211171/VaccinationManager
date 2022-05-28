@@ -64,8 +64,10 @@ public class SNSUser {
      */
 
     private void checkNameRules(String name){
-        if(name.length() < 3 || name.length() > 20){
+        if(name.length() < 3 ){
             throw new IllegalArgumentException("Name is too short");
+        }else if(name.length() > 100){
+            throw new IllegalArgumentException("Name is too long");
         }
     }
 
