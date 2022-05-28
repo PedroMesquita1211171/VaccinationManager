@@ -23,10 +23,11 @@ When the user is at the vaccination center to take the vaccine, the nurse select
 ### 1.5 Input and Output Data
 **Input Data:**
 * Typed Data:
-    * SNS User ID/E-mail
+    * SNS User number
     * Vaccination center
     * Type of vaccine
-    * Time of vaccination
+    * Hour of vaccination
+    * Phone number
 
 * Selected Data: Phone number, E-mail and Password (all already associated to a registered user)
 
@@ -59,43 +60,39 @@ When the user is at the vaccination center to take the vaccine, the nurse select
 
 **The rationale grounds on the SSD interactions and the identified input/output data.**
 
-| Interaction ID | Question: Which class is responsible for... | Answer  | Justification (with patterns)  |
-|:-------------  |:--------------------- |:------------|:---------------------------- |
-| Step 1  		 | 						 |             |                              |
-| Step 2  		 |							 |             |                              |
-| Step 3  		 |							 |             |                              |
-| Step 4  		 |							 |             |                              |
-| Step 5  		 |							 |             |                              |
-| Step 6  		 |							 |             |                              |              
-| Step 7  		 |							 |             |                              |
-| Step 8  		 |							 |             |                              |
-| Step 9  		 |							 |             |                              |
-| Step 10  		 |							 |             |                              |  
-
+| Interaction ID | Question: Which class is responsible for...                                    | Answer               | Justification (with patterns)                                                    |
+|:-------------  |:-------------------------------------------------------------------------------|:---------------------|:---------------------------------------------------------------------------------|
+| Step 1  		 | 	requesting the SNS user number?					                                          | ScheduleVaccineUI    | Pure Fabrication                                                                 |
+| Step 2  		 | 	Validating if the SNS user number is associated to a registered SNS User?				 | ScheduleVaccineStore | Information Expert (knows its requirements)                                      |
+| Step 3  		 | 	requesting the data for scheduling?						                                     | ScheduleVaccineUI    | Pure Fabrication                                                                 |
+| Step 4  		 | 	Validating the scheduling of a vaccine?							                                | ScheduleVaccine      | Information Expert (knows its requirements)                                      |
+| Step 5  		 | 	Validating the data globally?(duplicates)						                               | ScheduleVaccineStore | Information Expert(knows all the ScheduleVaccine Objects).                       |
+| Step 6  		 | 	Saving the scheduling of a vaccine?						                                     | ScheduleVaccineStore | Information Expert(in charge of managing/recording all ScheduleVaccine Objects). |              
+| Step 7  		 | 	Informing operation sucess?						                                             | ScheduleVaccineUI    | Information Expert(responsible for user interaction)                             |
 
 ### Systematization ##
 
 According to the taken rationale, the conceptual classes promoted to software classes are: 
 
- * Class1
- * Class2
- * Class3
+ * Company
+ * ScheduleVaccine
 
 Other software classes (i.e. Pure Fabrication) identified: 
- * xxxxUI  
- * xxxxController
+ * ScheduleVaccineUI  (Pure Fabrication)
+ * ScheduleVaccineController (Controller)
+ * ScheduleVaccineStore (Information Expert)
 
 ## 3.2. Sequence Diagram (SD)
 
 *In this section, it is suggested to present an UML dynamic view stating the sequence of domain related software objects' interactions that allows to fulfill the requirement.* 
 
-![USXXX-SD](USXXX-SD.svg)
+![US002_SD](US002_SD.svg)
 
 ## 3.3. Class Diagram (CD)
 
 *In this section, it is suggested to present an UML static view representing the main domain related software classes that are involved in fulfilling the requirement as well as and their relations, attributes and methods.*
 
-![USXXX-CD](USXXX-CD.svg)
+![US002_CD](US002_CD.svg)
 
 # 4. Tests 
 *In this section, it is suggested to systematize how the tests were designed to allow a correct measurement of requirements fulfilling.* 
