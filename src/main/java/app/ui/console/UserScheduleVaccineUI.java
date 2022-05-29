@@ -33,7 +33,7 @@ public class UserScheduleVaccineUI implements Runnable{
         try{
             SNSUser user = ctrl.userLogin();
 
-                        String snsUserNumber = user.getCitizenCardNumber();
+
 
                             System.out.println("");
 

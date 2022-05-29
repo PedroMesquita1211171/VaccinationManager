@@ -1,11 +1,40 @@
 @startuml
 'https://plantuml.com/sequence-diagram
 
-autonumber
+hide empty members
+left to right direction
 
-Alice -> Bob: Authentication Request
-Bob --> Alice: Authentication Response
+class ScheduleVaccineStore {
 
-Alice -> Bob: Another authentication Request
-Alice <-- Bob: another authentication Response
++ validateScheduleVaccine(ScheduleVaccine schd)
++ addScheduleVaccine(ScheduleVaccine schd)
++ createScheduleVaccine(SNSNumber, VaccinationCenter address, date, typeofvaccine)
+}
+
+class ScheduleVaccineUI{
+}
+
+class ScheduleVaccineController{
++ createScheduleVaccine(SNSNumber, VaccinationCenter address, date, typeofvaccine)
++ saveScheduleVaccine ()
+}
+
+class ScheduleVaccine{
+-SNSNumber
+-VaccinationCenter address
+-date
+-typeofvaccine
+}
+
+class Company {
+- designation
++ getSNSUserStore()
+}
+
+ScheduleVaccineUI ..> ScheduleVaccineController
+ScheduleVaccineController ..> ScheduleVaccine
+ScheduleVaccine ..> Company
+Company "1" --> "1" ScheduleVaccineStore: uses >
+ScheduleVaccineStore "1" --> "*" ScheduleVaccine: has >
+
 @enduml

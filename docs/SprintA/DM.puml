@@ -1,4 +1,4 @@
-startuml
+@startuml
 skinparam classAttributeIconSize 0
 hide methods
 
@@ -9,6 +9,14 @@ class Nurse{
 }
 
 class SNSUser{
+- name
+ - email
+ - address
+ - phoneNumber
+ - gender
+ - birthDate
+ - SNSNumber
+ - citizenCardNumber
 }
 
 class Receptionist{
@@ -32,18 +40,20 @@ class EmailMessage {
 }
 
 class Vaccine {
-- vaccineName
-- lot
+- name
+ - id
+ -  brand
+ -  numDoses
+ -  dosage
+ -  recoveryPeriod
+ -  doseInterval
+ -  typeCode
 }
 
 class VaccineType {
 - ageGroup
 - dose
 - vaccineDosage
-}
-
-class VaccineTime {
-- timeBetweenDose
 }
 
 class CheckCenterCapacity {
@@ -88,11 +98,16 @@ class HealthCareCenter {
     -AGES
     -ARS
   }
+class Employee {
+     -name
+     -email
+     -address
+     -phoneNumber
+     -citizenCardNumber
+     -role
+}
 
-
-Administrator "*"---"*" Nurse : registers >
-Administrator "*"---"*" CenterCoordinator : registers >
-Administrator "*"---"*" Receptionist : registers >
+Administrator "*"---"*" Employee: registers >
 Administrator "*"---"*" SNSUser : registers >
 Administrator "*"---"*" VaccinationCenter : registers >
 Administrator "*"---"*" HealthCareCenter : registers >
@@ -104,11 +119,15 @@ SNSUser "*"---"1" Company : is client >
 
 Nurse "*"---"*" Vaccine : administrates >
 Nurse "*"---"1" VaccinationCenter : works at >
+Nurse "*"---"*" Employee: is >
 
 Receptionist "*"---"*" SNSUser : gives info >
 Receptionist "*"---"1" VaccinationCenter : works at >
+Receptionist "*"---"*" Employee: is >
 
 CenterCoordinator "*"--"1" Company : works for >
+CenterCoordinator "*"---"*" Employee: is >
+
 Vaccine "1"--"1" VaccineType : is of >
 Vaccine "*"--"1" VaccineTime : has >
 

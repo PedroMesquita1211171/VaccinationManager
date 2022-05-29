@@ -20,19 +20,26 @@ deactivate ":System"
 
 USER -> ":System" : starts vaccine scheduling
 activate ":System"
-":System" --> USER :  requests data (Vaccination center, Hour of vaccination, Type of Vaccine, Phone number)
+":System" --> USER : asks to select a vaccination center from a given list
 deactivate ":System"
 
-USER -> ":System" : types requested data
+USER -> ":System" :  selects a vaccination center
 activate ":System"
-":System" --> USER : shows the data and requests a confirmation
+":System" --> USER : asks to select a vaccine from a given vaccine list
 deactivate ":System"
 
-USER -> ":System" : confirms the data
+USER -> ":System" :  selects a vaccine
 activate ":System"
-":System" --> USER : informs operation success
+":System" --> USER : asks to enter the date to schedule a vaccine (date)
 deactivate ":System"
 
+USER -> ":System" : inserts the requested data
+activate ":System"
+":System"--> USER : shows the schedule and asks to confirm it
+deactivate ":System"
 
-deactivate USER
+USER -> ":System" : confirms the shown information
+activate ":System"
+":System" --> USER : informs sucess of the operation and the scheduled date(s)
+deactivate ":System"
 @enduml

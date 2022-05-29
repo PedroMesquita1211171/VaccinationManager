@@ -8,9 +8,9 @@ class Company {
   -designation
 }
 
-class Receptionist {
-  -username
-  -password
+class Receptionist{
+    -username
+    -password
 }
 
 class SNSUser {
@@ -29,15 +29,18 @@ class ScheduleVaccine{
 }
 class VaccinationCenter{
 -address
+-slotDuration
+-maxVaccines
 }
 class Employee {
--name
-    -email
-    -address
-    -phoneNumber
-    -citizenCardNumber
-    -role
-    }
+     -name
+     -email
+     -address
+     -phoneNumber
+     -citizenCardNumber
+     -role
+}
+
 SNSUser "*"---"1" Company : is client >
 Company "1"---"*" Receptionist : knows >
 ScheduleVaccine "1"---"*" SNSUser : for >
