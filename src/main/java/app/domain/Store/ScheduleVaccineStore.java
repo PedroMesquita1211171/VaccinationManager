@@ -49,7 +49,7 @@ public class ScheduleVaccineStore {
     }
 
     private Date addMinutesToScheduledHour(Date scheduleHour, String slotDuration, String maxVaccinesPerSlot) {
-        DateFormat hourFormat = new SimpleDateFormat("HH:mm:ss");
+        DateFormat hourFormat = new SimpleDateFormat("HH:mm");
         try {
             Calendar calHour = Calendar.getInstance();
             int slotTime = Integer.parseInt(slotDuration);

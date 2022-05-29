@@ -17,10 +17,10 @@ public class ScheduleVaccine {
     private String vaccineName;
 
 
-    public ScheduleVaccine(Date scheduleDate, Date scheduledHour, String snsUserNumber, String centerName, String vaccineName) {
+    public ScheduleVaccine(Date scheduleDate, Date scheduledHour, String snsUserNumber, String centerAddress, String vaccineName) {
         this.scheduleDate = scheduleDate;
         this.snsUserNumber = snsUserNumber;
-        this.centerName = centerName;
+        this.centerName = centerAddress;
         this.vaccineName = vaccineName;
         this.scheduledHour = scheduledHour;
     }

@@ -16,41 +16,64 @@ public class UserScheduleVaccineUI implements Runnable{
 
 
     private final UserScheduleVaccineController ctrl;
+    private final Company company;
+    SimpleDateFormat hourFormat;
 
 
     public UserScheduleVaccineUI(){
         ctrl = new UserScheduleVaccineController();
+        this.company = App.getInstance().getCompany();
+        hourFormat = new SimpleDateFormat("HH:mm");
     }
     @Override
     public void run() {
-        SNSUser user = findUser();
-        if (user != null) {
-            String snsUserNumber = user.getCitizenCardNumber();
-            if (checkSameCC(user, snsUserNumber)) {
-                System.out.println("");
-                System.out.println("############## Vaccination Centers ############## \n");
-                VaccinationCenterDTO centerDTO = getVaccinationCenter();
-                if (centerDTO != null) {
-                    System.out.println("");
-                    System.out.println("############## Vaccines ############## \n");
-                    VaccineDTO vaccineDTO = getVaccine();
-                    if (vaccineDTO != null) {
-                        if (ctrl.checkForDuplicateSchedule(vaccineDTO.getName(), snsUserNumber)) {
-                            Date schedulingDate = Utils.readDateFromConsole("Insert the Schedule Date: (DD/MM/YYYY)");
-                             if (ctrl.checkScheduleDateAndCenterAndVaccine(schedulingDate, centerDTO.getAddress(), vaccineDTO.getName())) {
-                                    if (ctrl.scheduleVaccineWithEntries(user.getEmail(), snsUserNumber, centerDTO.getAddress(), vaccineDTO.getName(), schedulingDate, centerDTO.getSlotDuration(), centerDTO.getMaxVaccines(), centerDTO.getOpeningHours(), centerDTO.getClosingHours())) {
-                                        System.out.println("\n-> INFO <- Vaccine Scheduled SuccessFully! Going to Main Menu..\n");
-                                    }
-                                } else {
-                                    if (checkDate(schedulingDate))
 
-                                        if (ctrl(schedulingDate, vaccineDTO, user, centerDTO)) {
-                                            System.out.println("\n-> INFO <- All the Scheduling Information Was Sent To Your Email!");
-                                            System.out.println("\n-> INFO <- Vaccine Scheduled SuccessFully! Going to Main Menu..\n ");
-                                            for (int i = 0; i < ctrl.getScheduleList().size(); i++) {
-                                                    System.out.println(ctrl.getScheduleList().get(i) + "\n");
-                                            }
-                                        }
+        try{
+            SNSUser user = ctrl.userLogin();
+
+                        String snsUserNumber = user.getCitizenCardNumber();
+
+                            System.out.println("");
+
+                            //certo
+                            System.out.println("############## Vaccination Centers ############## \n");
+                            VaccinationCenterDTO centerDTO = getVaccinationCenter();
+                            //
+
+                            //certo
+                            System.out.println("");
+                            System.out.println("############## Vaccines ############## \n");
+                            VaccineDTO vaccineDTO = getVaccine();
+                            //
+
+                                        Date schedulingDate = Utils.readDateFromConsole("Insert the Schedule Date: (DD/MM/YYYY)");
+                                        Date schedulingHour = Utils.readDateFromConsole("Insert the Schedule Time: (HH:MM)");
+
+
+                        Date opH = hourFormat.parse(centerDTO.getOpeningHours()) ;
+                        Date clH = hourFormat.parse(centerDTO.getClosingHours());
+                        if(!(schedulingHour.compareTo(opH) == 1 && schedulingHour.compareTo(clH)== -1)){
+                            throw new IllegalArgumentException("Invalid Hour, returning to main menu.\nInterrupting saving process.");
+                        }
+
+
+
+
+                                                    if (ctrl.createSchedule(schedulingDate,schedulingHour, user.getSNSNumber(), centerDTO.getAddress(), vaccineDTO.getName())) {
+                                                        String confirmation = Utils.readLineFromConsole("Do you want to confirm your schedule?(Type yes/y to confirm)");
+                                                        if(confirmation.equalsIgnoreCase("yes")||confirmation.equalsIgnoreCase("y")){
+                                                            if(ctrl.saveSchedule()){
+                                                                System.out.println("Schedule saved successfully!\nReturning to the main menu.\n");
+                                                            }
+                                                        }
+                                                    }
+        }catch(IllegalArgumentException e){
+            System.out.println(e.getMessage());
+        }catch (ParseException e) {
+                                 System.out.println("Error in Center Hour.");
+                             }
+
+
 
                                 }
                             }
@@ -103,7 +126,7 @@ public class UserScheduleVaccineUI implements Runnable{
     public boolean checkSameCC(SNSUser user,String cC) {
         for (int i = 0; i < company.getSNSUserStore().getSNSUserList().size(); i++) {
             String numberAux = company.getSNSUserStore().getSNSUserList().get(i).getCitizenCardNumber();
-            if (numberAux == cC) {
+            if (numberAux.equals(cC)) {
                 return true;
             }
         }
