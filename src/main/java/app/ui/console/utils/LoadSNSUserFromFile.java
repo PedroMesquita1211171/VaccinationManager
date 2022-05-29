@@ -45,7 +45,7 @@ public class LoadSNSUserFromFile {
 
 
     /**
-     * Loads the file with a specific regex.
+     * Adds SNSUsers to temporary List a specific regex.
      *
      * @param file  the file to load
      * @param regex the regex used in the file
@@ -89,7 +89,7 @@ public class LoadSNSUserFromFile {
     }
 
     /**
-     * Save sns users.
+     * Save sns users into the system.
      *
      * @param snsUserList the sns user list
      */

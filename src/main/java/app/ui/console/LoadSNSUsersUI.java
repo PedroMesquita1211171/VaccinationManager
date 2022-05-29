@@ -8,10 +8,16 @@ import java.io.File;
 import java.text.ParseException;
 import java.util.List;
 
+/**
+ * The type Load sns users ui.
+ */
 public class LoadSNSUsersUI implements Runnable {
 
     private LoadSNSUserFromFile loadSNSUserFromFile;
 
+    /**
+     * Instantiates the Pure fabrication Class used to handle the file.
+     */
     public LoadSNSUsersUI() {
         this.loadSNSUserFromFile = new LoadSNSUserFromFile();
     }

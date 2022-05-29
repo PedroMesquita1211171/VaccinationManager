@@ -77,6 +77,8 @@ class User{
 -email
 }
 
+note "Concept of the Auth component" as N1
+
 Admin "1"---"1" CenterCoordinator : registers >
 Admin "1"---"*" SNSUser : registers >
 Admin "1"---"*" VaccineType : specifies >
@@ -128,4 +130,6 @@ SNSUser "*"---"1" Company : is client >
 Company "1"---"*" Receptionist : knows >
 ScheduleVaccine "1"---"*" SNSUser : for >
 Receptionist "1"---"*" ScheduleVaccine : schedules >
+User .. N1
+
 @enduml
