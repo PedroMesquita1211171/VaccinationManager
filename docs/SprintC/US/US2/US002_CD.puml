@@ -8,22 +8,21 @@ class ScheduleVaccineStore {
 
 + validateScheduleVaccine(ScheduleVaccine schd)
 + addScheduleVaccine(ScheduleVaccine schd)
-+ createScheduleVaccine(SNSNumber, VaccinationCenter, date, time, typeofvaccine)
++ createScheduleVaccine(SNSNumber, VaccinationCenter address, date, typeofvaccine)
 }
 
 class ScheduleVaccineUI{
 }
 
 class ScheduleVaccineController{
-+ createScheduleVaccine(SNSNumber, VaccinationCenter, date, time, typeofvaccine)
++ createScheduleVaccine(SNSNumber, VaccinationCenter address, date, typeofvaccine)
 + saveScheduleVaccine ()
 }
 
 class ScheduleVaccine{
 -SNSNumber
--VaccinationCenter
+-VaccinationCenter address
 -date
--time
 -typeofvaccine
 }
 

@@ -23,9 +23,8 @@ class SNSUser {
 
 class ScheduleVaccine{
 - SNSNumber
-- vaccinationCenter
+- VaccinationCenter address
 - date
-- time
 - typeOfVaccine
 }
 class Employee {

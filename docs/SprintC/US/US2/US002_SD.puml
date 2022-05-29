@@ -1,22 +1,139 @@
 @startuml
-'https://plantuml.com/use-case-diagram
+autonumber
 
-:Main Admin: as Admin
-(Use the application) as (Use)
+actor Receptionist
+activate Receptionist
 
-User -> (Start)
-User --> (Use)
+participant "ReceptionistScheduleVaccineUI" as ui
+participant "ReceptionistScheduleVaccineController" as controller
+participant "Company" as company
+participant "userStore : SNSUserStore" as userStore
+participant "centerStore : VaccinationCenterStore" as centerStore
+participant "SNSUserMapper" as userMapper
+participant "VaccinationCenterMapper" as centerMapper
+participant "VaccineMapper" as vaccineMapper
+participant "scheduleStore : ScheduleVaccineStore" as scheduleStore
+participant "schedule : ScheduleVaccine" as scheduleVaccine
+participant "vaccineStore : VaccineStore" as vaccineStore
+participant "listVaccinationCenterDto : List<VaccinationCenterDto>"
+participant "listCenter : List<VaccinationCenter>"
+participant "center : VaccinationCenter"
+participant "vaccineListDto : List<VaccineDto>"
+participant "listVaccine : List<Vaccine>"
+participant "vaccine : Vaccine"
+participant "vaccineDto : VaccineDTO"
 
-Admin ---> (Use)
 
-note right of Admin : This is an example.
+Receptionist -> ui : wants to schedule a vaccination appointment for a given user
+activate ui
+ui --> Receptionist : requests data (snsUserNumber)
+deactivate ui
 
-note right of (Use)
-A note can also
-be on several lines
-end note
 
-note "This note is connected\nto several objects." as N2
-(Start) .. N2
-N2 .. (Use)
+
+
+
+
+Receptionist -> ui : inserts the requested data (snsUserNumber)
+activate ui
+ui -> controller : getSnsUser(snsUserNumber)
+activate controller
+controller -> company : userStore = getSNSUserStore()
+activate company
+deactivate company
+controller -> userStore : user = getUserBySNSUserNumber(snsUserNumber)
+activate userStore
+deactivate userStore
+deactivate controller
+ui -> controller : vaccinationCenterListDto = getCenterListDto()
+activate controller
+controller -> company : centerStore = getVaccinationCenterStore()
+activate company
+deactivate company
+controller -> centerStore : listCenter = getVaccinationCenterList()
+activate centerStore
+deactivate centerStore
+controller -> centerMapper : toDTO(vaccinationCenterList)
+activate centerMapper
+ref over centerMapper
+SD_VaccinationCenterMapper_toDTO_List
+end ref
+centerMapper --> controller : listCenterDto
+deactivate centerMapper
+controller --> ui : listCenterDto
+deactivate controller
+ui --> Receptionist : shows vaccination centers and asks to choose one \n from the available ones
+deactivate ui
+
+
+
+
+
+Receptionist -> ui : selects a vaccination center
+activate ui
+ui -> controller : vaccineListDto = getVaccineListDto()
+activate controller
+controller -> company : vaccineList = getVaccineStore()
+activate company
+deactivate company
+controller -> vaccineStore : vaccine = getVaccineList()
+activate vaccineStore
+deactivate vaccineStore
+controller -> vaccineMapper : toDTO(vaccineList)
+activate vaccineMapper
+ref over vaccineMapper
+SD_VaccineMapper_toDTO_List
+end ref
+vaccineMapper --> controller : vaccineListDto
+deactivate vaccineMapper
+controller -> ui : vaccineListDto
+deactivate controller
+ui --> Receptionist : asks to select a vaccine from the available ones
+deactivate ui
+
+Receptionist -> ui : chooses a vaccine from the list
+activate ui
+ui-> controller : checkAgeGroup(ageGroup)
+activate controller
+controller -> vaccineStore : checkAgeGroup(ageGroup)
+activate vaccineStore
+deactivate vaccineStore
+deactivate controller
+
+ui -> Receptionist : asks to enter the date and time to schedule the \n vaccine (date, hour)
+deactivate ui
+
+
+Receptionist -> ui : inserts the requested data (date)
+activate ui
+ui -> controller : checkCenterCapacity()
+activate controller
+deactivate controller
+ui -> controller : scheduleVaccine ()
+activate controller
+controller -> scheduleVaccine** : schedule = createScheduleVaccine(date, userNumber, vaccineName)
+deactivate controller
+ui --> Receptionist : shows the schedule and asks to confirm it
+deactivate ui
+
+
+
+Receptionist -> ui : confirms the shown data
+activate ui
+ui -> controller : saveSchedule()
+activate controller
+controller -> company : scheduleStore = getScheduleStore()
+activate company
+deactivate company
+controller -> scheduleStore : saveSchedule(schedule)
+activate scheduleStore
+scheduleStore -> scheduleStore : validateSchedule(schedule)
+activate scheduleStore
+deactivate scheduleStore
+scheduleStore -> scheduleStore : addSchedule(schedule)
+activate scheduleStore
+deactivate scheduleStore
+deactivate controller
+ui --> Receptionist : informs sucess of the operation and the scheduled date
+
 @enduml
