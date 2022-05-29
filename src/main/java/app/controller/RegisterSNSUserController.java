@@ -12,6 +12,8 @@ import java.util.Date;
 
 
 /**
+ * The type Register sns user controller.
+ *
  * @author Henrique Pinto - 1211201
  */
 public class RegisterSNSUserController {
@@ -26,7 +28,7 @@ public class RegisterSNSUserController {
 
 
     /**
-     *Constructor.
+     * Constructor.
      */
     public RegisterSNSUserController(){
         this(App.getInstance().getCompany());
@@ -34,7 +36,8 @@ public class RegisterSNSUserController {
 
     /**
      * Constructor.
-     * @param company
+     *
+     * @param company the company
      */
     public RegisterSNSUserController(Company company) {
         this.company = company;
@@ -66,6 +69,8 @@ public class RegisterSNSUserController {
 
     /**
      * Saves sns user into storage and authFacade.
+     *
+     * @return the boolean
      */
     public boolean saveSNSUser(){
         String password = Generators.generateRandomPassword();

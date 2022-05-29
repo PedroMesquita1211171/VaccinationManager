@@ -13,12 +13,21 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
+/**
+ * The type Receptionist schedule vaccine ui.
+ */
 public class ReceptionistScheduleVaccineUI implements Runnable{
     private final ReceptionistScheduleVaccineController ctrl;
     private final Company company;
+    /**
+     * The Hour format.
+     */
     SimpleDateFormat hourFormat;
 
 
+    /**
+     * Instantiates a new Receptionist schedule vaccine ui.
+     */
     public ReceptionistScheduleVaccineUI(){
         ctrl = new ReceptionistScheduleVaccineController();
         this.company = App.getInstance().getCompany();
@@ -78,6 +87,12 @@ public class ReceptionistScheduleVaccineUI implements Runnable{
 
     }
 
+    /**
+     * Check date boolean.
+     *
+     * @param scheduleDate the schedule date
+     * @return the boolean
+     */
     public boolean checkDate(Date scheduleDate) {
         Calendar systemTime = Calendar.getInstance();
         Calendar scheduling = Calendar.getInstance();
@@ -91,6 +106,13 @@ public class ReceptionistScheduleVaccineUI implements Runnable{
         System.out.println("Invalid Date. \n");
         return false;
     }
+
+    /**
+     * Gets user.
+     *
+     * @param snsUserNumber the sns user number
+     * @return the user
+     */
     public SNSUser getUser(int snsUserNumber) {
         for(int i = 0; i < this.ctrl.getUserList().size(); ++i) {
             SNSUser aux = (SNSUser)this.ctrl.getUserList().get(i);
@@ -100,6 +122,12 @@ public class ReceptionistScheduleVaccineUI implements Runnable{
         }
         throw new IllegalArgumentException("User Not Found, please register the user first before scheduling! \n");
     }
+
+    /**
+     * Gets vaccine.
+     *
+     * @return the vaccine
+     */
     public VaccineDTO getVaccine() {
         if (isVaccineStoreEmpty()) {
             int option;
@@ -116,6 +144,13 @@ public class ReceptionistScheduleVaccineUI implements Runnable{
         return null;
     }
 
+    /**
+     * Check same cc boolean.
+     *
+     * @param user the user
+     * @param cC   the c c
+     * @return the boolean
+     */
     public boolean checkSameCC(SNSUser user,String cC) {
         for (int i = 0; i < company.getSNSUserStore().getSNSUserList().size(); i++) {
             String numberAux = company.getSNSUserStore().getSNSUserList().get(i).getCitizenCardNumber();
@@ -125,6 +160,7 @@ public class ReceptionistScheduleVaccineUI implements Runnable{
         }
         return false;
     }
+
     /**
      * Return a vaccinationCenterDTO to be able to use the object
      *

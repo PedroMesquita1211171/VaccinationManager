@@ -30,7 +30,16 @@ public static Date date;
             throw new RuntimeException(e);
         }
     }
+    public static SimpleDateFormat sdf2 = new SimpleDateFormat("HH:MM");
+    public static Date hour;
 
+    static {
+        try {
+            hour =sdf2.parse("11:00");
+        } catch (ParseException e) {
+            throw new RuntimeException(e);
+        }
+    }
 
     public static final String PARAMS_FILENAME = "config.properties";
     public static final String PARAMS_COMPANY_DESIGNATION = "Company.Designation";
