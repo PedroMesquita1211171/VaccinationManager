@@ -1,0 +1,24 @@
+@startuml
+autonumber
+actor "Receptionist" as rec
+
+activate rec
+rec -> ":System" : asks to check the user into the waiting room
+activate ":System"
+":System" --> rec : requests date and user's NIF
+deactivate ":System"
+
+rec -> ":System" : types requested data
+activate ":System"
+":System" --> rec : shows user's appointment
+deactivate ":System"
+
+rec -> ":System" : adds user to waiting room
+activate ":System"
+":System" --> rec : informs user is added
+deactivate ":System"
+
+
+deactivate rec
+
+@enduml

@@ -27,6 +27,9 @@ class ScheduleVaccine{
 - date
 - typeOfVaccine
 }
+class VaccinationCenter{
+-address
+}
 class Employee {
 -name
     -email
@@ -40,5 +43,5 @@ Company "1"---"*" Receptionist : knows >
 ScheduleVaccine "1"---"*" SNSUser : for >
 Receptionist "1"---"*" ScheduleVaccine : schedules >
 Receptionist "1"---"*" Employee : is a >
-
+ScheduleVaccine "1"---"*" VaccinationCenter : knows >
 @enduml
