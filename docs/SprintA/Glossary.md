@@ -4,7 +4,7 @@
 
 **Terms, Expressions and Acronyms (TEA) must be organized alphabetically.**
 
-Alphabet(in order to be easily guided into introducing something in the glossary)
+Alphabet (in order to be easily guided into introducing something in the glossary)
 
 **A B C D E F G H I J K L M N O P Q R S T U V W X Y Z**
 

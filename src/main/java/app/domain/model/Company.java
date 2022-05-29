@@ -28,6 +28,7 @@ public class Company {
     private VaccinationCenterStore vaccinationCenterStore ;
     private VaccineStore vaccineStore;
     private ScheduleVaccineStore scheduleVaccineStore;
+    private WaitingRoomStore waitingRoomStore;
 
 
     public Company(String designation)
@@ -43,6 +44,7 @@ public class Company {
         this.vaccinationCenterStore = new VaccinationCenterStore();
         this.vaccineStore = new VaccineStore();
         this.scheduleVaccineStore= new ScheduleVaccineStore();
+        this.waitingRoomStore = new WaitingRoomStore();
     }
 
     public String getDesignation() {
@@ -70,6 +72,8 @@ public class Company {
     public VaccineStore getVaccineStore(){ return vaccineStore; }
 
     public ScheduleVaccineStore getScheduleVaccineStore(){ return scheduleVaccineStore;}
+
+    public WaitingRoomStore getWaitingRoomStore(){ return waitingRoomStore; }
 
 
 
