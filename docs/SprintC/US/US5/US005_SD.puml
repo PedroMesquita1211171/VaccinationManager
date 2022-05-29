@@ -1,0 +1,42 @@
+@startuml
+
+actor Nurse
+participant ":ArrivalListUI" as UI
+participant ":ArrivalListController" as Controller
+participant ":Company" as Company
+
+activate Nurse
+Nurse -> UI: Chooses to consult list of SNS users in waiting room
+activate UI
+UI -> Controller : getVaccinationCenterStore()
+activate Controller
+Controller -> Company : VaccinationCenterStore = getVaccinationCenterStore()
+activate Company
+deactivate Company
+Controller -> VaccinationCenterStore : vaccinationCenter = getVaccinationCenterStore()
+activate VaccinationCenterStore
+deactivate VaccinationCenterStore
+deactivate Controller
+
+UI --> Nurse: Requests which vaccination center the nurse is working in
+deactivate UI
+
+Nurse -> UI: Selects the vaccination center from list
+activate UI
+
+UI -> Controller : getListUsersForGivenVaccinationCenter()
+activate Controller
+
+Controller -> Company : WaitingRoomStore = getWaitingRoomStore()
+activate Company
+
+deactivate Company
+
+Controller -> WaitingRoomStore : getListUsersForGivenVaccinationCenter(vaccinationCenter)
+activate WaitingRoomStore
+deactivate WaitingRoomStore
+
+UI --> Nurse: Presents a list of SNS users that are in the waiting room of chosen vaccination center by order of arrival
+deactivate UI
+
+@end

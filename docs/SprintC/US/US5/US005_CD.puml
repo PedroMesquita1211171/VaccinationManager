@@ -1,0 +1,57 @@
+@startuml
+
+class ArrivalListUI{
+}
+
+class ArrivalListController{
++ arrival()
++ getCenter()
++ getUsers()
+}
+
+class WaitingRoomStore {
+- arrivalDate
+- arrivalHour
+- snsUserNumber
+- scheduledHour
+- centerName
+- vaccineName
++ getWaitingRoom()
++ validateWaiting()
++ addWaiting()
+}
+
+class Company {
+- designation
+- authFacade
+- vaccineTypeStore
+- employeeStore
+- SNSUserStore
+- vaccinationCenterStore
+- vaccineStore
+- scheduleVaccineStore
+}
+
+class WaitingRoom{
+- arrivalDate
+- arrivalHour
+- snsUserNumber
+- scheduledHour
+- centerName
+- vaccineName
++ getArrivalDate
++ getArrivalHour
++ get SNSUserNumber
++ get ScheduledHour
++ get CenterName
++ get VaccineName
++ set VaccineName
+}
+
+ArrivalListUI --> ArrivalListController
+ArrivalListController --> Company
+Company ..> WaitingRoomStore
+Company ..> WaitingRoom
+ArrivalListController --> WaitingRoom
+
+@enduml

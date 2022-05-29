@@ -18,7 +18,7 @@ public class WaitingRoom {
 
     private String vaccineName;
 
-    public WaitingRoom(Date arrivalDate, Date arrivalHour, int snsUserNumber, Date scheduledHour, String centerName, String vaccineName) {
+    public WaitingRoom(Date arrivalDate, Date arrivalHour, String snsUserNumber, Date scheduledHour, String centerName, String vaccineName) {
         this.arrivalDate = arrivalDate;
         this.arrivalHour = arrivalHour;
         this.snsUserNumber = snsUserNumber;

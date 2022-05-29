@@ -4,7 +4,7 @@
 
 ### 1.1. User Story Description
 
-*As a nurse, I intend to consult the users in the waiting room of a vacination center.*
+*As a nurse, I intend to consult the users in the waiting room of a vaccination center.*
 
 ### 1.2. Customer Specifications and Clarifications 
 
@@ -20,13 +20,13 @@
 >
 > **Answer: Nurses and receptionists can work in any vaccination center.**
 
->**Question: "Regarding US 05, what does consulting constitute in this context? Does it refer only to seeing who is present and deciding who gets the vaccine or is checking the user info to administer the vaccine, registering the process, and sending it to the recovery room also part of this US?"**
+>**Question: "Regarding US05, what does consulting constitute in this context? Does it refer only to seeing who is present and deciding who gets the vaccine or is checking the user info to administer the vaccine, registering the process, and sending it to the recovery room also part of this US?"**
 > 
 > **Answer: The goal is to check the list of users that are waiting and ready to take the vaccine.**
 
->**Question: "Do we need to know if the nurse have to chose the vaccination center before executing the list or if that information comes from employee file?**
+>**Question: "Do we need to know if the nurse has to choose the vaccination center before executing the list or if that information comes from employee file?"**
 > 
-> **Answer: When the nurse starts to use the application, firstly, the nurse should select the vaccination center where she his working. The nurse wants to check the list of SNS users that are waiting in the vaccination center where she his working.**
+> **Answer: When the nurse starts to use the application, firstly, the nurse should select the vaccination center where it's working. The nurse wants to check the list of SNS users that are waiting in the vaccination center where it is working.**
 
 >**Question: "Do we need to know what is the name of the attribute that defines that the user has arrived. In the last sprint we have created the “Status” attribute, can we continue using it?"**
 > 
@@ -36,6 +36,17 @@
 > 
 > **Answer: The waiting room will not be registered or defined in the system. The waiting room of each vaccination center has the capacity to receive all users who take the vaccine on given slot.**
 
+>**Question: "Regarding US05, is the listing supposed to be for the day itself or for a specific day?"**
+> 
+> **Answer: The list should show the users in the waiting room of a vaccination center.**
+
+>**Question: "What information about the Users (name, SNS number, etc) should the system display when listing them?"**
+> 
+> **Answer: Name, Sex, Birth Date, SNS User Number and Phone Number.**
+
+>**Question: "Is it supposed to remove the SNS user of the wait list when he leaves the waiting room to get the vaccine? If yes, how do we know when the sns user leaves the waiting room?"**
+> 
+> **Answer: US5 is only to list users that are in the waiting room of a vaccination center. In Sprint D we will introduce new user stories.**
 
 ### 1.3. Acceptance Criteria
 
@@ -43,6 +54,7 @@
 
 ### 1.4. Found out Dependencies
 
+*US9, since we need a list of vaccination centers where the nurse can work in order for her to choose.*
 *US4, since we need to have a list of users in the waiting room in order to consult it.*
 
 ### 1.5 Input and Output Data
@@ -51,11 +63,9 @@
 * Vaccination Center in which the nurse is working.
 
 **Output data:**
-* List of users in the waiting room of a vaccination center.
+* List of users in the waiting room of chosen vaccination center.
 
 ### 1.6. System Sequence Diagram (SSD)
-
-*Insert here a SSD depicting the envisioned Actor-System interactions and throughout which data is inputted and outputted to fulfill the requirement. All interactions must be numbered.*
 
 ![US005_SSD](US005_SSD.svg)
 
@@ -66,15 +76,12 @@
 ## 2. OO Analysis
 
 ### 2.1. Relevant Domain Model Excerpt 
-*In this section, it is suggested to present an excerpt of the domain model that is seen as relevant to fulfill this requirement.* 
 
-![USXXX-MD](USXXX-MD.svg)
+![US005_MD](US005_MD.svg)
 
 ### 2.2. Other Remarks
 
-*Use this section to capture some aditional notes/remarks that must be taken into consideration into the design activity. In some case, it might be usefull to add other analysis artifacts (e.g. activity or state diagrams).* 
-
-
+*Use this section to capture some additional notes/remarks that must be taken into consideration into the design activity. In some case, it might be useful to add other analysis artifacts (e.g. activity or state diagrams).* 
 
 ## 3. Design - User Story Realization 
 
@@ -82,61 +89,40 @@
 
 **The rationale grounds on the SSD interactions and the identified input/output data.**
 
-| Interaction ID | Question: Which class is responsible for... | Answer  | Justification (with patterns)  |
-|:-------------  |:--------------------- |:------------|:---------------------------- |
-| Step 1  		 |							 |             |                              |
-| Step 2  		 |							 |             |                              |
-| Step 3  		 |							 |             |                              |
-| Step 4  		 |							 |             |                              |
-| Step 5  		 |							 |             |                              |
-| Step 6  		 |							 |             |                              |              
-| Step 7  		 |							 |             |                              |
-| Step 8  		 |							 |             |                              |
-| Step 9  		 |							 |             |                              |
-| Step 10  		 |							 |             |                              |  
-
+| Interaction ID | Question: Which class is responsible for...                    | Answer                 | Justification (with patterns) |
+|:-------------  |:---------------------------------------------------------------|:-----------------------|:------------------------------|
+| Step 1  		 | 	... interacting with the nurse?						                         | ArrivalListUI          | Pure Fabrication              |
+| | ... directing the flow of data between all classes?            | ArrivalListController  | Controller                    |
+| Step 2  		 | 	... knowing all vaccination centers?						                    | VaccinationCenterStore | Information Expert            |
+| Step 3  		 | 	... having a list of people in the waiting room?					         | WaitingRoom            | Information Expert            |
+| Step 4  		 | 	... informing the user of success/failure of operation?						 | ArrivalListUI          | Information Expert            |
 
 ### Systematization ##
 
 According to the taken rationale, the conceptual classes promoted to software classes are: 
 
- * Class1
- * Class2
- * Class3
+ * Company
+ * WaitingRoomStore
 
 Other software classes (i.e. Pure Fabrication) identified: 
- * xxxxUI  
- * xxxxController
+ * ArrivalListUI  
+ * ArrivalListController
 
 ## 3.2. Sequence Diagram (SD)
 
-*In this section, it is suggested to present an UML dynamic view stating the sequence of domain related software objects' interactions that allows to fulfill the requirement.* 
-
-![USXXX-SD](USXXX-SD.svg)
+![US005_SD](US005_SD.svg)
 
 ## 3.3. Class Diagram (CD)
 
-*In this section, it is suggested to present an UML static view representing the main domain related software classes that are involved in fulfilling the requirement as well as and their relations, attributes and methods.*
-
-![USXXX-CD](USXXX-CD.svg)
+![US005_CD](US005_CD.svg)
 
 # 4. Tests 
-*In this section, it is suggested to systematize how the tests were designed to allow a correct measurement of requirements fulfilling.* 
 
-**_DO NOT COPY ALL DEVELOPED TESTS HERE_**
-
-**Test 1:** Check that it is not possible to create an instance of the Example class with null values. 
-
-	@Test(expected = IllegalArgumentException.class)
-		public void ensureNullIsNotAllowed() {
-		Exemplo instance = new Exemplo(null, null);
-	}
-
-*It is also recommended to organize this content by subsections.* 
+*n/a*
 
 # 5. Construction (Implementation)
 
-*In this section, it is suggested to provide, if necessary, some evidence that the construction/implementation is in accordance with the previously carried out design. Furthermore, it is recommeded to mention/describe the existence of other relevant (e.g. configuration) files and highlight relevant commits.*
+*In this section, it is suggested to provide, if necessary, some evidence that the construction/implementation is in accordance with the previously carried out design. Furthermore, it is recommended to mention/describe the existence of other relevant (e.g. configuration) files and highlight relevant commits.*
 
 *It is also recommended to organize this content by subsections.* 
 

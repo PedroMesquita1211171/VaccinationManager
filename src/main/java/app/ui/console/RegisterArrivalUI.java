@@ -27,16 +27,16 @@ public class RegisterArrivalUI implements Runnable {
         try {
             VaccinationCenter center = getVaccinationCenter();
             if (center != null) {
-                Utils.printToConsole("-> INFO <- Valid Center \n");
+                System.out.println("Valid Center \n");
                 DateFormat df = new SimpleDateFormat("dd/MM/yyyy");
                 Calendar today = Calendar.getInstance();
                 String scheduleAux = df.format(today.getTime());
                 Date findSchedule = df.parse(scheduleAux);
-                ScheduleVaccine schedule = getScheduledVaccinesForCenter(center.getName(), findSchedule);
+                ScheduleVaccine schedule = getScheduledVaccinesForCenter(center.getAddress(), findSchedule);
                 if (schedule != null) {
-                    Utils.printToConsole("-> INFO <- Valid Appointment \n");
+                    System.out.println("Valid Appointment \n");
                     registerArrival(schedule);
-                    Utils.printToConsole("-> INFO <- User Sent. Leaving...");
+                    System.out.println("User Sent. Leaving...");
                 }
             }
         } catch (ParseException | IndexOutOfBoundsException e) {
@@ -51,14 +51,14 @@ public class RegisterArrivalUI implements Runnable {
         int option;
         do {
             for (int i = 0; i < controller.getCenterList().size(); i++) {
-                Utils.printToConsole(contador + " - " + controller.getCenterList().get(i) + "\n");
+                System.out.println(contador + " - " + controller.getCenterList().get(i) + "\n");
                 contador++;
             }
             option = Utils.readIntegerFromConsole("Choose a Center:");
         } while (option < 0 || option > controller.getCenterList().size());
         center = controller.getCenterList().get(option);
         if (controller.getCenterList().isEmpty()) {
-            Utils.printToConsole("-> INFO <- There Aren't Any Vaccination Centers Available.");
+            System.out.println("There Aren't Any Vaccination Centers Available.");
             return null;
         }
         return center;
@@ -75,7 +75,7 @@ public class RegisterArrivalUI implements Runnable {
         String findDate = df.format(dateFind.getTime());
 
         if (controller.getSchedules().isEmpty()) {
-            Utils.printToConsole("-> INFO <- There Aren't Any Scheduled Vaccines For Today!");
+            System.out.println("There Aren't Any Scheduled Vaccines For Today!");
             return null;
         }
         do {
@@ -85,14 +85,14 @@ public class RegisterArrivalUI implements Runnable {
                 if (centerAux.equals(centerName)) {
                     String dateAux = df.format(controller.getSchedules().get(i).getScheduleDate());
                     if (dateAux.equals(findDate)) {
-                        Utils.printToConsole(contador + " - " + controller.getSchedules().get(i) + "\n");
+                        System.out.println(contador + " - " + controller.getSchedules().get(i) + "\n");
                         daySchedule.add(controller.getSchedules().get(i));
                         contador++;
                     }
                 }
             }
             if (contador == 0) {
-                Utils.printToConsole("-> INFO <- There Aren't Any Scheduled Vaccines For Today!");
+                System.out.println("There Aren't Any Scheduled Vaccines For Today!");
                 return null;
             }
             option = Utils.readIntegerFromConsole("Choose a Schedule:");
@@ -110,11 +110,11 @@ public class RegisterArrivalUI implements Runnable {
         String hour = hourFormat.format(schedule.getScheduledHour());
         String date = dateFormat.format(schedule.getScheduleDate());
 
-        Utils.printToConsole(String.format("\nUser: %s, Hour: %s, For: %s.", schedule.getSnsUserNumber(), hour, date) + "\n");
+        System.out.println(String.format("\nUser: %s, Hour: %s, For: %s.", schedule.getSnsUserNumber(), hour, date) + "\n");
         do {
-            Utils.printToConsole("Send the User for the Waiting Room? \n");
-            Utils.printToConsole("0 - YES \n");
-            Utils.printToConsole("1 - NO");
+            System.out.println("Send the User for the Waiting Room? \n");
+            System.out.println("0 - YES \n");
+            System.out.println("1 - NO");
             send = Utils.readIntegerFromConsole("Choose an Option: ");
             if (send == 0) {
                 return true;
@@ -127,18 +127,18 @@ public class RegisterArrivalUI implements Runnable {
         try {
             DateFormat hf = new SimpleDateFormat("HH:mm:ss");
             DateFormat df = new SimpleDateFormat("dd/MM/yyyy");
-            Calendar rightNowHour = Calendar.getInstance();
-            Calendar rightNowDate = Calendar.getInstance();
-            String rightNowDateAux = df.format(rightNowDate.getTime());
-            String rightNowHourAux = hf.format(rightNowHour.getTime());
-            Date date = df.parse(rightNowDateAux);
-            Date hour = hf.parse(rightNowHourAux);
-            Utils.printToConsole("-> INFO <- Hour of Arrival --> " + rightNowHourAux + "\n");
+            Calendar thisHour = Calendar.getInstance();
+            Calendar thisDate = Calendar.getInstance();
+            String thisDateAux = df.format(thisDate.getTime());
+            String thisHourAux = hf.format(thisHour.getTime());
+            Date date = df.parse(thisDateAux);
+            Date hour = hf.parse(thisHourAux);
+            System.out.println("Hour of Arrival --> " + thisHourAux + "\n");
             WaitingRoom wait = new WaitingRoom(date, hour, scheduleVaccine.getSnsUserNumber(), scheduleVaccine.getScheduledHour(), scheduleVaccine.getCenterName(), scheduleVaccine.getVaccineName());
             if (registerArrivalRemoveSchedule(scheduleVaccine)) {
                 if (controller.addWaitingRoom(wait)) {
                     controller.removeScheduleFromList(scheduleVaccine);
-                    Utils.printToConsole("-> INFO <- User Has Been Sent For The Waiting Room\n");
+                    System.out.println("User Has Been Sent For The Waiting Room\n");
                 }
             }
         } catch (ParseException e) {
