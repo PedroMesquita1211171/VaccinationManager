@@ -12,17 +12,17 @@ import app.DTO.VaccineDTO;
 import java.util.Date;
 import java.util.List;
 
-public class UserScheduleVaccineController {
+public class ReceptionistScheduleVaccineController {
 
     private final Company company;
     private ScheduleVaccine scheduleVaccine;
 
 
-    public UserScheduleVaccineController(){this(App.getInstance().getCompany());}
+    public ReceptionistScheduleVaccineController(){this(App.getInstance().getCompany());}
 
-    public UserScheduleVaccineController(Company company){
-            this.company = App.getInstance().getCompany();
-            this.scheduleVaccine = null;
+    public ReceptionistScheduleVaccineController(Company company){
+        this.company = App.getInstance().getCompany();
+        this.scheduleVaccine = null;
     }
 
     public boolean createSchedule(Date scheduleDate, Date scheduleHour, String snsUserID, String centerAddress, String vaccineName){
@@ -48,8 +48,7 @@ public class UserScheduleVaccineController {
     public List<VaccineDTO> vaccineList(){
         return VaccineMapper.toDTOList(this.company.getVaccineStore().getVaccineList());
     }
-
-    public SNSUser userLogin(){
-        return this.company.getSNSUserStore().returnLoggedSNSUser(this.company.getAuthFacade().getCurrentUserSession().getUserId().getEmail());
+    public List<SNSUser> getUserList() {
+        return company.getSNSUserStore().getSNSUserList();
     }
 }

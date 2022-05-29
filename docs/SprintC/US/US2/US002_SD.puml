@@ -86,25 +86,19 @@ deactivate ui
 
 Receptionist -> ui : chooses a vaccine from the list
 activate ui
-ui-> controller : checkAgeGroup(ageGroup)
-activate controller
-controller -> vaccineStore : checkAgeGroup(ageGroup)
-activate vaccineStore
-deactivate vaccineStore
-deactivate controller
 
-ui -> Receptionist : asks to enter the date and time to schedule the \n vaccine (date, hour)
+ui -> Receptionist : asks to enter the date and time to schedule the \n vaccine (date, time)
 deactivate ui
 
 
-Receptionist -> ui : inserts the requested data (date)
+Receptionist -> ui : inserts the requested data
 activate ui
 ui -> controller : checkCenterCapacity()
 activate controller
 deactivate controller
 ui -> controller : scheduleVaccine ()
 activate controller
-controller -> scheduleVaccine** : schedule = createScheduleVaccine(date, userNumber, vaccineName)
+controller -> scheduleVaccine** : schedule = createScheduleVaccine(date, time, userNumber, vaccineName)
 deactivate controller
 ui --> Receptionist : shows the schedule and asks to confirm it
 deactivate ui

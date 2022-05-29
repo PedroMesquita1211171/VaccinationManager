@@ -1,5 +1,9 @@
 package app.domain.shared;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 /**
  *
  * @author Paulo Maio <pam@isep.ipp.pt>
@@ -16,6 +20,16 @@ public class Constants {
 
     public static final String GENDER_BY_DEFAULT = "Other";
 
+public static SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+public static Date date;
+
+    static {
+        try {
+            date =sdf.parse("23/02/2000");
+        } catch (ParseException e) {
+            throw new RuntimeException(e);
+        }
+    }
 
 
     public static final String PARAMS_FILENAME = "config.properties";

@@ -10,7 +10,7 @@ public class VaccinationCenterMapper {
 
     public static VaccinationCenterDTO toDTO(VaccinationCenter vaccinationCenter){
 
-        if(vaccinationCenter.getTypeOfCenter().equals("Mass Community Vaccination Center")) return new VaccinationCenterDTO(vaccinationCenter.getFaxNumber(), vaccinationCenter.getEmailAddress(), vaccinationCenter.getAddress(), vaccinationCenter.getPhoneNumber(), vaccinationCenter.getWebsiteAddress(),vaccinationCenter.getOpeningHours(),vaccinationCenter.getClosingHours(),vaccinationCenter.getSlotDuration(),vaccinationCenter.getMaxVaccines(),vaccinationCenter.getCoordinator(),vaccinationCenter.getAges(),vaccinationCenter.getArs());
+        if(vaccinationCenter.getTypeOfCenter().equals("Mass Community Vaccination Center")) return new VaccinationCenterDTO(vaccinationCenter.getFaxNumber(), vaccinationCenter.getEmailAddress(), vaccinationCenter.getAddress(), vaccinationCenter.getPhoneNumber(), vaccinationCenter.getWebsiteAddress(),vaccinationCenter.getOpeningHours(),vaccinationCenter.getClosingHours(),vaccinationCenter.getSlotDuration(),vaccinationCenter.getMaxVaccines(),vaccinationCenter.getCoordinator());
        else if(vaccinationCenter.getTypeOfCenter().equals("Healthcare center")) return new VaccinationCenterDTO(vaccinationCenter.getFaxNumber(), vaccinationCenter.getEmailAddress(), vaccinationCenter.getAddress(), vaccinationCenter.getPhoneNumber(), vaccinationCenter.getWebsiteAddress(),vaccinationCenter.getOpeningHours(),vaccinationCenter.getClosingHours(),vaccinationCenter.getSlotDuration(),vaccinationCenter.getMaxVaccines(),vaccinationCenter.getCoordinator(),vaccinationCenter.getAges(),vaccinationCenter.getArs());
        else return null;
     }

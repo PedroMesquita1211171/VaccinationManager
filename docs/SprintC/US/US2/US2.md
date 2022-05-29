@@ -38,7 +38,8 @@
 > ask the SNS user for data required to schedule a vaccination. The data needed to schedule a vaccination is the same
 > required in US01. Please check the Project Description available in moodle.
 
-*No acceptance criteria have been given*
+**(From US1)**  A SNS user cannot schedule the same vaccine more than
+once.
 
 ### 1.4. Found out Dependencies
 
@@ -86,8 +87,8 @@
 |:---------------|:-----------------------------------------------------------------|:------------------------------|:---------------------------------------------------------------------------------|
 | Step 3  		     | 	requesting the SNS number?						                                | ReceptionistScheduleVaccineUI | Pure Fabrication                                                                 |
 | Step 4  		     | 	validating the sns number (if it registeresd)?							           | SNSUserStore                  | Information Expert (knows all the SNSUser objects)                               |
-| Step 5  		     | 	showing the vaccination centers and asking to select one?						 | ScheduleVaccineUI             | Information Expert(responsible for user interaction)                       |
-| Step 6  		     | 	showing the vaccine and asking to select one?						             | ScheduleVaccineUI             | Information Expert(responsible for user interaction) |              
+| Step 5  		     | 	showing the vaccination centers and asking to select one?						 | ReceptionistScheduleVaccineUI             | Information Expert(responsible for user interaction)                       |
+| Step 6  		     | 	showing the vaccine and asking to select one?						             | ReceptionistScheduleVaccineUI             | Information Expert(responsible for user interaction) |              
 | Step 7  		     | 	requesting the date to schedule?						                          | ReceptionistScheduleVaccineUI | Information Expert(responsible for user interaction)                             |
 | Step 8  		     | 	Validating the date (if any vaccine is already scheduled)						 | ScheduleVaccineStore          | Information Expert(knows all the ScheduleVaccine Objects).                       |
 | Step 9  		     | 	Saving the scheduling of a vaccine?						                       | ScheduleVaccineStore          | Information Expert(in charge of managing/recording all ScheduleVaccine Objects). |              

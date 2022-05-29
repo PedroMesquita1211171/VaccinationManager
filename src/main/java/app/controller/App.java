@@ -1,6 +1,9 @@
 package app.controller;
 
 import app.domain.model.Company;
+import app.domain.model.SNSUser;
+import app.domain.model.VaccinationCenter;
+import app.domain.model.Vaccine;
 import app.domain.shared.Constants;
 import pt.isep.lei.esoft.auth.AuthFacade;
 import pt.isep.lei.esoft.auth.UserSession;
@@ -81,6 +84,14 @@ public class App {
 
         this.authFacade.addUserWithRole("Main Administrator", "admin@lei.sem2.pt", "123456",Constants.ROLE_ADMIN);
         this.authFacade.addUserWithRole("Main Receptionist","ola@gmail.com","123456",Constants.ROLE_RECEPTIONIST);
+        //register sns user
+        this.authFacade.addUserWithRole("Pedro","pedro@gmail.com","123456",Constants.ROLE_SNSUSER);
+        this.company.getSNSUserStore().getSNSUserList().add(new SNSUser("Pedro","Rua x","Male","999999999","pedro@gmail.com",Constants.date,"123456789","10102020"));
+        //register center
+        this.company.getVaccinationCenterStore().getVaccinationCenterList().add(new VaccinationCenter("rua 1","vaccenter1@gmail.com","999999999","111111111","http://www.example.com/index.html","08:00","22:00",10,10,"José"));
+        this.company.getVaccinationCenterStore().getVaccinationCenterList().add(new VaccinationCenter("rua 2","vaccenter2@gmail.com","911111111","222222222","http://www.example.com/index.html","09:00","21:00",11,11,"João","Norte","É soft :("));
+        //register vaccine
+        this.company.getVaccineStore().getVaccineList().add(new Vaccine("Test",1,"Testing",1,1,1,1));
     }
 
     // Extracted from https://www.javaworld.com/article/2073352/core-java/core-java-simply-singleton.html?page=2

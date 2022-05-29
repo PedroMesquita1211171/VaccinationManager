@@ -6,6 +6,8 @@ import app.domain.model.Company;
 import app.domain.model.SNSUser;
 import app.domain.shared.Constants;
 import app.ui.console.utils.Generators;
+
+import java.text.ParseException;
 import java.util.Date;
 
 
@@ -55,12 +57,10 @@ public class RegisterSNSUserController {
     public boolean createSNSUser(String name, String address, String genderOption, String phoneNumber, String email, Date birthDate, String SNSNumber, String citizenCardNumber){
         try{
             this.snsu = this.company.getSNSUserStore().createSNSUser(name, address, genderOption, phoneNumber, email, birthDate, SNSNumber, citizenCardNumber);
-        }catch(IllegalArgumentException e){
+        }catch(IllegalArgumentException e) {
             System.out.println(e.getMessage());
             return false;
         }
-
-
         return this.company.getSNSUserStore().validateSNSUser(this.snsu);
     }
 

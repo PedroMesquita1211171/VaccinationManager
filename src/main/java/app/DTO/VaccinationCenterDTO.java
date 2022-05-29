@@ -18,7 +18,7 @@ public class VaccinationCenterDTO {
     private String ars;
     private String typeOfCenter;
 
-    public VaccinationCenterDTO(String address, String emailAddress, String phoneNumber, String faxNumber, String websiteAddress, String openingHours, String closingHours, int slotDuration, int maxVaccines, String coordinator, String ages, String ars) {
+    public VaccinationCenterDTO(String address, String emailAddress, String phoneNumber, String faxNumber, String websiteAddress, String openingHours, String closingHours, int slotDuration, int maxVaccines, String coordinator) {
         this.address = address;
         this.emailAddress = emailAddress;
         this.phoneNumber = phoneNumber;
@@ -33,7 +33,21 @@ public class VaccinationCenterDTO {
         this.ars = Constants.ARS_BY_DEFAULT;
         this.typeOfCenter = "Mass Community Vaccination Center";
     }
-
+    public VaccinationCenterDTO(String address, String emailAddress, String phoneNumber, String faxNumber, String websiteAddress, String openingHours, String closingHours, int slotDuration, int maxVaccines, String coordinator, String ages, String ars) {
+        this.address = address;
+        this.emailAddress = emailAddress;
+        this.phoneNumber = phoneNumber;
+        this.faxNumber = faxNumber;
+        this.websiteAddress = websiteAddress;
+        this.openingHours = openingHours;
+        this.closingHours = closingHours;
+        this.slotDuration = slotDuration;
+        this.maxVaccines = maxVaccines;
+        this.coordinator = coordinator;
+        this.ages = ages;
+        this.ars = ars;
+        this.typeOfCenter = "Healthcare Center";
+    }
     public String getFaxNumber() {
         return faxNumber;
     }
@@ -90,18 +104,18 @@ public class VaccinationCenterDTO {
     @Override
     public String toString() {
         return
-                        "Email: " + emailAddress + "\n" +
+                        "\nEmail: " + emailAddress + "\n" +
                         "Address: " + address + "\n" +
                         "Phone Number: " + phoneNumber + "\n" +
-                        "Fax Number:" + faxNumber+ "\n"+
-                        "Website address:" + websiteAddress+ "\n"+
-                        "Opening hours:"+ openingHours+ "\n"+
-                        "Closing hours:"+ closingHours+ "\n"+
-                        "Slot duration:"+ maxVaccines+ "\n"+
-                        "Coordinator:"+ coordinator+ "\n"+
-                        "Ages:"+ ages+ "\n"+
-                        "Ars:"+ ars+ "\n"+
-                        "Type of center:"+ typeOfCenter+ "\n";
+                        "Fax Number: " + faxNumber+ "\n"+
+                        "Website address: " + websiteAddress+ "\n"+
+                        "Opening hours: "+ openingHours+ "\n"+
+                        "Closing hours: "+ closingHours+ "\n"+
+                        "Slot duration: "+ maxVaccines+ "\n"+
+                        "Coordinator: "+ coordinator+ "\n"+
+                        "Ages: "+ ages+ "\n"+
+                        "Ars: "+ ars+ "\n"+
+                        "Type of center: "+ typeOfCenter+ "\n";
     }
 }
 

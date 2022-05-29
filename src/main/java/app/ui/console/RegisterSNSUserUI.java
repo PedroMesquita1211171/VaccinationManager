@@ -41,7 +41,7 @@ public class RegisterSNSUserUI implements Runnable{
                  if(ctrl.saveSNSUser()){
                      System.out.println("SNS User saved successfully!");
                  }else{
-                     System.out.println("SNS User not saved!");
+                     System.out.println("SNS User not saved since it has repeated parameters!");
                  }
 
              }else if(opt.equalsIgnoreCase("no")){
