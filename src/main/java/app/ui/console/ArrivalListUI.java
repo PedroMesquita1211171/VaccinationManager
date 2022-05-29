@@ -68,7 +68,7 @@ public class ArrivalListUI implements Runnable {
      * @param snsUserNumber the sns user number
      * @param hourArrival   the hour arrival
      */
-    public void printUsers(int contador, int snsUserNumber,String hourArrival) {
+    public void printUsers(int contador, String snsUserNumber, String hourArrival) {
         DateFormat df = new SimpleDateFormat("dd/MM/yyyy");
         SNSUser user;
         for (int i = 0; i < controller.getUsers().size(); i++) {

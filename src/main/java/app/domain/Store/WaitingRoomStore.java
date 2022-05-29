@@ -18,7 +18,7 @@ public class WaitingRoomStore {
         return new ArrayList<>(this.waitingRoom);
     }
 
-    public WaitingRoom createWaiting(Date arrivalDate, Date arrivalHour,int snsUserNumber,Date scheduledHour,String centerName,String vaccineName) {
+    public WaitingRoom createWaiting(Date arrivalDate, Date arrivalHour,String snsUserNumber,Date scheduledHour,String centerName,String vaccineName) {
         return new WaitingRoom(arrivalDate,arrivalHour,snsUserNumber,scheduledHour,centerName,vaccineName);
     }
 

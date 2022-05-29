@@ -15,7 +15,7 @@ public class ReceptionistUI implements Runnable{
         List<MenuItem> options = new ArrayList<MenuItem>();
         options.add(new MenuItem("Register a new SNS User/Client ", new RegisterSNSUserUI()));
         options.add(new MenuItem("Schedule a vaccine ", new ReceptionistScheduleVaccineUI()));
-        options.add(new MenuItem("Register someone into waiting room ",new WaitingRoomUI()));
+        options.add(new MenuItem("Register someone into waiting room ",new RegisterArrivalUI()));
 
 
 

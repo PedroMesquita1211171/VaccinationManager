@@ -10,7 +10,7 @@ public class WaitingRoom {
 
     private Date arrivalHour;
 
-    private int snsUserNumber;
+    private String snsUserNumber;
 
     private Date scheduledHour;
 
@@ -49,10 +49,10 @@ public class WaitingRoom {
         this.arrivalHour = arrivalHour;
     }
 
-    public int getSnsUserNumber() {
+    public String getSnsUserNumber() {
         return snsUserNumber;
     }
-    public void setSnsUserNumber(int snsUserNumber) {
+    public void setSnsUserNumber(String snsUserNumber) {
         this.snsUserNumber = snsUserNumber;
     }
 

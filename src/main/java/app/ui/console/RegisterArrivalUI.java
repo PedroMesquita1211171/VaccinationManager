@@ -27,14 +27,14 @@ public class RegisterArrivalUI implements Runnable {
         try {
             VaccinationCenter center = getVaccinationCenter();
             if (center != null) {
-                System.out.println("Valid Center \n");
+                System.out.println("Valid center \n");
                 DateFormat df = new SimpleDateFormat("dd/MM/yyyy");
                 Calendar today = Calendar.getInstance();
                 String scheduleAux = df.format(today.getTime());
                 Date findSchedule = df.parse(scheduleAux);
                 ScheduleVaccine schedule = getScheduledVaccinesForCenter(center.getAddress(), findSchedule);
                 if (schedule != null) {
-                    System.out.println("Valid Appointment \n");
+                    System.out.println("Valid appointment \n");
                     registerArrival(schedule);
                     System.out.println("User Sent. Leaving...");
                 }
@@ -54,11 +54,11 @@ public class RegisterArrivalUI implements Runnable {
                 System.out.println(contador + " - " + controller.getCenterList().get(i) + "\n");
                 contador++;
             }
-            option = Utils.readIntegerFromConsole("Choose a Center:");
+            option = Utils.readIntegerFromConsole("Choose a vaccination center:");
         } while (option < 0 || option > controller.getCenterList().size());
         center = controller.getCenterList().get(option);
         if (controller.getCenterList().isEmpty()) {
-            System.out.println("There Aren't Any Vaccination Centers Available.");
+            System.out.println("No vaccination centers available");
             return null;
         }
         return center;
@@ -75,7 +75,7 @@ public class RegisterArrivalUI implements Runnable {
         String findDate = df.format(dateFind.getTime());
 
         if (controller.getSchedules().isEmpty()) {
-            System.out.println("There Aren't Any Scheduled Vaccines For Today!");
+            System.out.println("No scheduled vaccines for today");
             return null;
         }
         do {
@@ -92,10 +92,10 @@ public class RegisterArrivalUI implements Runnable {
                 }
             }
             if (contador == 0) {
-                System.out.println("There Aren't Any Scheduled Vaccines For Today!");
+                System.out.println("No scheduled vaccines for today.");
                 return null;
             }
-            option = Utils.readIntegerFromConsole("Choose a Schedule:");
+            option = Utils.readIntegerFromConsole("Choose a schedule:");
         } while (option < 0 || option > contador);
         if (!daySchedule.isEmpty()) {
             return daySchedule.get(option);
@@ -112,10 +112,10 @@ public class RegisterArrivalUI implements Runnable {
 
         System.out.println(String.format("\nUser: %s, Hour: %s, For: %s.", schedule.getSnsUserNumber(), hour, date) + "\n");
         do {
-            System.out.println("Send the User for the Waiting Room? \n");
-            System.out.println("0 - YES \n");
-            System.out.println("1 - NO");
-            send = Utils.readIntegerFromConsole("Choose an Option: ");
+            System.out.println("Send the user to the waiting room? \n");
+            System.out.println("0 - Yes \n");
+            System.out.println("1 - No");
+            send = Utils.readIntegerFromConsole("Choose an option: ");
             if (send == 0) {
                 return true;
             }
@@ -138,7 +138,7 @@ public class RegisterArrivalUI implements Runnable {
             if (registerArrivalRemoveSchedule(scheduleVaccine)) {
                 if (controller.addWaitingRoom(wait)) {
                     controller.removeScheduleFromList(scheduleVaccine);
-                    System.out.println("User Has Been Sent For The Waiting Room\n");
+                    System.out.println("User sent to the waiting room successfully\n");
                 }
             }
         } catch (ParseException e) {
