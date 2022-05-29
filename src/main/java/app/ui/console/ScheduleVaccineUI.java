@@ -10,9 +10,8 @@ import app.ui.console.utils.Utils;
 
 import java.util.Calendar;
 import java.util.Date;
-import java.util.List;
 
-public class UserScheduleVaccineUI implements Runnable{
+public class ScheduleVaccineUI implements Runnable{
 
 
 
@@ -26,7 +25,7 @@ public class UserScheduleVaccineUI implements Runnable{
         this.company = App.getInstance().getCompany();
     }
 
-    public UserScheduleVaccineUI(){
+    public ScheduleVaccineUI(){
         ctrl = new UserScheduleVaccineController();
     }
     @Override
@@ -45,10 +44,9 @@ public class UserScheduleVaccineUI implements Runnable{
                     if (vaccineDTO != null) {
                         if (ctrl.checkForDuplicateSchedule(vaccineDTO.getName(), snsUserNumber)) {
                             int doseNumber = Utils.readIntegerFromConsole("How Many Doses Had Before?");
-                            if (doseNumber == 0) {
                                 Date schedulingDate = Utils.readDateFromConsole("Insert the Schedule Date: (DD/MM/YYYY)");
-                                if (ctrl.checkScheduleDateAndCenterAndVaccine(schedulingDate, centerDTO.getName(), vaccineDTO.getName())) {
-                                    if (ctrl.scheduleVaccineWithEntries(user.getEmail(), snsUserNumber, centerDTO.getName(), vaccineDTO.getName(), schedulingDate, centerDTO.getSlotDuration(), centerDTO.getMaxVaccinesPerSlot(), centerDTO.getOpeningHour(), centerDTO.getClosingHour())) {
+                                if (ctrl.checkScheduleDateAndCenterAndVaccine(schedulingDate, centerDTO.getAddress(), vaccineDTO.getName())) {
+                                    if (ctrl.scheduleVaccineWithEntries(user.getEmail(), snsUserNumber, centerDTO.getAddress(), vaccineDTO.getName(), schedulingDate, centerDTO.getSlotDuration(), centerDTO.getMaxVaccinesPerSlot(), centerDTO.getOpeningHours(), centerDTO.getClosingHours())) {
                                         System.out.println("\n-> INFO <- All the Scheduling Information Was Sent To Your Email!");
                                         System.out.println("\n-> INFO <- Vaccine Scheduled SuccessFully! Going to Main Menu..\n");
                                     }
@@ -64,33 +62,6 @@ public class UserScheduleVaccineUI implements Runnable{
                                             }
                                         }
                                 }
-                            } else {
-                                if (doseNumber < Integer.parseInt(vaccineDTO.getDoseNumber())) {
-                                    Date lastDoseDate = Utils.readDateFromConsole("Insert the Date of the Last Dose: (DD/MM/YYYY)");
-                                    Date schedulingDate = Utils.readDateFromConsole("Insert the Schedule Date: (DD/MM/YYYY)");
-                                    if (ctrl.checkTimeBetweenDoses(lastDoseDate, vaccineDTO,schedulingDate)) {
-                                        if (ctrl.checkScheduleDateAndCenterAndVaccine(schedulingDate, centerDTO.getName(), vaccineDTO.getName())) {
-                                            if (checkDate(schedulingDate)) {
-                                                if (ctrl.checkCenterCapacity(schedulingDate, centerDTO)) {
-                                                    if (ctrl.scheduleVaccineWithEntries(user.getEmail(), snsUserNumber, centerDTO.getName(), vaccineDTO.getName(), schedulingDate, centerDTO.getSlotDuration(), centerDTO.getMaxVaccinesPerSlot(), centerDTO.getOpeningHour(), centerDTO.getClosingHour())) {
-                                                        System.out.println("\n-> INFO <- All the Scheduling Information Was Sent To Your Email!");
-                                                        System.out.println("\n-> INFO <- Vaccine Scheduled SuccessFully! Going to Main Menu.. \n");
-                                                    }
-                                                }
-                                            }
-                                        } else {
-                                            if (checkDate(schedulingDate))
-                                                if (ctrl.checkCenterCapacity(schedulingDate, centerDTO)) {
-                                                    if (createNewSchedule(schedulingDate, vaccineDTO, user, centerDTO)) {
-                                                        System.out.println("\n-> INFO <- All the Scheduling Information Was Sent To Your Email! \n");
-                                                        System.out.println("\n-> INFO <- Vaccine Scheduled SuccessFully! Going to Main Menu..\n");
-                                                    }
-                                                }
-                                        }
-                                    }
-                                } else {
-                                    System.out.println("-> INFO <- Reached Maximum Vaccine Doses!");
-                                }
                             }
 
                         }
@@ -98,7 +69,6 @@ public class UserScheduleVaccineUI implements Runnable{
                 }
             }
         }
-    }
 
     public boolean checkDate(Date scheduleDate) {
         Calendar systemTime = Calendar.getInstance();

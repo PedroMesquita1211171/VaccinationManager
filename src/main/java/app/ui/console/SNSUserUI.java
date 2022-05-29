@@ -2,7 +2,6 @@ package app.ui.console;
 
 import app.ui.console.utils.Utils;
 
-import javax.swing.plaf.MenuItemUI;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -10,7 +9,7 @@ public class SNSUserUI implements Runnable{
     @Override
     public void run() {
         List<MenuItem> options = new ArrayList<MenuItem>();
-        options.add(new MenuItem("Schedule a vaccine ", new UserScheduleVaccineUI()));
+        options.add(new MenuItem("Schedule a vaccine ", new ScheduleVaccineUI()));
 
 
 
