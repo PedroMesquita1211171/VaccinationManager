@@ -1,4 +1,4 @@
-# US 004 - 
+# US 004 - Receptionist
 
 ## 1. Requirements Engineering
 
@@ -13,6 +13,36 @@
 
 **From the client clarifications:**
 
+> **Question: "Regarding US04, the attribute "arrival time" should be considered to let the user enter the waiting room.
+    For example, a user that arrives 40 minutes after his appointment wont be allowed to enter the center, and another who only arrives 10 minutes late may proceed. If so, how much compensation time should we provide to the user."**
+> 
+> **Answer: In this sprint we are not going to address the problem of delays. All arriving users are attended and registered by the receptionist.**
+
+> **Question: "The nurse must have the possibility to choose which center she wants to register the SNS user's arrival every time she uses this feature, or should we make the nurse pick a center after they log in?"**
+> 
+> **Answer: To start using the application, the nurse should first select the vaccination center where she is working.**
+
+> **Question: "When the receptionist registers a SNSUser arrival, should we validate that the vaccination center where the SNS user arrives is the same as where the receptionist is currently working? If so, should we allocate receptionists to vaccination centers, i.e., ask the receptionist which vaccination center is she currently working at?"**
+> 
+> **Answer: To start using the application, the receptionist should first select the vaccination center where she is working. The receptionists register the arrival of a SNS user at the vaccination center where she is working.**
+
+> **Question: "Regarding US04, a receptionist register the arrival of a SNS user immediately when he arrives at the vaccination center or only after the receptionist confirms that the respective user has a vaccine schedule for that day and time."**
+> 
+> **Answer: The receptionist registers the arrival of a SNS user only after confirming that the user has a vaccine scheduled for that day and time.**
+
+> **Question: "When the SNS user number is introduce by the receptionist and the system has no appointment for that SNS user number, how should the system proceed?"**
+> 
+> **Answer: The application should present a message saying that the SNS user did not scheduled a vaccination.**
+
+> **Question: "Regarding US04, i would like to know what's the capacity of the waiting room."**
+> 
+> **Answer: The waiting room will not be registered or defined in the system. The waiting room of each vaccination center has the capacity to receive all users who take the vaccine on given slot.**
+
+> **Question: "Respectively to US04, after the receptionist registers the SNS User's arrival at the Vaccination Center, the system creates the list that will be available for the Nurse to view, correct?"**
+> 
+> **Answer: The nurse checks the list (of SNS users in the waiting room) in US05.**
+
+
 
 ### 1.3. Acceptance Criteria
 
@@ -25,14 +55,13 @@
 ### 1.5 Input and Output Data
 
 **Input data:**
-* Selected: center, scheduled user.
+* Selected:
+  * Center
+  * Scheduled User.
 
 **Output data:**
-* 
 
 ### 1.6. System Sequence Diagram (SSD)
-
-*Insert here a SSD depicting the envisioned Actor-System interactions and throughout which data is inputted and outputted to fulfill the requirement. All interactions must be numbered.*
 
 ![US004_SSD](US004_SSD.svg)
 
@@ -43,15 +72,12 @@
 ## 2. OO Analysis
 
 ### 2.1. Relevant Domain Model Excerpt
-*In this section, it is suggested to present an excerpt of the domain model that is seen as relevant to fulfill this requirement.*
 
-![US004-MD](US004-MD.svg)
+![US004_MD](US004_MD.svg)
 
 ### 2.2. Other Remarks
 
-*Use this section to capture some aditional notes/remarks that must be taken into consideration into the design activity. In some case, it might be usefull to add other analysis artifacts (e.g. activity or state diagrams).*
-
-
+*n/a*
 
 ## 3. Design - User Story Realization
 
@@ -63,7 +89,7 @@
 |:-------------  |:---------------------------------------------------------------|:-----------------------|:------------------------------|
 | Step 1  		 | ...asking the User to select a vaccination center?		           | RegisterArrivalUI      | Pure Fabrication              |
 | Step 2  		 | 	...knowing the vaccination centers?		                         | VaccinationCenterStore | Information Expert            |
-| Step 3  		 | ...asking the user to select a shceduled vaccination?          | RegisterArrivalUI      | Pure Fabrication              |
+| Step 3  		 | ...asking the user to select a scheduled vaccination?          | RegisterArrivalUI      | Pure Fabrication              |
 | Step 4  		 | ...knowing the scheduled vaccines?                             | scheduledVaccineStore  | Information Expert            |
 | Step 5  		 | ...saving user to waiting room?                                | WaitingRoomStore       | Information Expert            |
 | Step 6  		 | ...informing user was successfully added to waiting room?					 | RegisterArrivalUI      | Information Expert            |
@@ -80,15 +106,11 @@ Other software classes (i.e. Pure Fabrication) identified:
 
 ## 3.2. Sequence Diagram (SD)
 
-*In this section, it is suggested to present an UML dynamic view stating the sequence of domain related software objects' interactions that allows to fulfill the requirement.*
-
-![US004-SD](US004-SD.svg)
+![US004_SD](US004_SD.svg)
 
 ## 3.3. Class Diagram (CD)
 
-*In this section, it is suggested to present an UML static view representing the main domain related software classes that are involved in fulfilling the requirement as well as and their relations, attributes and methods.*
-
-![US004-CD](US004-CD.svg)
+![US004_CD](US004_CD.svg)
 
 # 4. Tests
 *In this section, it is suggested to systematize how the tests were designed to allow a correct measurement of requirements fulfilling.*
