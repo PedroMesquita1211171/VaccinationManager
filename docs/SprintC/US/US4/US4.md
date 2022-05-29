@@ -27,7 +27,7 @@
 ### 1.5 Input and Output Data
 
 **Input data:**
-* SNS user's nif and date
+* Selected: center, scheduled user.
 
 **Output data:**
 * 

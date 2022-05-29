@@ -5,15 +5,15 @@ actor "Receptionist" as rec
 activate rec
 rec -> ":System" : asks to check the user into the waiting room
 activate ":System"
-":System" --> rec : requests date and user's NIF
+":System" --> rec : shows centers for selection
 deactivate ":System"
 
-rec -> ":System" : types requested data
+rec -> ":System" : selects vaccination center
 activate ":System"
-":System" --> rec : shows user's appointment
+":System" --> rec : shows appointments for relevant time frame
 deactivate ":System"
 
-rec -> ":System" : adds user to waiting room
+rec -> ":System" : selects user to add to waiting room
 activate ":System"
 ":System" --> rec : informs user is added
 deactivate ":System"
