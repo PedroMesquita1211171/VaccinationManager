@@ -17,9 +17,6 @@ import java.util.List;
 
 public class ScheduleVaccineStore {
 
-
-    private ScheduleVaccine schedule;
-
     private List<ScheduleVaccine> scheduleVaccineList;
 
     public ScheduleVaccineStore() {
@@ -33,15 +30,13 @@ public class ScheduleVaccineStore {
     public boolean validateScheduleVaccine(ScheduleVaccine scheduleVaccine) {
 
         if (scheduleVaccine == null) return false;
-        return !getScheduledVaccineList().contains(scheduleVaccine);
-    }
-
-    public boolean addScheduleVaccine(ScheduleVaccine schedule) {
-        if (!validateScheduleVaccine(schedule)) {
-            return false;
+        for (ScheduleVaccine sv : scheduleVaccineList) {
+            if(scheduleVaccine.equals(sv)) return false;
         }
-        scheduleVaccineList.add(schedule);
+
+
         return true;
+
     }
 
     public ScheduleVaccine createScheduleVaccine(Date scheduleDate, Date scheduleHour, String snsUserID, String centerName, String vaccineName) {
@@ -108,8 +103,8 @@ public class ScheduleVaccineStore {
     }
 
     public boolean scheduleVaccineWithEntries(String email, String snsUserNumber, String centerName, String vaccineName, Date scheduleDate, String slotDuration, String maxVaccinesPerSlot, String openingHour, String closingHour) {
-        DateFormat hf = new SimpleDateFormat("HH:mm:ss");
-        String hour = "00:00:00";
+        DateFormat hf = new SimpleDateFormat("HH:mm");
+        String hour = "00:00";
         try {
             Date scheduledHour = hf.parse(hour);
             ScheduleVaccine a1 = new ScheduleVaccine(scheduleDate, scheduledHour, snsUserNumber, centerName, vaccineName);
@@ -160,18 +155,11 @@ public class ScheduleVaccineStore {
         return null;
     }
 
-    public boolean checkForDuplicateSchedule(String vaccineName, String snsUserNumber) {
-        for (int i = 0; i < scheduleVaccineList.size(); i++) {
-            String vaccineAux = scheduleVaccineList.get(i).getVaccineName();
-            String userAux = scheduleVaccineList.get(i).getSnsUserNumber();
-            if (vaccineAux.equals(vaccineName)) {
-                if (userAux == snsUserNumber) {
-                    System.out.println("-> INFO <- Can't Schedule The Same Vaccine More Than Once \n");
-                    return false;
-                }
-            }
+    public boolean saveSchedule(ScheduleVaccine scheduleVaccine) {
+        if(validateScheduleVaccine(scheduleVaccine)){
+            this.scheduleVaccineList.add(scheduleVaccine);
+            return true;
         }
-        System.out.println("-> INFO <- User Hasn't Scheduled this Vaccine Yet. Proceeding..");
-        return true;
+        return false;
     }
 }

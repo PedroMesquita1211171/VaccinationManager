@@ -18,38 +18,30 @@ import java.util.List;
 public class UserScheduleVaccineController {
 
     private final Company company;
-
-    private final VaccinationCenterMapper centerMapper;
-
-    private final VaccineMapper vaccineMapper;
-
-    private final VaccinationCenterStore centerStore;
-
-    private final VaccineStore vaccineStore;
-
-    private final ScheduleVaccineStore schedulestore;
+    private ScheduleVaccine scheduleVaccine;
 
 
     public UserScheduleVaccineController(){this(App.getInstance().getCompany());}
 
     public UserScheduleVaccineController(Company company){
             this.company = App.getInstance().getCompany();
-            this.centerStore = company.getVaccinationCenterStore();
-            this.vaccineStore = company.getVaccineStore();
-            this.centerMapper = new VaccinationCenterMapper();
-            this.vaccineMapper = new VaccineMapper();
-            this.schedulestore = new ScheduleVaccineStore();
+            this.scheduleVaccine = null;
     }
 
-    public boolean createSchedule(Date scheduleDate, Date scheduleHour, String snsUserID, String centerName, String vaccineName){
+    public boolean createSchedule(Date scheduleDate, Date scheduleHour, String snsUserID, String centerAddress, String vaccineName){
         try{
-            this.schedulestore = new ScheduleVaccineStore(scheduleDate,scheduleHour, snsUserID, centerName, vaccineName);
+            this.scheduleVaccine = this.company.getScheduleVaccineStore().createScheduleVaccine(scheduleDate,scheduleHour, snsUserID, centerAddress, vaccineName);
         }catch (IllegalArgumentException e){
             System.out.println(e.getMessage());
             return false;
         }
 
-        return true;
+        return this.company.getScheduleVaccineStore().validateScheduleVaccine(this.scheduleVaccine);
+    }
+
+
+    public boolean saveSchedule(){
+        return this.company.getScheduleVaccineStore().saveSchedule(this.scheduleVaccine);
     }
 
     public List<VaccinationCenterDTO> vacCenterList(){
@@ -61,31 +53,6 @@ public class UserScheduleVaccineController {
     }
 
     public SNSUser userLogin(){
-        List<SNSUser> snsUsersList = this.company.getSNSUserStore().getSNSUserList();
-        for (SNSUser snsu : snsUsersList) {
-            if(this.company.getAuthFacade().getCurrentUserSession().getUserId().equals(snsu.getEmail())){
-                return snsu;
-            }
-        }
-        return null;
-    }
-
-    public List<ScheduleVaccine> getScheduleList() {
-        return company.getScheduleVaccineStore().getScheduledVaccineList();
-    }
-
-    public ScheduleVaccineStore getSchedulestore() {
-        return company.getScheduleVaccineStore();
-    }
-
-    public boolean checkScheduleDateAndCenterAndVaccine(Date scheduleDate, String centerName, String vaccineName) {
-        return schedulestore.findSchedule(scheduleDate, centerName, vaccineName);
-    }
-    public boolean scheduleVaccineWithEntries(String email, String snsUserNumber, String centerName, String vaccineName, Date scheduleDate, String slotDuration, String maxVaccinesPerSlot, String openingHour, String closingHour) {
-        return schedulestore.scheduleVaccineWithEntries(email, snsUserNumber, centerName, vaccineName, scheduleDate, slotDuration, maxVaccinesPerSlot, openingHour, closingHour);
-    }
-
-    public boolean checkForDuplicateSchedule(String vaccineName, String snsUserNumber) {
-        return schedulestore.checkForDuplicateSchedule(vaccineName, snsUserNumber);
+        return this.company.getSNSUserStore().returnLoggedSNSUser(this.company.getAuthFacade().getCurrentUserSession().getUserId().getEmail());
     }
 }

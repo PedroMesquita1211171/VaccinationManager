@@ -3,16 +3,17 @@ autonumber
 'hide footbox
 actor "Administrator" as ADM
 
-participant ":EmployeeUI" as UI
-participant ":SpecifyNewEmployeeController" as CTRL
-participant ":Company" as COMP
-participant ":EmployeeStore" as STORE
+participant ": EmployeeUI" as UI
+participant ": SpecifyNewEmployeeController" as CTRL
+participant ": Company" as COMP
+participant ": EmployeeStore" as STORE
 participant "Employee" as EMP
+participant ": AuthFacade" as auth
 
 
 
 activate ADM
-ADM -> UI : asks to create a new task
+ADM -> UI : asks to create a new Employee
 activate UI
 UI --> ADM : requests data ( Name, E-mail, Address, Phone Number, Citizen Card Numbe, Employee ID, Role)
 deactivate UI
@@ -36,21 +37,29 @@ UI --> ADM : displays data waiting for confirmation
 deactivate CTRL
 deactivate UI
 
-ADM -> UI : confirms data of VaccineType
+ADM -> UI : confirms data of Employee
 activate UI
+
 
 UI -> CTRL : ctrl.addEmployee()
 activate CTRL
-deactivate CTRL
+
 
 CTRL -> COMP : company.addEmployee(e)
+deactivate CTRL
 activate COMP
-deactivate COMP
 
 
-COMP -> STORE : EmployeeStore.addEmployee(emp)
+
+COMP -> STORE : employeeStore.addEmployee(e)
 activate STORE
 deactivate STORE
+
+COMP -> auth  : authFacade.addUserWithRole(e.getName(), e.getEmail(),generateRandomPassword(), e.getRole())
+activate auth
+deactivate auth
+deactivate COMP
+
 
 UI --> ADM : informs success
 deactivate UI

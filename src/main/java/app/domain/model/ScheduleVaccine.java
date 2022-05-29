@@ -26,7 +26,7 @@ public class ScheduleVaccine {
     }
 
     public String toString() {
-        DateFormat hourFormat = new SimpleDateFormat("HH:mm:ss");
+        DateFormat hourFormat = new SimpleDateFormat("HH:mm");
         DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
         String hour = hourFormat.format(scheduledHour);
         String date = dateFormat.format(scheduleDate);
@@ -73,5 +73,6 @@ public class ScheduleVaccine {
     public void setScheduledHour(Date scheduledHour) {
         this.scheduledHour = scheduledHour;
     }
+
 
 }

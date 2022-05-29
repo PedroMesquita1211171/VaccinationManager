@@ -4,6 +4,7 @@ import app.domain.shared.Constants;
 
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.text.SimpleDateFormat;
 import java.util.regex.Pattern;
 
 import java.time.LocalTime;
@@ -28,6 +29,8 @@ public class VaccinationCenter {
     private String ages;
     private String ars;
     private String typeOfCenter;
+    private List<String> slots;
+
 
 
 
@@ -71,6 +74,7 @@ public class VaccinationCenter {
         this.ages = Constants.AGES_BY_DEFAULT;
         this.ars = Constants.ARS_BY_DEFAULT;
         this.typeOfCenter = "Mass Community Vaccination Center";
+        this.slots = timeSlots(openingHours,closingHours,slotDuration);
     }
 
     /**
@@ -116,6 +120,7 @@ public class VaccinationCenter {
         this.ages = ages;
         this.ars = ars;
         this.typeOfCenter = "Healthcare center";
+        this.slots = timeSlots(openingHours,closingHours,slotDuration);
     }
 
     /**
@@ -332,6 +337,57 @@ public class VaccinationCenter {
      */
     public String getTypeOfCenter(){return typeOfCenter;}
 
+    public List<String> timeSlots(String openingHours, String closingHours, int slotDuration){
+        try{
 
 
+                         int parcels = calcSlotParcels(openingHours,closingHours,slotDuration);
+
+                              String[] oph = openingHours.split(":");
+                              String[] clh = closingHours.split(":");
+
+
+                                Calendar soma2 = Calendar.getInstance();
+                                Calendar soma1 = Calendar.getInstance();
+                                soma1.set(0,0,0,Integer.parseInt(oph[0]),Integer.parseInt(oph[1]));
+
+
+                    int vaccinationDuration = slotDuration;
+                    ArrayList<String> timeSlots = new ArrayList();
+                    for(int i = 1 ; i <= parcels; i++) {
+                        soma2.set(0,0,0,soma1.get(Calendar.HOUR_OF_DAY),soma1.get(Calendar.MINUTE));
+                        soma1.add(Calendar.MINUTE, vaccinationDuration);
+                        String horaSoma2 = Integer.toString(soma2.get(Calendar.HOUR_OF_DAY));
+                        String horaSoma1 = Integer.toString(soma1.get(Calendar.HOUR_OF_DAY));
+                        String minutosSoma2 = Integer.toString(soma2.get(Calendar.MINUTE));
+                        String minutosSoma1 = Integer.toString(soma1.get(Calendar.MINUTE));
+                        timeSlots.add(String.format("%s:%s - %s:%s", horaSoma2, minutosSoma2, horaSoma1, minutosSoma1));
+                    }
+                    return timeSlots;
+        }catch(Exception e){
+            throw new IllegalArgumentException("Invalid slot duration\n");
+        }
+
+
+    }
+
+    public int calcSlotParcels(String openingHours, String closingHours, int slotDuration) {
+        String[] oph = openingHours.split(":");
+        String[] clh = closingHours.split(":");
+
+        int differenceH = Integer.parseInt(oph[0])-Integer.parseInt(oph[1]);
+        int differenceM = Integer.parseInt(clh[0])-Integer.parseInt(clh[1]);
+        int slotDurationM = slotDuration;
+        int divisor = differenceH * 60 + differenceM;
+        int parcels = divisor / slotDurationM;
+        return parcels;
+    }
+
+    public List<String> getSlots() {
+        return slots;
+    }
+
+    public void setSlots(List<String> slots) {
+        this.slots = slots;
+    }
 }

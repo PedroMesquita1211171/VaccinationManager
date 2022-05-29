@@ -8,6 +8,8 @@ import app.domain.model.SNSUser;
 import app.ui.console.utils.Utils;
 import app.domain.model.Company;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
@@ -75,14 +77,8 @@ public class UserScheduleVaccineUI implements Runnable{
 
 
 
-                                }
-                            }
 
-                        }
-                    }
-                }
-            }
-        }
+                            }
 
     public boolean checkDate(Date scheduleDate) {
         Calendar systemTime = Calendar.getInstance();
@@ -112,15 +108,6 @@ public class UserScheduleVaccineUI implements Runnable{
             return ctrl.vaccineList().get(option);
         }
         return null;
-    }
-
-    /**
-     * Used to swipe the array and find the user with the snsUserNumber
-     *
-     * @return if the user is found
-     */
-    public SNSUser findUser() {
-        return ctrl.userLogin();
     }
 
     public boolean checkSameCC(SNSUser user,String cC) {

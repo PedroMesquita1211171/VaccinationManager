@@ -99,7 +99,13 @@ public class SNSUserStore {
         return false;
     }
     /**
-     * Check If User is Logged in.
+     * Returns Logged in User. If not Logged in returns null.
      */
+    public SNSUser returnLoggedSNSUser(String email){
+        for (SNSUser snsu : this.snsUserList) {
+            if(snsu.getEmail().equals(email)) return snsu;
+        }
+        return null;
+    }
 
 }

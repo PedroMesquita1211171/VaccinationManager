@@ -30,8 +30,12 @@ public class EmployeeStore {
         return employeeList;
     }
 
-    public void addEmployee(Employee emp){
-        this.employeeList.add(emp);
+    /**
+     * Adds a new employee
+     * @param e the Employee
+     */
+    public void addEmployee(Employee e){
+        this.employeeList.add(e);
     }
 
 }
