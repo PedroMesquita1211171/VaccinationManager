@@ -27,7 +27,7 @@ public class UserScheduleVaccineController {
 
     private final VaccineStore vaccineStore;
 
-    private final ScheduleVaccineStore schedule;
+    private final ScheduleVaccineStore schedulestore;
 
 
     public UserScheduleVaccineController(){this(App.getInstance().getCompany());}
@@ -38,12 +38,12 @@ public class UserScheduleVaccineController {
             this.vaccineStore = company.getVaccineStore();
             this.centerMapper = new VaccinationCenterMapper();
             this.vaccineMapper = new VaccineMapper();
-            this.schedule = new ScheduleVaccineStore();
+            this.schedulestore = new ScheduleVaccineStore();
     }
 
-    public boolean createSchedule(Date scheduleDate, Date scheduleHour, int snsUserID, String centerName, String vaccineName){
+    public boolean createSchedule(Date scheduleDate, Date scheduleHour, String snsUserID, String centerName, String vaccineName){
         try{
-            this.schedule = new ScheduleVaccine(scheduleDate,scheduleHour, snsUserID, centerName, vaccineName);
+            this.schedulestore = new ScheduleVaccineStore(scheduleDate,scheduleHour, snsUserID, centerName, vaccineName);
         }catch (IllegalArgumentException e){
             System.out.println(e.getMessage());
             return false;
@@ -74,18 +74,18 @@ public class UserScheduleVaccineController {
         return company.getScheduleVaccineStore().getScheduledVaccineList();
     }
 
-    public ScheduleVaccineStore getSchedule() {
+    public ScheduleVaccineStore getSchedulestore() {
         return company.getScheduleVaccineStore();
     }
 
     public boolean checkScheduleDateAndCenterAndVaccine(Date scheduleDate, String centerName, String vaccineName) {
-        return schedule.findSchedule(scheduleDate, centerName, vaccineName);
+        return schedulestore.findSchedule(scheduleDate, centerName, vaccineName);
     }
-    public boolean scheduleVaccineWithEntries(String email, int snsUserNumber, String centerName, String vaccineName, Date scheduleDate, String slotDuration, String maxVaccinesPerSlot, String openingHour, String closingHour) {
-        return schedule.scheduleVaccineWithEntries(email, snsUserNumber, centerName, vaccineName, scheduleDate, slotDuration, maxVaccinesPerSlot, openingHour, closingHour);
+    public boolean scheduleVaccineWithEntries(String email, String snsUserNumber, String centerName, String vaccineName, Date scheduleDate, String slotDuration, String maxVaccinesPerSlot, String openingHour, String closingHour) {
+        return schedulestore.scheduleVaccineWithEntries(email, snsUserNumber, centerName, vaccineName, scheduleDate, slotDuration, maxVaccinesPerSlot, openingHour, closingHour);
     }
 
     public boolean checkForDuplicateSchedule(String vaccineName, String snsUserNumber) {
-        return schedule.checkForDuplicateSchedule(vaccineName, snsUserNumber);
+        return schedulestore.checkForDuplicateSchedule(vaccineName, snsUserNumber);
     }
 }

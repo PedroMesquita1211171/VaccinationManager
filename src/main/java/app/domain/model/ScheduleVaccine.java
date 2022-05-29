@@ -1,24 +1,23 @@
 package app.domain.model;
 
 
-import javax.swing.*;
+
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.Objects;
 
 public class ScheduleVaccine {
 
 
 
     private Date scheduleDate;
-    private int snsUserNumber;
+    private String snsUserNumber;
     private Date scheduledHour;
     private String centerName;
     private String vaccineName;
 
 
-    public ScheduleVaccine(Date scheduleDate, Date scheduledHour, int snsUserNumber, String centerName, String vaccineName) {
+    public ScheduleVaccine(Date scheduleDate, Date scheduledHour, String snsUserNumber, String centerName, String vaccineName) {
         this.scheduleDate = scheduleDate;
         this.snsUserNumber = snsUserNumber;
         this.centerName = centerName;
@@ -43,11 +42,11 @@ public class ScheduleVaccine {
         this.scheduleDate = scheduleDate;
     }
 
-    public int getSnsUserNumber() {
+    public String getSnsUserNumber() {
         return snsUserNumber;
     }
 
-    public void setSnsUserNumber(int snsUserNumber) {
+    public void setSnsUserNumber(String snsUserNumber) {
         this.snsUserNumber = snsUserNumber;
     }
 

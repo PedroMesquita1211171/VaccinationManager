@@ -4,28 +4,21 @@ import app.DTO.VaccinationCenterDTO;
 import app.DTO.VaccineDTO;
 import app.controller.App;
 import app.controller.UserScheduleVaccineController;
-import app.domain.model.Company;
 import app.domain.model.SNSUser;
 import app.ui.console.utils.Utils;
+import app.domain.model.Company;
 
 import java.util.Calendar;
 import java.util.Date;
 
-public class ScheduleVaccineUI implements Runnable{
+public class UserScheduleVaccineUI implements Runnable{
 
 
 
     private final UserScheduleVaccineController ctrl;
 
-    private final Company company;
 
-
-    public ScheduleVaccineUserUI() {
-        this.ctrl = new UserScheduleVaccineController();
-        this.company = App.getInstance().getCompany();
-    }
-
-    public ScheduleVaccineUI(){
+    public UserScheduleVaccineUI(){
         ctrl = new UserScheduleVaccineController();
     }
     @Override
@@ -43,24 +36,22 @@ public class ScheduleVaccineUI implements Runnable{
                     VaccineDTO vaccineDTO = getVaccine();
                     if (vaccineDTO != null) {
                         if (ctrl.checkForDuplicateSchedule(vaccineDTO.getName(), snsUserNumber)) {
-                            int doseNumber = Utils.readIntegerFromConsole("How Many Doses Had Before?");
-                                Date schedulingDate = Utils.readDateFromConsole("Insert the Schedule Date: (DD/MM/YYYY)");
-                                if (ctrl.checkScheduleDateAndCenterAndVaccine(schedulingDate, centerDTO.getAddress(), vaccineDTO.getName())) {
-                                    if (ctrl.scheduleVaccineWithEntries(user.getEmail(), snsUserNumber, centerDTO.getAddress(), vaccineDTO.getName(), schedulingDate, centerDTO.getSlotDuration(), centerDTO.getMaxVaccinesPerSlot(), centerDTO.getOpeningHours(), centerDTO.getClosingHours())) {
-                                        System.out.println("\n-> INFO <- All the Scheduling Information Was Sent To Your Email!");
+                            Date schedulingDate = Utils.readDateFromConsole("Insert the Schedule Date: (DD/MM/YYYY)");
+                             if (ctrl.checkScheduleDateAndCenterAndVaccine(schedulingDate, centerDTO.getAddress(), vaccineDTO.getName())) {
+                                    if (ctrl.scheduleVaccineWithEntries(user.getEmail(), snsUserNumber, centerDTO.getAddress(), vaccineDTO.getName(), schedulingDate, centerDTO.getSlotDuration(), centerDTO.getMaxVaccines(), centerDTO.getOpeningHours(), centerDTO.getClosingHours())) {
                                         System.out.println("\n-> INFO <- Vaccine Scheduled SuccessFully! Going to Main Menu..\n");
                                     }
                                 } else {
                                     if (checkDate(schedulingDate))
-                                        if (ctrl.checkCenterCapacity(schedulingDate, centerDTO)) {
-                                            if (ctrl(schedulingDate, vaccineDTO, user, centerDTO)) {
-                                                System.out.println(("\n-> INFO <- All the Scheduling Information Was Sent To Your Email!");
-                                                System.out.println("\n-> INFO <- Vaccine Scheduled SuccessFully! Going to Main Menu..\n ");
-                                                for (int i = 0; i < ctrl.getScheduleList().size(); i++) {
+
+                                        if (ctrl(schedulingDate, vaccineDTO, user, centerDTO)) {
+                                            System.out.println("\n-> INFO <- All the Scheduling Information Was Sent To Your Email!");
+                                            System.out.println("\n-> INFO <- Vaccine Scheduled SuccessFully! Going to Main Menu..\n ");
+                                            for (int i = 0; i < ctrl.getScheduleList().size(); i++) {
                                                     System.out.println(ctrl.getScheduleList().get(i) + "\n");
-                                                }
                                             }
                                         }
+
                                 }
                             }
 
@@ -109,12 +100,6 @@ public class ScheduleVaccineUI implements Runnable{
         return ctrl.userLogin();
     }
 
-    /**
-     * Checks if the user is scheduling only for himself
-     * @param user that will schedule
-     * @param citizenCardNumber final
-     * @return
-     */
     public boolean checkSameCC(SNSUser user,String cC) {
         for (int i = 0; i < company.getSNSUserStore().getSNSUserList().size(); i++) {
             String numberAux = company.getSNSUserStore().getSNSUserList().get(i).getCitizenCardNumber();
@@ -134,13 +119,13 @@ public class ScheduleVaccineUI implements Runnable{
             int option;
             do {
                 int contador = 0;
-                for (int i = 0; i < ctrl.getCenterList().size(); i++) {
-                    System.out.println(contador + " - " + ctrl.getCenterList().get(i) + "\n");
+                for (int i = 0; i < ctrl.vacCenterList().size(); i++) {
+                    System.out.println(contador + " - " + ctrl.vacCenterList().get(i) + "\n");
                     contador++;
                 }
                 option = Utils.readIntegerFromConsole("Choose a Vaccination Center:");
-            } while (option < 0 || option > ctrl.getCenterList().size());
-            return ctrl.getCenterList().get(option);
+            } while (option < 0 || option > ctrl.vacCenterList().size());
+            return ctrl.vacCenterList().get(option);
         }
         return null;
     }
@@ -151,7 +136,7 @@ public class ScheduleVaccineUI implements Runnable{
      * @return false for empty, true otherwise.
      */
     public boolean isVaccinationCenterEmpty() {
-        if (ctrl.getCenterList().isEmpty()) {
+        if (ctrl.vacCenterList().isEmpty()) {
             System.out.println("-> INFO <- There Isn't Available Centers to Show!");
             return false;
         }
@@ -164,7 +149,7 @@ public class ScheduleVaccineUI implements Runnable{
      * @return false for empty, true otherwise.
      */
     public boolean isVaccineStoreEmpty() {
-        if (ctrl.getVaccineList().isEmpty()) {
+        if (ctrl.vacCenterList().isEmpty()) {
             System.out.println("-> INFO <- There Aren't Available Any Vaccines At The Moment|");
             return false;
         }

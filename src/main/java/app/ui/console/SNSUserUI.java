@@ -9,7 +9,7 @@ public class SNSUserUI implements Runnable{
     @Override
     public void run() {
         List<MenuItem> options = new ArrayList<MenuItem>();
-        options.add(new MenuItem("Schedule a vaccine ", new ScheduleVaccineUI()));
+        options.add(new MenuItem("Schedule a vaccine ", new UserScheduleVaccineUI()));
 
 
 

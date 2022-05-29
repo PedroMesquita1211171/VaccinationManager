@@ -44,7 +44,7 @@ public class ScheduleVaccineStore {
         return true;
     }
 
-    public ScheduleVaccine createScheduleVaccine(Date scheduleDate, Date scheduleHour, int snsUserID, String centerName, String vaccineName) {
+    public ScheduleVaccine createScheduleVaccine(Date scheduleDate, Date scheduleHour, String snsUserID, String centerName, String vaccineName) {
         return new ScheduleVaccine(scheduleDate, scheduleHour, snsUserID,centerName, vaccineName);
     }
 
@@ -107,7 +107,7 @@ public class ScheduleVaccineStore {
         return false;
     }
 
-    public boolean scheduleVaccineWithEntries(String email, int snsUserNumber, String centerName, String vaccineName, Date scheduleDate, String slotDuration, String maxVaccinesPerSlot, String openingHour, String closingHour) {
+    public boolean scheduleVaccineWithEntries(String email, String snsUserNumber, String centerName, String vaccineName, Date scheduleDate, String slotDuration, String maxVaccinesPerSlot, String openingHour, String closingHour) {
         DateFormat hf = new SimpleDateFormat("HH:mm:ss");
         String hour = "00:00:00";
         try {
@@ -160,10 +160,10 @@ public class ScheduleVaccineStore {
         return null;
     }
 
-    public boolean checkForDuplicateSchedule(String vaccineName, int snsUserNumber) {
+    public boolean checkForDuplicateSchedule(String vaccineName, String snsUserNumber) {
         for (int i = 0; i < scheduleVaccineList.size(); i++) {
             String vaccineAux = scheduleVaccineList.get(i).getVaccineName();
-            int userAux = scheduleVaccineList.get(i).getSnsUserNumber();
+            String userAux = scheduleVaccineList.get(i).getSnsUserNumber();
             if (vaccineAux.equals(vaccineName)) {
                 if (userAux == snsUserNumber) {
                     System.out.println("-> INFO <- Can't Schedule The Same Vaccine More Than Once \n");
