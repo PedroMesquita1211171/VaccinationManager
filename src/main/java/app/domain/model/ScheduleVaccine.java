@@ -2,64 +2,77 @@ package app.domain.model;
 
 
 import javax.swing.*;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Objects;
 
 public class ScheduleVaccine {
 
 
-    private SNSUser user;
-    private VaccinationCenter v;
-    private Vaccine vaccine;
-    private String slot;
 
-    public ScheduleVaccine(SNSUser user, VaccinationCenter v, Vaccine vaccine, String slot) {
-        checkUser(user);
-        checkVaccinationCenter(v);
-        checkVaccine(vaccine);
+    private Date scheduleDate;
+    private int snsUserNumber;
+    private Date scheduledHour;
+    private String centerName;
+    private String vaccineName;
 
-        this.user = user;
-        this.v = v;
-        this.vaccine = vaccine;
-        this.slot = slot;
 
+    public ScheduleVaccine(Date scheduleDate, Date scheduledHour, int snsUserNumber, String centerName, String vaccineName) {
+        this.scheduleDate = scheduleDate;
+        this.snsUserNumber = snsUserNumber;
+        this.centerName = centerName;
+        this.vaccineName = vaccineName;
+        this.scheduledHour = scheduledHour;
+    }
+
+    public String toString() {
+        DateFormat hourFormat = new SimpleDateFormat("HH:mm:ss");
+        DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+        String hour = hourFormat.format(scheduledHour);
+        String date = dateFormat.format(scheduleDate);
+        return String.format("Date: %s, Hour: %s, User: %s, Center: %s, Vaccine: %sm ",date,hour,snsUserNumber,centerName,vaccineName);
     }
 
 
-    public SNSUser getSnsUser() {
-        return user;
+    public Date getScheduleDate() {
+        return scheduleDate;
     }
 
-    public VaccinationCenter getVaccinationCenter() {
-        return v;
+    public void setScheduleDate(Date scheduleDate) {
+        this.scheduleDate = scheduleDate;
     }
 
-
-    public Vaccine getVaccine() {
-        return vaccine;
+    public int getSnsUserNumber() {
+        return snsUserNumber;
     }
 
-
-    public String getSlot() {
-        return slot;
+    public void setSnsUserNumber(int snsUserNumber) {
+        this.snsUserNumber = snsUserNumber;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof ScheduleVaccine)) return false;
-        ScheduleVaccine that = (ScheduleVaccine) o;
-        return Objects.equals(user, that.user) &&  Objects.equals(vaccine, that.vaccine);
+    public String getCenterName() {
+        return centerName;
     }
 
-    public void checkUser(SNSUser user){
-
+    public void setCenterName(String centerName) {
+        this.centerName = centerName;
     }
 
-    public void checkVaccinationCenter(VaccinationCenter v){
-
+    public String getVaccineName() {
+        return vaccineName;
     }
 
-    public void checkVaccine(Vaccine vaccine){
-
+    public void setVaccineName(String vaccineName) {
+        this.vaccineName = vaccineName;
     }
+
+    public Date getScheduledHour() {
+        return scheduledHour;
+    }
+
+    public void setScheduledHour(Date scheduledHour) {
+        this.scheduledHour = scheduledHour;
+    }
+
 }

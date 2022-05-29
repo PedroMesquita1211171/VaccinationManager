@@ -6,6 +6,11 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.regex.Pattern;
 
+import java.time.LocalTime;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.List;
+
 /**
  * The type Vaccination center.
  */
@@ -23,6 +28,7 @@ public class VaccinationCenter {
     private String ages;
     private String ars;
     private String typeOfCenter;
+
 
 
 

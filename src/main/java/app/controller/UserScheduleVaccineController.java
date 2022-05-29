@@ -1,29 +1,49 @@
 package app.controller;
 
 
+import app.domain.model.Company;
+import app.domain.model.SNSUser;
+import app.domain.model.ScheduleVaccine;
+import app.domain.Store.ScheduleVaccineStore;
+import app.domain.Store.VaccinationCenterStore;
+import app.domain.Store.VaccineStore;
 import app.DTO.Mappers.VaccinationCenterMapper;
 import app.DTO.Mappers.VaccineMapper;
 import app.DTO.VaccinationCenterDTO;
 import app.DTO.VaccineDTO;
-import app.domain.model.*;
 
+import java.util.Date;
 import java.util.List;
 
 public class UserScheduleVaccineController {
 
-    private Company company;
-    private ScheduleVaccine schedule;
+    private final Company company;
+
+    private final VaccinationCenterMapper centerMapper;
+
+    private final VaccineMapper vaccineMapper;
+
+    private final VaccinationCenterStore centerStore;
+
+    private final VaccineStore vaccineStore;
+
+    private final ScheduleVaccineStore schedule;
+
 
     public UserScheduleVaccineController(){this(App.getInstance().getCompany());}
 
     public UserScheduleVaccineController(Company company){
-        this.company=company;
-        this.schedule= null;
+            this.company = App.getInstance().getCompany();
+            this.centerStore = company.getVaccinationCenterStore();
+            this.vaccineStore = company.getVaccineStore();
+            this.centerMapper = new VaccinationCenterMapper();
+            this.vaccineMapper = new VaccineMapper();
+            this.schedule = new ScheduleVaccineStore();
     }
 
-    public boolean createSchedule(SNSUser user, VaccinationCenterDTO vacCenter, VaccineDTO vaccine, String slot){
+    public boolean createSchedule(Date scheduleDate, Date scheduleHour, int snsUserID, String centerName, String vaccineName){
         try{
-            this.schedule = new ScheduleVaccine(user,vC(vacCenter), vac(vaccine), slot);
+            this.schedule = new ScheduleVaccine(scheduleDate,scheduleHour, snsUserID, centerName, vaccineName);
         }catch (IllegalArgumentException e){
             System.out.println(e.getMessage());
             return false;
@@ -32,15 +52,11 @@ public class UserScheduleVaccineController {
         return true;
     }
 
-    public void saveSchedule() {
-        this.company.getScheduleVaccineStore().addScheduleVaccine(schedule);
-    }
-
-    public List<VaccinationCenterDTO> showVacCenter(){
+    public List<VaccinationCenterDTO> vacCenterList(){
         return VaccinationCenterMapper.toDTOList(this.company.getVaccinationCenterStore().getVaccinationCenterList());
     }
 
-    public List<VaccineDTO> showVaccine(){
+    public List<VaccineDTO> vaccineList(){
         return VaccineMapper.toDTOList(this.company.getVaccineStore().getVaccineList());
     }
 
@@ -53,40 +69,23 @@ public class UserScheduleVaccineController {
         }
         return null;
     }
-    public VaccinationCenter vC(VaccinationCenterDTO vaccinationCenterDTO){
-        List<VaccinationCenter> vaccinationCenterList = this.company.getVaccinationCenterStore().getVaccinationCenterList();
-        for (VaccinationCenter vacCenter: vaccinationCenterList) {
-            if(vacCenter.getEmailAddress().equals(vaccinationCenterDTO.getEmailAddress())){
-                return vacCenter;
-            }
-        }
-        return null;
-    }
-    public Vaccine vac(VaccineDTO vaccineDTO){
-        List<Vaccine> vaccineList = this.company.getVaccineStore().getVaccineList();
-        for (Vaccine vaccine: vaccineList) {
-            if(vaccine.getID() == vaccineDTO.getID()){
-                return vaccine;
-            }
-        }
-        return null;
+
+    public List<ScheduleVaccine> getScheduleList() {
+        return company.getScheduleVaccineStore().getScheduledVaccineList();
     }
 
-    public void checkVaccinations(VaccineDTO vaccineDTO){
-        List<SNSUser> snsUsersList = this.company.getSNSUserStore().getSNSUserList();
-        List<Vaccine> vaccineList = this.company.getVaccineStore().getVaccineList();
-        for (SNSUser snsu : snsUsersList) {
-            if(this.company.getAuthFacade().getCurrentUserSession().getUserId().equals(snsu.getEmail())) {
-                for (Vaccine vaccine : vaccineList) {
-                    if (vaccine.getID() == vaccineDTO.getID()) {
-                        throw new IllegalArgumentException("The administration of this vaccine has already been scheduled!");
-
-                    }
-                }
-            }
-        }
-
+    public ScheduleVaccineStore getSchedule() {
+        return company.getScheduleVaccineStore();
     }
 
+    public boolean checkScheduleDateAndCenterAndVaccine(Date scheduleDate, String centerName, String vaccineName) {
+        return schedule.findSchedule(scheduleDate, centerName, vaccineName);
+    }
+    public boolean scheduleVaccineWithEntries(String email, int snsUserNumber, String centerName, String vaccineName, Date scheduleDate, String slotDuration, String maxVaccinesPerSlot, String openingHour, String closingHour) {
+        return schedule.scheduleVaccineWithEntries(email, snsUserNumber, centerName, vaccineName, scheduleDate, slotDuration, maxVaccinesPerSlot, openingHour, closingHour);
+    }
 
+    public boolean checkForDuplicateSchedule(String vaccineName, String snsUserNumber) {
+        return schedule.checkForDuplicateSchedule(vaccineName, snsUserNumber);
+    }
 }

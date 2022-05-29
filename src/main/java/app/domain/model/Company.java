@@ -27,7 +27,8 @@ public class Company {
     private SNSUserStore snsUserStore;
     private VaccinationCenterStore vaccinationCenterStore ;
     private VaccineStore vaccineStore;
-    private ScheduleVaccineStore scheduleVaccine;
+    private ScheduleVaccineStore scheduleVaccineStore;
+
 
     public Company(String designation)
     {
@@ -41,7 +42,7 @@ public class Company {
         this.snsUserStore = new SNSUserStore();
         this.vaccinationCenterStore = new VaccinationCenterStore();
         this.vaccineStore = new VaccineStore();
-        this.scheduleVaccine= new ScheduleVaccineStore();
+        this.scheduleVaccineStore= new ScheduleVaccineStore();
     }
 
     public String getDesignation() {
@@ -68,7 +69,7 @@ public class Company {
 
     public VaccineStore getVaccineStore(){ return vaccineStore; }
 
-    public ScheduleVaccineStore getScheduleVaccineStore(){ return scheduleVaccine;}
+    public ScheduleVaccineStore getScheduleVaccineStore(){ return scheduleVaccineStore;}
 
 
 
