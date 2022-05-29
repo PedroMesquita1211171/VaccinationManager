@@ -15,13 +15,6 @@ participant "VaccineMapper" as vaccineMapper
 participant "scheduleStore : ScheduleVaccineStore" as scheduleStore
 participant "schedule : ScheduleVaccine" as scheduleVaccine
 participant "vaccineStore : VaccineStore" as vaccineStore
-participant "listVaccinationCenterDto : List<VaccinationCenterDto>"
-participant "listCenter : List<VaccinationCenter>"
-participant "center : VaccinationCenter"
-participant "vaccineListDto : List<VaccineDto>"
-participant "listVaccine : List<Vaccine>"
-participant "vaccine : Vaccine"
-participant "vaccineDto : VaccineDTO"
 
 
 Receptionist -> ui : wants to schedule a vaccination appointment for a given user
