@@ -10,19 +10,17 @@
 
 **From the Specifications Document:**
 
->****
 
 **From the client clarifications:**
 
 
-
 ### 1.3. Acceptance Criteria
 
-- **
+- *No duplicate entries should be possible for the same SNS user on the same day or vaccine period.*
 
 ### 1.4. Found out Dependencies
 
-*US, since the user needs to have a vaccine scheduled.*
+*US1 or US2, since the user needs to have a vaccine scheduled.*
 
 ### 1.5 Input and Output Data
 
@@ -47,7 +45,7 @@
 ### 2.1. Relevant Domain Model Excerpt
 *In this section, it is suggested to present an excerpt of the domain model that is seen as relevant to fulfill this requirement.*
 
-![USXXX-MD](USXXX-MD.svg)
+![US004-MD](US004-MD.svg)
 
 ### 2.2. Other Remarks
 
@@ -61,43 +59,36 @@
 
 **The rationale grounds on the SSD interactions and the identified input/output data.**
 
-| Interaction ID | Question: Which class is responsible for... | Answer  | Justification (with patterns)  |
-|:-------------  |:--------------------- |:------------|:---------------------------- |
-| Step 1  		 |							 |             |                              |
-| Step 2  		 |							 |             |                              |
-| Step 3  		 |							 |             |                              |
-| Step 4  		 |							 |             |                              |
-| Step 5  		 |							 |             |                              |
-| Step 6  		 |							 |             |                              |              
-| Step 7  		 |							 |             |                              |
-| Step 8  		 |							 |             |                              |
-| Step 9  		 |							 |             |                              |
-| Step 10  		 |							 |             |                              |  
-
+| Interaction ID | Question: Which class is responsible for...                    | Answer                 | Justification (with patterns) |
+|:-------------  |:---------------------------------------------------------------|:-----------------------|:------------------------------|
+| Step 1  		 | ...asking the User to select a vaccination center?		           | RegisterArrivalUI      | Pure Fabrication              |
+| Step 2  		 | 	...knowing the vaccination centers?		                         | VaccinationCenterStore | Information Expert            |
+| Step 3  		 | ...asking the user to select a shceduled vaccination?          | RegisterArrivalUI      | Pure Fabrication              |
+| Step 4  		 | ...knowing the scheduled vaccines?                             | scheduledVaccineStore  | Information Expert            |
+| Step 5  		 | ...saving user to waiting room?                                | WaitingRoomStore       | Information Expert            |
+| Step 6  		 | ...informing user was successfully added to waiting room?					 | RegisterArrivalUI      | Information Expert            |
 
 ### Systematization ##
 
 According to the taken rationale, the conceptual classes promoted to software classes are:
 
-* Class1
-* Class2
-* Class3
+* WaitingRoom
 
 Other software classes (i.e. Pure Fabrication) identified:
-* xxxxUI
-* xxxxController
+* RegisterArrivalUI
+* RegisterArrivalController
 
 ## 3.2. Sequence Diagram (SD)
 
 *In this section, it is suggested to present an UML dynamic view stating the sequence of domain related software objects' interactions that allows to fulfill the requirement.*
 
-![USXXX-SD](USXXX-SD.svg)
+![US004-SD](US004-SD.svg)
 
 ## 3.3. Class Diagram (CD)
 
 *In this section, it is suggested to present an UML static view representing the main domain related software classes that are involved in fulfilling the requirement as well as and their relations, attributes and methods.*
 
-![USXXX-CD](USXXX-CD.svg)
+![US004-CD](US004-CD.svg)
 
 # 4. Tests
 *In this section, it is suggested to systematize how the tests were designed to allow a correct measurement of requirements fulfilling.*
