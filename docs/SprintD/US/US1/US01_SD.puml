@@ -1,0 +1,113 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+autonumber
+
+actor User
+activate User
+
+participant "UserScheduleVaccineUI" as ui
+participant "UserScheduleVaccineController" as controller
+participant "Company" as company
+participant "userStore : SNSUserStore" as userStore
+participant "centerStore : VaccinationCenterStore" as centerStore
+participant "SNSUserMapper" as userMapper
+participant "VaccinationCenterMapper" as centerMapper
+participant "VaccineMapper" as vaccineMapper
+participant "scheduleStore : ScheduleVaccineStore" as scheduleStore
+participant "schedule : ScheduleVaccine" as scheduleVaccine
+participant "vaccineStore : VaccineStore" as vaccineStore
+
+
+User -> ui : wants to schedule a vaccination appointment for themselves
+activate ui
+ui -> controller : userLogin()
+activate controller
+deactivate controller
+
+ui -> controller : vaccinationCenterListDto = getCenterListDto()
+activate controller
+controller -> company : centerStore = getVaccinationCenterStore()
+activate company
+deactivate company
+controller -> centerStore : listCenter = getVaccinationCenterList()
+activate centerStore
+deactivate centerStore
+controller -> centerMapper : toDTO(vaccinationCenterList)
+activate centerMapper
+ref over centerMapper
+SD_VaccinationCenterMapper_toDTO_List
+end ref
+centerMapper --> controller : listCenterDto
+deactivate centerMapper
+controller --> ui : listCenterDto
+deactivate controller
+ui --> User : shows vaccination centers and asks to choose one \n from the available ones
+deactivate ui
+
+
+
+
+
+User -> ui : selects a vaccination center
+activate ui
+ui -> controller : vaccineListDto = getVaccineListDto()
+activate controller
+controller -> company : vaccineList = getVaccineStore()
+activate company
+deactivate company
+controller -> vaccineStore : vaccine = getVaccineList()
+activate vaccineStore
+deactivate vaccineStore
+controller -> vaccineMapper : toDTO(vaccineList)
+activate vaccineMapper
+ref over vaccineMapper
+SD_VaccineMapper_toDTO_List
+end ref
+vaccineMapper --> controller : vaccineListDto
+deactivate vaccineMapper
+controller -> ui : vaccineListDto
+deactivate controller
+ui --> User : asks to select a vaccine from the available ones
+deactivate ui
+
+User -> ui : chooses a vaccine from the list
+activate ui
+activate vaccineStore
+deactivate vaccineStore
+deactivate controller
+
+ui -> User : asks to enter the date and time to schedule the \n vaccine (date, hour)
+deactivate ui
+
+
+User -> ui : inserts the requested data (date)
+activate ui
+ui -> controller : scheduleVaccine ()
+activate controller
+controller -> scheduleVaccine** : schedule = createScheduleVaccine(date, userNumber, vaccineName)
+deactivate controller
+ui --> User : shows the schedule and asks to confirm it
+deactivate ui
+
+
+
+User -> ui : confirms the shown data
+activate ui
+ui -> controller : saveSchedule()
+activate controller
+controller -> company : scheduleStore = getScheduleStore()
+activate company
+deactivate company
+controller -> scheduleStore : saveSchedule(schedule)
+activate scheduleStore
+scheduleStore -> scheduleStore : validateSchedule(schedule)
+activate scheduleStore
+deactivate scheduleStore
+scheduleStore -> scheduleStore : addSchedule(schedule)
+activate scheduleStore
+deactivate scheduleStore
+deactivate controller
+ui --> User : informs sucess of the operation and the scheduled date
+
+@enduml

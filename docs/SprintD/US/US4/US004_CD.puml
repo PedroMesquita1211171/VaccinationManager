@@ -1,0 +1,39 @@
+@startuml
+
+hide empty members
+
+class RegisterArrivalUI{
++getScheduledVaccinesForCenter(center, date)
+}
+
+class RegisterArrivalController{
++getVaccinationCenterlist()
++getScheduledVaccineList()
++addWaiting()
+}
+
+class Company{
++getVaccinationCenterlist()
++getScheduledVaccineList()
++addWaiting()
+}
+
+class VaccinationCenterStore{
++getVaccinationCenterlist()
+}
+
+class ScheduledVaccineStore{
++getScheduledVaccineList()
+}
+
+class WaitingRoomStore{
++addWaiting()
+}
+
+RegisterArrivalUI ..> RegisterArrivalController
+RegisterArrivalController ..> Company
+Company "1" --> "1" VaccinationCenterStore: uses >
+Company "1" --> "1" ScheduledVaccineStore: uses >
+Company "1" --> "1" WaitingRoomStore: uses >
+
+@enduml

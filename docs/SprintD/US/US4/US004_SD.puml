@@ -1,0 +1,52 @@
+@startuml
+autonumber
+actor "Receptionist" as rec
+actor ":RegisterArrivalUI" as ui
+actor ":RegisterArrivalController" as con
+actor ":Company" as com
+actor ":vaccinationCenterStore" as vcs
+actor ":ScheduleVaccineStore" as svs
+actor ":WaitingRoomStore" as wrs
+
+activate rec
+rec -> ui : asks to check the user into the waiting room
+activate ui
+ui -> con : getVaccinationCenterList()
+activate con
+con -> com : getVaccinationCenterList()
+activate com
+com ->vcs : getVaccinationCenterList()
+deactivate com
+deactivate con
+ui --> rec : shows centers for selection
+deactivate ui
+
+rec -> ui : selects vaccination center
+activate ui
+ui -> con : getScheduleVaccineList()
+activate con
+con -> com : getScheduleVaccineList()
+activate com
+com -> svs : getScheduleVaccineList()
+deactivate com
+deactivate con
+ui ->ui : getScheduleVaccinesForCenter(center, date)
+ui --> rec : shows appointments for relevant time frame
+deactivate ui
+
+rec -> ui : selects user to add to waiting room
+activate ui
+ui -> con : addWaiting()
+activate con
+con -> com: addWaiting(waitingRoom)
+activate com
+com -> wrs : addWaiting(waitingRoom)
+deactivate com
+deactivate con
+ui --> rec : informs user is added
+deactivate ui
+
+
+deactivate rec
+
+@enduml

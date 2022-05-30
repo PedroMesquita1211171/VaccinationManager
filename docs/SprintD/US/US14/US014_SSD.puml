@@ -1,0 +1,23 @@
+@startuml
+autonumber
+actor "Administrator" as adm
+
+activate adm
+adm -> ":System" : starts loading a set of Users through a CSV file
+activate ":System"
+":System" --> adm : requests File Path
+deactivate ":System"
+
+adm -> ":System" : types File Path  (CSV file)
+activate ":System"
+":System" --> adm : shows the data and asks for confirmation(Y/N)
+deactivate ":System"
+
+adm -> ":System" : confirms data
+activate ":System"
+":System" --> adm : informs the (in)success of the operation
+deactivate ":System"
+
+deactivate adm
+
+@enduml

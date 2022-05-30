@@ -1,0 +1,61 @@
+@startuml
+hide methods
+left to right direction
+skinparam classAttributeIconSize 0
+
+
+class Company {
+  -designation
+}
+
+class Receptionist {
+  -username
+  -password
+}
+
+class SNSUser {
+  -name
+  -address
+  -sex
+  -phoneNumber
+  -email
+  -birthDate
+  -SNSNumber
+  -citizenCardNumber
+}
+
+class User{
+-username
+-password
+-email
+}
+
+class Employee{
+ -name
+ -email
+ -address
+ -phoneNumber
+ -citizenCardNumber
+ -employeeID
+ -Role
+}
+
+
+SNSUser "*"---"1" User : is a >
+Receptionist "*"---"1"  Employee : is a >
+Employee "*"---"1" User : is a >
+
+
+SNSUser "*"---"1" Company : is client >
+Company "1"---"*" Receptionist : knows >
+
+
+Receptionist "1"--"*" SNSUser : registers >
+
+
+
+
+
+
+
+@enduml

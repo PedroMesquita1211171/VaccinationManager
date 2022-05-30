@@ -1,0 +1,116 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+autonumber
+
+@startuml
+autonumber
+'hide footbox
+actor "Administrator" as ADM
+
+participant ":\nLoadSNSUserFromFileUI" as UI
+participant ":\nLoadSNSUsersFromFile" as FILE
+participant ":\nRegisterSnsUserController" as CTRL
+participant ":\nCompany" as COMPANY
+participant "store:\nSnsUserStore" as STORE
+participant "user:\nSnsUser" as USER
+participant ":\nAuthFacade" as AUTH
+
+
+
+activate ADM
+ADM -> UI : starts loading a set of Users through a CSV file
+activate UI
+UI --> ADM : requests File Path
+deactivate UI
+
+ADM -> UI : types File Path  (CSV file)
+activate UI
+UI --> ADM : shows the data and asks for confirmation(Y/N)
+deactivate UI
+ADM -> UI : confirms the data
+activate UI
+
+UI -> FILE : regex = validateFile(file)
+activate FILE
+FILE -> FILE: checkfileextension(file)
+activate FILE
+
+deactivate FILE
+
+
+deactivate FILE
+UI -> FILE : snsUserList = addToList(file, regex)
+
+activate FILE
+
+loop
+
+FILE -> USER** : snsu = new SNSUser(name, address, sex, \n phoneNumber, email, birthDate, \n SNSNumber, citizenCardNumber)
+
+FILE -> FILE : snsUserList.add(snsu);
+
+activate FILE
+deactivate FILE
+deactivate FILE
+
+
+
+
+
+end loop
+
+UI -> FILE : saveSNSUsers(snsuTempList)
+loop
+activate FILE
+
+
+
+activate CTRL
+
+FILE -> CTRL : createSNSUser(snsu)
+
+CTRL -> COMPANY : store = getSNSUserStore()
+activate COMPANY
+deactivate COMPANY
+
+CTRL -> STORE : snsu = createSNSUser(name, address, sex, \n phoneNumber, email, birthDate, \n SNSNumber, citizenCardNumber)
+activate STORE
+STORE -> USER** : new SNSUser(name, address, sex, \n phoneNumber, email, birthDate, \n SNSNumber, citizenCardNumber)
+CTRL -> STORE : validateSNSUser(snsu)
+deactivate STORE
+CTRL --> FILE : ok
+FILE -> CTRL : saveSNSUser()
+
+deactivate FILE
+
+
+
+
+CTRL -> STORE : bool a = saveSNSUser(snsu)
+activate STORE
+CTRL -> AUTH :  bool b = addUserWithRole(name,email,pwd,"USER")
+activate AUTH
+deactivate AUTH
+deactivate CTRL
+STORE -> STORE : validateSNSUser(snsu)
+activate STORE
+deactivate STORE
+
+
+
+
+
+
+STORE -> STORE : addUser(snsu)
+activate STORE
+deactivate STORE
+deactivate STORE
+end loop
+
+
+
+UI --> ADM : informs operation success
+
+
+@enduml

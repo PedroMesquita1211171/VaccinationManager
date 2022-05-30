@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentStyleType="text/css" height="565px" preserveAspectRatio="none" style="width:470px;height:565px;background:#FFFFFF;" version="1.1" viewBox="0 0 470 565" width="470px" zoomAndPan="magnify"><defs/><g><rect fill="#FFFFFF" height="381.5703" style="stroke:#181818;stroke-width:1.0;" width="10" x="42" y="92.6094"/><rect fill="#FFFFFF" height="30.3516" style="stroke:#181818;stroke-width:1.0;" width="10" x="429" y="114.9609"/><rect fill="#FFFFFF" height="30.3516" style="stroke:#181818;stroke-width:1.0;" width="10" x="429" y="252.7188"/><rect fill="#FFFFFF" height="30.3516" style="stroke:#181818;stroke-width:1.0;" width="10" x="429" y="313.4219"/><rect fill="#FFFFFF" height="30.3516" style="stroke:#181818;stroke-width:1.0;" width="10" x="429" y="374.125"/><rect fill="#FFFFFF" height="30.3516" style="stroke:#181818;stroke-width:1.0;" width="10" x="429" y="434.8281"/><line style="stroke:#181818;stroke-width:0.5;stroke-dasharray:5.0,5.0;" x1="47" x2="47" y1="82.6094" y2="483.1797"/><line style="stroke:#181818;stroke-width:0.5;stroke-dasharray:5.0,5.0;" x1="434" x2="434" y1="82.6094" y2="483.1797"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="78" x="5" y="79.5332">Receptionist</text><ellipse cx="47" cy="13.5" fill="#E2E2F0" rx="8" ry="8" style="stroke:#181818;stroke-width:0.5;"/><path d="M47,21.5 L47,48.5 M34,29.5 L60,29.5 M47,48.5 L34,63.5 M47,48.5 L60,63.5 " fill="none" style="stroke:#181818;stroke-width:0.5;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="78" x="5" y="496.7129">Receptionist</text><ellipse cx="47" cy="508.2891" fill="#E2E2F0" rx="8" ry="8" style="stroke:#181818;stroke-width:0.5;"/><path d="M47,516.2891 L47,543.2891 M34,524.2891 L60,524.2891 M47,543.2891 L34,558.2891 M47,543.2891 L60,558.2891 " fill="none" style="stroke:#181818;stroke-width:0.5;"/><rect fill="#E2E2F0" height="31.6094" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="60" x="404" y="50"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="46" x="411" y="71.5332">System</text><rect fill="#E2E2F0" height="31.6094" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="60" x="404" y="482.1797"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="46" x="411" y="503.7129">System</text><rect fill="#FFFFFF" height="381.5703" style="stroke:#181818;stroke-width:1.0;" width="10" x="42" y="92.6094"/><rect fill="#FFFFFF" height="30.3516" style="stroke:#181818;stroke-width:1.0;" width="10" x="429" y="114.9609"/><rect fill="#FFFFFF" height="30.3516" style="stroke:#181818;stroke-width:1.0;" width="10" x="429" y="252.7188"/><rect fill="#FFFFFF" height="30.3516" style="stroke:#181818;stroke-width:1.0;" width="10" x="429" y="313.4219"/><rect fill="#FFFFFF" height="30.3516" style="stroke:#181818;stroke-width:1.0;" width="10" x="429" y="374.125"/><rect fill="#FFFFFF" height="30.3516" style="stroke:#181818;stroke-width:1.0;" width="10" x="429" y="434.8281"/><polygon fill="#181818" points="417,110.9609,427,114.9609,417,118.9609,421,114.9609" style="stroke:#181818;stroke-width:1.0;"/><line style="stroke:#181818;stroke-width:1.0;" x1="52" x2="423" y1="114.9609" y2="114.9609"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="7" x="59" y="110.1045">1</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="146" x="70" y="110.1045">starts vaccine scheduling</text><polygon fill="#181818" points="63,141.3125,53,145.3125,63,149.3125,59,145.3125" style="stroke:#181818;stroke-width:1.0;"/><line style="stroke:#181818;stroke-width:1.0;stroke-dasharray:2.0,2.0;" x1="57" x2="433" y1="145.3125" y2="145.3125"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="7" x="69" y="140.4561">2</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="194" x="80" y="140.4561">requests data (SNS user number)</text><polygon fill="#181818" points="422,171.6641,432,175.6641,422,179.6641,426,175.6641" style="stroke:#181818;stroke-width:1.0;"/><line style="stroke:#181818;stroke-width:1.0;" x1="52" x2="428" y1="175.6641" y2="175.6641"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="7" x="59" y="170.8076">3</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="122" x="70" y="170.8076">types requested data</text><polygon fill="#181818" points="63,218.3672,53,222.3672,63,226.3672,59,222.3672" style="stroke:#181818;stroke-width:1.0;"/><line style="stroke:#181818;stroke-width:1.0;stroke-dasharray:2.0,2.0;" x1="57" x2="433" y1="222.3672" y2="222.3672"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="7" x="69" y="209.335">4</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="323" x="80" y="201.1592">shows available vaccination centers and asks to choose</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="172" x="84" y="217.5107">one from the available centers</text><polygon fill="#181818" points="417,248.7188,427,252.7188,417,256.7188,421,252.7188" style="stroke:#181818;stroke-width:1.0;"/><line style="stroke:#181818;stroke-width:1.0;" x1="52" x2="423" y1="252.7188" y2="252.7188"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="7" x="59" y="247.8623">5</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="161" x="70" y="247.8623">selects a vaccination center</text><polygon fill="#181818" points="63,279.0703,53,283.0703,63,287.0703,59,283.0703" style="stroke:#181818;stroke-width:1.0;"/><line style="stroke:#181818;stroke-width:1.0;stroke-dasharray:2.0,2.0;" x1="57" x2="433" y1="283.0703" y2="283.0703"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="7" x="69" y="278.2139">6</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="281" x="80" y="278.2139">asks to select a vaccine from a given vaccine list</text><polygon fill="#181818" points="417,309.4219,427,313.4219,417,317.4219,421,313.4219" style="stroke:#181818;stroke-width:1.0;"/><line style="stroke:#181818;stroke-width:1.0;" x1="52" x2="423" y1="313.4219" y2="313.4219"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="7" x="59" y="308.5654">7</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="100" x="70" y="308.5654">selects a vaccine</text><polygon fill="#181818" points="63,339.7734,53,343.7734,63,347.7734,59,343.7734" style="stroke:#181818;stroke-width:1.0;"/><line style="stroke:#181818;stroke-width:1.0;stroke-dasharray:2.0,2.0;" x1="57" x2="433" y1="343.7734" y2="343.7734"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="7" x="69" y="338.917">8</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="293" x="80" y="338.917">asks to enter the date to schedule a vaccine (date)</text><polygon fill="#181818" points="417,370.125,427,374.125,417,378.125,421,374.125" style="stroke:#181818;stroke-width:1.0;"/><line style="stroke:#181818;stroke-width:1.0;" x1="52" x2="423" y1="374.125" y2="374.125"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="7" x="59" y="369.2686">9</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="151" x="70" y="369.2686">inserts the requested data</text><polygon fill="#181818" points="63,400.4766,53,404.4766,63,408.4766,59,404.4766" style="stroke:#181818;stroke-width:1.0;"/><line style="stroke:#181818;stroke-width:1.0;stroke-dasharray:2.0,2.0;" x1="57" x2="433" y1="404.4766" y2="404.4766"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="14" x="69" y="399.6201">10</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="244" x="87" y="399.6201">shows the schedule and asks to confirm it</text><polygon fill="#181818" points="417,430.8281,427,434.8281,417,438.8281,421,434.8281" style="stroke:#181818;stroke-width:1.0;"/><line style="stroke:#181818;stroke-width:1.0;" x1="52" x2="423" y1="434.8281" y2="434.8281"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="14" x="59" y="429.9717">11</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="179" x="77" y="429.9717">confirms the shown information</text><polygon fill="#181818" points="63,461.1797,53,465.1797,63,469.1797,59,465.1797" style="stroke:#181818;stroke-width:1.0;"/><line style="stroke:#181818;stroke-width:1.0;stroke-dasharray:2.0,2.0;" x1="57" x2="433" y1="465.1797" y2="465.1797"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="14" x="69" y="460.3232">12</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="335" x="87" y="460.3232">informs sucess of the operation and the scheduled date(s)</text><!--MD5=[aaa6e2c24364c8d5e01183652baef264]
+@startuml
+'https://plantuml.com/sequence-diagram
+
+autonumber
+actor "Receptionist" as USER
+
+activate USER
+USER -> System : starts vaccine scheduling
+activate System
+System - -> USER : requests data (SNS user number)
+deactivate System
+USER -> System : types requested data
+System - -> USER: shows available vaccination centers and asks to choose \n one from the available centers
+deactivate System
+USER -> System : selects a vaccination center
+activate System
+System - -> USER : asks to select a vaccine from a given vaccine list
+deactivate System
+USER -> System : selects a vaccine
+activate System
+System - -> USER : asks to enter the date to schedule a vaccine (date)
+deactivate System
+USER -> System : inserts the requested data
+activate System
+System - -> USER : shows the schedule and asks to confirm it
+deactivate System
+
+USER -> System : confirms the shown information
+activate System
+System - -> USER : informs sucess of the operation and the scheduled date(s)
+deactivate System
+@enduml
+
+@startuml
+
+autonumber
+actor "Receptionist" as USER
+
+activate USER
+USER -> System : starts vaccine scheduling
+activate System
+System - -> USER : requests data (SNS user number)
+deactivate System
+USER -> System : types requested data
+System - -> USER: shows available vaccination centers and asks to choose \n one from the available centers
+deactivate System
+USER -> System : selects a vaccination center
+activate System
+System - -> USER : asks to select a vaccine from a given vaccine list
+deactivate System
+USER -> System : selects a vaccine
+activate System
+System - -> USER : asks to enter the date to schedule a vaccine (date)
+deactivate System
+USER -> System : inserts the requested data
+activate System
+System - -> USER : shows the schedule and asks to confirm it
+deactivate System
+
+USER -> System : confirms the shown information
+activate System
+System - -> USER : informs sucess of the operation and the scheduled date(s)
+deactivate System
+@enduml
+
+PlantUML version 1.2022.4(Sat Apr 09 14:29:17 BST 2022)
+(GPL source distribution)
+Java Runtime: OpenJDK Runtime Environment
+JVM: OpenJDK 64-Bit Server VM
+Default Encoding: Cp1252
+Language: pt
+Country: PT
+--></g></svg>

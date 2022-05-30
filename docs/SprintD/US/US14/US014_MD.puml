@@ -1,0 +1,47 @@
+@startuml
+hide methods
+left to right direction
+skinparam classAttributeIconSize 0
+
+
+class Company {
+  -designation
+}
+
+class SNSUser {
+-name/username
+-address
+-gender
+-phoneNumber
+-email
+-birthDate
+-SNSNumber
+-citizenCardNumber
+}
+
+class Admin {
+-username
+-email
+-password
+}
+
+class User{
+-username
+-password
+-email
+}
+
+note "Concept of the Auth component" as N1
+
+SNSUser "*"---"1" Company : is client >
+Company "1"---"*" Admin : knows >
+Admin "*"---"*" SNSUser : Loads a set through CSV file >
+SNSUser "*"---"1" User : is a >
+User .. N1
+
+
+
+
+
+
+@enduml

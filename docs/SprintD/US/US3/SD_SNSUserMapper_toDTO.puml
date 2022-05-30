@@ -1,0 +1,20 @@
+@startuml
+
+participant ":SNSUserMapper" as mapper
+participant ":SNSUser" as user
+participant ":SNSUserDTO" as dto
+activate mapper
+ -> mapper : toDTO(snsu)
+mapper -> user : getName()
+mapper -> user : getAddress()
+mapper -> user : getSex()
+mapper -> user : getPhoneNumber()
+mapper -> user : getEmail()
+mapper -> user : getBirthDate()
+mapper -> user : getSNSUserNumber()
+mapper -> user : getCitizenCardNumber()
+mapper --> dto** : create(name, address, sex, phoneNumber, \n email, birthDate, SNSUserNumber, citizenCardNumber)
+<-- mapper: snsUserDTO
+deactivate mapper
+
+@enduml

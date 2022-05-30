@@ -1,0 +1,40 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+hide empty members
+left to right direction
+
+class ScheduleVaccineStore {
+
++ validateScheduleVaccine(ScheduleVaccine schd)
++ addScheduleVaccine(ScheduleVaccine schd)
++ createScheduleVaccine(SNSNumber, VaccinationCenter address, date, time, typeofvaccine)
+}
+
+class ScheduleVaccineUI{
+}
+
+class ScheduleVaccineController{
++ createScheduleVaccine(SNSNumber, VaccinationCenter address, date, time, typeofvaccine)
++ saveScheduleVaccine ()
+}
+
+class ScheduleVaccine{
+-SNSNumber
+-VaccinationCenter address
+-date
+-typeofvaccine
+}
+
+class Company {
+- designation
++ getSNSUserStore()
+}
+
+ScheduleVaccineUI ..> ScheduleVaccineController
+ScheduleVaccineController ..> ScheduleVaccine
+ScheduleVaccine ..> Company
+Company "1" --> "1" ScheduleVaccineStore: uses >
+ScheduleVaccineStore "1" --> "*" ScheduleVaccine: has >
+
+@enduml

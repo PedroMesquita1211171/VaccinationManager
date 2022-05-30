@@ -1,0 +1,44 @@
+@startuml
+hide methods
+left to right direction
+
+
+class Nurse {
+}
+
+class Receptionist {
+}
+
+class SNSUser{
+- Name
+- Sex
+- Birth Date
+- SNS User Number
+- Phone Number
+}
+
+class VaccinationCenter {
+- address
+- phoneNumber
+- email
+- faxNumber
+- slotDuration
+- maxVaccinesPerSlot
+- openingHour
+- closingHour
+- centerCapacity
+}
+
+class WaitingRoom {
+- arrivalHour
+}
+
+Receptionist "*" -- "*" VaccinationCenter : works at >
+Nurse "*" -- "*" VaccinationCenter : works at >
+SNSUser "1" -- "1" VaccinationCenter : picks >
+Receptionist "*" -- "*" SNSUser : registers the arrival of >
+Receptionist "*" -- "*" WaitingRoom : registers when SNSUser arrives >
+Nurse "*" -- "*" WaitingRoom : requests a list of users >
+WaitingRoom "*" -- "1" VaccinationCenter : is part of >
+
+@enduml

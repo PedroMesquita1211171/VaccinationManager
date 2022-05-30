@@ -1,0 +1,35 @@
+@startuml
+hide methods
+left to right direction
+skinparam classAttributeIconSize 0
+
+
+class Company {
+  -designation
+}
+
+class Vaccine {
+  -vaccineName
+  -lot
+}
+
+class VaccineType {
+  -id
+  -description
+}
+
+class Administrator {
+}
+
+Company "1"--"*" Administrator : knows >
+Company "1"---"*" Vaccine : applies >
+Company "1"--"*" VaccineType : promotes administration >
+VaccineType "*"--"1" Administrator : created by >
+Vaccine "*"--"1" VaccineType : is of >
+
+
+
+
+
+
+@enduml

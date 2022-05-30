@@ -1,0 +1,38 @@
+@startuml
+skinparam classAttributeIconSize 0
+left to right direction
+
+class VaccineTypeUI{
+SpecifyNewVaccineTypeController ctrl
+}
+
+class SpecifyNewVaccineTypeController{
+Company company
+VaccineType vt
++createVaccineType(code, designation, whoId)
++validateVaccineType(vt)
+}
+
+class VaccineType{
+ - code
+ - designation
+ - whoId
+}
+
+class Company{
+VaccineTypeStore vaccineTypeStore
++addVaccineType(vt)
+}
+
+class VaccineTypeStore{}
+
+VaccineTypeUI ..> SpecifyNewVaccineTypeController
+Company "1"--"*" VaccineTypeStore : has a >
+VaccineTypeStore "1"--"*" VaccineType : keeps info >
+SpecifyNewVaccineTypeController ..> Company
+SpecifyNewVaccineTypeController ..> VaccineTypeStore
+SpecifyNewVaccineTypeController ..> VaccineType
+
+
+
+@enduml

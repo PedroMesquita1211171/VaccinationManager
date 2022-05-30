@@ -1,0 +1,23 @@
+@startuml
+autonumber
+actor "Receptionist" as rcp
+
+activate rcp
+rcp -> ":System" : starts registering a new SNS User
+activate ":System"
+":System" --> rcp : requests data (name, address, sex(optional), phoneNumber, \n email, birthDate, SNSUserNumber, citizenCardNumber)
+deactivate ":System"
+
+rcp -> ":System" : types requested data
+activate ":System"
+":System" --> rcp : shows the data and requests a confirmation
+deactivate ":System"
+
+rcp -> ":System" : confirms the data
+activate ":System"
+":System" --> rcp : informs operation success
+deactivate ":System"
+
+deactivate rcp
+
+@enduml

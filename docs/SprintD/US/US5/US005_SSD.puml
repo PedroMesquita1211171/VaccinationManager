@@ -1,0 +1,17 @@
+@startuml
+autonumber
+actor "Nurse" as nur
+
+activate nur
+nur -> ":System" : asks to consult the users in the waiting room of a vaccination center
+activate ":System"
+":System" --> nur : shows list of available vaccination centers and asks nurse to choose one
+deactivate ":System"
+nur -> ":System" : types requested data
+activate ":System"
+":System" --> nur : shows list of users in the waiting room of chosen vaccination center
+deactivate ":System"
+
+deactivate nur
+
+@enduml

@@ -1,0 +1,89 @@
+@startuml
+autonumber
+actor "Receptionist" as recep
+
+participant ": RegistersSNSuserUI" as UI
+participant ": RegistersSNSuserController" as Controller
+participant ": Company" as Company
+participant ": SNSUserStore" as SNSuserStore
+participant ": AuthFacade" as auth
+participant ": SNSUserMapper" as SNSUserMapper
+participant ": SNSUser" as SNSUser
+
+activate recep
+recep -> UI :  starts the registration of a new SNS user
+activate UI
+UI --> recep : requests data (name, address, sex(optional), phoneNumber, \n email, birthDate, SNSUserNumber, citizenCardNumber)
+deactivate UI
+
+recep -> UI : types requested data
+activate UI
+
+UI -> Controller : createSNSuser(name, address, sex, phoneNumber, \n email, birthDate, SNSUserNumber, citizenCardNumber)
+activate Controller
+
+
+
+Controller -> Company : store = getSNSUserStore()
+activate Company
+deactivate Company
+
+Controller -> SNSuserStore : snsu = createSNSuser(name, address, sex, phoneNumber, \n email, birthDate, SNSUserNumber, citizenCardNumber)
+activate SNSuserStore
+
+
+SNSuserStore --> SNSUser** : create(name, address, sex, phoneNumber, \n email, birthDate, SNSUserNumber, citizenCardNumber)
+
+deactivate SNSuserStore
+
+
+
+Controller -> SNSuserStore : validateSNSuser()
+activate SNSuserStore
+deactivate SNSuserStore
+
+
+
+Controller -> SNSUserMapper : toDTO(snsu)
+activate SNSUserMapper
+ref over SNSUserMapper
+SD_SNSUserMapper_toDTO
+end ref
+SNSUserMapper --> Controller : snsUserDTO
+deactivate SNSUserMapper
+Controller --> UI : snsUserDTO
+
+UI --> recep : shows the data and requests a confirmation
+deactivate UI
+deactivate Controller
+
+recep -> UI : confirms the data
+activate UI
+
+UI -> Controller : saveSNSuser(snsu)
+activate Controller
+
+
+Controller -> SNSuserStore : addSNSUser(snsu)
+activate SNSuserStore
+
+SNSuserStore -> SNSuserStore : validateSNSuser(snsu)
+activate SNSuserStore
+deactivate SNSuserStore
+SNSuserStore-> SNSuserStore : add(snsu)
+activate SNSuserStore
+deactivate SNSuserStore
+deactivate SNSuserStore
+
+Controller -> auth : addUserWithRole(snsu.getName(), snsu.getEmail(),generateRandomPassword(), Constants.ROLE_SNSUSER)
+activate auth
+deactivate auth
+
+deactivate Controller
+deactivate Company
+
+UI --> recep : informs operation success
+
+deactivate UI
+deactivate recep
+@enduml

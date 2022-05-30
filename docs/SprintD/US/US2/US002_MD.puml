@@ -1,0 +1,50 @@
+-@startuml
+hide methods
+left to right direction
+skinparam classAttributeIconSize 0
+
+
+class Company {
+  -designation
+}
+
+class Receptionist{
+    -username
+    -password
+}
+
+class SNSUser {
+  -phoneNumber
+  -email
+  -birthDate
+  -SNSNumber
+  -citizenCardNumber
+}
+
+class ScheduleVaccine{
+- SNSNumber
+- VaccinationCenter address
+- date
+- typeOfVaccine
+}
+class VaccinationCenter{
+-address
+-slotDuration
+-maxVaccines
+}
+class Employee {
+     -name
+     -email
+     -address
+     -phoneNumber
+     -citizenCardNumber
+     -role
+}
+
+SNSUser "*"---"1" Company : is client >
+Company "1"---"*" Receptionist : knows >
+ScheduleVaccine "1"---"*" SNSUser : for >
+Receptionist "1"---"*" ScheduleVaccine : schedules >
+Receptionist "1"---"*" Employee : is a >
+ScheduleVaccine "1"---"*" VaccinationCenter : knows >
+@enduml

@@ -1,0 +1,48 @@
+@startuml
+skinparam classAttributeIconSize 0
+left to right direction
+
+class NewVaccineUI{
+SpecifyNewVaccineTypeController ctrl
+}
+
+class NewVaccineController{
+Company company
+Vaccine vcc
++createVaccine(name, id, brand, numDoses, dosage, recoveryPeriod, doseInterval, typeCode)
++validateVaccine(vcc)
+}
+
+class Vaccine{
+ - String name
+ - String id
+ - String brand
+ - int numDoses
+ - double dosage
+ - int recoveryPeriod
+ - int doseInterval
+ - String typeCode
+
+}
+
+class Company{
+VaccineTypeStore vaccineTypeStore
+VaccineStore vaccineStore
++addVaccine(vcc)
+}
+
+class VaccineTypeStore{
++getTypeList()
+}
+
+NewVaccineUI ..> NewVaccineController
+Company "1"--"*" VaccineTypeStore : has a >
+Company "1"--"*" VaccineStore : has a >
+VaccineTypeStore "1"--"*" VaccineType : keeps info >
+NewVaccineController ..> Company
+NewVaccineController ..> VaccineStore
+NewVaccineController ..> Vaccine
+
+
+
+@enduml
