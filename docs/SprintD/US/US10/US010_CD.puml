@@ -2,40 +2,47 @@
 skinparam classAttributeIconSize 0
 left to right direction
 
-class RegisterEmployeeTypeUI{
-SpecifyNewEmployeeController ctrl
+class RegisterEmployeeUI{
+RegisterEmployeeController ctrl
 }
 
-class SpecifyNewEmployeeController{
+class RegisterEmployeeController{
 Company company
-VaccineType vt
-+createVaccineType(code, designation, whoId)
-+validateVaccineType(vt)
+
 }
 
 class Employee{
    -Name
    -E-mail
-   - Address
-   - Phone Number
-   - Citizen Card Number
-   - Employee ID
-   - Role
+   -Address
+   -Phone Number
+   -Citizen Card Number
+   -Employee ID
+   -Role
 }
 
 class Company{
 EmployeeStore employeeStore
-+addEmployee(e)
+AuthFacade authFacade
++getEmployeeStore()
++getAuthFacade()
 }
 
-class EmployeeStore{}
+class AuthFacade{
+ +addUserWithRole(name, email, pwd, roleId)
+}
 
-RegisterEmployeeTypeUI ..> SpecifyNewEmployeeController
+class EmployeeStore{
+
+}
+
+RegisterEmployeeUI ..> RegisterEmployeeController
 Company "1"--"*" EmployeeStore : has a >
 EmployeeStore "1"--"*"Employee : keeps info >
-SpecifyNewEmployeeController ..> Company
-SpecifyNewEmployeeController ..> EmployeeStore
-SpecifyNewEmployeeController ..> Employee
+RegisterEmployeeController ..> Company
+RegisterEmployeeController ..> EmployeeStore
+RegisterEmployeeController ..> Employee
+Company -- AuthFacade : registers Employee >
 
 
 

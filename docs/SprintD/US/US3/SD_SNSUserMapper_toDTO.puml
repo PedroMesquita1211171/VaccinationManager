@@ -1,18 +1,39 @@
 @startuml
+autonumber
+title SD_SNSUserMapper_toDTO
 
 participant ":SNSUserMapper" as mapper
 participant ":SNSUser" as user
 participant ":SNSUserDTO" as dto
+
+
+
 activate mapper
- -> mapper : toDTO(snsu)
+ [o-> mapper : toDTO(snsu)
 mapper -> user : getName()
+activate user
+deactivate user
 mapper -> user : getAddress()
+activate user
+deactivate user
 mapper -> user : getSex()
+activate user
+deactivate user
 mapper -> user : getPhoneNumber()
+activate user
+deactivate user
 mapper -> user : getEmail()
+activate user
+deactivate user
 mapper -> user : getBirthDate()
+activate user
+deactivate user
 mapper -> user : getSNSUserNumber()
+activate user
+deactivate user
 mapper -> user : getCitizenCardNumber()
+activate user
+deactivate user
 mapper --> dto** : create(name, address, sex, phoneNumber, \n email, birthDate, SNSUserNumber, citizenCardNumber)
 <-- mapper: snsUserDTO
 deactivate mapper

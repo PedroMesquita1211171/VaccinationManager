@@ -9,8 +9,6 @@ class Company {
 }
 
 class Receptionist {
-  -username
-  -password
 }
 
 class SNSUser {
@@ -51,6 +49,10 @@ Company "1"---"*" Receptionist : knows >
 
 
 Receptionist "1"--"*" SNSUser : registers >
+
+
+note "Concept of the Auth component" as N1
+User .. N1
 
 
 

@@ -1,24 +1,35 @@
 @startuml
 
 autonumber
-actor "Administrator" as ADM
+actor "Administrator" as adm
+participant ":System" as sys
 
-activate ADM
-ADM -> ":System" : starts registering a new employee
-activate ":System"
-":System" --> ADM : requests data (Role, ID, Name, Adress, Phone number, E-mail and Citizen card number;)
-deactivate ":System"
+activate adm
+adm -> sys : starts registering an Employee
 
-ADM -> ":System" : types requested data
-activate ":System"
-":System" --> ADM : shows the data and requests a confirmation
-deactivate ":System"
+activate sys
+sys --> adm : requests role
+deactivate sys
 
-ADM -> ":System" : confirms the data
-activate ":System"
-":System" --> ADM : informs operation success
-deactivate ":System"
+adm -> sys : selects role
+
+activate sys
+sys --> adm : requests data(name, email, address, phoneNumber, citizenCardNumber)
+deactivate sys
+
+adm -> sys : types requested data
+
+activate sys
+sys --> adm : shows the data and requests confirmation
+deactivate sys
+
+adm -> sys : confirms the data
+
+activate sys
+sys --> adm : informs operation success
+deactivate sys
 
 
-deactivate ADM
+
+deactivate adm
 @enduml
