@@ -67,6 +67,7 @@ public class ReceptionistScheduleVaccineUI implements Runnable{
 
 
             if (ctrl.createSchedule(schedulingDate,schedulingHour, user.getSNSNumber(), centerDTO.getAddress(), vaccineDTO.getName())) {
+                System.out.println( toString());
                 String confirmation = Utils.readLineFromConsole("Do you want to confirm your schedule?(Type yes to confirm)");
                 if(confirmation.equalsIgnoreCase("yes")){
                     if(ctrl.saveSchedule()){

@@ -1,9 +1,6 @@
 package app.controller;
 
-import app.domain.model.Company;
-import app.domain.model.SNSUser;
-import app.domain.model.VaccinationCenter;
-import app.domain.model.Vaccine;
+import app.domain.model.*;
 import app.domain.shared.Constants;
 import pt.isep.lei.esoft.auth.AuthFacade;
 import pt.isep.lei.esoft.auth.UserSession;
@@ -11,7 +8,10 @@ import pt.isep.lei.esoft.auth.UserSession;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.Date;
 import java.util.Properties;
+
+import static app.domain.shared.Constants.date;
 
 /**
  *
@@ -74,24 +74,25 @@ public class App {
     }
 
 
-    private void bootstrap()
-    {
-        this.authFacade.addUserRole(Constants.ROLE_ADMIN,Constants.ROLE_ADMIN);
-        this.authFacade.addUserRole(Constants.ROLE_RECEPTIONIST,Constants.ROLE_RECEPTIONIST);
-        this.authFacade.addUserRole(Constants.ROLE_NURSE,Constants.ROLE_NURSE);
-        this.authFacade.addUserRole(Constants.ROLE_CENTER_CORDINATOR,Constants.ROLE_CENTER_CORDINATOR);
-        this.authFacade.addUserRole(Constants.ROLE_SNSUSER,Constants.ROLE_SNSUSER);
+    private void bootstrap() {
+        this.authFacade.addUserRole(Constants.ROLE_ADMIN, Constants.ROLE_ADMIN);
+        this.authFacade.addUserRole(Constants.ROLE_RECEPTIONIST, Constants.ROLE_RECEPTIONIST);
+        this.authFacade.addUserRole(Constants.ROLE_NURSE, Constants.ROLE_NURSE);
+        this.authFacade.addUserRole(Constants.ROLE_CENTER_CORDINATOR, Constants.ROLE_CENTER_CORDINATOR);
+        this.authFacade.addUserRole(Constants.ROLE_SNSUSER, Constants.ROLE_SNSUSER);
 
-        this.authFacade.addUserWithRole("Main Administrator", "admin@lei.sem2.pt", "123456",Constants.ROLE_ADMIN);
-        this.authFacade.addUserWithRole("Main Receptionist","ola@gmail.com","123456",Constants.ROLE_RECEPTIONIST);
+        this.authFacade.addUserWithRole("Main Administrator", "admin@lei.sem2.pt", "123456", Constants.ROLE_ADMIN);
+        this.authFacade.addUserWithRole("Main Receptionist", "ola@gmail.com", "123456", Constants.ROLE_RECEPTIONIST);
         //register sns user
-        this.authFacade.addUserWithRole("Pedro","pedro@gmail.com","123456",Constants.ROLE_SNSUSER);
-        this.company.getSNSUserStore().getSNSUserList().add(new SNSUser("Pedro","Rua x","Male","999999999","pedro@gmail.com",Constants.date,"123456789","10102020"));
+        this.authFacade.addUserWithRole("Pedro", "pedro@gmail.com", "123456", Constants.ROLE_SNSUSER);
+        this.authFacade.addUserWithRole("Nurse","nurse@lei.sem2.pt","123456",Constants.ROLE_NURSE);
+        this.company.getSNSUserStore().getSNSUserList().add(new SNSUser("Pedro", "Rua x", "Male", "999999999", "pedro@gmail.com", date, "123456789", "10102020"));
         //register center
-        this.company.getVaccinationCenterStore().getVaccinationCenterList().add(new VaccinationCenter("rua 1","vaccenter1@gmail.com","999999999","111111111","http://www.example.com/index.html","08:00","22:00",10,10,"José"));
-        this.company.getVaccinationCenterStore().getVaccinationCenterList().add(new VaccinationCenter("rua 2","vaccenter2@gmail.com","911111111","222222222","http://www.example.com/index.html","09:00","21:00",11,11,"João","Norte","É soft :("));
+        this.company.getVaccinationCenterStore().getVaccinationCenterList().add(new VaccinationCenter("rua 1", "vaccenter1@gmail.com", "999999999", "111111111", "http://www.example.com/index.html", "08:00", "22:00", 10, 10, "José"));
+        this.company.getVaccinationCenterStore().getVaccinationCenterList().add(new VaccinationCenter("rua 2", "vaccenter2@gmail.com", "911111111", "222222222", "http://www.example.com/index.html", "09:00", "21:00", 11, 11, "João", "Norte", "É soft :("));
         //register vaccine
-        this.company.getVaccineStore().getVaccineList().add(new Vaccine("Test",1,"Testing",1,1,1,1));
+        this.company.getVaccineStore().getVaccineList().add(new Vaccine("Test", 1, "Testing", 1, 1, 1, 1));
+        this.company.getScheduleVaccineStore().getScheduledVaccineList().add(new ScheduleVaccine(new Date(), new Date(11), "123456789", "rua 1", "Test"));
     }
 
     // Extracted from https://www.javaworld.com/article/2073352/core-java/core-java-simply-singleton.html?page=2

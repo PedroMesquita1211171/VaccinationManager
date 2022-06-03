@@ -7,6 +7,7 @@ import app.domain.model.WaitingRoom;
 import app.domain.model.VaccinationCenter;
 import app.domain.model.Vaccine;
 
+import java.sql.SQLOutput;
 import java.text.ParseException;
 import java.util.Calendar;
 import java.util.Date;
@@ -14,10 +15,18 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
+import static app.domain.shared.Constants.sdf;
+
+/**
+ * The type Register arrival ui.
+ */
 public class RegisterArrivalUI implements Runnable {
 
     private final RegisterArrivalController controller;
 
+    /**
+     * Instantiates a new Register arrival ui.
+     */
     public RegisterArrivalUI() {
         this.controller = new RegisterArrivalController();
     }
@@ -69,10 +78,9 @@ public class RegisterArrivalUI implements Runnable {
     private ScheduleVaccine getScheduledVaccinesForCenter(String centerName, Date date) {
         int option;
         int contador;
-        DateFormat df = new SimpleDateFormat("dd/MM/yyyy");
         Calendar dateFind = Calendar.getInstance();
         dateFind.setTime(date);
-        String findDate = df.format(dateFind.getTime());
+        String findDate = sdf.format(dateFind.getTime());
 
         if (controller.getSchedules().isEmpty()) {
             System.out.println("No scheduled vaccines for today");
@@ -83,7 +91,7 @@ public class RegisterArrivalUI implements Runnable {
             for (int i = 0; i < controller.getSchedules().size(); i++) {
                 String centerAux = controller.getSchedules().get(i).getCenterName();
                 if (centerAux.equals(centerName)) {
-                    String dateAux = df.format(controller.getSchedules().get(i).getScheduleDate());
+                    String dateAux = sdf.format(controller.getSchedules().get(i).getScheduleDate());
                     if (dateAux.equals(findDate)) {
                         System.out.println(contador + " - " + controller.getSchedules().get(i) + "\n");
                         daySchedule.add(controller.getSchedules().get(i));
