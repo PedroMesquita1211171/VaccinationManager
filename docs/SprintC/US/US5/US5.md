@@ -93,7 +93,7 @@
 |:-------------  |:---------------------------------------------------------------|:-----------------------|:------------------------------|
 | Step 1  		 | 	... interacting with the nurse?						                         | ArrivalListUI          | Pure Fabrication              |
 | | ... directing the flow of data between all classes?            | ArrivalListController  | Controller                    |
-| Step 2  		 | 	... knowing all vaccination centers?						                    | VaccinationCenterStore | Information Expert            |
+| Step 2  		 | 	... knowing all vaccination centers?						                    | VaccinationCenterStore | High Cohesion Low Coupling    |
 | Step 3  		 | 	... having a list of people in the waiting room?					         | WaitingRoom            | Information Expert            |
 | Step 4  		 | 	... informing the user of success/failure of operation?						 | ArrivalListUI          | Information Expert            |
 
