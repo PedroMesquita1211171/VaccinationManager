@@ -30,7 +30,7 @@ deactivate ":System"
 
 USER -> ":System" :  selects a vaccine
 activate ":System"
-":System" --> USER : asks to enter the date to schedule a vaccine (date)
+":System" --> USER : asks to enter the date to schedule a vaccine (date and time slot)
 deactivate ":System"
 
 USER -> ":System" : inserts the requested data

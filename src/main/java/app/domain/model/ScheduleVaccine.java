@@ -6,9 +6,7 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-/**
- * The type Schedule vaccine.
- */
+
 public class ScheduleVaccine {
 
 

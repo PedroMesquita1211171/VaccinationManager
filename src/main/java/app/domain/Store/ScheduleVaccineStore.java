@@ -57,7 +57,7 @@ public class ScheduleVaccineStore {
     }
 
     /**
-     * Create schedule vaccine schedule vaccine.
+     * Create schedule vaccine schedule.
      *
      * @param scheduleDate the schedule date
      * @param scheduleHour the schedule hour
