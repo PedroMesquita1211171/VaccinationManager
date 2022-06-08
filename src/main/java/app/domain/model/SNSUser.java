@@ -1,13 +1,14 @@
 package app.domain.model;
 
-import app.domain.shared.Constants;
-
-import java.lang.invoke.ConstantBootstraps;
-import java.util.Calendar;
+import java.time.LocalDate;
+import java.time.Period;
 import java.util.Date;
+import java.util.Objects;
 import java.util.regex.Pattern;
 
 /**
+ * The type Sns user.
+ *
  * @author Henrique Pinto - 1211201
  */
 public class SNSUser {
@@ -18,7 +19,7 @@ public class SNSUser {
 
     private String name;
     private String address;
-    private String gender;
+    private String sex;
     private String phoneNumber;
     private String email;
     private Date birthDate;
@@ -31,25 +32,30 @@ public class SNSUser {
      *
      * @param name              the name
      * @param address           the address
-     * @param genderOption      the gender option
+     * @param sex               the sex option
      * @param phoneNumber       the phone number
      * @param email             the email
      * @param birthDate         the birthdate
      * @param SNSNumber         the sns number
      * @param citizenCardNumber the citizen card number
      */
-    public SNSUser(String name, String address, String genderOption, String phoneNumber, String email, Date birthDate, String SNSNumber, String citizenCardNumber){
+    public SNSUser(String name, String address, String sex, String phoneNumber, String email, Date birthDate, String SNSNumber, String citizenCardNumber){
         checkNameRules(name);
         checkAddressRules(address);
         checkPhoneNumber(phoneNumber);
         checkEmail(email);
         checkCitizenCardNumber(citizenCardNumber);
         checkSNSNumber(SNSNumber);
-        checkGenderRules(genderOption);
+        checkSex(sex);
 
         this.name = name;
         this.address = address;
-        this.gender = genderOption;
+        if(sex.equalsIgnoreCase("")||sex.equalsIgnoreCase("none")){
+            this.sex = "Not Specified";
+        }else{
+            this.sex = sex;
+        }
+
         this.phoneNumber = phoneNumber;
         this.email = email;
         this.birthDate = birthDate;
@@ -60,7 +66,7 @@ public class SNSUser {
     /**
      * Check name Rules
      *
-     * @param name
+     * @param name the name
      */
 
     private void checkNameRules(String name){
@@ -73,21 +79,23 @@ public class SNSUser {
 
     /**
      * Check address rules.
-     * @param address
+     * @param address the address
      */
     private void checkAddressRules(String address){
-        if(address.length() < 2 || address.length() > 40){
+        if(address.length() < 3){
             throw new IllegalArgumentException("Address is too short");
+        }else if(address.length() > 300){
+            throw new IllegalArgumentException("Address is too long");
         }
     }
 
     /**
-     * Check gender rules
+     * Check sex rules
      *
-     * @param genderOption
+     * @param sex the sex
      */
-    private void checkGenderRules(String genderOption){
-        if(!(genderOption.equalsIgnoreCase("male")||genderOption.equalsIgnoreCase("female")||genderOption.equalsIgnoreCase("non-binary")||genderOption.equalsIgnoreCase("none"))){
+    private void checkSex(String sex){
+        if(!(sex.equalsIgnoreCase("male")||sex.equalsIgnoreCase("female")||sex.equalsIgnoreCase("non-binary")||sex.equalsIgnoreCase("none")||sex.equalsIgnoreCase("")||sex.equalsIgnoreCase("Feminino")||sex.equalsIgnoreCase("Masculino")||sex.equalsIgnoreCase("n/a"))){
             throw new IllegalArgumentException("Invalid Gender Option");
         }
     }
@@ -95,7 +103,7 @@ public class SNSUser {
     /**
      * Check if phoneNumber is valid
      *
-     * @param phoneNumber
+     * @param phoneNumber the phone number
      */
     private void checkPhoneNumber(String phoneNumber){
         if(phoneNumber.length() != 9 || phoneNumber.charAt(0) != '9'){
@@ -110,7 +118,7 @@ public class SNSUser {
 
     /**
      * Check if SNSNumber is valid
-     * @param SNSNumber
+     * @param SNSNumber the SNSNumber
      */
     private void checkSNSNumber(String SNSNumber){
         String SNSNumberRegex = "^[0-9]{9}$";
@@ -125,7 +133,7 @@ public class SNSUser {
     /**
      * check if Email is valid
      *
-     * @param email
+     * @param email the email
      */
     private void checkEmail(String email) {
         if (email == null || email.isEmpty()) {
@@ -140,7 +148,7 @@ public class SNSUser {
 
     /**
      * Check if citizenCardNumber is valid
-     * @param citizenCardNumber
+     * @param citizenCardNumber the citizenCardNumber
      */
     private void checkCitizenCardNumber(String citizenCardNumber) {
         String citizenCardNumberRegex = "^[0-9]{8}$";
@@ -149,6 +157,14 @@ public class SNSUser {
 
         if (!pattern.matcher(citizenCardNumber).matches()) {
             throw new IllegalArgumentException("Invalid Citizen Card Number");
+        }
+    }
+    private void checkBirthDate(Date birthDate){
+        if(birthDate.after(new Date())){
+            throw new IllegalArgumentException("Invalid Birth Date");
+        }
+        if(birthDate.getMonth() == 1 && birthDate.getDate() > 29){
+            throw new IllegalArgumentException("Invalid Birth Date");
         }
     }
 
@@ -171,12 +187,12 @@ public class SNSUser {
     }
 
     /**
-     * Gets gender.
+     * Gets sex.
      *
-     * @return the gender
+     * @return the sex
      */
-    public String getGender() {
-        return gender;
+    public String getSex() {
+        return sex;
     }
 
     /**
@@ -198,9 +214,9 @@ public class SNSUser {
     }
 
     /**
-     * Gets birth date.
+     * Gets birthdate.
      *
-     * @return the birth date
+     * @return the birthdate
      */
     public Date getBirthDate() {
         return birthDate;
@@ -243,12 +259,12 @@ public class SNSUser {
     }
 
     /**
-     * Sets gender.
+     * Sets sex.
      *
-     * @param gender the gender
+     * @param sex the sex
      */
-    public void setGender(String gender) {
-        this.gender = gender;
+    public void setSex(String sex) {
+        this.sex = sex;
     }
 
     /**
@@ -270,9 +286,9 @@ public class SNSUser {
     }
 
     /**
-     * Sets birth date.
+     * Sets birthdate.
      *
-     * @param birthDate the birth date
+     * @param birthDate the birthdate
      */
     public void setBirthDate(Date birthDate) {
         this.birthDate = birthDate;
@@ -297,6 +313,18 @@ public class SNSUser {
     }
 
     /**
+     * returns age of SNSUser in years
+     *
+     * @return age of SNSUser in years
+     */
+    public int getAge(){
+        LocalDate today = LocalDate.now();
+        LocalDate birthday = LocalDate.of(birthDate.getYear()+1900, birthDate.getMonth()+1, birthDate.getDate());
+        Period period = Period.between(birthday, today);
+        return period.getYears();
+    }
+
+    /**
      *
      * returns the SNSUser object as a string
      *
@@ -307,11 +335,29 @@ public class SNSUser {
         return  "\nInfo: " + "\n" +
                 "Name: " + name + "\n" +
                 "Address: " + address + "\n" +
-                "Gender: " + gender + "\n" +
+                "Gender: " + sex + "\n" +
                 "Phone Number: " + phoneNumber + "\n" +
                 "Email: " + email + "\n" +
                 "Birth Date: " + birthDate + "\n" +
                 "SNS Number: " + SNSNumber + "\n" +
                 "Citizen Card Number: " + citizenCardNumber + "\n\n";
+    }
+
+    /**
+     *  Equals method
+     * @param o the object to compare
+     * @return true if the SNSUser object is equal to the parameter
+     */
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        SNSUser snsUser = (SNSUser) o;
+        return Objects.equals(phoneNumber, snsUser.phoneNumber) && Objects.equals(email, snsUser.email) && Objects.equals(SNSNumber, snsUser.SNSNumber) && Objects.equals(citizenCardNumber, snsUser.citizenCardNumber);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(phoneNumber, email, SNSNumber, citizenCardNumber);
     }
 }

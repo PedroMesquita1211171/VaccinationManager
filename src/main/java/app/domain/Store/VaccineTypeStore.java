@@ -37,8 +37,12 @@ public class VaccineTypeStore {
      *
      * @param vaccineType the vaccine type
      */
-    public void addVaccineType(VaccineType vaccineType) {
-        this.vaccineTypeList.add(vaccineType);
+    public boolean addVaccineType(VaccineType vaccineType) {
+        if(validateVaccineType(vaccineType)) {
+            this.vaccineTypeList.add(vaccineType);
+            return true;
+        }
+        return false;
     }
 
     /**
@@ -56,8 +60,8 @@ public class VaccineTypeStore {
      *
      * @return VaccineType Object
      */
-    public VaccineType createVaccineType(String code, String designation, String whoId) {
-        return new VaccineType(code, designation, whoId);
+    public VaccineType createVaccineType(String code, String designation, String vaccineTechnology) {
+        return new VaccineType(code, designation, vaccineTechnology);
     }
 
 }

@@ -1,146 +1,195 @@
 package app.domain.model;
 
-import org.junit.platform.commons.util.StringUtils;
+import app.domain.model.VaccineDependencies.AdministrationProcess;
+
+import java.util.List;
+import java.util.Objects;
 
 /**
  * The type Vaccine.
- *
- * @author Pedro Mesquita - 1211171
  */
-public class Vaccine {
+public class Vaccine implements Comparable<Vaccine> {
 
-
-    private String name;
-    private int ID;
     private String brand;
-    private int doses;
-    private int dosage;
-    private int recovery;
-    private int doseinterval;
-
+    private String lotNumber;
+    private List<AdministrationProcess> administrationProcesses;
+    private VaccineType vaccineType;
 
     /**
      * Instantiates a new Vaccine.
      *
-     * @param name         the name
-     * @param ID           the id
-     * @param brand        the brand
-     * @param doses        the doses
-     * @param dosage       the dosage
-     * @param recovery     the recovery
-     * @param doseinterval the doseinterval
+     * @param brand                 the brand
+     * @param lotNumber             the lot number
+     * @param administrationProcess the administration process
+     * @param vaccineType           the vaccine type
      */
-    public Vaccine(String name, int ID, String brand ,int doses,int dosage, int recovery, int doseinterval){
-
-        checkName(name);
-        checkID(ID);
+    public Vaccine(String brand, String lotNumber, List<AdministrationProcess> administrationProcess, VaccineType vaccineType) {
         checkBrand(brand);
-        checkDoses(doses);
-        checkDosage(dosage);
-        checkRecovery(recovery);
-        checkDoseInterval(doseinterval);
-
-        this.name = name;
-        this.ID = ID;
+        checkLotNumber(lotNumber);
+        checkAdministrationProcess(administrationProcess);
+        checkVaccineType(vaccineType);
         this.brand = brand;
-        this.doses = doses;
-        this.dosage = dosage;
-        this.recovery = recovery;
-        this.doseinterval = doseinterval;
-
+        this.lotNumber = lotNumber;
+        this.administrationProcesses = administrationProcess;
+        this.vaccineType = vaccineType;
     }
 
     /**
-     * Checkers used to verify if the Vaccine is valid.
+     * Check brand.
      *
+     * @param brand the brand
      */
-
-    private void checkName(String name) {
-        if(name.isEmpty() || name == null) throw new IllegalArgumentException("Name can't be empty or null!");
-        if (name.length() < 3)
-            throw new IllegalArgumentException("Name is too short!");
-
-        if (name.length() > 20)
-            throw new IllegalArgumentException("Name Can't Have More Than 20 Characters");
+    public void checkBrand(String brand) {
+        if(brand== null || brand.isEmpty()) {
+            throw new IllegalArgumentException("Brand cannot be null or empty");
+        }
+        if (brand.length() < 3) {
+            throw new IllegalArgumentException("Brand is too short");
+        }
     }
 
-    private void checkID(int ID) {
-        if (ID < 1)
-            throw new IllegalArgumentException("ID must be greater than 0");
+    /**
+     * Check lot number.
+     *
+     * @param lotNumber the lot number
+     */
+    public void checkLotNumber(String lotNumber) {
+        if(lotNumber== null || lotNumber.isEmpty()) {
+            throw new IllegalArgumentException("Lot number cannot be null or empty");
+        }
+        try{
+            Long.parseLong(lotNumber);
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException("Lot number is not a number");
+        }
+        if (lotNumber.length() < 3) {
+            throw new IllegalArgumentException("Lot number is too short");
+        }
     }
 
-    private void checkBrand(String brand) {
-        if(brand.isEmpty() || brand == null) throw new IllegalArgumentException("Brand can't be empty or null!");
-        if (brand.length() < 3)
-            throw new IllegalArgumentException("Brand is too short!");
-
-        if (brand.length() > 20)
-            throw new IllegalArgumentException("Brand Can't Have More Than 20 Characters");
+    /**
+     * Check administration process.
+     *
+     * @param administrationProcess the administration process
+     */
+    public void checkAdministrationProcess(List<AdministrationProcess> administrationProcess) {
+        if(administrationProcess == null) {
+            throw new IllegalArgumentException("Administration process cannot be null");
+        }
     }
 
-    private void checkDoses(int doses) {
-        if (doses < 1)
-            throw new IllegalArgumentException("Number of doses must be greater than 0");
+    /**
+     * Check vaccine type.
+     *
+     * @param vaccineType the vaccine type
+     */
+    public void checkVaccineType(VaccineType vaccineType) {
+        if(vaccineType == null) {
+            throw new IllegalArgumentException("Vaccine type cannot be null");
+        }
     }
 
-    private void checkDosage(int dosage) {
-        if (dosage < 1)
-            throw new IllegalArgumentException("Dosage must be greater than 0ml");
-    }
-
-    private void checkRecovery(int recovery) {
-        if (recovery < 1)
-            throw new IllegalArgumentException("Recovery days must be greater than 0");
-    }
-
-    private void checkDoseInterval(int doseinterval) {
-        if (doseinterval < 1)
-            throw new IllegalArgumentException("Dose interval days must be greater than 0");
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public int getID() {
-        return ID;
-    }
-
+    /**
+     * Gets brand.
+     *
+     * @return the brand
+     */
     public String getBrand() {
         return brand;
     }
 
-    public int getDoses() {
-        return doses;
-    }
-
-    public int getDosage() {
-        return dosage;
-    }
-
-    public int getRecovery() {
-        return recovery;
-    }
-
-    public int getDoseInterval() {
-        return doseinterval;
+    /**
+     * Sets brand.
+     *
+     * @param brand the brand
+     */
+    public void setBrand(String brand) {
+        this.brand = brand;
     }
 
     /**
-     * returns the vaccine data as a string.
+     * Gets lot number.
      *
+     * @return the lot number
      */
+    public String getLotNumber() {
+        return lotNumber;
+    }
+
+    /**
+     * Sets lot number.
+     *
+     * @param lotNumber the lot number
+     */
+    public void setLotNumber(String lotNumber) {
+        this.lotNumber = lotNumber;
+    }
+
+    /**
+     * Gets administration process.
+     *
+     * @return the administration process
+     */
+    public List<AdministrationProcess> getAdministrationProcesses() {
+        return administrationProcesses;
+    }
+
+    /**
+     * Sets administration process.
+     *
+     * @param administrationProcesses the administration process
+     */
+    public void setAdministrationProcesses(List<AdministrationProcess> administrationProcesses) {
+        this.administrationProcesses = administrationProcesses;
+    }
+
+    /**
+     * Gets vaccine type.
+     *
+     * @return the vaccine type
+     */
+    public VaccineType getVaccineType() {
+        return vaccineType;
+    }
+
+    /**
+     * Sets vaccine type.
+     *
+     * @param vaccineType the vaccine type
+     */
+    public void setVaccineType(VaccineType vaccineType) {
+        this.vaccineType = vaccineType;
+    }
 
     @Override
-    public String toString() {
-        return
-                "\n\nName: " + name + "\n" +
-                "ID: " + ID + "\n" +
-                "Brand: " + brand + "\n" +
-                "Doses: " + doses + "\n" +
-                "Dosage: " + dosage + "\n" +
-                "Recovery: " + recovery + "\n" +
-                "Dose Interval: " + doseinterval + "\n"
-                ;
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Vaccine vaccine = (Vaccine) o;
+        return brand.equals(vaccine.brand) && lotNumber.equals(vaccine.lotNumber) && administrationProcesses.equals(vaccine.administrationProcesses) && vaccineType.equals(vaccine.vaccineType);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(brand, lotNumber, administrationProcesses, vaccineType);
+    }
+
+    @Override
+    public int compareTo(Vaccine o) {
+        if(this.equals(o)) {
+            if(this.getVaccineType().getDesignation().compareTo(o.getVaccineType().getDesignation()) < 0) {
+                return -1;
+            }else if(this.getVaccineType().getDesignation().compareTo(o.getVaccineType().getDesignation()) > 0) {
+                return 1;
+            }else {
+                return 0;
+            }
+        }else if(this.getBrand().compareTo(o.getBrand()) < 0) {
+            return -1;
+        }else if(this.getBrand().compareTo(o.getBrand()) > 0) {
+            return 1;
+        }else{
+             return 0;
+        }
     }
 }

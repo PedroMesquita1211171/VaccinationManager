@@ -8,12 +8,10 @@ import java.util.List;
 public class SNSUserUI implements Runnable{
     @Override
     public void run() {
-        List<MenuItem> options = new ArrayList<MenuItem>();
-        options.add(new MenuItem("Schedule a vaccine ", new UserScheduleVaccineUI()));
+        List<MenuItem> options = new ArrayList<>();
+        options.add(new MenuItem("Schedule a Vaccine ", new SNSUserScheduleUI()));
 
-
-
-        int option = 0;
+        int option;
         do
         {
             option = Utils.showAndSelectIndex(options, "\n\nSNS User Menu:");

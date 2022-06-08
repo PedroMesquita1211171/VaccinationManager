@@ -19,7 +19,7 @@ public class SNSUserMapper {
      * @return the sns user dto
      */
     public static SNSUserDTO toDTO(SNSUser snsu) {
-        return new SNSUserDTO(snsu.getName(), snsu.getAddress(), snsu.getPhoneNumber(), snsu.getEmail(), snsu.getBirthDate(), snsu.getSNSNumber(), snsu.getCitizenCardNumber());
+        return new SNSUserDTO(snsu.getName(), snsu.getAddress(), snsu.getSex(),snsu.getPhoneNumber(), snsu.getEmail(), snsu.getBirthDate(), snsu.getSNSNumber(), snsu.getCitizenCardNumber());
     }
 
     /**
@@ -34,6 +34,28 @@ public class SNSUserMapper {
             snsusDTO.add(toDTO(snsu));
         }
         return snsusDTO;
+    }
+    /**
+     * To entity.
+     *
+     * @param snsuDTO the snsu dto
+     * @return the sns user
+     */
+    public static SNSUser toEntity(SNSUserDTO snsuDTO) {
+        return new SNSUser(snsuDTO.getName(), snsuDTO.getAddress(), snsuDTO.getSex(),snsuDTO.getPhoneNumber(), snsuDTO.getEmail(), snsuDTO.getBirthDate(), snsuDTO.getSNSNumber(), snsuDTO.getCitizenCardNumber());
+    }
+    /**
+     * To entity list.
+     *
+     * @param snsusDTOList the snsus dto list
+     * @return the sns user list
+     */
+    public static List<SNSUser> toEntityList(List<SNSUserDTO> snsusDTOList) {
+        List<SNSUser> snsus = new ArrayList<>();
+        for (SNSUserDTO snsuDTO : snsusDTOList) {
+            snsus.add(toEntity(snsuDTO));
+        }
+        return snsus;
     }
 
 }

@@ -76,14 +76,18 @@ public class Utils {
             {
                 String strDate = readLineFromConsole(prompt);
 
-                SimpleDateFormat df = new SimpleDateFormat("dd/MM/yyyy");
+                if(strDate.contains("/")){
+                    strDate = strDate.replace("/", "-");
+                }
+
+                SimpleDateFormat df = new SimpleDateFormat("dd-MM-yyyy");
 
                 Date date = df.parse(strDate);
 
                 return date;
             } catch (ParseException ex)
             {
-                Logger.getLogger(Utils.class.getName()).log(Level.SEVERE, null, ex);
+                throw new RuntimeException("\nInvalid date format");
             }
         } while (true);
     }

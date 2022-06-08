@@ -1,6 +1,8 @@
 package app.DTO;
 
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.Period;
 import java.util.Date;
 
 /**
@@ -11,6 +13,7 @@ import java.util.Date;
 public class SNSUserDTO {
     private String name;
     private String address;
+    private String sex;
     private String phoneNumber;
     private String email;
     private Date birthDate;
@@ -28,13 +31,14 @@ public class SNSUserDTO {
      * @param address           the address
      * @param phoneNumber       the phone number
      * @param email             the email
-     * @param birthDate         the birth date
+     * @param birthDate         the birthdate
      * @param SNSNumber         the sns number
      * @param citizenCardNumber the citizen card number
      */
-    public SNSUserDTO(String name, String address, String phoneNumber, String email, Date birthDate, String SNSNumber, String citizenCardNumber){
+    public SNSUserDTO(String name, String address, String sex,String phoneNumber, String email, Date birthDate, String SNSNumber, String citizenCardNumber){
         this.name = name;
         this.address = address;
+        this.sex = sex;
         this.phoneNumber = phoneNumber;
         this.email = email;
         this.birthDate = birthDate;
@@ -80,9 +84,9 @@ public class SNSUserDTO {
     }
 
     /**
-     * Gets birth date.
+     * Gets birthdate.
      *
-     * @return the birth date
+     * @return the birthdate
      */
     public Date getBirthDate() {
         return birthDate;
@@ -104,6 +108,25 @@ public class SNSUserDTO {
      */
     public String getCitizenCardNumber() {
         return citizenCardNumber;
+    }
+    /**
+     * Gets Sex
+     *
+     * @return the sex
+     */
+    public String getSex(){
+        return this.sex;
+    }
+    /**
+     * returns age of SNSUser in years
+     *
+     * @return age of SNSUser in years
+     */
+    public int getAge(){
+        LocalDate today = LocalDate.now();
+        LocalDate birthday = LocalDate.of(birthDate.getYear()+1900, birthDate.getMonth()+1, birthDate.getDate());
+        long years = java.time.temporal.ChronoUnit.YEARS.between( birthday , today );
+        return (int)years;
     }
 
     @Override

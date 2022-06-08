@@ -1,59 +1,57 @@
 package app.DTO;
 
+import app.domain.model.VaccineDependencies.AdministrationProcess;
+import app.domain.model.VaccineType;
+
+import java.util.List;
+
 public class VaccineDTO {
 
-    private String name;
-    private int ID;
     private String brand;
-    private int doses;
-    private int dosage;
-    private int recovery;
-    private int doseinterval;
+    private String lotNumber;
+    private List<AdministrationProcess> administrationProcesses;
+    private VaccineType vaccineType;
 
-    public VaccineDTO(String name, int ID, String brand ,int doses,int dosage, int recovery, int doseinterval) {
-
-        this.name = name;
-        this.ID = ID;
+    public VaccineDTO(String brand, String lotNumber, List<AdministrationProcess> administrationProcess, VaccineType vaccineType) {
         this.brand = brand;
-        this.doses = doses;
-        this.dosage = dosage;
-        this.recovery = recovery;
-        this.doseinterval = doseinterval;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public int getID() {
-        return ID;
+        this.lotNumber = lotNumber;
+        this.administrationProcesses = administrationProcess;
+        this.vaccineType = vaccineType;
     }
 
     public String getBrand() {
         return brand;
     }
 
-    public int getDoses() {
-        return doses;
+    public String getLotNumber() {
+        return lotNumber;
     }
 
-    public int getDosage() {
-        return dosage;
+    public List<AdministrationProcess> getAdministrationProcesses() {
+        return administrationProcesses;
     }
 
-    public int getRecovery() {
-        return recovery;
+    public VaccineType getVaccineType() {
+        return vaccineType;
     }
 
-    public int getDoseInterval() {
-        return doseinterval;
+    public AdministrationProcess getAdministrationProcess(int age) {
+        for (AdministrationProcess process : this.administrationProcesses) {
+            if (process.getAgeGroup().isIn(age)) {
+                return process;
+            }
+        }
+        throw new IllegalArgumentException("No administration process found for age " + age);
     }
 
     @Override
     public String toString() {
-        return "\n" +
-                "Vaccine Name: " + name + "\n" +
-                "Vaccine brand: " + brand + "\n"
+        return  "Vaccine to Be Added: " + "\n" +
+                "Brand: " + brand + "\n" +
+                "Lot Number: " + lotNumber + "\n" +
+                "Vaccine Type Code: " + vaccineType.getCode() + "\n" +
+                "Vaccine Type Designation: " + vaccineType.getDesignation() + "\n"
                 ;
+
     }
 }

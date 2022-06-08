@@ -1,6 +1,6 @@
 package app.ui.console.utils;
 
-import app.domain.model.Employee;
+
 import app.domain.model.SNSUser;
 
 import java.io.FileWriter;

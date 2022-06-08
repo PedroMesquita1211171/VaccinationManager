@@ -55,10 +55,11 @@ public class AuthUI implements Runnable{
     {
         List<MenuItem> rolesUI = new ArrayList<>();
         rolesUI.add(new MenuItem(Constants.ROLE_ADMIN, new AdminUI()));
-        rolesUI.add(new MenuItem(Constants.ROLE_RECEPTIONIST, new ReceptionistUI()));
-        rolesUI.add(new MenuItem(Constants.ROLE_SNSUSER,new SNSUserUI()));
         // To complete with other user roles and related RoleUI
-
+        rolesUI.add(new MenuItem(Constants.ROLE_RECEPTIONIST, new ReceptionistUI()));
+        rolesUI.add(new MenuItem(Constants.ROLE_NURSE, new NurseUI()));
+        rolesUI.add(new MenuItem(Constants.ROLE_SNSUSER, new SNSUserUI()));
+        rolesUI.add(new MenuItem(Constants.ROLE_CENTER_COORDINATOR, new CenterCoordinatorUI()));
         //
         return rolesUI;
     }
@@ -68,7 +69,7 @@ public class AuthUI implements Runnable{
         System.out.println("\nLogin UI:");
 
         int maxAttempts = 3;
-        boolean success = false;
+        boolean success;
         do
         {
             maxAttempts--;

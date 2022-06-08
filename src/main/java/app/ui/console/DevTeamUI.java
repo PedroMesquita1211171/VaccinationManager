@@ -12,6 +12,7 @@ public class DevTeamUI implements Runnable{
     }
     public void run()
     {
+
         System.out.println("\n");
         System.out.printf("Development Team:\n");
         System.out.printf("\t Alexandre Costa - 1211225@isep.ipp.pt \n");
@@ -21,5 +22,6 @@ public class DevTeamUI implements Runnable{
         System.out.printf("\t Henrique Pinto - 1211201@isep.ipp.pt \n");
         System.out.printf("\t Pedro Mesquita - 1211171@isep.ipp.pt \n");
         System.out.println("\n");
+
     }
 }

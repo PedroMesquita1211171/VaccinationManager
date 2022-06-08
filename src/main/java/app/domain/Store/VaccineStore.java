@@ -1,66 +1,72 @@
 package app.domain.Store;
+
 import app.domain.model.Vaccine;
+import app.domain.model.VaccineDependencies.AdministrationProcess;
+import app.domain.model.VaccineType;
+
 import java.util.ArrayList;
 import java.util.List;
 
-
 /**
- * Stores Vaccines
- *
- * @author Pedro Mesquita - 1211171
+ * The type Vaccine store.
  */
 public class VaccineStore {
 
-    private List<Vaccine> vaccineList;
 
     /**
-     * Declares the vaccine list as an ArrayList.
+     * The Vaccine list.
      */
+    private List<Vaccine> VaccineList;
+
     public VaccineStore() {
-        this.vaccineList = new ArrayList<>();
+        VaccineList = new ArrayList<>();
     }
 
     /**
-     * Gets vaccine list.
+     * Create vaccine vaccine.
      *
-     * @return the vaccine list
+     * @param brand     the brand
+     * @param lotNumber the lot number
+     * @param ap        the ap
+     * @param vt        the vt
+     * @return the vaccine
      */
-    public List<Vaccine> getVaccineList() {
-        return vaccineList;
+    public Vaccine createVaccine(String brand, String lotNumber, List<AdministrationProcess> ap, VaccineType vt) {
+        return new Vaccine(brand,lotNumber,ap,vt);
     }
 
     /**
-     * Add vaccine.
+     * Add vaccine boolean.
      *
-     * @param Vaccine the vaccine
-     */
-    public void addVaccine(Vaccine Vaccine) {
-        this.vaccineList.add(Vaccine);
-    }
-    /**
-     * Validates the created vaccine.
-     *
-     * @param vaccine
+     * @param vac the vac
      * @return the boolean
      */
-    public boolean validateVaccine (Vaccine vaccine){
-        if (vaccine == null) return false;
-        return !getVaccineList().contains(vaccine);
-    }
-    /**
-     * Creates vaccine.
-     *
-     * @param name         the name
-     * @param id           the id
-     * @param brand        the brand
-     * @param doses        the doses
-     * @param dosage       the dosage
-     * @param recovery     the recovery
-     * @param doseinterval the doseinterval
-     * @return the boolean
-     */
-    public Vaccine createVaccine(String name, int id, String brand, int doses,int dosage, int recovery, int doseinterval) {
-           return new Vaccine(name, id, brand, doses, dosage, recovery, doseinterval);
+    public boolean addVaccine(Vaccine vac){
+        if(validateVaccine(vac)){
+            VaccineList.add(vac);
+            return true;
+        }
+        return false;
     }
 
+    /**
+     * Validate vaccine boolean.
+     *
+     * @param vac the vac
+     * @return the boolean
+     */
+    public boolean validateVaccine(Vaccine vac){
+        if(vac == null) return false;
+        return !VaccineList.contains(vac);
     }
+
+    /**
+     * Get vaccine list.
+     *
+     * @return the list
+     */
+    public List<Vaccine> getVaccineList(){
+        return VaccineList;
+    }
+
+}

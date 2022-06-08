@@ -1,70 +1,51 @@
 package app.controller;
 
-import app.domain.model.Vaccine;
+import app.DTO.Mappers.VaccineMapper;
+import app.DTO.Mappers.VaccineTypeMapper;
+import app.DTO.VaccineDTO;
+import app.DTO.VaccineTypeDTO;
 import app.domain.model.Company;
+import app.domain.model.Vaccine;
+import app.domain.model.VaccineDependencies.AdministrationProcess;
+import app.domain.model.VaccineDependencies.AgeGroup;
+import app.domain.model.VaccineType;
 
-/**
- * The type Specify new vaccine controller.
- *
- * @author Pedro Mesquita - 1211171
- */
+import java.util.List;
+
 public class SpecifyNewVaccineController {
 
     private Company company;
-    private Vaccine vaccine;
+    private VaccineType vt;
+    private Vaccine vac;
 
-    /**
-     * Instantiates the controller used by the UI.
-     */
-    public SpecifyNewVaccineController() {
+
+    public SpecifyNewVaccineController(Company company) {
+        this.company = company;
+    }
+
+    public SpecifyNewVaccineController(){
         this(App.getInstance().getCompany());
     }
 
-    /**
-     * Instantiates the controller used by the UI.
-     */
-    public SpecifyNewVaccineController(Company company) {
-        this.company = company;
-        this.vaccine = null;
-    }
-    /**
-     * Creates vaccine.
-     *
-     * @param name         the name
-     * @param id           the id
-     * @param brand        the brand
-     * @param doses        the doses
-     * @param dosage       the dosage
-     * @param recovery     the recovery
-     * @param doseinterval the doseinterval
-     * @return the boolean
-     */
-    public boolean createVaccine(String name, int id, String brand, int doses,int dosage, int recovery, int doseinterval) {
-        try {
-            this.vaccine = this.company.getVaccineStore().createVaccine(name, id, brand, doses, dosage, recovery, doseinterval);
-        } catch (IllegalArgumentException e){
-            System.out.println(e.getMessage());
-            return false;
-        }
-        return this.company.getVaccineStore().validateVaccine(vaccine);
+    public boolean createVaccine(VaccineTypeDTO vaccineTypeDTO, String brand, String lotNumber,List<AdministrationProcess> admList){
+
+        vt = VaccineTypeMapper.toEntity(vaccineTypeDTO);
+        this.vac = this.company.getVaccineStore().createVaccine(brand,lotNumber,admList,vt);
+
+        return this.company.getVaccineStore().validateVaccine(this.vac);
     }
 
-
-
-    /**
-     * Adds vaccine.
-     */
-    public void addVaccine() {
-        this.company.getVaccineStore().addVaccine(vaccine);
+    public boolean saveVaccine(){
+        return this.company.getVaccineStore().addVaccine(this.vac);
     }
 
-    /**
-     * Shows vaccine into string format.
-     *
-     * @return the vaccine in a string format
-     */
-    public String showVaccine() {
-        return this.vaccine.toString();
+    public List<VaccineTypeDTO> getVaccineTypes(){
+        return VaccineTypeMapper.toDTOList(this.company.getVaccineTypeStore().getVaccineTypeList());
     }
+
+    public VaccineDTO getVaccine(){
+        return VaccineMapper.toDTO(this.vac);
+    }
+
 
 }

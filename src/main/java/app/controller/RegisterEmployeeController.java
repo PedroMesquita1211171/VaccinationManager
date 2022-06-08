@@ -6,6 +6,9 @@ import app.domain.model.Company;
 import app.domain.model.Employee;
 import app.ui.console.utils.Generators;
 
+/**
+ * The type Register employee controller.
+ */
 public class RegisterEmployeeController {
 
 
@@ -18,12 +21,19 @@ public class RegisterEmployeeController {
 
 
     /**
-     * Constructors.
+     * Instantiates a new Register employee controller.
+     *
+     *
      */
     public RegisterEmployeeController() {
         this(App.getInstance().getCompany());
     }
 
+    /**
+     * Instantiates a new Register employee controller.
+     *
+     * @param company the company
+     */
     public RegisterEmployeeController(Company company) {
         this.company = company;
         this.emp = null;
@@ -38,47 +48,37 @@ public class RegisterEmployeeController {
      * @param phoneNumber       employee's phone number
      * @param citizenCardNumber employee's citizen card number
      * @param role              employee's role
+     * @param empID             the emp id
      * @return the boolean
      */
-    public boolean createEmployee(String name, String email, String address, String phoneNumber, String citizenCardNumber, String role) {
-        try{
-            this.emp = new Employee(name, email, address, phoneNumber, citizenCardNumber, role);
-        }catch (IllegalArgumentException e){
-            System.out.println(e.getMessage());
-            return false;
-        }
+    public boolean createEmployee(String name, String email, String address, String phoneNumber, String citizenCardNumber, String role, String empID) {
 
-        return validateEmployee(emp);
+        this.emp = this.company.getEmployeeStore().createEmployee(name, email, address, phoneNumber, citizenCardNumber, role, empID);
+
+        return this.company.getEmployeeStore().validateEmployee(this.emp);
     }
 
+
     /**
-     * Validates vaccine type boolean.
+     * Adds employee as a System user and to the employee store.
      *
-     * @param emp the emp
-     * @return the boolean
+     * @return if the employee was added
      */
-    public boolean validateEmployee (Employee emp) {
-        if (emp == null) return false;
-        return !company.getEmployeeStore().getEmployeeList().contains(emp);
-    }
-
-    /**
-     * Adds employee.
-     */
-    public void addEmployee() {
-        String employeeID = Generators.generateEmployeeID();
+    public boolean saveEmployee() {
         String password = Generators.generateRandomPassword();
-        this.company.getEmployeeStore().addEmployee(this.emp);
-        this.company.getAuthFacade().addUserWithRole(this.emp.getName(), this.emp.getEmail(),password, this.emp.getRole());
-
-        System.out.println("\nEmployee" +"\n" + "Name: " + this.emp.getName() + "\n" + "Email: " + this.emp.getEmail() + "\n" + "Password: " + password + "\n" + "Role: " + this.emp.getRole() + "\n" + "Employee ID: " + employeeID + "\n");
-
+        boolean a = this.company.getEmployeeStore().addEmployee(this.emp);
+        boolean b = this.company.getAuthFacade().addUserWithRole(this.emp.getName(), this.emp.getEmail(),password, this.emp.getRole());
+         if(a && b){
+             System.out.println("\nEmployee" +"\n" + "Name: " + this.emp.getName() + "\n" + "Email: " + this.emp.getEmail() + "\n" + "Password: " + password + "\n" + "Role: " + this.emp.getRole() + "\n" + "Employee ID: " + emp.getId() + "\n");
+             return true;
+         }
+         return false;
     }
 
     /**
      * Shows employee object formated as a DTO.
      *
-     * @return employee
+     * @return employee in DTO format
      */
     public EmployeeDTO showEmployee() {
         return EmployeeMapper.toDTO(this.emp);

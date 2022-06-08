@@ -5,26 +5,24 @@ import app.ui.console.utils.Utils;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ReceptionistUI implements Runnable{
+public class ReceptionistUI implements Runnable {
 
     public ReceptionistUI() {
     }
 
+
     @Override
-    public void run() {
-        List<MenuItem> options = new ArrayList<MenuItem>();
-        options.add(new MenuItem("Register a new SNS User/Client ", new RegisterSNSUserUI()));
-        options.add(new MenuItem("Schedule a vaccine ", new ReceptionistScheduleVaccineUI()));
-        options.add(new MenuItem("Register someone into waiting room ",new RegisterArrivalUI()));
+    public void run()
+    {
+        List<MenuItem> options = new ArrayList<>();
+        options.add(new MenuItem("Register a new SNS User ", new RegisterSNSUserUI()));
+        options.add(new MenuItem("Schedule a Vaccine for a SNS User ", new RecepcionistScheduleUI()));
+        options.add(new MenuItem("Register the Arrival of a SNS User ", new RegisterArrivalUI()));
 
-
-
-
-        int option = 0;
+        int option;
         do
         {
-            option = Utils.showAndSelectIndex(options, "\n\nReceptionist" +
-                    " Menu:");
+            option = Utils.showAndSelectIndex(options, "\n\nReceptionist Menu:");
 
             if ( (option >= 0) && (option < options.size()))
             {
@@ -34,5 +32,3 @@ public class ReceptionistUI implements Runnable{
         while (option != -1 );
     }
 }
-
-

@@ -17,15 +17,15 @@ public class AdminUI implements Runnable{
 
     public void run()
     {
-        List<MenuItem> options = new ArrayList<MenuItem>();
-        options.add(new MenuItem("Register a new Vaccine Type ", new VaccineTypeUI()));
-        options.add(new MenuItem("Register a new employee ", new RegisterEmployeeUI()));
-        options.add(new MenuItem("Show List of Employees of a certain role ", new ListEmployeesUI()));
-        options.add(new MenuItem("Register a new VaccinationCenter ", new RegisterVaccinationCenterUI()));
-        options.add(new MenuItem("Register a new vaccine and its administration process ", new VaccineUI()));
-        options.add(new MenuItem("Load a set of SNS Users through a CSV File ", new LoadSNSUsersUI()));
+        List<MenuItem> options = new ArrayList<>();
+        options.add(new MenuItem("Register a new Employee ", new RegisterEmployeeUI()));
+        options.add(new MenuItem("Specify a new Vaccine Type ", new SpecifyNewVaccineTypeUI()));
+        options.add(new MenuItem("List Employees ", new ListEmployeesUI()));
+        options.add(new MenuItem("Specify a new Vaccine and its Administration Process ", new SpecifyNewVaccineUI()));
+        options.add(new MenuItem("Register a Vaccination Center ", new RegisterVaccinationCenterUI()));
+        options.add(new MenuItem("Load a set of Users through an CSV ", new LoadSNSUsersFromFileUI()));
 
-        int option = 0;
+        int option;
         do
         {
             option = Utils.showAndSelectIndex(options, "\n\nAdmin Menu:");

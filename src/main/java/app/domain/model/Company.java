@@ -1,36 +1,29 @@
 package app.domain.model;
 
 import app.domain.Store.*;
-import app.domain.shared.Constants;
-import app.ui.console.utils.Generators;
 import pt.isep.lei.esoft.auth.AuthFacade;
 import org.apache.commons.lang3.StringUtils;
-import pt.isep.lei.esoft.auth.UserSession;
-
-import java.io.FileWriter;
-import java.io.IOException;
-import java.security.SecureRandom;
 
 /**
- *
- * @author Paulo Maio <pam@isep.ipp.pt>
+ * The type Company.
  */
 public class Company {
 
-    FileWriter writer;
-
     private String designation;
     private AuthFacade authFacade;
-
-    private VaccineTypeStore vaccineTypeStore;
-    private EmployeeStore employeeStore;
     private SNSUserStore snsUserStore;
-    private VaccinationCenterStore vaccinationCenterStore ;
+    private EmployeeStore employeeStore;
+    private VaccineTypeStore vaccineTypeStore;
     private VaccineStore vaccineStore;
-    private ScheduleVaccineStore scheduleVaccineStore;
+    private VaccinationCenterStore vaccinationCenterStore;
+    private ScheduleStore scheduleStore;
     private WaitingRoomStore waitingRoomStore;
 
-
+    /**
+     * Instantiates a new Company.
+     *
+     * @param designation the designation
+     */
     public Company(String designation)
     {
         if (StringUtils.isBlank(designation))
@@ -38,49 +31,92 @@ public class Company {
 
         this.designation = designation;
         this.authFacade = new AuthFacade();
-        this.vaccineTypeStore = new VaccineTypeStore();
-        this.employeeStore = new EmployeeStore();
         this.snsUserStore = new SNSUserStore();
-        this.vaccinationCenterStore = new VaccinationCenterStore();
+        this.employeeStore = new EmployeeStore();
+        this.vaccineTypeStore = new VaccineTypeStore();
         this.vaccineStore = new VaccineStore();
-        this.scheduleVaccineStore= new ScheduleVaccineStore();
+        this.vaccinationCenterStore = new VaccinationCenterStore();
+        this.scheduleStore = new ScheduleStore();
         this.waitingRoomStore = new WaitingRoomStore();
     }
 
+    /**
+     * Gets designation.
+     *
+     * @return the designation
+     */
     public String getDesignation() {
         return designation;
     }
 
+    /**
+     * Gets auth facade.
+     *
+     * @return the auth facade
+     */
     public AuthFacade getAuthFacade() {
         return authFacade;
     }
 
-    public VaccineTypeStore getVaccineTypeStore() {
-        return vaccineTypeStore;
-    }
-
-    public EmployeeStore getEmployeeStore() {
-        return employeeStore;
-    }
-
+    /**
+     * Gets sns user store.
+     *
+     * @return the sns user store
+     */
     public SNSUserStore getSNSUserStore() {
         return snsUserStore;
     }
 
-    public VaccinationCenterStore getVaccinationCenterStore() { return vaccinationCenterStore; }
+    /**
+     * Gets employee store.
+     *
+     * @return the employee store
+     */
+    public EmployeeStore getEmployeeStore() {
+        return employeeStore;
+    }
 
-    public VaccineStore getVaccineStore(){ return vaccineStore; }
+    /**
+     * Gets vaccine type store.
+     *
+     * @return the vaccine type store
+     */
+    public VaccineTypeStore getVaccineTypeStore() {
+        return vaccineTypeStore;
+    }
 
-    public ScheduleVaccineStore getScheduleVaccineStore(){ return scheduleVaccineStore;}
+    /**
+     * Gets vaccine store.
+     *
+     * @return the vaccine store
+     */
+    public VaccineStore getVaccineStore() { return vaccineStore; }
 
-    public WaitingRoomStore getWaitingRoomStore(){ return waitingRoomStore; }
+    /**
+     * Gets vaccination center store.
+     *
+     * @return the vaccination center store
+     */
+    public VaccinationCenterStore getVaccinationCenterStore() {
+        return vaccinationCenterStore;
+    }
 
+    /**
+     * Gets schedule store.
+     *
+     * @return the schedule store
+     */
+    public ScheduleStore getScheduleStore() {
+        return scheduleStore;
+    }
 
-
-
-
-
+    /**
+     * Gets waiting room store.
+     *
+     * @return the waiting room store
+     */
+    public WaitingRoomStore getWaitingRoomStore() {
+        return waitingRoomStore;
+    }
 
 }
-
-

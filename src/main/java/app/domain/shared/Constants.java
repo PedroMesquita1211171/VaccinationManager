@@ -12,7 +12,7 @@ public class Constants {
     public static final String ROLE_ADMIN = "ADMINISTRATOR";
     public static final String ROLE_RECEPTIONIST = "RECEPTIONIST";
     public static final String ROLE_NURSE = "NURSE";
-    public static final String ROLE_CENTER_CORDINATOR = "CENTER_CORDINATOR";
+    public static final String ROLE_CENTER_COORDINATOR = "CENTER_COORDINATOR";
     public static final String ROLE_SNSUSER = "SNSUSER";
 
     public final static String ARS_BY_DEFAULT = "Undefined";
@@ -20,8 +20,8 @@ public class Constants {
 
     public static final String GENDER_BY_DEFAULT = "Other";
 
-public static SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-public static Date date;
+    public static SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+    public static Date date;
 
     static {
         try {

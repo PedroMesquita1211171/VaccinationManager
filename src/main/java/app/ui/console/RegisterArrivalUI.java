@@ -1,148 +1,99 @@
 package app.ui.console;
 
+import app.DTO.Mappers.VaccinationCenterMapper;
+import app.DTO.ScheduleDTO;
+import app.DTO.VaccinationCenterDTO;
+import app.controller.WaitingRoomController;
+import app.domain.model.VaccinationCenterDependencies.Tempo;
 import app.ui.console.utils.Utils;
-import app.controller.RegisterArrivalController;
-import app.domain.model.ScheduleVaccine;
-import app.domain.model.WaitingRoom;
-import app.domain.model.VaccinationCenter;
-import app.domain.model.Vaccine;
 
-import java.text.ParseException;
-import java.util.Calendar;
-import java.util.Date;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
+import java.util.List;
 
-public class RegisterArrivalUI implements Runnable {
+public class RegisterArrivalUI implements Runnable{
 
-    private final RegisterArrivalController controller;
+    private WaitingRoomController ctrl;
 
-    public RegisterArrivalUI() {
-        this.controller = new RegisterArrivalController();
+    public RegisterArrivalUI(){
+        this.ctrl = new WaitingRoomController();
     }
+
 
     @Override
     public void run() {
-        try {
-            VaccinationCenter center = getVaccinationCenter();
-            if (center != null) {
-                System.out.println("Valid center \n");
-                DateFormat df = new SimpleDateFormat("dd/MM/yyyy");
-                Calendar today = Calendar.getInstance();
-                String scheduleAux = df.format(today.getTime());
-                Date findSchedule = df.parse(scheduleAux);
-                ScheduleVaccine schedule = getScheduledVaccinesForCenter(center.getAddress(), findSchedule);
-                if (schedule != null) {
-                    System.out.println("Valid appointment \n");
-                    registerArrival(schedule);
-                    System.out.println("User Sent. Leaving...");
-                }
-            }
-        } catch (ParseException | IndexOutOfBoundsException e) {
-            e.printStackTrace();
-        }
-    }
 
-    private VaccinationCenter getVaccinationCenter() {
-        daySchedule.clear();
-        VaccinationCenter center;
-        int contador = 0;
-        int option;
-        do {
-            for (int i = 0; i < controller.getCenterList().size(); i++) {
-                System.out.println(contador + " - " + controller.getCenterList().get(i) + "\n");
-                contador++;
-            }
-            option = Utils.readIntegerFromConsole("Choose a vaccination center:");
-        } while (option < 0 || option > controller.getCenterList().size());
-        center = controller.getCenterList().get(option);
-        if (controller.getCenterList().isEmpty()) {
-            System.out.println("No vaccination centers available");
-            return null;
-        }
-        return center;
-    }
+        try{
+            ScheduleDTO sc = askSchedule();
 
-    private ArrayList<ScheduleVaccine> daySchedule = new ArrayList<>();
+            VaccinationCenterDTO vc = VaccinationCenterMapper.toDTO(sc.getVc());
 
-    private ScheduleVaccine getScheduledVaccinesForCenter(String centerName, Date date) {
-        int option;
-        int contador;
-        DateFormat df = new SimpleDateFormat("dd/MM/yyyy");
-        Calendar dateFind = Calendar.getInstance();
-        dateFind.setTime(date);
-        String findDate = df.format(dateFind.getTime());
+            Tempo ah = Tempo.tempoAtual();
 
-        if (controller.getSchedules().isEmpty()) {
-            System.out.println("No scheduled vaccines for today");
-            return null;
-        }
-        do {
-            contador = 0;
-            for (int i = 0; i < controller.getSchedules().size(); i++) {
-                String centerAux = controller.getSchedules().get(i).getCenterName();
-                if (centerAux.equals(centerName)) {
-                    String dateAux = df.format(controller.getSchedules().get(i).getScheduleDate());
-                    if (dateAux.equals(findDate)) {
-                        System.out.println(contador + " - " + controller.getSchedules().get(i) + "\n");
-                        daySchedule.add(controller.getSchedules().get(i));
-                        contador++;
+            if(ctrl.createWaitingRoom(vc,sc,ah)){
+                System.out.println(ctrl.showWaitingRoom());
+
+                String opt = askConfirmation();
+                if(opt.equalsIgnoreCase("yes")||opt.equalsIgnoreCase("y")){
+                    if(ctrl.saveWaitingRoom()){
+                        System.out.println("\nSuccessfully introduced Patient into Waiting Room!\n");
+                    }else{
+                        System.out.println("\nAn Error Occurred.\n");
                     }
+                }else{
+                    System.out.println("\nPatient was not added into the waiting room list.\nReturning to main menu...\n");
                 }
             }
-            if (contador == 0) {
-                System.out.println("No scheduled vaccines for today.");
-                return null;
-            }
-            option = Utils.readIntegerFromConsole("Choose a schedule:");
-        } while (option < 0 || option > contador);
-        if (!daySchedule.isEmpty()) {
-            return daySchedule.get(option);
+        }catch(IllegalArgumentException e){
+            System.out.println(e.getMessage());
         }
-        return null;
+
     }
 
-    private boolean registerArrivalRemoveSchedule(ScheduleVaccine schedule) {
-        int send;
-        DateFormat hourFormat = new SimpleDateFormat("HH:mm:ss");
-        DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
-        String hour = hourFormat.format(schedule.getScheduledHour());
-        String date = dateFormat.format(schedule.getScheduleDate());
-
-        System.out.println(String.format("\nUser: %s, Hour: %s, For: %s.", schedule.getSnsUserNumber(), hour, date) + "\n");
-        do {
-            System.out.println("Send the user to the waiting room? \n");
-            System.out.println("0 - Yes \n");
-            System.out.println("1 - No");
-            send = Utils.readIntegerFromConsole("Choose an option: ");
-            if (send == 0) {
-                return true;
-            }
-        } while (send < 0 || send > 1);
-        return true;
+    private String askConfirmation() {
+        String opt;
+        opt = Utils.readLineFromConsole("Register Arrival of this SNS User into the waiting room?\n");
+        if(opt.equalsIgnoreCase("yes")||opt.equalsIgnoreCase("y") || opt.equalsIgnoreCase("no")||opt.equalsIgnoreCase("n")){
+            return opt;
+        }else{
+            System.out.println("Invalid Option in yes/no block\nTry again\n");
+            return askConfirmation();
+        }
     }
 
-    private void registerArrival(ScheduleVaccine scheduleVaccine) {
-        try {
-            DateFormat hf = new SimpleDateFormat("HH:mm:ss");
-            DateFormat df = new SimpleDateFormat("dd/MM/yyyy");
-            Calendar thisHour = Calendar.getInstance();
-            Calendar thisDate = Calendar.getInstance();
-            String thisDateAux = df.format(thisDate.getTime());
-            String thisHourAux = hf.format(thisHour.getTime());
-            Date date = df.parse(thisDateAux);
-            Date hour = hf.parse(thisHourAux);
-            System.out.println("Hour of Arrival --> " + thisHourAux + "\n");
-            WaitingRoom wait = new WaitingRoom(date, hour, scheduleVaccine.getSnsUserNumber(), scheduleVaccine.getScheduledHour(), scheduleVaccine.getCenterName(), scheduleVaccine.getVaccineName());
-            if (registerArrivalRemoveSchedule(scheduleVaccine)) {
-                if (controller.addWaitingRoom(wait)) {
-                    controller.removeScheduleFromList(scheduleVaccine);
-                    System.out.println("User sent to the waiting room successfully\n");
+    private Tempo askArrival() {
+        String input = Utils.readLineFromConsole("\nPress 0 to exit\nArrival Hour(HH:MM): ");
+        String[] parts = input.split(":");
+
+        if (input.equals("0")){
+
+            throw new IllegalArgumentException("\nReturning to main Menu...\n");
+
+        } else if (parts.length == 2 && parts[0].length() == 2 && parts[1].length() == 2) {
+
+            try {
+                if(parts[0].charAt(0)=='0'){
+                    parts[0] = parts[0].substring(1);
                 }
+                if(parts[1].charAt(0)=='0'){
+                    parts[1] = parts[1].substring(1);
+                }
+                return new Tempo(Integer.parseInt(parts[0]), Integer.parseInt(parts[1]));
+            } catch (NumberFormatException e) {
+                System.out.println("\nIncorrect format!\n");
+                return askArrival();
             }
-        } catch (ParseException e) {
-            e.printStackTrace();
+
+        } else {
+            System.out.println("\nIncorrect format!\n");
+            return askArrival();
         }
+    }
+
+    private ScheduleDTO askSchedule() {
+        List<ScheduleDTO> list = ctrl.showSchedules();
+        int index = Utils.showAndSelectIndex(list, "Existent schedules for today\n");
+        if (index > -1 && index < list.size()) {
+            return list.get(index);
+        }
+        throw new IllegalArgumentException("Invalid index");
     }
 }

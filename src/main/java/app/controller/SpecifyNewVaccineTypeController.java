@@ -1,5 +1,7 @@
 package app.controller;
 
+import app.DTO.Mappers.VaccineTypeMapper;
+import app.DTO.VaccineTypeDTO;
 import app.domain.model.VaccineType;
 import app.domain.model.Company;
 
@@ -33,33 +35,30 @@ public class SpecifyNewVaccineTypeController {
      *
      * @param code        the code
      * @param designation the designation
-     * @param whoId       the whoId
+     * @param vaccineTechnology       the vaccineTechnology
      * @return the boolean
      */
-    public boolean createVaccineType(String code, String designation, String whoId) {
-        try{
-            this.vt = this.company.getVaccineTypeStore().createVaccineType(code, designation, whoId);
-        }catch (IllegalArgumentException e){
-            System.out.println(e.getMessage());
-            return false;
-        }
+    public boolean createVaccineType(String code, String designation, String vaccineTechnology) {
+
+        this.vt = this.company.getVaccineTypeStore().createVaccineType(code, designation, vaccineTechnology);
 
         return this.company.getVaccineTypeStore().validateVaccineType(vt);
+
     }
 
     /**
      * Adds vaccine type.
      */
-    public void addVaccineType() {
-        this.company.getVaccineTypeStore().addVaccineType(vt);
+    public boolean saveVaccineType() {
+        return this.company.getVaccineTypeStore().addVaccineType(vt);
     }
 
     /**
-     * Shows vaccine type object as a String.
+     * Shows vaccine type object as a DTO.
      *
-     * @return VaccineType as a String
+     * @return VaccineType in a DTO Format
      */
-    public String showVaccineType() {
-        return this.vt.toString();
+    public VaccineTypeDTO showVaccineType() {
+        return VaccineTypeMapper.toDTO(this.vt);
     }
 }

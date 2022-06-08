@@ -1,172 +1,314 @@
 package app.ui.console;
 
-import app.controller.SpecifyNewVaccinationCenterController;
+import app.DTO.EmployeeDTO;
+import app.controller.RegisterVaccinationCenterController;
+import app.domain.model.VaccinationCenter;
+import app.domain.model.VaccinationCenterDependencies.Tempo;
 import app.ui.console.utils.Utils;
 
-/**
- * @author Luís Monteiro - 1211250
- */
-public class RegisterVaccinationCenterUI implements Runnable{
-    /**
-     * Controller used to specify a new vaccination center.
-     */
-    private SpecifyNewVaccinationCenterController ctrl ;
+import java.util.List;
+import java.util.regex.Pattern;
 
-    /**
-     * Instantiates a new Register vaccination center controller.
-     */
-    public RegisterVaccinationCenterUI(){
+public class RegisterVaccinationCenterUI implements Runnable {
 
-        ctrl= new SpecifyNewVaccinationCenterController();
+    private RegisterVaccinationCenterController ctrl;
+
+    public RegisterVaccinationCenterUI() {
+        ctrl = new RegisterVaccinationCenterController();
     }
+
+
+    @Override
     public void run() {
-
-        int typeOfCenter;
-        System.out.println("\n1: Mass Community Vaccination Center\n2: Healthcare Center\n");
-        int optRole = Utils.readIntegerFromConsole("Whats The Option?");
-
         try{
-            switch(optRole) {
-                case 1:
-                    typeOfCenter = 1;
-                    break;
-                case 2:
-                    typeOfCenter = 2;
-                    break;
-                default:
-                    throw new IllegalArgumentException("Invalid type of center");
+            //0 - exit, 1 - Mass Community Vaccination Center, 2 - HealthCare Center
+            String typeCenter = askTypeCenter();
+            String name = askName();
+            String address = askAddress();
+            String emailaddress = askEmailAddress();
+            String phonenumber = askPhoneNumber();
+            String faxNumber = askFaxNumber();
+            String website = askWebsite();
+            String ages= null, ars = null, region = null;
+            if(typeCenter.equals("2")){
+                ages = askAges();
+                ars = askArs();
+                region = askRegion();
             }
-            if(typeOfCenter==2){ if(ctrl.createHealthcareCenter(askAddress(), askEmailAdress(),askPhoneNumber(),askFaxNumber(),askWebsiteAddress(), askOpeningHours(), askClosingHours(),askSlotDuration(),askMaxVaccines(),askCoordinator(),askAges(),askArs())){
+            Tempo opHours = askOPHour();
+            Tempo clHours = askCLHour(opHours);
+            int slotDuration = askSlotDuration();
+            int maxVaccines = askMaxVaccines();
+            EmployeeDTO centerCoordinator = selectCenterCoordinator();
 
-                String opt= SaveOrNot();
+            if(typeCenter.equals("2")){
+                if(ctrl.createVaccinationCenter(name,address,emailaddress,phonenumber,faxNumber,website,opHours,clHours,slotDuration,maxVaccines,centerCoordinator,ages,ars,region)){
 
-                if(opt.equalsIgnoreCase("yes")){
-                    ctrl.addVaccinationCenter();
+                    String opt= SaveOrNot();
 
-                    System.out.println("Vaccination Center saved successfully");
-                }else if(opt.equalsIgnoreCase("no")){
-                    System.out.println("Vaccination Center not saved");
+                    if(opt.equalsIgnoreCase("yes")){
+                        if(ctrl.saveVaccinationCenter())
+                            System.out.println("Vaccination Center saved successfully");
+                    }else if(opt.equalsIgnoreCase("no")){
+                        System.out.println("Vaccination Center not saved");
+                    }else{
+                        System.out.println("\nInvalid option\nVaccination center not saved");
+                    }
                 }else{
-                    System.out.println("\nInvalid option\nVaccination center not saved");
+                    System.out.println("\nVaccination Center not saved since it already exists or data is invalid\n");
+                }
+            }else if(typeCenter.equals("1")){
+                if(ctrl.createVaccinationCenter(name,address,emailaddress,phonenumber,faxNumber,website,opHours,clHours,slotDuration,maxVaccines,centerCoordinator)){
+
+                    System.out.println(ctrl.getVaccinationCenter());
+                    String opt= SaveOrNot();
+
+                    if(opt.equalsIgnoreCase("yes")){
+                        if(ctrl.saveVaccinationCenter())
+                            System.out.println("Vaccination Center saved successfully");
+                    }else if(opt.equalsIgnoreCase("no")){
+                        System.out.println("Vaccination Center not saved");
+                    }else{
+                        System.out.println("\nInvalid option\nVaccination center not saved");
+                    }
+                }else{
+                    System.out.println("\nVaccination Center not saved since it already exists or data is invalid\n");
                 }
             }else{
-                System.out.println("\nVaccination Center not saved since it already exists or data is invalid\n");
+                throw new IllegalArgumentException("\nInvalid type of center!\n");
             }
 
-            }else  if(ctrl.createCommunityCenter(askAddress(), askEmailAdress(),askPhoneNumber(),askFaxNumber(),askWebsiteAddress(), askOpeningHours(), askClosingHours(),askSlotDuration(),askMaxVaccines(),askCoordinator())){
 
-                String opt= SaveOrNot();
+        }catch(IllegalArgumentException e){
+            System.out.println(e.getMessage());
+        }catch(Exception e){
+            System.out.println("\nSomething went wrong!\nBack to the main menu!\n");
+        }
+    }
 
-                if(opt.equalsIgnoreCase("yes")){
-                    ctrl.addVaccinationCenter();
+    private String askWebsite() {
+        String input = Utils.readLineFromConsole("\nPress 0 to exit\nWebsite: ");
 
-                    System.out.println("Vaccination Center saved successfully");
-                }else if(opt.equalsIgnoreCase("no")){
-                    System.out.println("Vaccination Center not saved");
-                }else{
-                    System.out.println("\nInvalid option\nVaccination center not saved");
-                }
-            }else{
-                System.out.println("\nVaccination Center not saved since it already exists or data is invalid\n");
+        if (input.equals("0")) throw new IllegalArgumentException("\nReturning to main Menu...\n");
+
+        if (input.length() > 3 && input.length() < 50) {
+            return input;
+        } else {
+            System.out.println("\nInvalid website!\n");
+            return askWebsite();
+        }
+    }
+
+    private String askFaxNumber() {
+        String input = Utils.readLineFromConsole("\nPress 0 to exit\nFax number: ");
+
+        if (input.equals("0")) throw new IllegalArgumentException("\nReturning to main Menu...\n");
+
+        if (input== null || input.isEmpty()){
+            System.out.println("\nFax number can't be null or empty!\n");
+            return askFaxNumber();
+        }else if (input.length()!=9 && input.charAt(0)!='2'){
+            System.out.println("\nInvalid fax number format!\n");
+            return askFaxNumber();
+        }else{
+            return input;
+        }
+    }
+
+    private String askName() {
+        String input = Utils.readLineFromConsole("\nPress 0 to exit\nName: ");
+
+        if (input.equals("0")) throw new IllegalArgumentException("\nReturning to main Menu...\n");
+
+        if (input.length() > 3&&input.length() < 50) {
+            return input;
+        } else {
+            System.out.println("\nInvalid name!\n");
+            return askName();
+        }
+    }
+
+    public String askAddress() {
+        String input = Utils.readLineFromConsole("\nPress 0 to exit\nAddress: ");
+
+        if (input.equals("0")) throw new IllegalArgumentException("\nReturning to main Menu...\n");
+
+        if (input.length() > 3 && input.length() < 50) {
+            return input;
+        } else {
+            System.out.println("\nInvalid address!\n");
+            return askAddress();
+        }
+    }
+
+    public String askEmailAddress() {
+        String input = Utils.readLineFromConsole("\nPress 0 to exit\nEmail address: ");
+        String emailRegex = "^[a-zA-Z0-9_+&*-]+(?:\\." + "[a-zA-Z0-9_+&*-]+)*@" + "(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,7}$";
+        Pattern pattern = Pattern.compile(emailRegex);
+        if (pattern.matcher(input).matches()&&!input.isEmpty()) {
+            return input;
+        }else if (input.equals("0")) throw new IllegalArgumentException("\nReturning to main Menu...\n");
+        else {
+            System.out.println("\nInvalid email address");
+            return askEmailAddress();
+        }
+    }
+    public String askAges(){
+        String input = Utils.readLineFromConsole("\nPress 0 to exit\nAGES: ");
+        if (input.equals("0")) throw new IllegalArgumentException("\nReturning to main Menu...\n");
+        if (input!=null&&!input.isEmpty())
+            return input;
+        else{
+            System.out.println("Invalid AGES");
+            return askAges();
+        }
+    }
+    public String askArs(){
+        String input = Utils.readLineFromConsole("\nPress 0 to exit\nARS: ");
+        if (input.equals("0")) throw new IllegalArgumentException("\nReturning to main Menu...\n");
+        if (input!=null&&!input.isEmpty())
+            return input;
+        else{
+            System.out.println("Invalid AGES");
+            return askArs();
+        }
+    }
+    public String askPhoneNumber(){
+        String input = Utils.readLineFromConsole("\nPress 0 to exit\nPhone number: ");
+        if(input.length()==9&&input.charAt(0) == '9')
+            return input;
+        else if (input.equals("0")) throw new IllegalArgumentException("\nReturning to main Menu...\n");
+        else {
+            System.out.println("\nInvalid phone number");
+            return askEmailAddress();
+        }
+    }
+
+        public String askTypeCenter () {
+            System.out.println("\n1: Mass Community Vaccination Center\n2: Healthcare Center\n");
+
+            String input = Utils.readLineFromConsole("\nPress 0 to exit\nType of center: ");
+
+            if (input.equals("0")) throw new IllegalArgumentException("\nReturning to main Menu...\n");
+
+            if (input.equals("1") || input.equals("2")) {
+                return input;
+            } else {
+                System.out.println("\nInvalid type of center!\n");
+                return askTypeCenter();
             }
-        }catch(NumberFormatException nfe){
-            System.out.println("Invalid type of center");
-        }catch(IllegalArgumentException iae){
-            System.out.println(iae.getMessage());
+        }
+        public String askRegion(){
+            String input = Utils.readLineFromConsole("\nPress 0 to exit\nRegion: ");
+
+            if (input.equals("0")) throw new IllegalArgumentException("\nReturning to main Menu...\n");
+
+            if (input.length() > 3&&input.length() < 50) {
+                return input;
+            } else {
+                System.out.println("\nInvalid region!\n");
+                return askRegion();
+            }
+        }
+        public int askMaxVaccines(){
+
+             try {
+                 String input = Utils.readLineFromConsole("\nPress 0 to exit\nMax vaccines: ");
+                 if (input.equals("0")) throw new IllegalArgumentException("\nReturning to main Menu...\n");
+                 return Integer.parseInt(input);
+             }catch (NumberFormatException e){
+                 System.out.println("\nInvalid max vaccines!\nInput must be a number!\n");
+                 return askMaxVaccines();
+             }
         }
 
+        public Tempo askOPHour() {
+            String input = Utils.readLineFromConsole("\nPress 0 to exit\nOpening hour(HH:MM): ");
+            String[] parts = input.split(":");
+
+            if (input.equals("0")){
+
+                throw new IllegalArgumentException("\nReturning to main Menu...\n");
+
+            } else if (parts.length == 2 && parts[0].length() == 2 && parts[1].length() == 2) {
+
+                    try {
+                        if(parts[0].charAt(0)=='0'){
+                            parts[0] = parts[0].substring(1);
+                        }
+                        if(parts[1].charAt(0)=='0'){
+                            parts[1] = parts[1].substring(1);
+                        }
+                        return new Tempo(Integer.parseInt(parts[0]), Integer.parseInt(parts[1]));
+                    } catch (NumberFormatException e) {
+                        System.out.println("\nIncorrect format!\n");
+                        return askOPHour();
+                    }
+
+            } else {
+                System.out.println("\nIncorrect format!\n");
+                return askOPHour();
+            }
+        }
+
+        public Tempo askCLHour(Tempo OPHour) {
+            String input = Utils.readLineFromConsole("\nPress 0 to exit\nClosing hour(HH:MM): ");
+            String[] parts = input.split(":");
+
+            if (input.equals("0")){
+
+                throw new IllegalArgumentException("\nReturning to main Menu...\n");
+
+            } else if (parts.length == 2 && parts[0].length() == 2 && parts[1].length() == 2 && new Tempo(Integer.parseInt(parts[0]), Integer.parseInt(parts[0])).isMaior(OPHour)) {
+
+                try {
+                    if(parts[0].charAt(0)=='0'){
+                        parts[0] = parts[0].substring(1);
+                    }
+                    if(parts[1].charAt(0)=='0'){
+                        parts[1] = parts[1].substring(1);
+                    }
+                    return new Tempo(Integer.parseInt(parts[0]), Integer.parseInt(parts[1]));
+                } catch (NumberFormatException e) {
+                    System.out.println("\nIncorrect format!\n");
+                    return askCLHour(OPHour);
+                }
+
+            } else {
+                System.out.println("\nIncorrect format!\n");
+                return askCLHour(OPHour);
+            }
+        }
+        public EmployeeDTO selectCenterCoordinator(){
+            List<EmployeeDTO> centerCoordinators = ctrl.centerCoordinatorsList();
+          int index = Utils.showAndSelectIndex(centerCoordinators,"\nSelect a Center Coordinator: ");
+
+          if(index == -1) throw new IllegalArgumentException("\nReturning to main Menu...\n");
+
+          if( index>=0 && index< centerCoordinators.size() ){
+              return centerCoordinators.get(index);
+          }else{
+              System.out.println("\nInvalid index!\n");
+              return selectCenterCoordinator();
+          }
     }
-
-    /**
-     * Asks adress.
-     *
-     * @return adress string
-     */
-    public String askAddress(){return Utils.readLineFromConsole("Address: ");}
-
-    /**
-     * Asks email.
-     *
-     * @return email string
-     */
-    public String askEmailAdress(){return Utils.readLineFromConsole("E-mail: ");}
-
-    /**
-     * Asks phone number.
-     *
-     * @return phone number
-     */
-    public String askPhoneNumber(){return Utils.readLineFromConsole("Phone Number: ");}
-
-    /**
-     * Asks fax number.
-     *
-     * @return fax number.
-     */
-    public String askFaxNumber(){return Utils.readLineFromConsole("Fax number: ");}
-
-    /**
-     * Asks website address.
-     *
-     * @return website address
-     */
-    public String askWebsiteAddress(){return Utils.readLineFromConsole("Website Address: ");}
-
-    /**
-     * Asks Opening hours.
-     *
-     * @return opening hours
-     */
-    public String askOpeningHours(){return Utils.readLineFromConsole("Opening hours: ");}
-
-    /**
-     * Asks Closing hours.
-     *
-     * @return closing hours
-     */
-    public String askClosingHours(){return Utils.readLineFromConsole("Closing hours: ");}
-
-    /**
-     * Asks Slot duration.
-     *
-     * @return slot duration
-     */
-    public int askSlotDuration(){return Utils.readIntegerFromConsole("Slot duration: ");}
-
-    /**
-     * Asks max vaccines.
-     *
-     * @return max vaccines
-     */
-    public int askMaxVaccines(){return Utils.readIntegerFromConsole("Max vaccines: ");}
-
-    /**
-     * Asks Opening hours.
-     *
-     * @return opening hours
-     */
-    public String askCoordinator(){return Utils.readLineFromConsole("Coordinator: ");}
-
-    /**
-     * Asks AGES.
-     *
-     * @return AGES string
-     */
-    public String askAges(){return Utils.readLineFromConsole("AGES: ");}
-
-    /**
-     * Asks ARS.
-     *
-     * @return ARS string
-     */
-    public String askArs(){return Utils.readLineFromConsole("ARS: ");}
-
-
-    /**
-     * Save or not data.
-     *
-     * @return yes, no or error
-     */
+    public int askSlotDuration(){
+        try{
+            String slotDuration = Utils.readLineFromConsole("\nPress 0 to exit\nSlot duration(in minutes/a number): ");
+            int slotdurint = Integer.parseInt(slotDuration);
+            if(slotDuration == "0"){
+                throw new IllegalArgumentException("\nReturning to main Menu...\n");
+            }else if(slotdurint>0&&slotdurint<60){
+                return slotdurint;
+            }else{
+                System.out.println("\nInvalid slot duration!\nIt must be specified in between 1 and 60 minutes!\n");
+                return askSlotDuration();
+            }
+        }catch (NumberFormatException e){
+            System.out.println("\nInvalid format!\n");
+            return askSlotDuration();
+        }
+    }
     public String SaveOrNot(){
         String opt;
         opt = Utils.readLineFromConsole("Register Vaccination Center (yes/no)");
@@ -178,3 +320,4 @@ public class RegisterVaccinationCenterUI implements Runnable{
 
     }
 }
+

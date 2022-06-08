@@ -30,27 +30,33 @@ public class RegisterSNSUserUI implements Runnable{
     @Override
     public void run() {
 
-        if (ctrl.createSNSUser(askname(), askaddress(), askgenderoption(), askPhoneNumber(), askEmail(), askBirthDate(), askSNSNumber(), askCCNumber())) {;
+        try {
+            if (ctrl.createSNSUser(askname(), askaddress(), askgenderoption(), askPhoneNumber(), askEmail(), askBirthDate(), askSNSNumber(), askCCNumber())) {
 
-            System.out.println(ctrl.showSNSUser());
+                System.out.println(ctrl.showSNSUser());
 
-            String opt = SaveOrNot();
+                String opt = SaveOrNot();
 
-             if(opt.equalsIgnoreCase("yes")){
+                if(opt.equalsIgnoreCase("yes")){
 
-                 if(ctrl.saveSNSUser()){
-                     System.out.println("SNS User saved successfully!");
-                 }else{
-                     System.out.println("SNS User not saved since it has repeated parameters!");
-                 }
+                    if(ctrl.saveSNSUser()){
+                        System.out.println("SNS User saved successfully!");
+                    }else{
+                        System.out.println("SNS User not saved since it has repeated parameters!");
+                    }
 
-             }else if(opt.equalsIgnoreCase("no")){
-                 System.out.println("SNS User not saved");
-             }else{
-                 System.out.println("\nInvalid option\nSNS User not saved");
-             }
+                }else if(opt.equalsIgnoreCase("no")){
+                    System.out.println("SNS User not saved");
+                }else{
+                    System.out.println("\nInvalid option\nSNS User not saved");
+                }
 
-          }
+            }
+        }catch (IllegalArgumentException e){
+            System.out.println(e.getMessage());
+        }
+
+
 
     }
 
@@ -105,7 +111,11 @@ public class RegisterSNSUserUI implements Runnable{
      * @return birthDate
      */
     public Date askBirthDate(){
-        return Utils.readDateFromConsole("Enter the birth date of the user: ");
+        try {
+            return Utils.readDateFromConsole("Enter the birth date of the user: ");
+        } catch (Exception e) {
+            throw new IllegalArgumentException(e.getMessage());
+        }
     }
 
     /**

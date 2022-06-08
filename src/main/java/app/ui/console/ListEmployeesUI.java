@@ -2,71 +2,62 @@ package app.ui.console;
 
 import app.DTO.EmployeeDTO;
 import app.controller.ListEmployeesController;
-import app.domain.model.Employee;
-import app.domain.shared.Constants;
 import app.ui.console.utils.Utils;
-
 import java.util.List;
 
-/**
- * @author Pedro Mesquita - 1211171
- */
-public class ListEmployeesUI implements Runnable{
+public class ListEmployeesUI implements  Runnable{
 
-    /**
-     * The Controller
-     */
-    ListEmployeesController ctrl;
+       ListEmployeesController ctrl;
 
-    public ListEmployeesUI(){
-        this.ctrl = new ListEmployeesController();
-    }
+       public ListEmployeesUI(){
+           this.ctrl = new ListEmployeesController();
+       }
 
-    /**
-     * Runnable that is used to activate the UI.
-     */
 
     @Override
     public void run() {
-        boolean success = false;
-        do{
-            try{
-                System.out.println("1 - Receptionists\n" +
-                        "2 - Nurses\n" +
-                        "3 - Center Coordinators\n" +
-                        "4 - All\n\n" +
-                        "0 - Cancel\n");
 
-                String opt = Utils.readLineFromConsole("Select Option to List: ");
+           try{
+               System.out.println("\nList Employees\n1-Receptionist\n2-Nurse\n3-Center Coordinator\n\n0-Back");
+               int role;
 
-                if(opt.equals("0")){
-                    System.out.println("\nReturning to Admin Menu...\n");
-                    success = true;
-                }else{
-                    List<EmployeeDTO> list = ctrl.redirectToList(opt);
+               try{
+                   role = Utils.readIntegerFromConsole("Select role: ");
+               }catch (NumberFormatException e){
+                   throw new IllegalArgumentException("Invalid option");
+               }
 
-                    showList(list);
-                    success = true;
-                }
+               switch (role){
+                   case 0:
+                       System.out.println("\nBack to Main Menu\n");
+                       break;
+                   case 1:
+                       System.out.println("\nList Receptionist\n");
+                       printEmployeeList(ctrl.showReceptionists());
+                       break;
+                   case 2:
+                       System.out.println("\nList Nurse\n");
+                       printEmployeeList(ctrl.showNurses());
+                       break;
+                   case 3:
+                       System.out.println("\nList Center Coordinator\n");
+                       printEmployeeList(ctrl.showCenterCoordinators());
+                       break;
+                   default:
+                       throw new IllegalArgumentException("Invalid option");
+               }
+           }catch(IllegalArgumentException e){
+               System.out.println(e.getMessage());
+           }
 
-            }catch(IllegalArgumentException iae){
-                System.out.println("\n"+iae.getMessage()+"\n");
-            }
 
-        }while(!success);
 
     }
 
-    /**
-     * Shows list of Employees asked.
-     *
-     * @param list List of Employees to be shown.
-     */
-    public void showList(List<EmployeeDTO> list){
-        for (EmployeeDTO e : list) {
-            System.out.println("\n"+e+"\n");
+
+    public void printEmployeeList(List<EmployeeDTO> list){
+        for(EmployeeDTO e : list){
+            System.out.println(e);
         }
     }
-
-
 }

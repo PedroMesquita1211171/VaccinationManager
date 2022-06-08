@@ -1,10 +1,9 @@
 package app.ui.console;
 
-import app.controller.App;
 import app.controller.RegisterEmployeeController;
 import app.domain.shared.Constants;
+import app.ui.console.utils.Generators;
 import app.ui.console.utils.Utils;
-import pt.isep.lei.esoft.auth.AuthFacade;
 
 public class RegisterEmployeeUI implements Runnable{
 
@@ -12,11 +11,9 @@ public class RegisterEmployeeUI implements Runnable{
      * Controller used to specify a new employee.
      */
     private RegisterEmployeeController ctrl ;
-    private final AuthFacade authFacade;
 
     public RegisterEmployeeUI(){
         ctrl= new RegisterEmployeeController();
-        authFacade = App.getInstance().getCompany().getAuthFacade();
     }
 
     /**
@@ -35,7 +32,7 @@ public class RegisterEmployeeUI implements Runnable{
                     role = Constants.ROLE_RECEPTIONIST;
                     break;
                 case 2:
-                    role = Constants.ROLE_CENTER_CORDINATOR;
+                    role = Constants.ROLE_CENTER_COORDINATOR;
                     break;
                 case 3:
                     role = Constants.ROLE_NURSE;
@@ -45,16 +42,18 @@ public class RegisterEmployeeUI implements Runnable{
             }
 
 
-            if(ctrl.createEmployee(askName(), askEmail(),askAddress(),askPhoneNumber(),askCitizenCard(), role)){
+            if(ctrl.createEmployee(askName(), askEmail(),askAddress(),askPhoneNumber(),askCitizenCard(), role, generateEmployeeID())){
 
                 System.out.println(ctrl.showEmployee());
 
                 String opt= SaveOrNot();
 
                 if(opt.equalsIgnoreCase("yes")){
-                    ctrl.addEmployee();
-
-                    System.out.println("Employee saved successfully");
+                    if(ctrl.saveEmployee()){
+                        System.out.println("\nEmployee added successfully!\n");
+                    }else{
+                        System.out.println("\nEmployee not added since it already is registered on the system.\n");
+                    }
                 }else if(opt.equalsIgnoreCase("no")){
                     System.out.println("Employee Type not saved");
                 }else{
@@ -104,13 +103,6 @@ public class RegisterEmployeeUI implements Runnable{
      */
     public String askCitizenCard(){return Utils.readLineFromConsole("Citizen Card Number: ");}
     /**
-     * Asks employee ID.
-     *
-     * @return employee ID
-     */
-    public int askEmployeeID(){return Utils.readIntegerFromConsole("Employee ID: ");}
-
-    /**
      * Save or not data.
      *
      * @return yes, no or error
@@ -124,6 +116,14 @@ public class RegisterEmployeeUI implements Runnable{
             return "error";
         }
 
+    }
+    /**
+     * Generates a random employee ID.
+     *
+     * @return random employee ID
+     */
+    public String generateEmployeeID(){
+        return Generators.generateEmployeeID();
     }
 
 }
