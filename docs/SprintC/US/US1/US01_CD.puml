@@ -5,18 +5,17 @@ hide empty members
 left to right direction
 
 class ScheduleVaccineStore {
-
 + validateScheduleVaccine(ScheduleVaccine schd)
 + addScheduleVaccine(ScheduleVaccine schd)
-+ createScheduleVaccine(SNSNumber, VaccinationCenter address, date, typeofvaccine)
++ createScheduleVaccine(SNSNumber, VaccinationCenter address, date, time slot, typeofvaccine)
 }
 
-class ScheduleVaccineUI{
+class UserScheduleVaccineUI{
 }
 
-class ScheduleVaccineController{
-+ createScheduleVaccine(SNSNumber, VaccinationCenter address, date, typeofvaccine)
-+ saveScheduleVaccine ()
+class UserScheduleVaccineController{
++ createScheduleVaccine(SNSNumber, VaccinationCenter address, date, time slot, typeofvaccine)
++ saveSchedule ()
 }
 
 class ScheduleVaccine{
@@ -31,10 +30,9 @@ class Company {
 + getSNSUserStore()
 }
 
-ScheduleVaccineUI ..> ScheduleVaccineController
-ScheduleVaccineController ..> ScheduleVaccine
-ScheduleVaccine ..> Company
-Company "1" --> "1" ScheduleVaccineStore: uses >
-ScheduleVaccineStore "1" --> "*" ScheduleVaccine: has >
+UserScheduleVaccineUI ..> UserScheduleVaccineController
+UserScheduleVaccineController ..> ScheduleVaccine
+Company  "1"-->"1"  ScheduleVaccineStore: adopts >
+ScheduleVaccineStore "1" --> "*" ScheduleVaccine: stores >
 
 @enduml

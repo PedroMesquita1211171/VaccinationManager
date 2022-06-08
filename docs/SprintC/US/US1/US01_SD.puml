@@ -9,7 +9,9 @@ activate User
 participant "UserScheduleVaccineUI" as ui
 participant "UserScheduleVaccineController" as controller
 participant "Company" as company
+
 participant "userStore : SNSUserStore" as userStore
+participant "AuthFacade" as authfacade
 participant "centerStore : VaccinationCenterStore" as centerStore
 participant "SNSUserMapper" as userMapper
 participant "VaccinationCenterMapper" as centerMapper
@@ -21,9 +23,22 @@ participant "vaccineStore : VaccineStore" as vaccineStore
 
 User -> ui : wants to schedule a vaccination appointment for themselves
 activate ui
+ui-->User: requests the user to log in
+User->ui: inserters requested data (snsUserNumber and password)
 ui -> controller : userLogin()
 activate controller
+controller -> company : userStore = getSNSUserStore()
+activate company
+deactivate company
+controller -> userStore : user = returnLoggedSNSUser()
+activate userStore
+userStore -> authfacade : getCurrentUserSession()
+activate authfacade
+deactivate authfacade
+deactivate userStore
+
 deactivate controller
+
 
 ui -> controller : vaccinationCenterListDto = getCenterListDto()
 activate controller
