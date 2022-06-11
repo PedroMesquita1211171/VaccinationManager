@@ -1,1 +1,1 @@
-In this package, the team can provide an alternative GUI based, for instance, in JavaFX.
+In this package, the development team provided a JavaFX implementation in order to run the Application.
