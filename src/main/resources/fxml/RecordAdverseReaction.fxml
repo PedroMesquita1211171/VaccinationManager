@@ -1,15 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
-<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane prefHeight="768.0" prefWidth="1366.0" style="-fx-background-color: #EFF1F3;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.ui.gui.NurseGUI">
+<BorderPane prefHeight="768.0" prefWidth="1366.0" style="-fx-background-color: #EFF1F3;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.ui.gui.RecordAdverseReactionUI">
     <center>
         <VBox maxHeight="1.7976931348623157E308" maxWidth="-Infinity" prefHeight="200.0" prefWidth="441.0" BorderPane.alignment="CENTER">
             <BorderPane.margin>
@@ -18,33 +19,39 @@
          <children>
             <AnchorPane prefHeight="595.0" prefWidth="441.0">
                <children>
-                  <Button layoutX="95.0" layoutY="129.0" mnemonicParsing="false" onAction="#listsnsuwrClicked" style="-fx-background-color: white; -fx-background-radius: 10;" text="List SNS Users in the Waiting Room">
-                      <font>
-                          <Font name="Segoe UI Bold" size="14.0" />
-                      </font>
-                      <VBox.margin>
-                          <Insets bottom="20.0" />
-                      </VBox.margin>
-                      <cursor>
-                          <Cursor fx:constant="HAND" />
-                      </cursor>
-                  </Button>
                   <Button layoutX="195.0" layoutY="479.0" mnemonicParsing="false" onAction="#whenExitClicked" style="-fx-background-color: #03C887; -fx-background-radius: 10;" text="Exit">
                      <font>
                         <Font name="Segoe UI Bold" size="16.0" />
                      </font></Button>
-                  <Button layoutX="85.0" layoutY="195.0" mnemonicParsing="false" onAction="#whenRecordAdverseReactionClicked" style="-fx-background-color: white; -fx-background-radius: 10;" text="Record Adverse Reaction of a SNSUser">
+                  <TextField fx:id="SNSNumberTtField" layoutX="130.0" layoutY="59.0" onAction="#cleareverything" />
+                  <Label layoutX="123.0" layoutY="36.0" text="Insert SNS Number" textFill="#797373">
+                     <font>
+                        <Font name="Segoe UI Bold" size="18.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="69.0" layoutY="175.0" text="Describe the Adverse Reaction Here" textFill="#797373">
+                     <font>
+                        <Font name="Segoe UI Bold" size="18.0" />
+                     </font>
+                  </Label>
+                  <TextArea fx:id="advReactTxtArea" layoutX="74.0" layoutY="208.0" onDragDetected="#cleareverything2" prefHeight="106.0" prefWidth="296.0" />
+                  <Button layoutX="202.0" layoutY="435.0" mnemonicParsing="false" onAction="#whenOKclicked" style="-fx-background-color: white; -fx-background-radius: 10;" text="OK">
                      <font>
                         <Font name="Segoe UI Bold" size="14.0" />
                      </font>
                   </Button>
+                  <Label fx:id="ErrorLabel" layoutX="175.0" layoutY="371.0" text="Error Label" textFill="#ff1e1e">
+                     <font>
+                        <Font name="Segoe UI Bold" size="18.0" />
+                     </font>
+                  </Label>
                </children>
             </AnchorPane>
          </children>
         </VBox>
     </center>
     <top>
-        <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="57.0" prefWidth="452.0" text="Nurse Menu" textAlignment="CENTER" textFill="#575757" BorderPane.alignment="CENTER">
+        <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="57.0" prefWidth="607.0" text="Record Adverse Reaction" textAlignment="CENTER" textFill="#575757" BorderPane.alignment="CENTER">
             <BorderPane.margin>
                 <Insets top="70.0" />
             </BorderPane.margin>

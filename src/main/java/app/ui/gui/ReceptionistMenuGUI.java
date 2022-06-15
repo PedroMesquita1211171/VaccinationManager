@@ -4,6 +4,7 @@ import app.controller.App;
 import app.ui.MainGUI;
 import app.ui.console.ListEmployeesUI;
 import app.ui.console.RecepcionistScheduleUI;
+import app.ui.console.RegisterArrivalUI;
 import app.ui.console.RegisterSNSUserUI;
 import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
@@ -45,5 +46,10 @@ public class ReceptionistMenuGUI implements Initializable {
     @javafx.fxml.FXML
     public void listempClicked(ActionEvent actionEvent) {
         new ListEmployeesUI().run();
+    }
+
+    @javafx.fxml.FXML
+    public void registerArrivalClicked(ActionEvent actionEvent) {
+        new RegisterArrivalUI().run();
     }
 }

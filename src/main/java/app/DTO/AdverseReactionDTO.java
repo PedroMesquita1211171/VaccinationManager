@@ -1,15 +1,18 @@
 package app.DTO;
 
 import app.domain.model.SNSUser;
+import app.domain.model.VaccinationCenter;
 
 public class AdverseReactionDTO {
 
     private SNSUser snsu;
     private String ARText;
+    private VaccinationCenter vc;
 
-    public AdverseReactionDTO(SNSUser snsu, String ARText) {
+    public AdverseReactionDTO(SNSUser snsu, String ARText,VaccinationCenter vc) {
         this.snsu = snsu;
         this.ARText = ARText;
+        this.vc = vc;
     }
 
     public SNSUser getSnsu() {
@@ -26,6 +29,14 @@ public class AdverseReactionDTO {
 
     public void setARText(String ARText) {
         this.ARText = ARText;
+    }
+
+    public VaccinationCenter getVc() {
+        return vc;
+    }
+
+    public void setVc(VaccinationCenter vc) {
+        this.vc = vc;
     }
 
     @Override

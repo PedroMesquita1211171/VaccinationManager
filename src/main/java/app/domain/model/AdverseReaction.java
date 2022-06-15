@@ -6,16 +6,25 @@ public class AdverseReaction {
 
     private SNSUser snsu;
     private String ARText;
+    private VaccinationCenter vc;
 
-    public AdverseReaction(SNSUser snsu, String ARText){
+    public AdverseReaction(SNSUser snsu, String ARText,VaccinationCenter vc) {
         checkSNSUser(snsu);
         checkARText(ARText);
+        checkVC(vc);
         if(ARText.length() == 0){
             this.ARText = "There was no Adverse Reaction for such SNS User.";
         }else{
             this.ARText = ARText;
         }
         this.snsu = snsu;
+        this.vc = vc;
+    }
+
+    private void checkVC(VaccinationCenter vc) {
+        if(vc == null){
+            throw new IllegalArgumentException("Vaccination Center cannot be null.");
+        }
     }
 
     private void checkARText(String arText) {
@@ -42,6 +51,14 @@ public class AdverseReaction {
 
     public void setARText(String ARText) {
         this.ARText = ARText;
+    }
+
+    public VaccinationCenter getVc() {
+        return vc;
+    }
+
+    public void setVc(VaccinationCenter vc) {
+        this.vc = vc;
     }
 
     @Override

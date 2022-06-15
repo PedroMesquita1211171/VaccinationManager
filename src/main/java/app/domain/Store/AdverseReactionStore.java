@@ -4,6 +4,7 @@ import app.DTO.AdverseReactionDTO;
 import app.DTO.Mappers.AdverseReactionMapper;
 import app.domain.model.AdverseReaction;
 import app.domain.model.SNSUser;
+import app.domain.model.VaccinationCenter;
 import app.domain.model.Vaccine;
 
 import java.util.ArrayList;
@@ -33,8 +34,8 @@ public class AdverseReactionStore {
     }
 
     //create
-    public AdverseReaction createAR(SNSUser snsu, String ARText){
-        return new AdverseReaction(snsu, ARText);
+    public AdverseReaction createAR(SNSUser snsu, String ARText, VaccinationCenter vc){
+        return new AdverseReaction(snsu, ARText, vc);
     }
     public boolean validateAR( AdverseReaction ar){
         if (ar== null) return false;
@@ -46,6 +47,6 @@ public class AdverseReactionStore {
             arList.add(ar);
             return true;
         }
-        throw new IllegalArgumentException("Not saved since the adverse reaction was already registerd.");
+        throw new IllegalArgumentException("Not saved since the adverse reaction was already registered.");
     }
 }

@@ -2,6 +2,7 @@ package app.domain.Store;
 
 import app.DTO.Mappers.VaccinationCenterMapper;
 import app.DTO.VaccinationCenterDTO;
+import app.domain.model.SNSUser;
 import app.domain.model.Schedule;
 import app.domain.model.VaccinationCenter;
 import app.domain.model.VaccinationCenterDependencies.Tempo;
@@ -85,5 +86,32 @@ public class WaitingRoomStore {
         }
         return waitingRoomList;
     }
-
+    /**
+     * Gets SNS User in the waiting room by its sns number.
+     *
+     * @param snsNumber the sns number
+     * @return the SNS User in the waiting room
+     */
+    public SNSUser getSNSUserInTheWaitingRoomByItsSNSNumber(String snsNumber) {
+        for (WaitingRoom wt : this.waitingRoomList) {
+            if (wt.getSchedule().getSnsu().getSNSNumber().equals(snsNumber)) {
+                return wt.getSchedule().getSnsu();
+            }
+        }
+        throw new IllegalArgumentException("There is no SNS User in the waiting room with such SNS Number");
+    }
+    /**
+     * Gets Vaccination Center of sns user in the waiting room by its sns number.
+     *
+     * @param snsNumber the sns number
+     * @return the Vaccination Center of sns user in the waiting room
+     */
+    public VaccinationCenter getVaccinationCenterBySNSNumber(String snsNumber) {
+        for (WaitingRoom wt : this.waitingRoomList) {
+            if (wt.getSchedule().getSnsu().getSNSNumber().equals(snsNumber)) {
+                return wt.getVaccinationCenter();
+            }
+        }
+        throw new IllegalArgumentException("There is no SNS User in the waiting room with such SNS Number");
+    }
 }

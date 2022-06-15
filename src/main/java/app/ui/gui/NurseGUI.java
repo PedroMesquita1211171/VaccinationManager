@@ -34,4 +34,14 @@ public class NurseGUI implements Initializable {
     public void listsnsuwrClicked(ActionEvent actionEvent) {
         new ListSNSUsersInWaitingRoomUI().run();
     }
+
+    @javafx.fxml.FXML
+    public void whenRecordAdverseReactionClicked(ActionEvent actionEvent) {
+        RecordAdverseReactionUI recordAdverseReactionUI = (RecordAdverseReactionUI) this.main.changeStageContent("/fxml/RecordAdverseReaction.fxml");
+        recordAdverseReactionUI.setMainApp(this.main);
+    }
+
+    public MainGUI getMain() {
+        return main;
+    }
 }

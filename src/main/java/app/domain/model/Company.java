@@ -18,6 +18,7 @@ public class Company {
     private VaccinationCenterStore vaccinationCenterStore;
     private ScheduleStore scheduleStore;
     private WaitingRoomStore waitingRoomStore;
+    private AdverseReactionStore adverseReactionStore;
 
     /**
      * Instantiates a new Company.
@@ -38,6 +39,7 @@ public class Company {
         this.vaccinationCenterStore = new VaccinationCenterStore();
         this.scheduleStore = new ScheduleStore();
         this.waitingRoomStore = new WaitingRoomStore();
+        this.adverseReactionStore = new AdverseReactionStore();
     }
 
     /**
@@ -117,6 +119,14 @@ public class Company {
      */
     public WaitingRoomStore getWaitingRoomStore() {
         return waitingRoomStore;
+    }
+    /**
+     * Gets adverse reaction store.
+     *
+     * @return the adverse reaction store
+     */
+    public AdverseReactionStore getAdverseReactionStore() {
+        return adverseReactionStore;
     }
 
 }
