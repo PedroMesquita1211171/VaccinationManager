@@ -1,0 +1,12 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+autonumber
+actor "Center coordinator" as cc
+
+cc -> System: Asks to check vaccination statistics
+System --> cc: Shows list and gives option to save
+
+cc -> System: chooses to save
+cc <-- System: informs data was successfully saved to file
+@enduml
