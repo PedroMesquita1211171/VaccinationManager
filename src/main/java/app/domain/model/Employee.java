@@ -110,7 +110,7 @@ public class Employee {
     }
     /**
      * Checks if the employee ID is valid
-     * @param empID
+
      */
     private void checkEmployeeID(String employeeID){
         if(employeeID.length() != 8){

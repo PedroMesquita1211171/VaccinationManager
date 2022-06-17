@@ -10,6 +10,8 @@ public class CenterCoordinatorUI implements Runnable{
     public void run() {
         List<MenuItem> options = new ArrayList<>();
         options.add(new MenuItem("Get a List of all Vaccines ", new ListVaccinesUI()));
+        options.add(new MenuItem("Get a the analysis of a Vaccinaton Center's performance ", new CenterCoordinatorUI()));
+
 
         int option;
         do
