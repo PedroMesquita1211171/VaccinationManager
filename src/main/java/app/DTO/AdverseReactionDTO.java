@@ -42,7 +42,7 @@ public class AdverseReactionDTO {
     @Override
     public String toString() {
         return
-                "SNS User: " + snsu + "\n" +
+                "SNS User: " + snsu.getName() + "/" + snsu.getSNSNumber() + "\n" +
                 "Adverse Reaction: " + ARText + "\n"
                 ;
     }

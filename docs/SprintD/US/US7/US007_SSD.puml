@@ -1,0 +1,21 @@
+@startuml
+autonumber
+actor "Nurse" as nur
+
+activate nur
+nur -> ":System" : Starts recording adverse reaction
+activate ":System"
+":System" --> nur : asks for data(SNS Number, Adverse Reaction Text)
+deactivate ":System"
+nur -> ":System" : types requested data
+activate ":System"
+":System" --> nur : shows SNS User correspondent to the SNS Number \n and adverse reaction waiting for approval
+deactivate ":System"
+nur -> ":System" : confirms action
+activate ":System"
+":System" --> nur : informs oppertion success
+deactivate ":System"
+
+deactivate nur
+
+@enduml

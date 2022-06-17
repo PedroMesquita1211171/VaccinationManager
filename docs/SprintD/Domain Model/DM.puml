@@ -1,0 +1,139 @@
+@startuml
+
+class Company{
+-designation
+}
+
+class SNSUser{
+-name/username
+-address
+-gender
+-phoneNumber
+-email
+-birthDate
+-SNSNumber
+-citizenCardNumber
+}
+
+class VaccineType{
+ - ageGroup
+ - dose
+ - vaccineDosage
+}
+
+class Vaccine{}
+class Employee{}
+class Admin{
+-username
+-email
+-password
+}
+class HealthCareCenter{
+  - name
+  - address
+  - emailAddress
+  - phoneNumber
+  - faxNumber
+  - websiteAddress
+  - openingHours
+  - closingHours
+  - slotDuration
+  - maxVaccines
+  - coordinator
+  - ages
+  - ars
+  }
+class VaccinationCenter{
+  - name
+  - address
+  - emailAddress
+  - phoneNumber
+  - faxNumber
+  - websiteAddress
+  - openingHours
+  - closingHours
+  - slotDuration
+  - maxVaccines
+  - coordinator
+}
+class ScheduleVaccine{
+- userNumberSNS
+- vaccinationCenter
+- date
+- time
+- typeOfVaccine
+}
+class Nurse{}
+class CovidDigitalCertificate{}
+class Receptionist{}
+class Vaccination{}
+class DGS{}
+class PerformanceAnalysis{}
+class Report{}
+class AdministrationProcess{}
+class User{
+-username
+-password
+-email
+}
+class CenterCoordinator{}
+
+note "Concept of the Auth component" as N1
+
+Admin "1"---"1" CenterCoordinator : registers >
+Admin "1"---"*" SNSUser : registers >
+Admin "1"---"*" VaccineType : specifies >
+Admin "1"---"*" Vaccine : specifies >
+Admin "1"---"*" Receptionist : registers >
+Admin "1"---"*" Nurse : registers >
+Admin "1"---"*" Vaccine : manages >
+Admin "1"---"*" VaccinationCenter : registers >
+SNSUser "*"---"1" Vaccination : administered on <
+SNSUser "*"---"1" CovidDigitalCertificate : asks for >
+SNSUser "*"---"1" ScheduleVaccine : does >
+Nurse "*"---"*" CovidDigitalCertificate : isses >
+Nurse "*"---"*" Vaccination : performs >
+Nurse "*"---"*" VaccineType : confirms >
+Vaccination "1"---"1" ScheduleVaccine : fulfilling >
+ScheduleVaccine "1"---"*" VaccineType : for taking >
+Vaccine "*"---"*" VaccineType : depends on >
+VaccinationCenter "*"---"*" Vaccine : administers >
+VaccinationCenter "*"---"*" HealthCareCenter : is a <
+VaccinationCenter "*"---"1" CenterCoordinator : has a >
+DGS "1"---"*" Admin : employs >
+DGS "1"---"*" VaccinationCenter : owns >
+DGS "1"---"*" SNSUser : is registered on <
+HealthCareCenter "*"---"1" ARS : associated with >
+HealthCareCenter "*"---"1" AGES : associated with >
+CenterCoordinator "1"---"*" PerformanceAnalysis : makes >
+CenterCoordinator "1"---"*" Report : generates <
+Report "*"---"*" PerformanceAnalysis : about >
+Receptionist "*"---"1" DGS : works for <
+Receptionist "1"---"*" SNSUser : registers >
+Admin "1"---"*" Employee : registers >
+Admin "1"---"*" Employee : gets list of >
+Receptionist "*"---"1" Employee : is a >
+Nurse "*"---"1" Employee : is a >
+CenterCoordinator "*"---"1" Employee : is a >
+Vaccine "1"---"1" AdministrationProcess : has a >
+Receptionist "*"---"1" VaccinationCenter : works at >
+Receptionist "*"---"1" ScheduleVaccine : does >
+Receptionist "*"---"*" SNSUser: registers arrival >
+Nurse "*"---"*" SNSUser : consults list of users present in the waiting room >
+Admin "*"---"*" SNSUser : Loads a set through CSV file >
+Vaccine "1"---"1" VaccineType : has a >
+Company "1"---"*" Admin : knows >
+SNSUser "*"---"1" Company : is client >
+Company "1"---"*" VaccineType : promotes administration >
+Employee "*"---"1" User : is a >
+SNSUser "*"---"1" User : is a >
+SNSUser "*"---"1" Company : is client >
+Company "1"---"*" Receptionist : knows >
+ScheduleVaccine "1"---"*" SNSUser : for >
+Receptionist "1"---"*" ScheduleVaccine : schedules >
+User .. N1
+CenterCoordinator "*"---"1" User : is a >
+Nurse "*"---"1" User : is a >
+Receptionist "*"---"1" User : is a >
+
+@enduml

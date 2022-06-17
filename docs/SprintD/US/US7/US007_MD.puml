@@ -1,0 +1,35 @@
+@startuml
+hide methods
+left to right direction
+
+
+class Nurse {
+}
+
+class AdverseReaction{
+}
+
+class SNSUser{
+}
+
+class VaccinationCenter {
+}
+
+class WaitingRoom {
+
+}
+
+
+
+
+Nurse "1" -- "*" AdverseReaction : records >
+AdverseReaction "*" -- "1" SNSUser : for >
+SNSUser "1" -- "1" VaccinationCenter : at a >
+SNSUser "1" -- "1" WaitingRoom : in the >
+WaitingRoom "1" -- "1" VaccinationCenter : is part of >
+Nurse "1" -- "*" VaccinationCenter : works at >
+
+note "Specifications Document(Nurse works in many centers)" as N1
+Nurse .. N1
+
+@enduml

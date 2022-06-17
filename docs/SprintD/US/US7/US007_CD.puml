@@ -1,0 +1,57 @@
+@startuml
+
+hide empty members
+
+class RecordAdverseReactionUI{
+}
+
+class RecordAdverseReactionController{
++createAdverseReaction(snsu,arText,vc)
++getAdverseReaction()
++saveAdverseReaction(ar)
+}
+
+class Company{
++getWaitingRoomStore()
++getAdverseReactionStore()
+}
+
+class AdverseReactionStore{
++createAdverseReaction(snsu,arText,vc)
++validateAdverseReaction(ar)
++addAdverseReaction(ar)
+}
+
+class WaitingRoomStore{
++getSNSUserAtWaitingRoom(snsNumber)
++getVaccinationCenterOfSNSUser(snsNumber)
+}
+
+class AdverseReactionDTO{
+SNSUser snsu
+String arText
+VaccinationCenter vc
+}
+
+class AdverseReactionMapper{
++toDTO(ar)
+}
+
+class AdverseReaction{
+SNSUser snsu
+String arText
+VaccinationCenter vc
+}
+
+RecordAdverseReactionUI ..> RecordAdverseReactionController
+RecordAdverseReactionController ..> Company
+Company "1" --> "1" WaitingRoomStore: uses >
+Company "1" --> "1" AdverseReactionStore: uses >
+AdverseReactionStore "1" --> "*" AdverseReaction: knows >
+AdverseReactionMapper ..> AdverseReaction
+AdverseReactionMapper ..> AdverseReactionDTO
+RecordAdverseReactionController ..> AdverseReactionMapper
+RecordAdverseReactionController ..> AdverseReactionDTO
+RecordAdverseReactionController ..> AdverseReaction
+
+@enduml

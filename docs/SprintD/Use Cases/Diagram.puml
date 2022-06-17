@@ -1,0 +1,73 @@
+@startuml
+
+
+package System{
+
+usecase UC1 as "Manage core information (type of vaccines, vaccines, vaccination centers)"
+usecase UC2 as "Register an SNS User"
+usecase UC3 as "Register a Center Coordinator"
+usecase UC4 as "Register a Nurse"
+usecase UC5 as "Register a Receptionist"
+usecase UC6 as "Coordinate Vaccination Center"
+usecase UC7 as "Requests Covid Digital Certificate"
+usecase UC8 as "Administrate Vaccine"
+usecase UC9 as "Record Adverse Reactions"
+usecase UC10 as "Schedule Vaccination"
+usecase UC11 as "Register User Arrival"
+usecase UC12 as "Register Vaccination Center"
+usecase UC13 as "Seeing List of Employees"
+usecase UC14 as "Specify a new Vaccine Type"
+usecase UC15 as "Specify a new Vaccine and its administration process"
+usecase UC16 as "Monitoring the vaccination process"
+usecase UC17 as "Monitoring the healthcare center"
+
+}
+
+
+package Actors{
+
+actor "Administrator" as ADMIN
+actor "Center Coordinator" as CC
+actor "Nurse" as NU
+actor "Receptionist" as RC
+actor "SNS User" as SU
+
+}
+
+left to right direction
+
+
+
+/' Admin '/
+ADMIN --> (UC2)
+ADMIN --> (UC3)
+ADMIN --> (UC4)
+ADMIN --> (UC5)
+ADMIN --> (UC1)
+ADMIN --> (UC12)
+ADMIN --> (UC13)
+ADMIN --> (UC14)
+ADMIN --> (UC15)
+
+/'Receptionist'/
+RC --> (UC11)
+RC --> (UC10)
+RC --> (UC2)
+
+/'Center Coordinator'/
+CC --> (UC6)
+CC --> (UC16)
+CC --> (UC17)
+
+/'SNS User'/
+SU --> (UC7)
+SU --> (UC10)
+
+/'Nurse'/
+NU --> (UC8)
+NU --> (UC9)
+
+
+
+
+@enduml
