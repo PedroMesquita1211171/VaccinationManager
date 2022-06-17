@@ -32,14 +32,13 @@ public class SpecifyNewVaccineUI implements Runnable{
        double dosage;
 
 
-
-
-       do{
+        try{
+            do{
                 int vaccineTypeIndex = Utils.showAndSelectIndex(ctrl.getVaccineTypes(), "Select a vaccine type");
 
                 if(vaccineTypeIndex == -1){
 
-                    throw new IllegalArgumentException("\nInvalid vaccine type index\n");
+                    throw new IllegalArgumentException("\nReturning to main Menu...\n");
 
                 }else{
 
@@ -101,7 +100,13 @@ public class SpecifyNewVaccineUI implements Runnable{
 
 
 
-        }while(confirmation.equalsIgnoreCase("n")||confirmation.equalsIgnoreCase("no"));
+            }while(confirmation.equalsIgnoreCase("n")||confirmation.equalsIgnoreCase("no"));
+
+        }catch (Exception e){
+            System.out.println(e.getMessage());
+        }
+
+
    }
 
 
