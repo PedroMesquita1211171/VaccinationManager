@@ -27,8 +27,9 @@ system.[...]
 
 ### 1.3. Acceptance Criteria
 
- **AC1: SNS User needs to have its arrival registered into the waiting room in order to record its Adverse Reaction.**
- **AC2: Adverse Reaction text cannot surpass 300 characters.**
+ >**AC1: SNS User needs to have its arrival registered into the waiting room in order to record its Adverse Reaction.**
+
+ >**AC2: Adverse Reaction text cannot surpass 300 characters.**
 
 ### 1.4. Found out Dependencies
 
@@ -71,19 +72,19 @@ n/a
 
 **The rationale grounds on the SSD interactions and the identified input/output data.**
 
-| Interaction ID | Question: Which class is responsible for...               | Answer                    | Justification (with patterns)                                                                                 |
-|:---------------|:----------------------------------------------------------|:--------------------------|:--------------------------------------------------------------------------------------------------------------|
-| Step 1  		     | 	... interacting with the actor?                          | RegisterSNSUserUI         | Pure Fabrication: there is no reason to assign this responsibility to any existing class in the Domain Model. |
-| 			  		        | 	... coordinating the US?                                 | RegisterSNSUserController | Controller                                                                                                    |
-| 			  		        | 	... instantiating a new SNS User?                        | SNSUserStore              | Creator (Rule 1): Store has all SNS Users.                                                                    || 			  		        | 	... knowing to which organization the user belongs to? | Platform                  | IE: has registed all Organizations                                                                            |
-| Step 2  		     | 							                                                   |                           |                                                                                                               |
-| Step 3  		     | 	...saving the inputted data?                             | SNSUser                   | IE: object created in step 1 has its own data.                                                                |
-| Step 4  		     | 	...knowing the task categories to show?                  | SNSUserDTO                | IE: SNSUserDTO defines the categories of the SNSUser to show.                                                 |
-| Step 5  		     | 	... saving the selected category?                        | SNSUser                   | IE: object created in step 1 is classified in one Category.                                                   |
-| 		             | 	... validating all data (local validation)?              | SNSUser                   | IE: owns its data.                                                                                            | 
-| 			  		        | 	... validating the created SNS User (global validation)? | SNSUserStore              | IE: knows all SNS Users.                                                                                      | 
-| 			  		        | 	... saving the created SNS User?                         | SNSUserStore              | IE: owns all SNS Users.                                                                                       | 
-| Step 6 		      | 	... informing operation success?                         | RegisterSNSUserUI         | IE: is responsible for user interactions.                                                                     | 
+| Interaction ID | Question: Which class is responsible for...                                                      | Answer                          | Justification (with patterns)                                                                                 |
+|:---------------|:-------------------------------------------------------------------------------------------------|:--------------------------------|:--------------------------------------------------------------------------------------------------------------|
+| Step 1  		     | 	... interacting with the actor?                                                                 | RecordAdverseReactionUI         | Pure Fabrication: there is no reason to assign this responsibility to any existing class in the Domain Model. |
+| 			  		        | 	... coordinating the US?                                                                        | RecordAdverseReactionController | Controller                                                                                                    |
+| 			  		        | 	... instantiating a new Adverse Reaction?                                                       | AdverseReactionStore            | Creator (Rule 1): Store has all SNS Users.                                                                    || 			  		        |
+|                | ... knowing if the sns user is in the waiting room and what vaccination center is it associated? | WaitingRoomStore                | IE: WaitingRoomStore knows all SNS Users present in the waiting room of a given Vaccination Center.           |
+| Step 2  		     | 							                                                                                          |                                 |                                                                                                               |
+| Step 3  		     | 	...saving the inputted data?                                                                    | AdverseReaction                 | IE: object created in step 1 has its own data.                                                                |
+| Step 4  		     | 	...knowing the Adverse Reaction categories to show?                                             | AdverseReactionDTO              | IE: AdverseReactionDTO defines the categories of the AdverseReaction to show.                                 |
+| Step 5  		     | 	... saving the Adverse Reaction?                                                                | RecordAdverseReactionController | Controller: coordinates the user story so it has its trigger method to be activated by the UI.                |
+| 			  		        | 	... validating the created Adverse Reaction (global validation)?                                | AdverseReactionStore            | IE: knows all SNS Users.                                                                                      | 
+| 			  		        | 	... saving the created Adverse Reaction?                                                        | AdverseReactionStore            | IE: owns all SNS Users.                                                                                       | 
+| Step 6 		      | 	... informing operation success?                                                                | RecordAdverseReactionUI         | IE: is responsible for user interactions.                                                                     | 
 
 ### Systematization ##
 
@@ -117,16 +118,13 @@ AdverseReactionMapper toDTO SD
 ![US007_CD](US007_CD.svg)
 
 # 4. Tests 
-*In this section, it is suggested to systematize how the tests were designed to allow a correct measurement of requirements fulfilling.* 
 
     
 
 
 # 5. Construction (Implementation)
 
-*In this section, it is suggested to provide, if necessary, some evidence that the construction/implementation is in accordance with the previously carried out design. Furthermore, it is recommeded to mention/describe the existence of other relevant (e.g. configuration) files and highlight relevant commits.*
 
-*It is also recommended to organize this content by subsections.* 
 
 # 6. Integration and Demo 
 

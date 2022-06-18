@@ -1,0 +1,33 @@
+@startuml
+autonumber
+title SD_SNSUserMapper_toDTO
+
+participant ":AdverseReactionMapper" as mapper
+participant ":AdverseReaction" as ar
+participant ":AdverseReactionDTO" as dto
+
+activate mapper
+[o-> mapper : toDTO(ar)
+mapper -> ar : getSNSUser()
+activate ar
+deactivate ar
+mapper -> ar : getArText()
+activate ar
+deactivate ar
+mapper -> ar : getVC()
+activate ar
+deactivate ar
+mapper --> dto** : create(snsu, arText, vc)
+<-- mapper : arDTO
+
+
+
+
+
+
+
+
+
+
+
+@enduml

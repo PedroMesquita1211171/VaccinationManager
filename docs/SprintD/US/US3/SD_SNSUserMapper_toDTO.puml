@@ -1,6 +1,6 @@
 @startuml
 autonumber
-title SD_SNSUserMapper_toDTO
+title SD_AdverseReactionMapper_toDTO
 
 participant ":SNSUserMapper" as mapper
 participant ":SNSUser" as user
