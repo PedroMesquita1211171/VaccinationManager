@@ -25,7 +25,7 @@ public class Vaccination {
     public Vaccination(AdverseReaction ar, Vaccine v, int dose,AdministrationProcess ap) {
         checkAR(ar);
         checkV(v);
-        checkDose(dose);
+        checkDose(dose, ap.getDosesPerGroup());
         this.ar = ar;
         this.v = v;
         this.ap = ap;
@@ -59,9 +59,12 @@ public class Vaccination {
      *
      * @param dose the dose
      */
-    private void checkDose(int dose) {
-        if (dose < 1) {
+    private void checkDose(int dose, int maxdoses) {
+        if (dose < 1 ) {
             throw new IllegalArgumentException("Dose must be greater than 0");
+        }
+        if (dose > maxdoses) {
+            throw new IllegalArgumentException("Dose must be less than " + maxdoses);
         }
     }
 

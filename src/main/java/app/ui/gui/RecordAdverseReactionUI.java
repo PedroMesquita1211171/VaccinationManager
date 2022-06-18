@@ -11,8 +11,10 @@ import java.util.ResourceBundle;
 
 public class RecordAdverseReactionUI implements Initializable {
 
+
     private MainGUI main;
     private RecordAdverseReactionController ctrl;
+
     @javafx.fxml.FXML
     private TextArea advReactTxtArea;
     @javafx.fxml.FXML

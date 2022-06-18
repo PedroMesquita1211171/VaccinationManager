@@ -44,4 +44,10 @@ public class NurseGUI implements Initializable {
     public MainGUI getMain() {
         return main;
     }
+
+    @javafx.fxml.FXML
+    public void whenRecordVaccinationClicked(ActionEvent actionEvent) {
+        RecordVaccinationUI recordVaccinationUI = (RecordVaccinationUI) this.main.changeStageContent("/fxml/RecordVaccination.fxml");
+        recordVaccinationUI.setMainApp(this.main);
+    }
 }
