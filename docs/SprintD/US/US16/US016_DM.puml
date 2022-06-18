@@ -1,11 +1,26 @@
 @startuml
 'https://plantuml.com/sequence-diagram
 
-autonumber
+hide methods
+left to right direction
 
-Alice -> Bob: Authentication Request
-Bob --> Alice: Authentication Response
 
-Alice -> Bob: Another authentication Request
-Alice <-- Bob: another authentication Response
+class CenterCoodinator{}
+
+class CSVFile{
++ arrivalDate
++departureDate
+}
+class CenterPerformance{
++performanceList
++maxSumSublist
++maxSum
++timeInterval
+}
+
+CenterCoodinator "*"--"1" CSVFile : "loads into the system" >
+CenterCoodinator --> CenterPerformance : "Wants to know"
+CSVFile "1"--"1" CenterPerformance :"has it's information treated to become" >
+
+
 @enduml

@@ -1,11 +1,42 @@
 @startuml
 'https://plantuml.com/sequence-diagram
 
-autonumber
+hide empty members
+left to right direction
 
-Alice -> Bob: Authentication Request
-Bob --> Alice: Authentication Response
+ class CSVConverter{
+ +readInfoFromCSV
+ +arrayListToMatrix
+ +isDateInSlot
 
-Alice -> Bob: Another authentication Request
-Alice <-- Bob: another authentication Response
+ }
+
+ class DateParser{
+ -sdf
++dateToCalendar
++StringToCalendar
+ }
+
+ class CenterPerformanceUI{
+ -fileName
+ - m
+ +validateTimeIntervalDuration
+ +askFilePath
+ +askConfirmation
+ +validateTimeIntervalDuration
+ }
+
+
+ class CenterPerformanceController{
+  +maxsumsublist
+  +maxsum
+  +readInfoFromCSV
+  }
+
+
+
+ CenterPerformanceUI ..> CenterPerformanceController
+ CenterPerformanceController "*" ..> "1" CSVConverter
+ CSVConverter "*" --> "1" DateParser: uses >
+
 @enduml

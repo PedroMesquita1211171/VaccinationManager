@@ -16,7 +16,7 @@ import java.util.*;
  * And to respect GRASP principle
  * Pure Fabrication and Information expert
  */
-public class CSVToMatrix {
+public class CSVConverter {
 
     public ArrayList<Integer>  readInfoFromCSV(String fileName, int m)  {
         Path pathToFile = Paths.get(fileName);
@@ -47,7 +47,6 @@ public class CSVToMatrix {
     public ArrayList<Integer> arrayListToMatrix(ArrayList<Calendar> arrivalTime, ArrayList<Calendar> departureTime, int m){
         ArrayList<Integer> mdiscArray = new ArrayList<>();
         int intervalTime = 720/m;
-        if (validateInterval(m)) {
             Calendar timeSlotLimit = (Calendar) arrivalTime.get(0).clone();
             timeSlotLimit.set(Calendar.HOUR, 8);
             timeSlotLimit.set(Calendar.MINUTE, m);
@@ -65,15 +64,10 @@ public class CSVToMatrix {
                 mdiscArray.set(n, centerPerformance);
             }
             return mdiscArray;
-        } else
-            return null;
     }
 
     public boolean isDateInSlot(Calendar calendar, Calendar timeSlotLimit){
         return calendar.before(timeSlotLimit);
     }
 
-    public boolean validateInterval (int m){
-        return m >= 1 && m <= 60;
-    }
 }

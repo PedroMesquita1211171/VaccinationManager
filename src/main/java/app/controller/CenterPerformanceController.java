@@ -1,16 +1,18 @@
 package app.controller;
 
 
-import app.domain.model.CenterPerformance;
+import app.ui.console.utils.CSVConverter;
 
 import java.util.ArrayList;
 
-public class CenterPerformanceController {
-    private CenterPerformance cp;
+public class CenterPerformanceController { ;
+    private CSVConverter converter;
 
-    public CenterPerformanceController(){}
+    public CenterPerformanceController(){
+        converter = new CSVConverter();
+    }
 
-    public CenterPerformanceController(CenterPerformance cp){}
+
 
 
     //MDISC
@@ -31,16 +33,6 @@ public class CenterPerformanceController {
         return maxsumsublist;
     }
 
-    //calcular max sum sublist
-    public ArrayList<Integer> contiguousSublistOfMaxSum (ArrayList<Integer>  sublist, int imax, int jmax) {
-        ArrayList<Integer> contiguousSublistOfMaxSum = new ArrayList<>();
-        for (int a=imax; a<=jmax; a++){
-            for (int n=0; n<=a; n++) {
-                contiguousSublistOfMaxSum.set(n,sublist.get(a));
-            }
-        }
-        return contiguousSublistOfMaxSum;
-    }
 
     public int maxsum (ArrayList<Integer>  sublist) {
         int somamax = 0;
@@ -58,9 +50,45 @@ public class CenterPerformanceController {
         return somamax;
     }
 
+    public int intervalStart (ArrayList<Integer>  sublist) {
+        int somamax = 0;
+        int imax = 0;
+        for (int i = 0; i < ((sublist.size()) - 1); i++) {
+            int soma = 0;
+            for (int j = i; j < ((sublist.size()) - 1); j++) {
+                soma = soma + sublist.get(j);
+                if (somamax < soma) {
+                    somamax = soma;
+                    imax = i;
+                }
+            }
+
+        }
+
+        return imax;
+    }
+    public int intervalEnd (ArrayList<Integer>  sublist) {
+        int somamax = 0;
+        int jmax = 0;
+        for (int i = 0; i < ((sublist.size()) - 1); i++) {
+            int soma = 0;
+            for (int j = i; j < ((sublist.size()) - 1); j++) {
+                soma = soma + sublist.get(j);
+                if (somamax < soma) {
+                    somamax = soma;
+                    jmax = j;
+                }
+            }
+
+        }
+
+        return jmax;
+    }
 
 
-    public String getFileName(String file){
-        return file;
+
+
+    public ArrayList<Integer> readInfoFromCSV(String file, int m){
+        return converter.readInfoFromCSV(file,m);
     }
 }

@@ -107,6 +107,18 @@ class Employee {
      -role
 }
 
+class CSVFile{
++ arrivalDate
++departureDate
+}
+class CenterPerformance{
++performanceList
++maxSumSublist
++maxSum
++timeInterval
+}
+
+
 Administrator "*"---"*" Employee: registers >
 Administrator "*"---"*" SNSUser : registers >
 Administrator "*"---"*" VaccinationCenter : registers >
@@ -127,6 +139,10 @@ Receptionist "*"---"*" Employee: is >
 
 CenterCoordinator "*"--"1" Company : works for >
 CenterCoordinator "*"---"*" Employee: is >
+CenterCoodinator "*"--"1" CSVFile : "loads into the system" >
+CenterCoodinator --> CenterPerformance : "Wants to know"
+CSVFile "1"--"1" CenterPerformance :"has it's information treated to become" >
+
 
 Vaccine "1"--"1" VaccineType : is of >
 Vaccine "*"--"1" VaccineTime : has >

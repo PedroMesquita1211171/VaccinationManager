@@ -35,6 +35,8 @@ public class MainGUI extends Application {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/LoadingScreen.fxml"));
             Parent root = loader.load();
+            String css = this.getClass().getResource("/styles/Styles.css").toExternalForm();
+            root.getStylesheets().add(css);
 
             Scene scene = new Scene(root);
 

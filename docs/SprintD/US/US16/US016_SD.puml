@@ -2,10 +2,49 @@
 'https://plantuml.com/sequence-diagram
 
 autonumber
+actor "Center coordinator" as CC
 
-Alice -> Bob: Authentication Request
-Bob --> Alice: Authentication Response
+participant ":\nCenterPerformanceUI" as UI
+participant ":\nCenterPerformanceController" as CTRL
+participant ":\nCSVConverter" as FILE
+participant ":\nDateParser" as DATE
 
-Alice -> Bob: Another authentication Request
-Alice <-- Bob: another authentication Response
+activate CC
+CC -> UI : starts loading a set of Users through a CSV file
+activate UI
+UI --> CC : requests File Path
+deactivate UI
+CC-> UI : types File Path  (CSV file)
+activate UI
+UI --> CC : shows data and asks for confirmation
+deactivate UI
+CC -> UI : confirms data
+activate UI
+UI --> CC: requests time interval duration
+deactivate UI
+CC -> UI : types duration
+activate UI
+UI --> CC : shows data and asks for confirmation
+deactivate UI
+CC -> UI : confirms data
+
+activate UI
+activate CTRL
+UI -> CTRL : validateInterval(m)
+UI -> CTRL : readInfoFromCSV(filename, m)
+activate FILE
+CTRL -> FILE : readInfoFromCSV(filename, m)
+activate  DATE
+FILE-> DATE : StringToCalendar(arrivalDate)
+FILE-> DATE : StringToCalendar(departureDate)
+deactivate DATE
+FILE --> CTRL : arrayListToMatrix(ArrayList<Calendar> arrivalTime, ArrayList<Calendar> departureTime, int m)
+deactivate FILE
+CTRL --> UI : maxsumsublist (ArrayList<Integer>  sublist)
+UI --> CC : shows max sum contiguous sublist
+CTRL --> UI : maxsum (ArrayList<Integer>  sublist)
+UI --> CC : shows sum of all the elemts of the max sum contiguous sublist
+CTRL --> UI : intervalStart (ArrayList<Integer>  sublist)
+CTRL --> UI : intervalEnd (ArrayList<Integer>  sublist)
+UI --> CC : shows time the time interval relative to the max sum contiguous sublist
 @enduml

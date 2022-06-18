@@ -2,10 +2,33 @@
 'https://plantuml.com/sequence-diagram
 
 autonumber
+actor CenterCoordinator as cc
 
-Alice -> Bob: Authentication Request
-Bob --> Alice: Authentication Response
 
-Alice -> Bob: Another authentication Request
-Alice <-- Bob: another authentication Response
+
+
+activate cc
+cc -> ":System" : Loads a CSV file with center performance
+activate ":System"
+":System" --> cc : requests File Path
+deactivate ":System"
+
+cc -> ":System" : types File Path  (CSV file)
+activate ":System"
+":System" --> cc : shows the file path and asks for confirmation(Y/N)
+deactivate ":System"
+
+cc -> ":System" : confirms file path
+activate ":System"
+":System" --> cc : asks for time interval duration
+deactivate ":System"
+
+cc-> ":System" : types time interval duration
+activate ":System"
+":System" --> cc : shows data and asks for confirmation
+deactivate ":System"
+
+cc-> ":System" : confirms data
+activate ":System"
+":System" --> cc : shows final results
 @enduml

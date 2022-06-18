@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentStyleType="text/css" height="100.8px" preserveAspectRatio="none" style="width:567px;height:100px;background:#FFFFFF;" version="1.1" viewBox="0 0 567 100" width="567px" zoomAndPan="magnify"><defs/><g><!--MD5=[8d0c4f5434f273208579169461d426eb]
+class CenterCoodinator--><g id="elem_CenterCoodinator"><rect codeLine="7" fill="#F1F1F1" height="24" id="CenterCoodinator" rx="1.5" ry="1.5" style="stroke:#181818;stroke-width:0.3;" width="87" x="4.2" y="51.9"/><ellipse cx="13.2" cy="61.5" fill="#ADD1B2" rx="6.6" ry="6.6" style="stroke:#181818;stroke-width:0.6;"/><path d="M14.4,59.4 Q14.5219,59.1 14.6625,58.95 Q14.8031,58.8 14.9625,58.8 Q15.2437,58.8 15.4219,58.9688 Q15.6,59.1375 15.6,59.5313 L15.6,60.4688 Q15.6,60.8625 15.4312,61.0313 Q15.2625,61.2 15,61.2 Q14.7656,61.2 14.6156,61.0969 Q14.4656,60.9938 14.4,60.7219 Q14.3719,60.5344 14.2687,60.4313 Q14.0812,60.2344 13.7438,60.1219 Q13.4063,60 13.0688,60 Q12.6469,60 12.2906,60.1687 Q11.9438,60.3375 11.6719,60.7125 Q11.4,61.0875 11.4,61.6031 L11.4,62.1563 Q11.4,62.775 11.9063,63.1875 Q12.4125,63.6 13.3125,63.6 Q13.8469,63.6 14.2219,63.4781 Q14.4375,63.4125 14.6812,63.1969 Q14.8406,63.075 14.925,63.0375 Q15.0094,63 15.1125,63 Q15.3094,63 15.45,63.1594 Q15.6,63.3094 15.6,63.525 Q15.6,63.7312 15.3937,63.975 Q15.0938,64.3313 14.6156,64.5281 Q13.9875,64.8 13.2188,64.8 Q12.3188,64.8 11.5969,64.4438 Q11.0156,64.1625 10.6031,63.5531 Q10.2,62.9437 10.2,62.2219 L10.2,61.5656 Q10.2,60.8156 10.5563,60.1594 Q10.9219,59.5031 11.55,59.1563 Q12.1875,58.8 12.9,58.8 Q13.3312,58.8 13.7062,58.95 Q14.0812,59.1 14.4,59.4 Z " fill="#000000"/><text fill="#000000" font-family="sans-serif" font-size="8.4" lengthAdjust="spacing" textLength="67.8" x="21.6" y="64.9371">CenterCoodinator</text><line style="stroke:#181818;stroke-width:0.3;" x1="4.8" x2="90.6" y1="71.1" y2="71.1"/></g><!--MD5=[17c90f3db3a6d0dcb3017decb56e93df]
+class CSVFile--><g id="elem_CSVFile"><rect codeLine="9" fill="#F1F1F1" height="45.1313" id="CSVFile" rx="1.5" ry="1.5" style="stroke:#181818;stroke-width:0.3;" width="70.8" x="217.2" y="4.2"/><ellipse cx="235.65" cy="13.8" fill="#ADD1B2" rx="6.6" ry="6.6" style="stroke:#181818;stroke-width:0.6;"/><path d="M236.85,11.7 Q236.9719,11.4 237.1125,11.25 Q237.2531,11.1 237.4125,11.1 Q237.6938,11.1 237.8719,11.2687 Q238.05,11.4375 238.05,11.8312 L238.05,12.7687 Q238.05,13.1625 237.8813,13.3312 Q237.7125,13.5 237.45,13.5 Q237.2156,13.5 237.0656,13.3969 Q236.9156,13.2938 236.85,13.0219 Q236.8219,12.8344 236.7188,12.7313 Q236.5313,12.5344 236.1938,12.4219 Q235.8563,12.3 235.5187,12.3 Q235.0969,12.3 234.7406,12.4688 Q234.3937,12.6375 234.1219,13.0125 Q233.85,13.3875 233.85,13.9031 L233.85,14.4562 Q233.85,15.075 234.3563,15.4875 Q234.8625,15.9 235.7625,15.9 Q236.2969,15.9 236.6719,15.7781 Q236.8875,15.7125 237.1313,15.4969 Q237.2906,15.375 237.375,15.3375 Q237.4594,15.3 237.5625,15.3 Q237.7594,15.3 237.9,15.4594 Q238.05,15.6094 238.05,15.825 Q238.05,16.0313 237.8438,16.275 Q237.5438,16.6312 237.0656,16.8281 Q236.4375,17.1 235.6688,17.1 Q234.7687,17.1 234.0469,16.7438 Q233.4656,16.4625 233.0531,15.8531 Q232.65,15.2437 232.65,14.5219 L232.65,13.8656 Q232.65,13.1156 233.0063,12.4594 Q233.3719,11.8031 234,11.4562 Q234.6375,11.1 235.35,11.1 Q235.7813,11.1 236.1563,11.25 Q236.5313,11.4 236.85,11.7 Z " fill="#000000"/><text fill="#000000" font-family="sans-serif" font-size="8.4" lengthAdjust="spacing" textLength="30.6" x="246.15" y="17.2371">CSVFile</text><line style="stroke:#181818;stroke-width:0.3;" x1="217.8" x2="287.4" y1="23.4" y2="23.4"/><ellipse cx="223.8" cy="30" fill="none" rx="1.8" ry="1.8" style="stroke:#038048;stroke-width:0.6;"/><text fill="#000000" font-family="sans-serif" font-size="8.4" lengthAdjust="spacing" textLength="41.4" x="229.2" y="34.5199">arrivalDate</text><ellipse cx="223.8" cy="40.5656" fill="none" rx="1.8" ry="1.8" style="stroke:#038048;stroke-width:0.6;"/><text fill="#000000" font-family="sans-serif" font-size="8.4" lengthAdjust="spacing" textLength="55.2" x="229.2" y="45.0855">departureDate</text></g><!--MD5=[1eab586b2d892e406b67662793bf7ce1]
+class CenterPerformance--><g id="elem_CenterPerformance"><rect codeLine="13" fill="#F1F1F1" height="66.2625" id="CenterPerformance" rx="1.5" ry="1.5" style="stroke:#181818;stroke-width:0.3;" width="93.6" x="469.2" y="30.9"/><ellipse cx="478.2" cy="40.5" fill="#ADD1B2" rx="6.6" ry="6.6" style="stroke:#181818;stroke-width:0.6;"/><path d="M479.4,38.4 Q479.5219,38.1 479.6625,37.95 Q479.8031,37.8 479.9625,37.8 Q480.2438,37.8 480.4219,37.9688 Q480.6,38.1375 480.6,38.5313 L480.6,39.4688 Q480.6,39.8625 480.4313,40.0313 Q480.2625,40.2 480,40.2 Q479.7656,40.2 479.6156,40.0969 Q479.4656,39.9938 479.4,39.7219 Q479.3719,39.5344 479.2687,39.4313 Q479.0812,39.2344 478.7438,39.1219 Q478.4063,39 478.0687,39 Q477.6469,39 477.2906,39.1687 Q476.9437,39.3375 476.6719,39.7125 Q476.4,40.0875 476.4,40.6031 L476.4,41.1563 Q476.4,41.775 476.9063,42.1875 Q477.4125,42.6 478.3125,42.6 Q478.8469,42.6 479.2219,42.4781 Q479.4375,42.4125 479.6813,42.1969 Q479.8406,42.075 479.925,42.0375 Q480.0094,42 480.1125,42 Q480.3094,42 480.45,42.1594 Q480.6,42.3094 480.6,42.525 Q480.6,42.7312 480.3937,42.975 Q480.0938,43.3313 479.6156,43.5281 Q478.9875,43.8 478.2188,43.8 Q477.3187,43.8 476.5969,43.4438 Q476.0156,43.1625 475.6031,42.5531 Q475.2,41.9438 475.2,41.2219 L475.2,40.5656 Q475.2,39.8156 475.5563,39.1594 Q475.9219,38.5031 476.55,38.1563 Q477.1875,37.8 477.9,37.8 Q478.3312,37.8 478.7062,37.95 Q479.0812,38.1 479.4,38.4 Z " fill="#000000"/><text fill="#000000" font-family="sans-serif" font-size="8.4" lengthAdjust="spacing" textLength="74.4" x="486.6" y="43.9371">CenterPerformance</text><line style="stroke:#181818;stroke-width:0.3;" x1="469.8" x2="562.2" y1="50.1" y2="50.1"/><ellipse cx="475.8" cy="56.7" fill="none" rx="1.8" ry="1.8" style="stroke:#038048;stroke-width:0.6;"/><text fill="#000000" font-family="sans-serif" font-size="8.4" lengthAdjust="spacing" textLength="61.2" x="481.2" y="61.2199">performanceList</text><ellipse cx="475.8" cy="67.2656" fill="none" rx="1.8" ry="1.8" style="stroke:#038048;stroke-width:0.6;"/><text fill="#000000" font-family="sans-serif" font-size="8.4" lengthAdjust="spacing" textLength="57" x="481.2" y="71.7855">maxSumSublist</text><ellipse cx="475.8" cy="77.8313" fill="none" rx="1.8" ry="1.8" style="stroke:#038048;stroke-width:0.6;"/><text fill="#000000" font-family="sans-serif" font-size="8.4" lengthAdjust="spacing" textLength="31.8" x="481.2" y="82.3512">maxSum</text><ellipse cx="475.8" cy="88.3969" fill="none" rx="1.8" ry="1.8" style="stroke:#038048;stroke-width:0.6;"/><text fill="#000000" font-family="sans-serif" font-size="8.4" lengthAdjust="spacing" textLength="43.2" x="481.2" y="92.9168">timeInterval</text></g><!--MD5=[e07c278ce96d2d6a284fcd2ed83e7a60]
+link CenterCoodinator to CSVFile--><g id="link_CenterCoodinator_CSVFile"><path codeLine="20" d="M91.248,56.058 C128.664,49.224 182.226,39.444 217.056,33.078 " fill="none" id="CenterCoodinator-CSVFile" style="stroke:#181818;stroke-width:0.6;"/><polygon fill="#000000" points="115.1512,31.0664,109.4956,30.3069,110.1293,33.7762,115.1512,31.0664" style="stroke:#000000;stroke-width:0.6;"/><text fill="#000000" font-family="sans-serif" font-size="7.8" lengthAdjust="spacing" textLength="81" x="117.6" y="34.7971">"loads into the system"</text><text fill="#000000" font-family="sans-serif" font-size="7.8" lengthAdjust="spacing" textLength="3" x="95.8936" y="63.8522">*</text><text fill="#000000" font-family="sans-serif" font-size="7.8" lengthAdjust="spacing" textLength="4.2" x="208.2681" y="42.5422">1</text></g><!--MD5=[94fe1a6f1df7f34eb6e7aa11f9765cc2]
+link CenterCoodinator to CenterPerformance--><g id="link_CenterCoodinator_CenterPerformance"><path codeLine="21" d="M91.326,66.048 C125.454,67.632 174.366,69.666 217.2,70.5 C304.812,72.21 406.896,68.778 466.038,66.252 " fill="none" id="CenterCoodinator-to-CenterPerformance" style="stroke:#181818;stroke-width:0.6;"/><polygon fill="#181818" points="469.17,66.114,463.6722,63.9474,466.1728,66.2425,463.8777,68.743,469.17,66.114" style="stroke:#181818;stroke-width:0.6;"/><text fill="#000000" font-family="sans-serif" font-size="7.8" lengthAdjust="spacing" textLength="52.2" x="226.5" y="68.3971">Wants to know</text></g><!--MD5=[68dab1ec3602f01ee610fd352501e3a1]
+link CSVFile to CenterPerformance--><g id="link_CSVFile_CenterPerformance"><path codeLine="22" d="M288.018,31.638 C334.614,38.25 417.378,49.992 469.164,57.342 " fill="none" id="CSVFile-CenterPerformance" style="stroke:#181818;stroke-width:0.6;"/><polygon fill="#000000" points="311.9702,30.2269,306.8448,27.7186,306.3493,31.2104,311.9702,30.2269" style="stroke:#000000;stroke-width:0.6;"/><text fill="#000000" font-family="sans-serif" font-size="7.8" lengthAdjust="spacing" textLength="136.2" x="314.4" y="32.9971">"has it's information treated to become"</text><text fill="#000000" font-family="sans-serif" font-size="7.8" lengthAdjust="spacing" textLength="4.2" x="292.825" y="40.9879">1</text><text fill="#000000" font-family="sans-serif" font-size="7.8" lengthAdjust="spacing" textLength="4.2" x="460.1469" y="65.2635">1</text></g><!--MD5=[8417e556a1d3cbf5323c75a14d24129a]
+@startuml
+'https://plantuml.com/sequence-diagram
+
+hide methods
+left to right direction
+
+
+class CenterCoodinator{}
+
+class CSVFile{
++ arrivalDate
++departureDate
+}
+class CenterPerformance{
++performanceList
++maxSumSublist
++maxSum
++timeInterval
+}
+
+CenterCoodinator "*"- -"1" CSVFile : "loads into the system" >
+CenterCoodinator - -> CenterPerformance : "Wants to know"
+CSVFile "1"- -"1" CenterPerformance :"has it's information treated to become" >
+
+
+@enduml
+
+@startuml
+
+hide methods
+left to right direction
+
+
+class CenterCoodinator{}
+
+class CSVFile{
++ arrivalDate
++departureDate
+}
+class CenterPerformance{
++performanceList
++maxSumSublist
++maxSum
++timeInterval
+}
+
+CenterCoodinator "*"- -"1" CSVFile : "loads into the system" >
+CenterCoodinator - -> CenterPerformance : "Wants to know"
+CSVFile "1"- -"1" CenterPerformance :"has it's information treated to become" >
+
+
+@enduml
+
+PlantUML version 1.2022.4(Sat Apr 09 14:29:17 BST 2022)
+(GPL source distribution)
+Java Runtime: OpenJDK Runtime Environment
+JVM: OpenJDK 64-Bit Server VM
+Default Encoding: Cp1252
+Language: pt
+Country: PT
+--></g></svg>
