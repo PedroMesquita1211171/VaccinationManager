@@ -86,9 +86,13 @@ public class CenterPerformanceController { ;
     }
 
 
+    public String timeIntervalOfSublist(ArrayList<Integer> performanceList){
+        String timeIntervalOfSublist= ("["+intervalStart(maxsumsublist(performanceList))+","+intervalEnd(maxsumsublist(performanceList)));
+        return  timeIntervalOfSublist;
+    }
 
 
-    public ArrayList<Integer> readInfoFromCSV(String file, int m){
-        return converter.readInfoFromCSV(file,m);
+    public ArrayList<Integer> readInfoFromCSV(String filePath, int m){
+        return converter.readInfoFromCSV(filePath,m);
     }
 }

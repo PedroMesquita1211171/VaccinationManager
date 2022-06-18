@@ -18,8 +18,8 @@ import java.util.*;
  */
 public class CSVConverter {
 
-    public ArrayList<Integer>  readInfoFromCSV(String fileName, int m)  {
-        Path pathToFile = Paths.get(fileName);
+    public ArrayList<Integer>  readInfoFromCSV(String filePath, int m)  {
+        Path pathToFile = Paths.get(filePath);
         Calendar calendar = GregorianCalendar.getInstance();
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy HH:mm");
         ArrayList<Integer>mdiscMatrix = new ArrayList<>();
