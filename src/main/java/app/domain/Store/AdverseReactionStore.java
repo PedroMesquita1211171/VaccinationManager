@@ -26,9 +26,9 @@ public class AdverseReactionStore {
         this.arList = arList;
     }
 
-    public AdverseReactionDTO getARbySNSNumber(String SNSNumber){
+    public AdverseReaction getARbySNSNumber(String SNSNumber){
         for (AdverseReaction ar: arList) {
-            if(ar.getSnsu().getSNSNumber().equals(SNSNumber)) return AdverseReactionMapper.toDTO(ar);
+            if(ar.getSnsu().getSNSNumber().equals(SNSNumber)) return ar;
         }
         throw new IllegalArgumentException("There is no recorded Adverse Reaction for such SNS User");
     }
