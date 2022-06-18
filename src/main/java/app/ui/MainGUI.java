@@ -84,6 +84,7 @@ public class MainGUI extends Application {
             return loader.getController();
         } catch (IOException e) {
             errorAlert(e).show();
+            System.out.println(e.toString());
             return null;
         }
     }

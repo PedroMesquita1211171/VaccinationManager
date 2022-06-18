@@ -38,7 +38,7 @@
                         <Font name="Segoe UI Bold" size="14.0" />
                      </font>
                   </Button>
-                  <Button layoutX="102.0" layoutY="261.0" mnemonicParsing="false" onAction="#whenRecordVaccinationClicked" text="Record Vaccination of a SNS User">
+                  <Button layoutX="102.0" layoutY="261.0" mnemonicParsing="false" onAction="#whenRecordVaccinationClicked" style="-fx-background-color: white; -fx-background-radius: 10;" text="Record Vaccination of a SNS User">
                      <font>
                         <Font name="Segoe UI Bold" size="14.0" />
                      </font>
