@@ -1,0 +1,52 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+autonumber
+actor "Center coordinator" as cc
+participant  ": CheckVaccinationStatisticsUI" as ui
+participant ": CheckVaccinationStatisticsController" as con
+participant ": VaccinationCenterStore" as vcs
+participant ": VaccinationStore" as store
+actor "??????" as c
+activate cc
+cc -> ui: Asks to check vaccination statistics
+
+activate ui
+ui->con: getCenterList()
+activate con
+con->vcs:getCenterList()
+deactivate con
+ui--> cc: shows list of centers and asks to select one
+deactivate ui
+
+cc->ui: selects center
+
+activate ui
+ui --> cc: asks for time period
+deactivate ui
+
+cc --> ui: types time period
+
+activate ui
+ui -> con: getDataForTimePeriod()
+activate con
+con -> store: getCompletedVaccinations(time)
+deactivate con
+ui --> cc: Shows data and gives option to save
+deactivate ui
+
+cc -> ui: chooses to save
+activate ui
+ui->con:saveToFile()
+deactivate ui
+activate con
+con->con:createFile()
+con->c: saveFile
+deactivate con
+
+activate ui
+ui-->cc : informs data was successfully saved to file
+deactivate ui
+deactivate cc
+
+@enduml

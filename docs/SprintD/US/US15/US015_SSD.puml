@@ -5,7 +5,13 @@ autonumber
 actor "Center coordinator" as cc
 
 cc -> System: Asks to check vaccination statistics
-System --> cc: Shows list and gives option to save
+System --> cc: shows list of centers for selection
+
+cc -> System: makes selection
+System --> cc: asks for time period
+
+cc --> System: types time period
+System --> cc: Shows data and gives option to save
 
 cc -> System: chooses to save
 cc <-- System: informs data was successfully saved to file
