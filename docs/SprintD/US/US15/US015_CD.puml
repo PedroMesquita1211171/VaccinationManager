@@ -1,10 +1,31 @@
 @startuml
 'https://plantuml.com/class-diagram
 
-abstract class AbstractList
-abstract AbstractCollection
-interface List
-interface Collection
+class CheckVaccinationStatisticsUI{
+}
+class CheckVaccinationStatisticsController{
++getCenterList()
++getDataForTimePeriod(start, end)
++saveToFile()
++createFile()
+}
+class Company{
++getVaccinationCenterStore()
++getVaccinationStore()
+}
+class VaccinationCenterStore{
++getCenterList()
+}
+class VaccinationStore{
++getNumberCompletedVaccinations(day)
+}
+
+CheckVaccinationStatisticsUI..>CheckVaccinationStatisticsController
+CheckVaccinationStatisticsController..>Company
+Company "1" --> "1" VaccinationCenterStore: uses
+Company "1" --> "1" VaccinationStore: uses
+
+
 
 
 
