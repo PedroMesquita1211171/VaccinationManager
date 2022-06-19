@@ -1,0 +1,17 @@
+@startuml
+'https://plantuml.com/class-diagram
+left to right direction
+
+class CenterCoordinator{
+}
+
+class VaccinationCenter{
+}
+
+class Vaccination{
+}
+
+VaccinationCenter "*"---"1" CenterCoordinator : has a >
+Vaccination "*" -- "1" VaccinationCenter : takes place in >
+
+@enduml
