@@ -3,6 +3,7 @@ package app.domain.Store;
 import app.domain.model.Employee;
 import app.domain.model.VaccinationCenter;
 import app.domain.model.VaccinationCenterDependencies.Tempo;
+import app.domain.model.VaccinationRecord;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,9 +15,6 @@ public class CounterStore {
     public HashMap createCounter(VaccinationCenter vaccinationCenter) {
         return new HashMap<VaccinationCenter, Integer>();
     }
-
-    public HashMap<>
-
 
 
 }
