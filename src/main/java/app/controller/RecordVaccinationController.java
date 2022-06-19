@@ -20,6 +20,14 @@ public class RecordVaccinationController {
     private Company company;
     private Vaccination vaccination;
 
+    public RecordVaccinationController() {
+        this(App.getInstance().getCompany());
+    }
+
+    public RecordVaccinationController(Company company) {
+        this.company = company;
+    }
+
     /**
      * Create vaccination boolean.
      *

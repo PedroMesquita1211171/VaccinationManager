@@ -12,20 +12,14 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 
 import java.net.URL;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 import java.util.ResourceBundle;
-import java.util.stream.Collectors;
 
-/**
- * The type Record vaccination ui.
- */
-public class RecordVaccinationUI implements Initializable {
+public class RecordVaccinationGUI implements Initializable {
 
-    private MainGUI main;
-
-
+    public MainGUI main;
+    private RecordVaccinationController ctrl;
+    private List<VaccineDTO> vaccines;
     @javafx.fxml.FXML
     private ComboBox vaccineComboBox;
     @javafx.fxml.FXML
@@ -33,66 +27,32 @@ public class RecordVaccinationUI implements Initializable {
     @javafx.fxml.FXML
     private TextField doseNumberTXTField;
 
-
-    private List<VaccineDTO> vaccines;
-
-    private RecordVaccinationController ctrl;
-
-
-    /**
-     * Instantiates a new Record vaccination ui.
-     */
-    public RecordVaccinationUI() {
-        this.ctrl = new RecordVaccinationController();
+    public RecordVaccinationGUI() {
+        ctrl = new RecordVaccinationController();
+        vaccines = ctrl.getVaccines();
     }
-
-
 
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-          vaccines = ctrl.getVaccines();
+        vaccines = ctrl.getVaccines();
         List<String> vaccinestrings = ListsToStringList.vaccineDTOListToStringList(vaccines);
         vaccineComboBox.getItems().addAll(vaccinestrings);
-
     }
 
-    /**
-     * Sets main app.
-     *
-     * @param main the main
-     */
-    public void setMainApp(MainGUI main) {
+    public void setMain(MainGUI main) {
         this.main = main;
     }
 
-    /**
-     * When exit clicked.
-     *
-     * @param actionEvent the action event
-     */
     @javafx.fxml.FXML
     public void whenExitClicked(ActionEvent actionEvent) {
+        //return to the Nurse GUI
         NurseGUI nurseGUI = (NurseGUI) this.main.changeStageContent("/fxml/NurseMenu.fxml");
         nurseGUI.setMainApp(this.main);
     }
 
-    /**
-     * Cleareverything.
-     *
-     * @param actionEvent the action event
-     */
     @javafx.fxml.FXML
-    public void cleareverything(ActionEvent actionEvent) {
-    }
-
-    /**
-     * When o kclicked.
-     *
-     * @param actionEvent the action event
-     */
-    @javafx.fxml.FXML
-    public void whenOKclicked(ActionEvent actionEvent) {
+    public void whenOKClicked(ActionEvent actionEvent) {
 
         try{
 
@@ -164,18 +124,8 @@ public class RecordVaccinationUI implements Initializable {
             alert.setContentText("Please fill in all fields");
             alert.showAndWait();
         }
-
-
-
-
     }
 
-
-    /**
-     * Checkdoses.
-     *
-     * @param doseNumber the dose number
-     */
     public void checkdoses(int doseNumber){
         if(doseNumber<1) throw new IllegalArgumentException("Dose number must be greater than 0!");
     }
