@@ -5,6 +5,7 @@ autonumber
 actor "Center coordinator" as cc
 participant  ": CheckVaccinationStatisticsUI" as ui
 participant ": CheckVaccinationStatisticsController" as con
+participant ": Company" as com
 participant ": VaccinationCenterStore" as vcs
 participant ": VaccinationStore" as store
 actor "pm" as c
@@ -14,6 +15,7 @@ cc -> ui: Asks to check vaccination statistics
 activate ui
 ui->con: getCenterList()
 activate con
+con->com: getVaccinationCenterStore()
 con->vcs:getCenterList()
 deactivate con
 ui--> cc: shows list of centers and asks to select one
@@ -30,6 +32,7 @@ cc --> ui: types time period
 activate ui
 ui -> con: getDataForTimePeriod(start, end)
 activate con
+con->com: getVaccinationStore()
 loop for each day
  con -> store: getNumberCompletedVaccinations(day)
 end
