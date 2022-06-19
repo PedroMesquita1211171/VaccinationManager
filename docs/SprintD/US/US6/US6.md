@@ -80,57 +80,46 @@
 
 ### 1.7 Other Relevant Remarks
 
-
+*n/a*
 
 ## 2. OO Analysis
 
 ### 2.1. Relevant Domain Model Excerpt 
 
-![USXXX-MD](USXXX-MD.svg)
+![US006_MD](US006_MD.svg)
 
 ### 2.2. Other Remarks
-
-
+*n/a*
 
 ## 3. Design - User Story Realization 
 
 ### 3.1. Rationale
 
-**The rationale grounds on the SSD interactions and the identified input/output data.**
-
-| Interaction ID | Question: Which class is responsible for...                                                              | Answer  | Justification (with patterns)  |
-|:-------------  |:---------------------------------------------------------------------------------------------------------|:------------|:---------------------------- |
-| Step 1  		 | creating the csv file with the information required?							                                              |             |                              |
-| Step 2  		 | getting the vaccination center and the total number of people vaccinated in it throughout the day?						 |             |                              |
-| Step 3  		 | counting the total number of people vaccinated in each vaccination center throughout the day?							     |             |                              |
-| Step 4  		 | 							                                                                                                  |             |                              |
-| Step 5  		 | 							                                                                                                  |             |                              |
-| Step 6  		 | 							                                                                                                  |             |                              |              
-| Step 7  		 | 							                                                                                                  |             |                              |
-| Step 8  		 | 							                                                                                                  |             |                              |
-| Step 9  		 | 							                                                                                                  |             |                              |
-| Step 10  		 | 							                                                                                                  |             |                              |  
-
+| Interaction ID | Question: Which class is responsible for...                                                              | Answer            | Justification (with patterns)  |
+|:-------------  |:---------------------------------------------------------------------------------------------------------|:------------------|:---------------------------- |
+| Step 1  		 | creating the csv file with the information required?							                                              | VaccinationRecord |                              |
+| Step 2  		 | getting the vaccination center and the total number of people vaccinated in it throughout the day?						 | CounterStore      |                              |
+| Step 3  		 | counting the total number of people vaccinated in each vaccination center throughout the day?							     | CounterStore      |                              |
+| Step 4  		 | 							                                                                                                  |                   |                              |
+| Step 5  		 | 							                                                                                                  |                   |                              |
 
 ### Systematization ##
 
 According to the taken rationale, the conceptual classes promoted to software classes are: 
 
- * Class1
- * Class2
- * Class3
+ * CounterStore
+ * VaccinationRecord
 
 Other software classes (i.e. Pure Fabrication) identified: 
- * xxxxUI  
- * xxxxController
+ * RegisterArrivalUI
 
 ## 3.2. Sequence Diagram (SD)
 
-![USXXX-SD](USXXX-SD.svg)
+![US006_SD](US006_SD.svg)
 
 ## 3.3. Class Diagram (CD)
 
-![USXXX-CD](USXXX-CD.svg)
+![US006_CD](US006_CD.svg)
 
 # 4. Tests 
 *In this section, it is suggested to systematize how the tests were designed to allow a correct measurement of requirements fulfilling.* 

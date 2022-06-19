@@ -12,13 +12,15 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.stage.Stage;
 import javafx.util.Duration;
+import java.util.Timer;
+import java.util.TimerTask;
 
 import java.io.IOException;
 
 /**
  * The type Main gui.
  */
-public class MainGUI extends Application {
+public class MainGUI extends Application{
 
     private Stage stage;
     private final String COMP_DESIGNATION = "DGS/SNS Portugal";
