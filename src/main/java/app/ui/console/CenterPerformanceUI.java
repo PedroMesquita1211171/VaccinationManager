@@ -47,7 +47,7 @@ public class CenterPerformanceUI implements Runnable {
         System.out.print("]");
         System.out.println("");
         System.out.println("The max sum contiguous sublist is:");
-        System.out.println("[");
+        System.out.print("[");
         for (int i = 0; i <= ctrl.maxsumsublist(performanceList).size()-1; i++) {
             if (i < ctrl.maxsumsublist(performanceList).size()) {
                 System.out.print(ctrl.maxsumsublist(performanceList).get(i) + ",");
@@ -60,7 +60,7 @@ public class CenterPerformanceUI implements Runnable {
         System.out.println("");
         System.out.println("The time interval corresponding to the maximum sum of sublist elements is:");
         System.out.println(ctrl.timeIntervalOfSublist(performanceList));
-        Sys
+
     }
 
     private String askFilePath() {
