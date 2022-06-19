@@ -1,0 +1,25 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+autonumber
+actor CenterCoordinator as Coordinator
+activate Coordinator
+Coordinator -> System: Starts loading data from a legacy system
+activate System
+System --> Coordinator: Requests data (i.e filepath,what information to sort by (arrival time or center leaving time))
+deactivate System
+Coordinator -> System: Types requested data
+activate System
+System --> Coordinator: Requests data (which sort method to use)
+deactivate System
+Coordinator -> System: Types requested data
+activate System
+System --> Coordinator: Shows data and requests confirmation
+deactivate System
+Coordinator -> System: Confirms the data
+activate System
+System --> Coordinator: informs operation success
+deactivate System
+
+
+@enduml

@@ -1,0 +1,17 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+hide methods
+left to right direction
+
+class Coordinator {
+}
+class LegacyData {
+}
+class VaccinationCenter {
+}
+
+Coordinator "1" -- "*" LegacyData : imports
+Coordinator "1" -- "*" VaccinationCenter : works at
+LegacyData "1" -- "1" VaccinationCenter : from
+@enduml

@@ -1,0 +1,29 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+hide empty members
+
+
+class ImportLegacyDataUI {
+}
+
+class ImportLegacyDataController {
++readInfoFromCSV(filepath)
++sortData(data)
+}
+interface Sort{
+}
+
+class QuickSort implements Sort {
+}
+
+class BubbleSort implements Sort{
+}
+
+
+ImportLegacyDataUI ..> ImportLegacyDataController
+ImportLegacyDataController ..> Sort
+
+
+
+@enduml
