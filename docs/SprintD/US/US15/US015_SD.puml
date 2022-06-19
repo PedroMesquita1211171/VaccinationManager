@@ -7,7 +7,7 @@ participant  ": CheckVaccinationStatisticsUI" as ui
 participant ": CheckVaccinationStatisticsController" as con
 participant ": VaccinationCenterStore" as vcs
 participant ": VaccinationStore" as store
-actor "??????" as c
+actor "pm" as c
 activate cc
 cc -> ui: Asks to check vaccination statistics
 
@@ -22,16 +22,19 @@ deactivate ui
 cc->ui: selects center
 
 activate ui
-ui --> cc: asks for time period
+ui --> cc: asks for time period start and end
 deactivate ui
 
 cc --> ui: types time period
 
 activate ui
-ui -> con: getDataForTimePeriod()
+ui -> con: getDataForTimePeriod(start, end)
 activate con
-con -> store: getCompletedVaccinations(time)
+loop for each day
+ con -> store: getNumberCompletedVaccinations(day)
+end
 deactivate con
+
 ui --> cc: Shows data and gives option to save
 deactivate ui
 
@@ -42,6 +45,10 @@ deactivate ui
 activate con
 con->con:createFile()
 con->c: saveFile
+activate c
+c-->con:  ok
+deactivate c
+con-->ui:  ok
 deactivate con
 
 activate ui
