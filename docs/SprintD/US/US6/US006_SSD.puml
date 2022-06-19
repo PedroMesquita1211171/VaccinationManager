@@ -1,0 +1,19 @@
+@startuml
+autonumber
+actor "<Automatic> Timer/Clock"  as OE
+
+activate OE
+OE -> ":System" : requests configuration file for specified hour
+activate ":System"
+":System" --> OE : transmits the data requested
+deactivate ":System"
+
+OE -> ":System" : calls the file writing class when time comes
+activate ":System"
+":System" --> OE : executes and creates what's asked of that class
+deactivate ":System"
+
+
+deactivate OE
+
+@enduml
