@@ -15,12 +15,20 @@ import javafx.util.Duration;
 
 import java.io.IOException;
 
+/**
+ * The type Main gui.
+ */
 public class MainGUI extends Application {
 
     private Stage stage;
     private final String COMP_DESIGNATION = "DGS/SNS Portugal";
 
 
+    /**
+     * The entry point of application.
+     *
+     * @param args the input arguments
+     */
     public static void main(String[] args) {
         try{
             launch(args);
@@ -75,6 +83,12 @@ public class MainGUI extends Application {
     }
 
 
+    /**
+     * Change stage content initializable.
+     *
+     * @param fxml the fxml
+     * @return the initializable
+     */
     public Initializable changeStageContent(String fxml)  {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource(fxml));
@@ -89,6 +103,12 @@ public class MainGUI extends Application {
         }
     }
 
+    /**
+     * Error alert alert.
+     *
+     * @param e the e
+     * @return the alert
+     */
     public Alert errorAlert(Exception e) {
         Alert alert = new Alert(Alert.AlertType.ERROR);
 

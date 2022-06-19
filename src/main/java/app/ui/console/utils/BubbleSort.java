@@ -1,38 +1,44 @@
 package app.ui.console.utils;
 
+import app.domain.model.LegacyData;
+
+import java.util.Calendar;
+import java.util.Collections;
+import java.util.List;
+
+/**
+ * The type Bubble sort.
+ */
 public class BubbleSort {
-        static void bubbleSort(int[] arr) {
-            int n = arr.length;
-            int temp = 0;
+    /**
+     * Bubble sort.
+     *
+     * @param arr the arr
+     * @param a   the a
+     * @return
+     */
+    public List<LegacyData> bubbleSort(List<LegacyData> arr, int a) {
+            int n = arr.size();
+            LegacyData temp;
             for (int i = 0; i < n; i++) {
                 for (int j = 1; j < (n - i); j++) {
-                    if (arr[j - 1] > arr[j]) {
-                        //swap elements
-                        temp = arr[j - 1];
-                        arr[j - 1] = arr[j];
-                        arr[j] = temp;
+                    if(a==1){
+                        int time1 = arr.get(i).getArrivalDateTime().get(Calendar.HOUR_OF_DAY)*60+arr.get(i).getArrivalDateTime().get(Calendar.MINUTE);
+                        int time2 =arr.get(j).getArrivalDateTime().get(Calendar.HOUR_OF_DAY)*60+arr.get(j).getArrivalDateTime().get(Calendar.MINUTE);
+                        if (time1 < time2) {
+                            //swap elements
+                            Collections.swap(arr, i, j);
+                        }
+                    }else{
+                        int time1 = arr.get(i).getLeavingTime().get(Calendar.HOUR_OF_DAY)*60+arr.get(i).getLeavingTime().get(Calendar.MINUTE);
+                        int time2 = arr.get(j).getLeavingTime().get(Calendar.HOUR_OF_DAY)*60+arr.get(j).getLeavingTime().get(Calendar.MINUTE);
+                        if (time1 < time2) {
+                            //swap elements
+                            Collections.swap(arr, i, j);
+                        }
                     }
 
                 }
-            }
-
-        }
-
-        public static void main(String[] args) {
-            int arr[] = {3, 60, 35, 2, 45, 320, 5};
-
-            System.out.println("Array Before Bubble Sort");
-            for (int i = 0; i < arr.length; i++) {
-                System.out.print(arr[i] + " ");
-            }
-            System.out.println();
-
-            bubbleSort(arr);//sorting array elements using bubble sort
-
-            System.out.println("Array After Bubble Sort");
-            for (int i = 0; i < arr.length; i++) {
-                System.out.print(arr[i] + " ");
-            }
-
+            }return arr;
         }
     }

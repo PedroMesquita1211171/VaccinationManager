@@ -7,10 +7,16 @@ import app.ui.console.utils.Utils;
 
 import java.util.List;
 
+/**
+ * The type List sns users in waiting room ui.
+ */
 public class ListSNSUsersInWaitingRoomUI implements Runnable {
 
     private ListSNSUsersInWaitingRoomController ctrl;
 
+    /**
+     * Instantiates a new List sns users in waiting room ui.
+     */
     public ListSNSUsersInWaitingRoomUI() {
         this.ctrl = new ListSNSUsersInWaitingRoomController();
     }

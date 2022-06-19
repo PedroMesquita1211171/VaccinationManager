@@ -8,12 +8,14 @@ import java.util.Date;
 import java.util.List;
 
 /**
- *
  * Class Created in order to Respect Solid principles
  * Single Responsibility (Each class is responsible for a single function)
  */
 public class DateParser {
 
+    /**
+     * The Sdf.
+     */
     static SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy HH:mm");
 
 
@@ -25,6 +27,12 @@ public class DateParser {
 
     }
 
+    /**
+     * String to calendar array list.
+     *
+     * @param dateList the date list
+     * @return the array list
+     */
     public static ArrayList<Calendar> StringToCalendar(ArrayList<String> dateList){
 
         ArrayList<Calendar> calendarList = new ArrayList<>();

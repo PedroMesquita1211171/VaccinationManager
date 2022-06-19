@@ -10,6 +10,8 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
+ * The type Sns user store.
+ *
  * @author Henrique Pinto - 1211201
  */
 public class SNSUserStore {
@@ -40,6 +42,7 @@ public class SNSUserStore {
      * Adds sns user into the List.
      *
      * @param snsu the SNSUser
+     * @return the boolean
      */
     public boolean addSNSUser(SNSUser snsu) {
         if(validateSNSUser(snsu)){
@@ -52,6 +55,7 @@ public class SNSUserStore {
     /**
      * Validates sns user boolean.
      *
+     * @param snsu the snsu
      * @return if user is valid or not
      */
     public boolean validateSNSUser(SNSUser snsu) {
@@ -64,14 +68,24 @@ public class SNSUserStore {
         }
         return true;
     }
+
     /**
      * Creates a SNSUser Object.
      *
+     * @param name              the name
+     * @param address           the address
+     * @param genderOption      the gender option
+     * @param phoneNumber       the phone number
+     * @param email             the email
+     * @param birthDate         the birth date
+     * @param SNSNumber         the sns number
+     * @param citizenCardNumber the citizen card number
      * @return the SNSUser object created
      */
     public SNSUser createSNSUser(String name, String address, String genderOption, String phoneNumber, String email, Date birthDate, String SNSNumber, String citizenCardNumber) {
         return new SNSUser(name, address, genderOption, phoneNumber, email, birthDate, SNSNumber, citizenCardNumber);
     }
+
     /**
      * Used for US03
      *
@@ -98,8 +112,12 @@ public class SNSUserStore {
 
         return false;
     }
+
     /**
      * Returns Logged in User. If not Logged in returns null.
+     *
+     * @param email the email
+     * @return the sns user
      */
     public SNSUser returnLoggedSNSUser(String email){
         for (SNSUser snsu : this.snsUserList) {

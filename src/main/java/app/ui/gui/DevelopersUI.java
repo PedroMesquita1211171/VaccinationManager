@@ -9,6 +9,9 @@ import javafx.scene.control.Button;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+/**
+ * The type Developers ui.
+ */
 public class DevelopersUI implements Initializable {
 
     private MainGUI main;
@@ -18,10 +21,20 @@ public class DevelopersUI implements Initializable {
 
     }
 
+    /**
+     * Set main app.
+     *
+     * @param mainApp the main app
+     */
     public void setMainApp(MainGUI mainApp){
         this.main = mainApp;
     }
 
+    /**
+     * When exit clicked.
+     *
+     * @param actionEvent the action event
+     */
     @FXML
     public void whenExitClicked(ActionEvent actionEvent) {
         LoginUI loginUI = (LoginUI) this.main.changeStageContent("/fxml/LoginScreen.fxml");

@@ -29,6 +29,7 @@ public class SNSUserDTO {
      *
      * @param name              the name
      * @param address           the address
+     * @param sex               the sex
      * @param phoneNumber       the phone number
      * @param email             the email
      * @param birthDate         the birthdate
@@ -109,6 +110,7 @@ public class SNSUserDTO {
     public String getCitizenCardNumber() {
         return citizenCardNumber;
     }
+
     /**
      * Gets Sex
      *
@@ -117,6 +119,7 @@ public class SNSUserDTO {
     public String getSex(){
         return this.sex;
     }
+
     /**
      * returns age of SNSUser in years
      *

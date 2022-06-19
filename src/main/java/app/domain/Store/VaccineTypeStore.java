@@ -6,6 +6,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
+ * The type Vaccine type store.
+ *
  * @author Henrique Pinto - 1211201
  */
 public class VaccineTypeStore {
@@ -26,7 +28,7 @@ public class VaccineTypeStore {
     /**
      * Gets vaccine type list.
      *
-     * @return vaccineTypeList
+     * @return vaccineTypeList vaccine type list
      */
     public List<VaccineType> getVaccineTypeList() {
         return vaccineTypeList;
@@ -36,6 +38,7 @@ public class VaccineTypeStore {
      * Adds vaccine type to the List.
      *
      * @param vaccineType the vaccine type
+     * @return the boolean
      */
     public boolean addVaccineType(VaccineType vaccineType) {
         if(validateVaccineType(vaccineType)) {
@@ -55,9 +58,13 @@ public class VaccineTypeStore {
         if (vt == null) return false;
         return !getVaccineTypeList().contains(vt);
     }
+
     /**
      * Creates a new VaccineType Object.
      *
+     * @param code              the code
+     * @param designation       the designation
+     * @param vaccineTechnology the vaccine technology
      * @return VaccineType Object
      */
     public VaccineType createVaccineType(String code, String designation, String vaccineTechnology) {

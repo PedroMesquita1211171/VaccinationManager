@@ -9,6 +9,9 @@ import javafx.scene.control.*;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+/**
+ * The type Record adverse reaction ui.
+ */
 public class RecordAdverseReactionUI implements Initializable {
 
 
@@ -22,6 +25,9 @@ public class RecordAdverseReactionUI implements Initializable {
     @javafx.fxml.FXML
     private Label ErrorLabel;
 
+    /**
+     * Instantiates a new Record adverse reaction ui.
+     */
     public RecordAdverseReactionUI() {
         this.ctrl = new RecordAdverseReactionController();
     }
@@ -31,10 +37,20 @@ public class RecordAdverseReactionUI implements Initializable {
        ErrorLabel.setText("");
     }
 
+    /**
+     * Sets main app.
+     *
+     * @param main the main
+     */
     public void setMainApp(MainGUI main) {
         this.main = main;
     }
 
+    /**
+     * When exit clicked.
+     *
+     * @param actionEvent the action event
+     */
     @javafx.fxml.FXML
     public void whenExitClicked(ActionEvent actionEvent) {
         //return to the Nurse GUI
@@ -42,16 +58,31 @@ public class RecordAdverseReactionUI implements Initializable {
         nurseGUI.setMainApp(this.main);
     }
 
+    /**
+     * Cleareverything.
+     *
+     * @param actionEvent the action event
+     */
     @javafx.fxml.FXML
     public void cleareverything(ActionEvent actionEvent) {
         ErrorLabel.setText("");
     }
 
+    /**
+     * Cleareverything 2.
+     *
+     * @param event the event
+     */
     @javafx.fxml.FXML
     public void cleareverything2(Event event) {
         ErrorLabel.setText("");
     }
 
+    /**
+     * When o kclicked.
+     *
+     * @param actionEvent the action event
+     */
     @javafx.fxml.FXML
     public void whenOKclicked(ActionEvent actionEvent) {
         try{

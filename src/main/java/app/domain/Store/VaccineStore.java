@@ -18,6 +18,9 @@ public class VaccineStore {
      */
     private List<Vaccine> VaccineList;
 
+    /**
+     * Instantiates a new Vaccine store.
+     */
     public VaccineStore() {
         VaccineList = new ArrayList<>();
     }

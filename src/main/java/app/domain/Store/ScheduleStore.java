@@ -102,6 +102,7 @@ public class ScheduleStore {
         }
         return today;
     }
+
     /**
      * Removes schedule.
      *

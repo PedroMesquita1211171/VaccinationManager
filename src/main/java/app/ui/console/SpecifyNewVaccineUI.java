@@ -9,13 +9,19 @@ import app.ui.console.utils.Utils;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * The type Specify new vaccine ui.
+ */
 public class SpecifyNewVaccineUI implements Runnable{
 
     private SpecifyNewVaccineController ctrl;
     private  List<AdministrationProcess> admp;
     private VaccineTypeDTO vaccineType;
 
-   public SpecifyNewVaccineUI() {
+    /**
+     * Instantiates a new Specify new vaccine ui.
+     */
+    public SpecifyNewVaccineUI() {
        this.ctrl = new SpecifyNewVaccineController();
        this.admp= new ArrayList<>();
 
@@ -110,7 +116,12 @@ public class SpecifyNewVaccineUI implements Runnable{
    }
 
 
-   // These functions serve to ask and confirmate inputs.
+    /**
+     * Ask confirmation string.
+     *
+     * @return the string
+     */
+// These functions serve to ask and confirmate inputs.
     public String askConfirmation(){
         String input = Utils.readLineFromConsole("Do you wish to save the Vaccine? (y/n): ");
         if(input.equalsIgnoreCase("y")||input.equalsIgnoreCase("yes")||input.equalsIgnoreCase("no")||input.equalsIgnoreCase("n")){
@@ -120,6 +131,12 @@ public class SpecifyNewVaccineUI implements Runnable{
             return askConfirmation();
         }
     }
+
+    /**
+     * Ask brand string.
+     *
+     * @return the string
+     */
     public String askBrand(){
         String input = Utils.readLineFromConsole("Brand: ");
         if(input.length()>2){
@@ -129,6 +146,12 @@ public class SpecifyNewVaccineUI implements Runnable{
             return askBrand();
         }
     }
+
+    /**
+     * Ask lot number string.
+     *
+     * @return the string
+     */
     public String askLotNumber(){
         String input = Utils.readLineFromConsole("Lot Number: ");
         try{
@@ -144,6 +167,12 @@ public class SpecifyNewVaccineUI implements Runnable{
             return askLotNumber();
         }
     }
+
+    /**
+     * Ask init age int.
+     *
+     * @return the int
+     */
     public int askInitAge(){
         String input = Utils.readLineFromConsole("Initial age: ");
         try{
@@ -159,6 +188,13 @@ public class SpecifyNewVaccineUI implements Runnable{
             return askInitAge();
         }
     }
+
+    /**
+     * Ask end age int.
+     *
+     * @param initAge the init age
+     * @return the int
+     */
     public int askEndAge(int initAge){
         System.out.println("\nInitial age was defined as: " + initAge);
         String input = Utils.readLineFromConsole("End age: ");
@@ -175,6 +211,12 @@ public class SpecifyNewVaccineUI implements Runnable{
             return askEndAge(initAge);
         }
     }
+
+    /**
+     * Ask doses per group int.
+     *
+     * @return the int
+     */
     public int askDosesPerGroup(){
         String input = Utils.readLineFromConsole("Doses per group: ");
         try{
@@ -190,6 +232,12 @@ public class SpecifyNewVaccineUI implements Runnable{
             return askDosesPerGroup();
         }
     }
+
+    /**
+     * Ask dosage per group double.
+     *
+     * @return the double
+     */
     public double askDosagePerGroup(){
         String input = Utils.readLineFromConsole("Dosage per group: ");
         try{
@@ -205,6 +253,12 @@ public class SpecifyNewVaccineUI implements Runnable{
             return askDosagePerGroup();
         }
     }
+
+    /**
+     * Ask number of days per group int.
+     *
+     * @return the int
+     */
     public int askNumberOfDaysPerGroup(){
         String input = Utils.readLineFromConsole("Number of days per group: ");
         try{
@@ -220,6 +274,12 @@ public class SpecifyNewVaccineUI implements Runnable{
             return askNumberOfDaysPerGroup();
         }
     }
+
+    /**
+     * Ask confirmation admin string.
+     *
+     * @return the string
+     */
     public String askConfirmationAdmin(){
         String input = Utils.readLineFromConsole("Want to register another age group? (y/n): ");
         if(input.equalsIgnoreCase("y")||input.equalsIgnoreCase("yes")){

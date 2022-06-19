@@ -35,6 +35,7 @@ public class SNSUserMapper {
         }
         return snsusDTO;
     }
+
     /**
      * To entity.
      *
@@ -44,6 +45,7 @@ public class SNSUserMapper {
     public static SNSUser toEntity(SNSUserDTO snsuDTO) {
         return new SNSUser(snsuDTO.getName(), snsuDTO.getAddress(), snsuDTO.getSex(),snsuDTO.getPhoneNumber(), snsuDTO.getEmail(), snsuDTO.getBirthDate(), snsuDTO.getSNSNumber(), snsuDTO.getCitizenCardNumber());
     }
+
     /**
      * To entity list.
      *

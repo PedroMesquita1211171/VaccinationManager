@@ -63,7 +63,7 @@ public class RegisterSNSUserUI implements Runnable{
     /**
      * Asks name.
      *
-     * @return name
+     * @return name string
      */
     public String askname(){
         return Utils.readLineFromConsole("Enter the name of the user: ");
@@ -72,7 +72,7 @@ public class RegisterSNSUserUI implements Runnable{
     /**
      * Asks address.
      *
-     * @return address
+     * @return address string
      */
     public String askaddress(){
         return Utils.readLineFromConsole("Enter the address of the user: ");
@@ -81,7 +81,7 @@ public class RegisterSNSUserUI implements Runnable{
     /**
      * Asks gender.
      *
-     * @return gender
+     * @return gender string
      */
     public String askgenderoption() {
         return Utils.readLineFromConsole("Insert Gender(Male/Female/Non-Binary/None): ");
@@ -90,7 +90,7 @@ public class RegisterSNSUserUI implements Runnable{
     /**
      * Ask phoneNumber.
      *
-     * @return phoneNumber
+     * @return phoneNumber string
      */
     public String askPhoneNumber(){
         return Utils.readLineFromConsole("Enter the phone number of the user: ");
@@ -99,7 +99,7 @@ public class RegisterSNSUserUI implements Runnable{
     /**
      * Ask email.
      *
-     * @return email
+     * @return email string
      */
     public String askEmail(){
         return Utils.readLineFromConsole("Enter the email of the user: ");
@@ -108,7 +108,7 @@ public class RegisterSNSUserUI implements Runnable{
     /**
      * Ask birthDate.
      *
-     * @return birthDate
+     * @return birthDate date
      */
     public Date askBirthDate(){
         try {
@@ -121,7 +121,7 @@ public class RegisterSNSUserUI implements Runnable{
     /**
      * Asks SNSNumber.
      *
-     * @return SNSNumber
+     * @return SNSNumber string
      */
     public String askSNSNumber(){
         return Utils.readLineFromConsole("Enter the SNS number of the user: ");
@@ -130,7 +130,7 @@ public class RegisterSNSUserUI implements Runnable{
     /**
      * Ask cc number.
      *
-     * @return citizenCardNumber
+     * @return citizenCardNumber string
      */
     public String askCCNumber(){
         return Utils.readLineFromConsole("Enter the citizen card number of the user: ");

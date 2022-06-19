@@ -22,8 +22,6 @@ public class RegisterEmployeeController {
 
     /**
      * Instantiates a new Register employee controller.
-     *
-     *
      */
     public RegisterEmployeeController() {
         this(App.getInstance().getCompany());

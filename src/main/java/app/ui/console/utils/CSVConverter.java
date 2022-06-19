@@ -10,7 +10,6 @@ import java.text.SimpleDateFormat;
 import java.util.*;
 
 /**
- *
  * Class Created in order to Respect Solid principles
  * Single Responsibility (Each class is responsible for a single function)
  * And to respect GRASP principle
@@ -18,6 +17,13 @@ import java.util.*;
  */
 public class CSVConverter {
 
+    /**
+     * Read info from csv array list.
+     *
+     * @param filePath the file path
+     * @param m        the m
+     * @return the array list
+     */
     public ArrayList<Integer>  readInfoFromCSV(String filePath, int m)  {
         Path pathToFile = Paths.get(filePath);
         Calendar calendar = GregorianCalendar.getInstance();
@@ -44,6 +50,14 @@ public class CSVConverter {
         return mdiscMatrix;
     }
 
+    /**
+     * Array list to matrix array list.
+     *
+     * @param arrivalTime   the arrival time
+     * @param departureTime the departure time
+     * @param m             the m
+     * @return the array list
+     */
     public ArrayList<Integer> arrayListToMatrix(ArrayList<Calendar> arrivalTime, ArrayList<Calendar> departureTime, int m){
         ArrayList<Integer> mdiscArray = new ArrayList<>();
         int intervalTime = 720/m;
@@ -66,6 +80,13 @@ public class CSVConverter {
             return mdiscArray;
     }
 
+    /**
+     * Is date in slot boolean.
+     *
+     * @param calendar      the calendar
+     * @param timeSlotLimit the time slot limit
+     * @return the boolean
+     */
     public boolean isDateInSlot(Calendar calendar, Calendar timeSlotLimit){
         return calendar.before(timeSlotLimit);
     }

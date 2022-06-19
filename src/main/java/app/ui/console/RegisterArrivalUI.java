@@ -9,10 +9,16 @@ import app.ui.console.utils.Utils;
 
 import java.util.List;
 
+/**
+ * The type Register arrival ui.
+ */
 public class RegisterArrivalUI implements Runnable{
 
     private WaitingRoomController ctrl;
 
+    /**
+     * Instantiates a new Register arrival ui.
+     */
     public RegisterArrivalUI(){
         this.ctrl = new WaitingRoomController();
     }

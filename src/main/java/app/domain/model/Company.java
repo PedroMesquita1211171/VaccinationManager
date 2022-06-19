@@ -20,6 +20,7 @@ public class Company {
     private WaitingRoomStore waitingRoomStore;
     private AdverseReactionStore adverseReactionStore;
     private VaccinationStore vaccinationStore;
+    private LegacyDataStore legacyDataStore;
 
     /**
      * Instantiates a new Company.
@@ -42,6 +43,7 @@ public class Company {
         this.waitingRoomStore = new WaitingRoomStore();
         this.adverseReactionStore = new AdverseReactionStore();
         this.vaccinationStore = new VaccinationStore();
+        this.legacyDataStore = new LegacyDataStore();
     }
 
     /**
@@ -122,6 +124,7 @@ public class Company {
     public WaitingRoomStore getWaitingRoomStore() {
         return waitingRoomStore;
     }
+
     /**
      * Gets adverse reaction store.
      *
@@ -130,6 +133,7 @@ public class Company {
     public AdverseReactionStore getAdverseReactionStore() {
         return adverseReactionStore;
     }
+
     /**
      * Gets vaccination store.
      *
@@ -138,8 +142,14 @@ public class Company {
     public VaccinationStore getVaccinationStore() {
         return vaccinationStore;
     }
+
+    /**
+     * Gets legacy data store.
+     *
+     * @return the legacy data store
+     */
     public LegacyDataStore getLegacyDataStore() {
-        return new LegacyDataStore();
+        return legacyDataStore;
     }
 
 }

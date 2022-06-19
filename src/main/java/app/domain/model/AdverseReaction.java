@@ -2,12 +2,22 @@ package app.domain.model;
 
 import java.util.Objects;
 
+/**
+ * The type Adverse reaction.
+ */
 public class AdverseReaction {
 
     private SNSUser snsu;
     private String ARText;
     private VaccinationCenter vc;
 
+    /**
+     * Instantiates a new Adverse reaction.
+     *
+     * @param snsu   the snsu
+     * @param ARText the ar text
+     * @param vc     the vc
+     */
     public AdverseReaction(SNSUser snsu, String ARText,VaccinationCenter vc) {
         checkSNSUser(snsu);
         checkARText(ARText);
@@ -37,26 +47,56 @@ public class AdverseReaction {
         }
     }
 
+    /**
+     * Gets snsu.
+     *
+     * @return the snsu
+     */
     public SNSUser getSnsu() {
         return snsu;
     }
 
+    /**
+     * Sets snsu.
+     *
+     * @param snsu the snsu
+     */
     public void setSnsu(SNSUser snsu) {
         this.snsu = snsu;
     }
 
+    /**
+     * Gets ar text.
+     *
+     * @return the ar text
+     */
     public String getARText() {
         return ARText;
     }
 
+    /**
+     * Sets ar text.
+     *
+     * @param ARText the ar text
+     */
     public void setARText(String ARText) {
         this.ARText = ARText;
     }
 
+    /**
+     * Gets vc.
+     *
+     * @return the vc
+     */
     public VaccinationCenter getVc() {
         return vc;
     }
 
+    /**
+     * Sets vc.
+     *
+     * @param vc the vc
+     */
     public void setVc(VaccinationCenter vc) {
         this.vc = vc;
     }

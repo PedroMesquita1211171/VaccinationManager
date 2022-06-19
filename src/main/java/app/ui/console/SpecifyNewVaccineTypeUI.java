@@ -15,6 +15,9 @@ public class SpecifyNewVaccineTypeUI implements Runnable {
      */
     private SpecifyNewVaccineTypeController ctrl ;
 
+    /**
+     * Instantiates a new Specify new vaccine type ui.
+     */
     public SpecifyNewVaccineTypeUI() {
        ctrl = new SpecifyNewVaccineTypeController();
     }

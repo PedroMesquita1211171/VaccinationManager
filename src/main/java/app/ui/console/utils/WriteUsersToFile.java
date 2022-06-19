@@ -6,6 +6,9 @@ import app.domain.model.SNSUser;
 import java.io.FileWriter;
 import java.io.IOException;
 
+/**
+ * The type Write users to file.
+ */
 public class WriteUsersToFile {
     /**
      * Writes SNS User useful info for login into a text file

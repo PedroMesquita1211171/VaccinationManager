@@ -6,6 +6,9 @@ import app.domain.shared.Constants;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * The type Employee store.
+ */
 public class EmployeeStore {
 
     /**
@@ -17,7 +20,6 @@ public class EmployeeStore {
     /**
      * Declares the employeeList as an ArrayList of type Employee.
      */
-
     public EmployeeStore(){
         employeeList = new ArrayList<>();
     }
@@ -30,6 +32,7 @@ public class EmployeeStore {
     public List<Employee> getEmployeeList(){
         return employeeList;
     }
+
     /**
      * Gets the receptionist list.
      *
@@ -44,6 +47,7 @@ public class EmployeeStore {
         }
         return receptionistList;
     }
+
     /**
      * Gets the Nurse list.
      *
@@ -58,6 +62,7 @@ public class EmployeeStore {
         }
         return nurseList;
     }
+
     /**
      * Gets the Center Coordinator list.
      *
@@ -75,7 +80,9 @@ public class EmployeeStore {
 
     /**
      * Adds a new employee
+     *
      * @param e the Employee
+     * @return the boolean
      */
     public boolean addEmployee(Employee e){
         if(validateEmployee(e)){
@@ -87,13 +94,14 @@ public class EmployeeStore {
 
     /**
      * Creates a new Employee.
-     * @param name the name
-     * @param email the email
-     * @param address the address
-     * @param phoneNumber the phone number
+     *
+     * @param name              the name
+     * @param email             the email
+     * @param address           the address
+     * @param phoneNumber       the phone number
      * @param citizenCardNumber the citizen card number
-     * @param role the role
-     * @param empID the emp ID
+     * @param role              the role
+     * @param empID             the emp ID
      * @return the Employee
      */
     public Employee createEmployee(String name, String email, String address, String phoneNumber, String citizenCardNumber, String role, String empID){

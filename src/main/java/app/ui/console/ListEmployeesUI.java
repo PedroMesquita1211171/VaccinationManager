@@ -5,11 +5,20 @@ import app.controller.ListEmployeesController;
 import app.ui.console.utils.Utils;
 import java.util.List;
 
+/**
+ * The type List employees ui.
+ */
 public class ListEmployeesUI implements  Runnable{
 
-       ListEmployeesController ctrl;
+    /**
+     * The Ctrl.
+     */
+    ListEmployeesController ctrl;
 
-       public ListEmployeesUI(){
+    /**
+     * Instantiates a new List employees ui.
+     */
+    public ListEmployeesUI(){
            this.ctrl = new ListEmployeesController();
        }
 
@@ -55,6 +64,11 @@ public class ListEmployeesUI implements  Runnable{
     }
 
 
+    /**
+     * Print employee list.
+     *
+     * @param list the list
+     */
     public void printEmployeeList(List<EmployeeDTO> list){
         for(EmployeeDTO e : list){
             System.out.println(e);

@@ -9,13 +9,22 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Scanner;
 
+/**
+ * The type Load sns users from file ui.
+ */
 public class LoadSNSUsersFromFileUI implements Runnable {
 
 
 
     private LoadSNSUsersFromFileController ctrl;
+    /**
+     * The Format.
+     */
     SimpleDateFormat format;
 
+    /**
+     * Instantiates a new Load sns users from file ui.
+     */
     public LoadSNSUsersFromFileUI() {
         this.ctrl = new LoadSNSUsersFromFileController();
         this.format = new SimpleDateFormat("dd-MM-yyyy");

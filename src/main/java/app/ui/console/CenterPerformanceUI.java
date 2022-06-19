@@ -8,6 +8,9 @@ import app.ui.console.utils.Utils;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+/**
+ * The type Center performance ui.
+ */
 public class CenterPerformanceUI implements Runnable {
 
     private CenterPerformanceController ctrl;
@@ -70,6 +73,11 @@ public class CenterPerformanceUI implements Runnable {
         return input;
     }
 
+    /**
+     * Validate time interval duration int.
+     *
+     * @return the int
+     */
     public int validateTimeIntervalDuration(){
         int m;
         System.out.println("\nEnter the time interval duration: ");

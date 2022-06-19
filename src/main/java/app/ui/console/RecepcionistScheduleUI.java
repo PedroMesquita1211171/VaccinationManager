@@ -12,10 +12,16 @@ import app.ui.console.utils.Utils;
 import java.time.LocalDate;
 import java.util.List;
 
+/**
+ * The type Recepcionist schedule ui.
+ */
 public class RecepcionistScheduleUI implements Runnable{
 
     private ScheduleController controller;
 
+    /**
+     * Instantiates a new Recepcionist schedule ui.
+     */
     public RecepcionistScheduleUI() {
         this.controller = new ScheduleController();
     }

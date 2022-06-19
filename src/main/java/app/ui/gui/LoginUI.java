@@ -17,6 +17,9 @@ import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
 
+/**
+ * The type Login ui.
+ */
 public class LoginUI implements Initializable {
 
     private MainGUI mainApp;
@@ -37,6 +40,11 @@ public class LoginUI implements Initializable {
         authController = new AuthController();
     }
 
+    /**
+     * Sets main app.
+     *
+     * @param mainApp the main app
+     */
     public void setMainApp(MainGUI mainApp) {
         this.mainApp = mainApp;
     }

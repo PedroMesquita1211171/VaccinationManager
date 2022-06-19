@@ -12,6 +12,9 @@ import app.domain.model.VaccineType;
 
 import java.util.List;
 
+/**
+ * The type Specify new vaccine controller.
+ */
 public class SpecifyNewVaccineController {
 
     private Company company;
@@ -19,14 +22,31 @@ public class SpecifyNewVaccineController {
     private Vaccine vac;
 
 
+    /**
+     * Instantiates a new Specify new vaccine controller.
+     *
+     * @param company the company
+     */
     public SpecifyNewVaccineController(Company company) {
         this.company = company;
     }
 
+    /**
+     * Instantiates a new Specify new vaccine controller.
+     */
     public SpecifyNewVaccineController(){
         this(App.getInstance().getCompany());
     }
 
+    /**
+     * Create vaccine boolean.
+     *
+     * @param vaccineTypeDTO the vaccine type dto
+     * @param brand          the brand
+     * @param lotNumber      the lot number
+     * @param admList        the adm list
+     * @return the boolean
+     */
     public boolean createVaccine(VaccineTypeDTO vaccineTypeDTO, String brand, String lotNumber,List<AdministrationProcess> admList){
 
         vt = VaccineTypeMapper.toEntity(vaccineTypeDTO);
@@ -35,14 +55,29 @@ public class SpecifyNewVaccineController {
         return this.company.getVaccineStore().validateVaccine(this.vac);
     }
 
+    /**
+     * Save vaccine boolean.
+     *
+     * @return the boolean
+     */
     public boolean saveVaccine(){
         return this.company.getVaccineStore().addVaccine(this.vac);
     }
 
+    /**
+     * Get vaccine types list.
+     *
+     * @return the list
+     */
     public List<VaccineTypeDTO> getVaccineTypes(){
         return VaccineTypeMapper.toDTOList(this.company.getVaccineTypeStore().getVaccineTypeList());
     }
 
+    /**
+     * Get vaccine vaccine dto.
+     *
+     * @return the vaccine dto
+     */
     public VaccineDTO getVaccine(){
         return VaccineMapper.toDTO(this.vac);
     }

@@ -18,6 +18,9 @@ import java.util.Objects;
 import java.util.ResourceBundle;
 import java.util.stream.Collectors;
 
+/**
+ * The type Record vaccination ui.
+ */
 public class RecordVaccinationUI implements Initializable {
 
     private MainGUI main;
@@ -36,6 +39,9 @@ public class RecordVaccinationUI implements Initializable {
     private RecordVaccinationController ctrl;
 
 
+    /**
+     * Instantiates a new Record vaccination ui.
+     */
     public RecordVaccinationUI() {
         this.ctrl = new RecordVaccinationController();
     }
@@ -51,20 +57,40 @@ public class RecordVaccinationUI implements Initializable {
 
     }
 
+    /**
+     * Sets main app.
+     *
+     * @param main the main
+     */
     public void setMainApp(MainGUI main) {
         this.main = main;
     }
 
+    /**
+     * When exit clicked.
+     *
+     * @param actionEvent the action event
+     */
     @javafx.fxml.FXML
     public void whenExitClicked(ActionEvent actionEvent) {
         NurseGUI nurseGUI = (NurseGUI) this.main.changeStageContent("/fxml/NurseMenu.fxml");
         nurseGUI.setMainApp(this.main);
     }
 
+    /**
+     * Cleareverything.
+     *
+     * @param actionEvent the action event
+     */
     @javafx.fxml.FXML
     public void cleareverything(ActionEvent actionEvent) {
     }
 
+    /**
+     * When o kclicked.
+     *
+     * @param actionEvent the action event
+     */
     @javafx.fxml.FXML
     public void whenOKclicked(ActionEvent actionEvent) {
 
@@ -145,7 +171,11 @@ public class RecordVaccinationUI implements Initializable {
     }
 
 
-
+    /**
+     * Checkdoses.
+     *
+     * @param doseNumber the dose number
+     */
     public void checkdoses(int doseNumber){
         if(doseNumber<1) throw new IllegalArgumentException("Dose number must be greater than 0!");
     }

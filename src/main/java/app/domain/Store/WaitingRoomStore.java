@@ -86,6 +86,7 @@ public class WaitingRoomStore {
         }
         return waitingRoomList;
     }
+
     /**
      * Gets SNS User in the waiting room by its sns number.
      *
@@ -100,6 +101,7 @@ public class WaitingRoomStore {
         }
         throw new IllegalArgumentException("There is no SNS User in the waiting room with such SNS Number");
     }
+
     /**
      * Gets Vaccination Center of sns user in the waiting room by its sns number.
      *

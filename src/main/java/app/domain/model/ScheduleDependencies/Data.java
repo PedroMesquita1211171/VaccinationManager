@@ -5,7 +5,7 @@ import java.util.Calendar;
 /**
  * Representa uma data através do dia, mês e ano.
  *
- * @author ISEP-DEI-PPROG
+ * @author ISEP -DEI-PPROG
  */
 public class Data implements Comparable<Data> {
 
@@ -197,8 +197,7 @@ public class Data implements Comparable<Data> {
      * a data for menor ou igual à data recebida por parâmetro, devolve false.
      *
      * @param outraData a outra data com a qual se compara a data.
-     * @return true se a data for maior do que a data recebida por parâmetro,
-     *         caso contrário devolve false.
+     * @return true se a data for maior do que a data recebida por parâmetro,         caso contrário devolve false.
      */
     public boolean isMaior(Data outraData) {
         int totalDias = contaDias();
@@ -211,10 +210,8 @@ public class Data implements Comparable<Data> {
      * Devolve a diferença em número de dias entre a data e a data recebida por
      * parâmetro.
      *
-     * @param outraData a outra data com a qual se compara a data para calcular
-     *                  a diferença do número de dias.
-     * @return diferença em número de dias entre a data e a data recebida por
-     *         parâmetro.
+     * @param outraData a outra data com a qual se compara a data para calcular                  a diferença do número de dias.
+     * @return diferença em número de dias entre a data e a data recebida por         parâmetro.
      */
     public int diferenca(Data outraData) {
         int totalDias = contaDias();
@@ -227,14 +224,10 @@ public class Data implements Comparable<Data> {
      * Devolve a diferença em número de dias entre a data e a data recebida por
      * parâmetro com ano, mês e dia.
      *
-     * @param ano o ano da data com a qual se compara a data para calcular a
-     *            diferença do número de dias.
-     * @param mes o mês da data com a qual se compara a data para calcular a
-     *            diferença do número de dias.
-     * @param dia o dia da data com a qual se compara a data para calcular a
-     *            diferença do número de dias.
-     * @return diferença em número de dias entre a data e a data recebida por
-     *         parâmetro com ano, mês e dia.
+     * @param ano o ano da data com a qual se compara a data para calcular a            diferença do número de dias.
+     * @param mes o mês da data com a qual se compara a data para calcular a            diferença do número de dias.
+     * @param dia o dia da data com a qual se compara a data para calcular a            diferença do número de dias.
+     * @return diferença em número de dias entre a data e a data recebida por         parâmetro com ano, mês e dia.
      */
     public int diferenca(int ano, int mes, int dia) {
         int totalDias = contaDias();
@@ -249,8 +242,7 @@ public class Data implements Comparable<Data> {
      * passado por parâmetro não for bissexto, devolve false.
      *
      * @param ano o ano a validar.
-     * @return true se o ano passado por parâmetro for bissexto, caso contrário
-     *         devolve false.
+     * @return true se o ano passado por parâmetro for bissexto, caso contrário         devolve false.
      */
     public static boolean isAnoBissexto(int ano) {
         return ano % 4 == 0 && ano % 100 != 0 || ano % 400 == 0;

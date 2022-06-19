@@ -12,6 +12,9 @@ import javafx.fxml.Initializable;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+/**
+ * The type Receptionist menu gui.
+ */
 public class ReceptionistMenuGUI implements Initializable {
 
 
@@ -22,10 +25,20 @@ public class ReceptionistMenuGUI implements Initializable {
 
     }
 
+    /**
+     * Sets main app.
+     *
+     * @param mainApp the main app
+     */
     public void setMainApp(MainGUI mainApp) {
         this.main = mainApp;
     }
 
+    /**
+     * When exit clicked.
+     *
+     * @param actionEvent the action event
+     */
     @javafx.fxml.FXML
     public void whenExitClicked(ActionEvent actionEvent) {
         App.getInstance().doLogout();
@@ -33,21 +46,41 @@ public class ReceptionistMenuGUI implements Initializable {
         loginUI.setMainApp(this.main);
     }
 
+    /**
+     * Schedule clicked.
+     *
+     * @param actionEvent the action event
+     */
     @javafx.fxml.FXML
     public void scheduleClicked(ActionEvent actionEvent) {
         new RecepcionistScheduleUI().run();
     }
 
+    /**
+     * Registersnsu clicked.
+     *
+     * @param actionEvent the action event
+     */
     @javafx.fxml.FXML
     public void registersnsuClicked(ActionEvent actionEvent) {
         new RegisterSNSUserUI().run();
     }
 
+    /**
+     * Listemp clicked.
+     *
+     * @param actionEvent the action event
+     */
     @javafx.fxml.FXML
     public void listempClicked(ActionEvent actionEvent) {
         new ListEmployeesUI().run();
     }
 
+    /**
+     * Register arrival clicked.
+     *
+     * @param actionEvent the action event
+     */
     @javafx.fxml.FXML
     public void registerArrivalClicked(ActionEvent actionEvent) {
         new RegisterArrivalUI().run();

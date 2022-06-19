@@ -88,6 +88,12 @@ public class AgeGroup {
         this.ageEnd = ageEnd;
     }
 
+    /**
+     * Is in boolean.
+     *
+     * @param age the age
+     * @return the boolean
+     */
     public boolean isIn(int age){
         return age >= ageInit && age <= ageEnd;
     }

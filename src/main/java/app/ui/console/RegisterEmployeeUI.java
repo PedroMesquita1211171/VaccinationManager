@@ -5,6 +5,9 @@ import app.domain.shared.Constants;
 import app.ui.console.utils.Generators;
 import app.ui.console.utils.Utils;
 
+/**
+ * The type Register employee ui.
+ */
 public class RegisterEmployeeUI implements Runnable{
 
     /**
@@ -12,6 +15,9 @@ public class RegisterEmployeeUI implements Runnable{
      */
     private RegisterEmployeeController ctrl ;
 
+    /**
+     * Instantiates a new Register employee ui.
+     */
     public RegisterEmployeeUI(){
         ctrl= new RegisterEmployeeController();
     }
@@ -73,35 +79,40 @@ public class RegisterEmployeeUI implements Runnable{
     /**
      * Asks name.
      *
-     * @return name
+     * @return name string
      */
     public String askName(){
         return Utils.readLineFromConsole("Name?");
     }
+
     /**
      * Asks email.
      *
-     * @return email
+     * @return email string
      */
     public String askEmail(){return Utils.readLineFromConsole("E-mail: ");}
+
     /**
      * Asks adress.
      *
-     * @return adress
+     * @return adress string
      */
     public String askAddress(){return Utils.readLineFromConsole("Address: ");}
+
     /**
      * Asks phonenumber.
      *
-     * @return phonenumber
+     * @return phonenumber string
      */
     public String askPhoneNumber(){return Utils.readLineFromConsole("Phone Number: ");}
+
     /**
      * Asks citizen card number.
      *
      * @return citizen card number
      */
     public String askCitizenCard(){return Utils.readLineFromConsole("Citizen Card Number: ");}
+
     /**
      * Save or not data.
      *
@@ -117,6 +128,7 @@ public class RegisterEmployeeUI implements Runnable{
         }
 
     }
+
     /**
      * Generates a random employee ID.
      *

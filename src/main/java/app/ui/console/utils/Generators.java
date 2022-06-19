@@ -2,9 +2,13 @@ package app.ui.console.utils;
 
 import java.security.SecureRandom;
 
+/**
+ * The type Generators.
+ */
 public class Generators {
     /**
      * Generates an Employee ID
+     *
      * @return Employee ID
      */
     public static String generateEmployeeID()
@@ -26,9 +30,11 @@ public class Generators {
 
         return sb.toString();
     }
+
     /**
      * Generates a random password
-     * @return password
+     *
+     * @return password string
      */
     public static String generateRandomPassword()
     {

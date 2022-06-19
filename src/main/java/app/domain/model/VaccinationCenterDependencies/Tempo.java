@@ -97,8 +97,10 @@ public class Tempo implements Comparable<Tempo> {
         this.minutos = minutos;
         segundos = SEGUNDOS_POR_OMISSAO;
     }
+
     /**
      * Constrói uma instância de Tempo recebendo os minutos.
+     *
      * @param minutos os minutos do tempo.
      */
     public Tempo(String minutos) {
@@ -360,7 +362,7 @@ public class Tempo implements Comparable<Tempo> {
      * Devolve a soma de dois tempos
      *
      * @param slotDuration the duration of the slot
-     * @return tempo
+     * @return tempo tempo
      */
     public Tempo somaMinutos(int slotDuration) {
         this.minutos += slotDuration;

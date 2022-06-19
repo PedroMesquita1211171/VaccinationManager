@@ -5,17 +5,27 @@ import app.ui.console.utils.CSVConverter;
 
 import java.util.ArrayList;
 
+/**
+ * The type Center performance controller.
+ */
 public class CenterPerformanceController { ;
     private CSVConverter converter;
 
+    /**
+     * Instantiates a new Center performance controller.
+     */
     public CenterPerformanceController(){
         converter = new CSVConverter();
     }
 
 
-
-
-    //MDISC
+    /**
+     * Maxsumsublist array list.
+     *
+     * @param sublist the sublist
+     * @return the array list
+     */
+//MDISC
     public ArrayList<Integer> maxsumsublist (ArrayList<Integer>  sublist) {
         ArrayList<Integer> maxsumsublist = new ArrayList<>();
         int somamax = 0;
@@ -34,6 +44,12 @@ public class CenterPerformanceController { ;
     }
 
 
+    /**
+     * Maxsum int.
+     *
+     * @param sublist the sublist
+     * @return the int
+     */
     public int maxsum (ArrayList<Integer>  sublist) {
         int somamax = 0;
         for (int i = 0; i < ((sublist.size()) - 1); i++) {
@@ -50,6 +66,12 @@ public class CenterPerformanceController { ;
         return somamax;
     }
 
+    /**
+     * Interval start int.
+     *
+     * @param sublist the sublist
+     * @return the int
+     */
     public int intervalStart (ArrayList<Integer>  sublist) {
         int somamax = 0;
         int imax = 0;
@@ -67,6 +89,13 @@ public class CenterPerformanceController { ;
 
         return imax;
     }
+
+    /**
+     * Interval end int.
+     *
+     * @param sublist the sublist
+     * @return the int
+     */
     public int intervalEnd (ArrayList<Integer>  sublist) {
         int somamax = 0;
         int jmax = 0;
@@ -86,12 +115,25 @@ public class CenterPerformanceController { ;
     }
 
 
+    /**
+     * Time interval of sublist string.
+     *
+     * @param performanceList the performance list
+     * @return the string
+     */
     public String timeIntervalOfSublist(ArrayList<Integer> performanceList){
         String timeIntervalOfSublist= ("["+intervalStart(maxsumsublist(performanceList))+","+intervalEnd(maxsumsublist(performanceList)));
         return  timeIntervalOfSublist;
     }
 
 
+    /**
+     * Read info from csv array list.
+     *
+     * @param filePath the file path
+     * @param m        the m
+     * @return the array list
+     */
     public ArrayList<Integer> readInfoFromCSV(String filePath, int m){
         return converter.readInfoFromCSV(filePath,m);
     }

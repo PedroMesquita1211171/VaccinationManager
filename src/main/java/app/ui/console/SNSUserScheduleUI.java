@@ -12,12 +12,18 @@ import app.ui.console.utils.Utils;
 import java.time.LocalDate;
 import java.util.List;
 
+/**
+ * The type Sns user schedule ui.
+ */
 public class SNSUserScheduleUI implements Runnable{
 
 
 
     private ScheduleController ctrl;
 
+    /**
+     * Instantiates a new Sns user schedule ui.
+     */
     public SNSUserScheduleUI() {
         this.ctrl = new ScheduleController();
     }

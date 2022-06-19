@@ -1,58 +1,104 @@
 package app.ui.console.utils;
 
+import app.domain.model.LegacyData;
+
+import java.util.Calendar;
+import java.util.Collections;
+import java.util.List;
+
+/**
+ * The type Quick sort.
+ */
 public class QuickSort {
     private int[] numbers;
     private int number;
 
-    public void sort(int[] values) {
+    /**
+     * Sort.
+     *
+     * @param arr the arr
+     * @param a   the a
+     */
+    public List<LegacyData> sort(List<LegacyData> arr, int a) {
         // check for empty or null array
-        if (values ==null || values.length==0){
-            return;
+        if (arr ==null || arr.size()==0){
+            System.out.println("Array empty");
         }
-        this.numbers = values;
-        number = values.length;
-        quicksort(0, number - 1);
+
+        number = arr.size();
+        quicksort(0, number-1, arr, a);
+        return arr;
     }
 
-    private void quicksort(int low, int high) {
+    private List<LegacyData> quicksort(int low, int high, List<LegacyData> arr, int a) {
         int i = low, j = high;
         // Get the pivot element from the middle of the list
-        int pivot = numbers[low + (high-low)/2];
+        if (a==1){int pivot =  arr.get(low + (high-low)/2).getArrivalDateTime().get(Calendar.HOUR_OF_DAY)*60+arr.get(i).getArrivalDateTime().get(Calendar.MINUTE);
+            while (i <= j) {
+                // If the current value from the left list is smaller than the pivot
+                // element then get the next element from the left list
+                while (arr.get(i).getArrivalDateTime().get(Calendar.HOUR_OF_DAY)*60+arr.get(i).getArrivalDateTime().get(Calendar.MINUTE) < pivot) {
+                    i++;
+                }
+                // If the current value from the right list is larger than the pivot
+                // element then get the next element from the right list
+                while (arr.get(j).getArrivalDateTime().get(Calendar.HOUR_OF_DAY)*60+arr.get(i).getArrivalDateTime().get(Calendar.MINUTE) > pivot) {
+                    j--;
+                }
 
-        // Divide into two lists
-        while (i <= j) {
-            // If the current value from the left list is smaller than the pivot
-            // element then get the next element from the left list
-            while (numbers[i] < pivot) {
-                i++;
+                // If we have found a value in the left list which is larger than
+                // the pivot element and if we have found a value in the right list
+                // which is smaller than the pivot element then we exchange the
+                // values.
+                // As we are done we can increase i and j
+                if (i <= j) {
+                    exchange(arr,i, j);
+                    i++;
+                    j--;
+                }
             }
-            // If the current value from the right list is larger than the pivot
-            // element then get the next element from the right list
-            while (numbers[j] > pivot) {
-                j--;
-            }
+            // Recursion
+            if (low < j)
+                quicksort(low, j,arr,a);
+            if (i < high)
+                quicksort(i, high,arr,a);
+        } else {int pivot =  arr.get(low + (high-low)/2).getLeavingTime().get(Calendar.HOUR_OF_DAY)*60+arr.get(i).getLeavingTime().get(Calendar.MINUTE);
+            while (i <= j) {
+                // If the current value from the left list is smaller than the pivot
+                // element then get the next element from the left list
+                while (arr.get(i).getLeavingTime().get(Calendar.HOUR_OF_DAY)*60+arr.get(i).getLeavingTime().get(Calendar.MINUTE) < pivot) {
+                    i++;
+                }
+                // If the current value from the right list is larger than the pivot
+                // element then get the next element from the right list
+                while (arr.get(j).getLeavingTime().get(Calendar.HOUR_OF_DAY)*60+arr.get(i).getLeavingTime().get(Calendar.MINUTE) > pivot) {
+                    j--;
+                }
 
-            // If we have found a value in the left list which is larger than
-            // the pivot element and if we have found a value in the right list
-            // which is smaller than the pivot element then we exchange the
-            // values.
-            // As we are done we can increase i and j
-            if (i <= j) {
-                exchange(i, j);
-                i++;
-                j--;
+                // If we have found a value in the left list which is larger than
+                // the pivot element and if we have found a value in the right list
+                // which is smaller than the pivot element then we exchange the
+                // values.
+                // As we are done we can increase i and j
+                if (i <= j) {
+                    exchange(arr,i, j);
+                    i++;
+                    j--;
+                }
             }
+            // Recursion
+            if (low < j)
+                quicksort(low, j,arr,a);
+            if (i < high)
+                quicksort(i, high,arr,a);
+
         }
-        // Recursion
-        if (low < j)
-            quicksort(low, j);
-        if (i < high)
-            quicksort(i, high);
+        return arr;
     }
 
-    private void exchange(int i, int j) {
-        int temp = numbers[i];
-        numbers[i] = numbers[j];
-        numbers[j] = temp;
+    private void exchange(List<LegacyData> arr,int i, int j) {
+        Collections.swap(arr, i, j);
     }
+
+
 }

@@ -9,10 +9,16 @@ import app.ui.console.utils.Utils;
 import java.util.List;
 import java.util.regex.Pattern;
 
+/**
+ * The type Register vaccination center ui.
+ */
 public class RegisterVaccinationCenterUI implements Runnable {
 
     private RegisterVaccinationCenterController ctrl;
 
+    /**
+     * Instantiates a new Register vaccination center ui.
+     */
     public RegisterVaccinationCenterUI() {
         ctrl = new RegisterVaccinationCenterController();
     }
@@ -128,6 +134,11 @@ public class RegisterVaccinationCenterUI implements Runnable {
         }
     }
 
+    /**
+     * Ask address string.
+     *
+     * @return the string
+     */
     public String askAddress() {
         String input = Utils.readLineFromConsole("\nPress 0 to exit\nAddress: ");
 
@@ -141,6 +152,11 @@ public class RegisterVaccinationCenterUI implements Runnable {
         }
     }
 
+    /**
+     * Ask email address string.
+     *
+     * @return the string
+     */
     public String askEmailAddress() {
         String input = Utils.readLineFromConsole("\nPress 0 to exit\nEmail address: ");
         String emailRegex = "^[a-zA-Z0-9_+&*-]+(?:\\." + "[a-zA-Z0-9_+&*-]+)*@" + "(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,7}$";
@@ -153,6 +169,12 @@ public class RegisterVaccinationCenterUI implements Runnable {
             return askEmailAddress();
         }
     }
+
+    /**
+     * Ask ages string.
+     *
+     * @return the string
+     */
     public String askAges(){
         String input = Utils.readLineFromConsole("\nPress 0 to exit\nAGES: ");
         if (input.equals("0")) throw new IllegalArgumentException("\nReturning to main Menu...\n");
@@ -163,6 +185,12 @@ public class RegisterVaccinationCenterUI implements Runnable {
             return askAges();
         }
     }
+
+    /**
+     * Ask ars string.
+     *
+     * @return the string
+     */
     public String askArs(){
         String input = Utils.readLineFromConsole("\nPress 0 to exit\nARS: ");
         if (input.equals("0")) throw new IllegalArgumentException("\nReturning to main Menu...\n");
@@ -173,6 +201,12 @@ public class RegisterVaccinationCenterUI implements Runnable {
             return askArs();
         }
     }
+
+    /**
+     * Ask phone number string.
+     *
+     * @return the string
+     */
     public String askPhoneNumber(){
         String input = Utils.readLineFromConsole("\nPress 0 to exit\nPhone number: ");
         if(input.length()==9&&input.charAt(0) == '9')
@@ -184,7 +218,12 @@ public class RegisterVaccinationCenterUI implements Runnable {
         }
     }
 
-        public String askTypeCenter () {
+    /**
+     * Ask type center string.
+     *
+     * @return the string
+     */
+    public String askTypeCenter () {
             System.out.println("\n1: Mass Community Vaccination Center\n2: Healthcare Center\n");
 
             String input = Utils.readLineFromConsole("\nPress 0 to exit\nType of center: ");
@@ -198,7 +237,13 @@ public class RegisterVaccinationCenterUI implements Runnable {
                 return askTypeCenter();
             }
         }
-        public String askRegion(){
+
+    /**
+     * Ask region string.
+     *
+     * @return the string
+     */
+    public String askRegion(){
             String input = Utils.readLineFromConsole("\nPress 0 to exit\nRegion: ");
 
             if (input.equals("0")) throw new IllegalArgumentException("\nReturning to main Menu...\n");
@@ -210,7 +255,13 @@ public class RegisterVaccinationCenterUI implements Runnable {
                 return askRegion();
             }
         }
-        public int askMaxVaccines(){
+
+    /**
+     * Ask max vaccines int.
+     *
+     * @return the int
+     */
+    public int askMaxVaccines(){
 
              try {
                  String input = Utils.readLineFromConsole("\nPress 0 to exit\nMax vaccines: ");
@@ -222,7 +273,12 @@ public class RegisterVaccinationCenterUI implements Runnable {
              }
         }
 
-        public Tempo askOPHour() {
+    /**
+     * Ask op hour tempo.
+     *
+     * @return the tempo
+     */
+    public Tempo askOPHour() {
             String input = Utils.readLineFromConsole("\nPress 0 to exit\nOpening hour(HH:MM): ");
             String[] parts = input.split(":");
 
@@ -251,7 +307,13 @@ public class RegisterVaccinationCenterUI implements Runnable {
             }
         }
 
-        public Tempo askCLHour(Tempo OPHour) {
+    /**
+     * Ask cl hour tempo.
+     *
+     * @param OPHour the op hour
+     * @return the tempo
+     */
+    public Tempo askCLHour(Tempo OPHour) {
             String input = Utils.readLineFromConsole("\nPress 0 to exit\nClosing hour(HH:MM): ");
             String[] parts = input.split(":");
 
@@ -279,7 +341,13 @@ public class RegisterVaccinationCenterUI implements Runnable {
                 return askCLHour(OPHour);
             }
         }
-        public EmployeeDTO selectCenterCoordinator(){
+
+    /**
+     * Select center coordinator employee dto.
+     *
+     * @return the employee dto
+     */
+    public EmployeeDTO selectCenterCoordinator(){
             List<EmployeeDTO> centerCoordinators = ctrl.centerCoordinatorsList();
           int index = Utils.showAndSelectIndex(centerCoordinators,"\nSelect a Center Coordinator: ");
 
@@ -292,6 +360,12 @@ public class RegisterVaccinationCenterUI implements Runnable {
               return selectCenterCoordinator();
           }
     }
+
+    /**
+     * Ask slot duration int.
+     *
+     * @return the int
+     */
     public int askSlotDuration(){
         try{
             String slotDuration = Utils.readLineFromConsole("\nPress 0 to exit\nSlot duration(in minutes/a number): ");
@@ -309,6 +383,12 @@ public class RegisterVaccinationCenterUI implements Runnable {
             return askSlotDuration();
         }
     }
+
+    /**
+     * Save or not string.
+     *
+     * @return the string
+     */
     public String SaveOrNot(){
         String opt;
         opt = Utils.readLineFromConsole("Register Vaccination Center (yes/no)");
