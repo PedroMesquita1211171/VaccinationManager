@@ -12,6 +12,7 @@ public class CenterPerformanceUI implements Runnable {
 
     private CenterPerformanceController ctrl;
 
+    @Override
     public void run() {
         String confirmation, filePath;
         do {
@@ -52,7 +53,7 @@ public class CenterPerformanceUI implements Runnable {
     }
 
     private String askFilePath() {
-        String input = Utils.readLineFromConsole("\nEnter the file name/path: ");
+        String input = Utils.readLineFromConsole("\nEnter the file path: ");
         if(!input.endsWith(".csv")){
             System.out.println("\nInvalid file format.\nPlease try again.\n");
             return askFilePath();
@@ -61,7 +62,7 @@ public class CenterPerformanceUI implements Runnable {
     }
 
     private String askConfirmation() {
-        String input = Utils.readLineFromConsole("\nDo you want to load the file? (y/n): ");
+        String input = Utils.readLineFromConsole("\nDo you want to proceed? (y/n): ");
         if (!input.equals("y") && !input.equals("Y") && !input.equals("n") && !input.equals("N")) {
             System.out.println("\nInvalid input.\nPlease try again.\n");
             return askConfirmation();

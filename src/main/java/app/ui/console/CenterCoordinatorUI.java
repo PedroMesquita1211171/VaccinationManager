@@ -6,11 +6,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CenterCoordinatorUI implements Runnable{
+
     @Override
     public void run() {
         List<MenuItem> options = new ArrayList<>();
         options.add(new MenuItem("Get a List of all Vaccines ", new ListVaccinesUI()));
-        options.add(new MenuItem("Get a the analysis of a Vaccinaton Center's performance ", new CenterCoordinatorUI()));
+        options.add(new MenuItem("Get a the analysis of a Vaccinaton Center's performance ", new CenterPerformanceUI()));
 
 
         int option;
