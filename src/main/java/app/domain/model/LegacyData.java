@@ -71,4 +71,16 @@ public class LegacyData {
     public Calendar getLeavingTime() {
         return LeavingTime;
     }
+    public String toString() {
+        return "LegacyData{" +
+                "SNSNumber='" + SNSNumber + '\'' +
+                ", VaccineName='" + VaccineName + '\'' +
+                ", Dose='" + Dose + '\'' +
+                ", LotNumber='" + LotNumber + '\'' +
+                ", ScheduleDateTime=" + ScheduleDateTime +
+                ", ArrivalDateTime=" + ArrivalDateTime +
+                ", AdministrationDateTime=" + AdministrationDateTime +
+                ", LeavingTime=" + LeavingTime +
+                '}';
+    }
 }

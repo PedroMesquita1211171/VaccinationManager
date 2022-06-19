@@ -138,5 +138,8 @@ public class Company {
     public VaccinationStore getVaccinationStore() {
         return vaccinationStore;
     }
+    public LegacyDataStore getLegacyDataStore() {
+        return new LegacyDataStore();
+    }
 
 }
