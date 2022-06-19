@@ -2,6 +2,7 @@ package app.ui.console;
 
 
 import app.controller.CenterPerformanceController;
+import app.ui.console.utils.CSVConverter;
 import app.ui.console.utils.Utils;
 
 
@@ -13,7 +14,11 @@ import java.util.Scanner;
  */
 public class CenterPerformanceUI implements Runnable {
 
-    private CenterPerformanceController ctrl;
+    public CenterPerformanceController ctrl;
+
+    public CenterPerformanceUI(){
+        ctrl = new CenterPerformanceController();
+    }
 
     @Override
     public void run() {
@@ -33,26 +38,29 @@ public class CenterPerformanceUI implements Runnable {
         } while (!((confirmation.equals("y") || confirmation.equals("Y"))));
         ArrayList<Integer> performanceList = ctrl.readInfoFromCSV(filePath, m);
         System.out.println(" The results for time intervals of " + m + " minutes, using the chosen csv file are");
-        System.out.println("[");
-        for (int i = 0; i <= performanceList.size(); i++) {
+        System.out.print("[");
+        for (int i = 0; i <= performanceList.size()-1; i++) {
             if (i < performanceList.size() - 1) {
                 System.out.print(performanceList.get(i) + ",");
             } else System.out.print(performanceList.get(i));
         }
-        System.out.print("");
+        System.out.print("]");
         System.out.println("");
         System.out.println("The max sum contiguous sublist is:");
-        for (int i = 0; i <= ctrl.maxsumsublist(performanceList).size(); i++) {
-            if (i < ctrl.maxsumsublist(performanceList).size() - 1) {
+        System.out.println("[");
+        for (int i = 0; i <= ctrl.maxsumsublist(performanceList).size()-1; i++) {
+            if (i < ctrl.maxsumsublist(performanceList).size()) {
                 System.out.print(ctrl.maxsumsublist(performanceList).get(i) + ",");
             } else System.out.print(ctrl.maxsumsublist(performanceList).get(i));
         }
+        System.out.print("]");
         System.out.println("");
         System.out.println("The maximum sum of max sum contiguous sublist elements is:");
         System.out.println(ctrl.maxsum(performanceList));
         System.out.println("");
         System.out.println("The time interval corresponding to the maximum sum of sublist elements is:");
         System.out.println(ctrl.timeIntervalOfSublist(performanceList));
+        Sys
     }
 
     private String askFilePath() {

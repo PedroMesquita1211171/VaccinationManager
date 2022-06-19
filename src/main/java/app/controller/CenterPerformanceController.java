@@ -29,17 +29,23 @@ public class CenterPerformanceController { ;
     public ArrayList<Integer> maxsumsublist (ArrayList<Integer>  sublist) {
         ArrayList<Integer> maxsumsublist = new ArrayList<>();
         int somamax = 0;
+        int imax=0;
+        int jmax=0;
         for (int i = 0; i < ((sublist.size()) - 1); i++) {
             int soma = 0;
             for (int j = i; j < ((sublist.size()) - 1); j++) {
                 soma = soma + sublist.get(j);
                 if (somamax < soma) {
                     somamax = soma;
+                    imax=i;
+                    jmax=j;
                 }
             }
 
         }
-
+        for (int p=imax; p<=jmax; p++){
+            maxsumsublist.add(sublist.get(p));
+        }
         return maxsumsublist;
     }
 
@@ -122,7 +128,7 @@ public class CenterPerformanceController { ;
      * @return the string
      */
     public String timeIntervalOfSublist(ArrayList<Integer> performanceList){
-        String timeIntervalOfSublist= ("["+intervalStart(maxsumsublist(performanceList))+","+intervalEnd(maxsumsublist(performanceList)));
+        String timeIntervalOfSublist= ("["+intervalStart(maxsumsublist(performanceList))+","+intervalEnd(maxsumsublist(performanceList))+"]");
         return  timeIntervalOfSublist;
     }
 
