@@ -54,16 +54,16 @@ public class LegacyDataController {
     public void saveLegacyDataList() throws ParseException {
         for (LegacyData legacyData : this.legacyDataList) {
             boolean a = this.company.getLegacyDataStore().addLegacyData(legacyData);
-            if (a) {
-                for(int i =0; i <this.legacyDataList.size(); i++){
-                    SimpleDateFormat form = new SimpleDateFormat("MM/dd/yyyy hh:mm");
-                    Date date1 = this.legacyDataList.get(i).getScheduleDateTime().getTime();
-                    Date date2 = this.legacyDataList.get(i).getArrivalDateTime().getTime();
-                    Date date3 = this.legacyDataList.get(i).getAdministrationDateTime().getTime();
-                    Date date4 = this.legacyDataList.get(i).getLeavingTime().getTime();
-                    System.out.println("\nLegacy Data"+ " SNS Number: " + legacyDataList.get(i).getSNSNumber() + " Vaccine Name: " + legacyDataList.get(i).getVaccineName() + " Dose: " + legacyDataList.get(i).getDose() + " Lot Number: " + legacyDataList.get(i).getLotNumber() + " Schedule Date Time: " + date1 + " Arrival Date Time: " + date2 + " Administration Date Time: " + date3 + " Leaving Time: " + date4 + "\n");
-                }
-                }
+         //   if (a) {
+             //   for(int i =0; i <this.legacyDataList.size(); i++){
+                 //   SimpleDateFormat form = new SimpleDateFormat("MM/dd/yyyy hh:mm");
+                 //   Date date1 = this.legacyDataList.get(i).getScheduleDateTime().getTime();
+                  //  Date date2 = this.legacyDataList.get(i).getArrivalDateTime().getTime();
+                  //  Date date3 = this.legacyDataList.get(i).getAdministrationDateTime().getTime();
+                   // Date date4 = this.legacyDataList.get(i).getLeavingTime().getTime();
+                  //  System.out.println("\nLegacy Data"+ " SNS Number: " + legacyDataList.get(i).getSNSNumber() + " Vaccine Name: " + legacyDataList.get(i).getVaccineName() + " Dose: " + legacyDataList.get(i).getDose() + " Lot Number: " + legacyDataList.get(i).getLotNumber() + " Schedule Date Time: " + date1 + " Arrival Date Time: " + date2 + " Administration Date Time: " + date3 + " Leaving Time: " + date4 + "\n");
+            //    }
+            //    }
             }
                  CommonMethods.serializeStore(this.company.getLegacyDataStore().getLegacyDataList(),"data\\legacyData.dat");
         }

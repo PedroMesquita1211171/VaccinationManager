@@ -2,9 +2,8 @@ package app.ui.console.utils;
 
 import app.domain.model.LegacyData;
 
-import java.util.Calendar;
-import java.util.Collections;
-import java.util.List;
+import java.text.SimpleDateFormat;
+import java.util.*;
 
 /**
  * The type Bubble sort.
@@ -15,11 +14,11 @@ public class BubbleSort {
      *
      * @param arr the arr
      * @param a   the a
-     * @return
      */
-    public List<LegacyData> bubbleSort(List<LegacyData> arr, int a) {
+    public List bubbleSort(List<LegacyData> arr, int a) {
             int n = arr.size();
-            LegacyData temp;
+
+
             for (int i = 0; i < n; i++) {
                 for (int j = 1; j < (n - i); j++) {
                     if(a==1){
@@ -37,8 +36,9 @@ public class BubbleSort {
                             Collections.swap(arr, i, j);
                         }
                     }
-
                 }
             }return arr;
         }
     }
+
+

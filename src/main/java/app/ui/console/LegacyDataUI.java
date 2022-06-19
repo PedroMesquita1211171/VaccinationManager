@@ -20,9 +20,9 @@ import java.util.Scanner;
  * The type Legacy data ui.
  */
 public class LegacyDataUI implements Runnable {
-    private final QuickSort quick;
-    private final BubbleSort bubble;
     private LegacyDataController ctrl;
+    public BubbleSort bubble;
+    public QuickSort quick;
     /**
      * The Horas.
      */
@@ -34,8 +34,9 @@ public class LegacyDataUI implements Runnable {
     public LegacyDataUI() {
         this.ctrl = new LegacyDataController();
         this.horas = new SimpleDateFormat("HH:mm");
-        this.quick = new QuickSort();
         this.bubble = new BubbleSort();
+        this.quick = new QuickSort();
+
     }
 
     @Override
@@ -51,16 +52,15 @@ public class LegacyDataUI implements Runnable {
             ctrl.saveLegacyDataList();
             System.out.println("\nData loaded successfully!\nHow do you want to sort the data?\n");
             String sorts;
+            List<LegacyData> list = ctrl.getLegacyDataList();
             do{
                 sorts = askSort();
                 if(sorts.equals("1")){
                     int a = Integer.parseInt(askData());
-                    List<LegacyData> arr1 = quick.sort(ctrl.getLegacyDataList(),a);
-                    ctrl.printLegacyDataList(arr1);
+                    ctrl.printLegacyDataList(quick.sort(list, a));
                 }else if(sorts.equals("2")){
                     int b= Integer.parseInt(askData());
-                    List<LegacyData> arr1 = bubble.bubbleSort(ctrl.getLegacyDataList(),b);
-                    ctrl.printLegacyDataList(arr1);
+                    ctrl.printLegacyDataList(bubble.bubbleSort(list, b));
                 }else{
                     System.out.println("\nInvalid option.\n");
                 }

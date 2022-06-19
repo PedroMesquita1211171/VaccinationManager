@@ -2,8 +2,10 @@ package app.ui.console.utils;
 
 import app.domain.model.LegacyData;
 
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Collections;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -19,7 +21,7 @@ public class QuickSort {
      * @param arr the arr
      * @param a   the a
      */
-    public List<LegacyData> sort(List<LegacyData> arr, int a) {
+    public List sort(List<LegacyData> arr, int a) {
         // check for empty or null array
         if (arr ==null || arr.size()==0){
             System.out.println("Array empty");
@@ -30,7 +32,7 @@ public class QuickSort {
         return arr;
     }
 
-    private List<LegacyData> quicksort(int low, int high, List<LegacyData> arr, int a) {
+    private void quicksort(int low, int high, List<LegacyData> arr, int a) {
         int i = low, j = high;
         // Get the pivot element from the middle of the list
         if (a==1){int pivot =  arr.get(low + (high-low)/2).getArrivalDateTime().get(Calendar.HOUR_OF_DAY)*60+arr.get(i).getArrivalDateTime().get(Calendar.MINUTE);
@@ -52,7 +54,7 @@ public class QuickSort {
                 // values.
                 // As we are done we can increase i and j
                 if (i <= j) {
-                    exchange(arr,i, j);
+                    Collections.swap(arr,i, j);
                     i++;
                     j--;
                 }
@@ -81,7 +83,7 @@ public class QuickSort {
                 // values.
                 // As we are done we can increase i and j
                 if (i <= j) {
-                    exchange(arr,i, j);
+                    Collections.swap(arr,i, j);
                     i++;
                     j--;
                 }
@@ -93,12 +95,5 @@ public class QuickSort {
                 quicksort(i, high,arr,a);
 
         }
-        return arr;
+         }
     }
-
-    private void exchange(List<LegacyData> arr,int i, int j) {
-        Collections.swap(arr, i, j);
-    }
-
-
-}
