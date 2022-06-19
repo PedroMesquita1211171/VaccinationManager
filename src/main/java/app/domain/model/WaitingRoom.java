@@ -3,10 +3,13 @@ package app.domain.model;
 import app.domain.model.VaccinationCenterDependencies.Tempo;
 import app.domain.model.VaccinationCenterDependencies.TimeSlot;
 
+
+import java.io.Serializable;
+
 /**
  * The type Waiting room.
  */
-public class WaitingRoom {
+public class WaitingRoom implements Serializable {
 
     private VaccinationCenter vaccinationCenter;
     private Schedule schedule;

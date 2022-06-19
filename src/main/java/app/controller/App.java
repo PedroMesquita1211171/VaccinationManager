@@ -12,12 +12,10 @@ import pt.isep.lei.esoft.auth.UserSession;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.ObjectInputStream;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-import java.util.Properties;
+import java.util.*;
 
 /**
  * The type App.
@@ -145,7 +143,11 @@ public class App {
         this.company.getVaccinationCenterStore().addVaccinationCenter(new VaccinationCenter("Example Center", "Example Address", "centerExample@lei.sem2.pt","992233445","233666777","https://www.google.com/?gws_rd=ssl",new Tempo(8,30),new Tempo(21,30),30,2,Ccord));
 
 
+
+
     }
+
+
 
     // Extracted from https://www.javaworld.com/article/2073352/core-java/core-java-simply-singleton.html?page=2
     private static App singleton = null;

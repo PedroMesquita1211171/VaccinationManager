@@ -1,9 +1,11 @@
 package app.DTO;
 
+import java.io.Serializable;
+
 /**
  * The type Employee dto.
  */
-public class EmployeeDTO {
+public class EmployeeDTO implements Serializable {
 
     private String name;
     private String email;

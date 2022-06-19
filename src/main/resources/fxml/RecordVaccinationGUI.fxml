@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<fx:root maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1366.0" type="BorderPane" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.ui.gui.RecordVaccinationGUI">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1366.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.ui.gui.RecordVaccinationGUI">
    <center>
       <VBox maxHeight="1.7976931348623157E308" maxWidth="-Infinity" prefHeight="564.0" prefWidth="441.0" BorderPane.alignment="CENTER">
          <BorderPane.margin>
@@ -60,4 +60,4 @@
          </BorderPane.margin>
       </Label>
    </top>
-</fx:root>
+</BorderPane>

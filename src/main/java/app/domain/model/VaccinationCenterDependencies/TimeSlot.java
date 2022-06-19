@@ -1,9 +1,11 @@
 package app.domain.model.VaccinationCenterDependencies;
 
+import java.io.Serializable;
+
 /**
  * The type Time slot.
  */
-public class TimeSlot {
+public class TimeSlot implements Serializable {
     private Tempo opSlot;
     private Tempo clSlot;
 

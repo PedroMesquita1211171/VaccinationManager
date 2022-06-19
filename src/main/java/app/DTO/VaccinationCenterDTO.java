@@ -4,12 +4,13 @@ import app.domain.model.Employee;
 import app.domain.model.VaccinationCenterDependencies.Tempo;
 import app.domain.model.VaccinationCenterDependencies.TimeSlot;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
  * The type Vaccination center dto.
  */
-public class VaccinationCenterDTO {
+public class VaccinationCenterDTO implements Serializable {
 
     private String name;
     private String address;

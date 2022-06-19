@@ -9,6 +9,7 @@ import app.domain.model.Vaccine;
 import app.domain.model.VaccineDependencies.AdministrationProcess;
 import app.domain.model.VaccineDependencies.AgeGroup;
 import app.domain.model.VaccineType;
+import app.domain.shared.CommonMethods;
 
 import java.util.List;
 
@@ -61,7 +62,9 @@ public class SpecifyNewVaccineController {
      * @return the boolean
      */
     public boolean saveVaccine(){
-        return this.company.getVaccineStore().addVaccine(this.vac);
+        boolean a = this.company.getVaccineStore().addVaccine(this.vac);
+        CommonMethods.serializeStore(this.company.getVaccineStore().getVaccineList(), "data\\vaccines.dat");
+        return a;
     }
 
     /**

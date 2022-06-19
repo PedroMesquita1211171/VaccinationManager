@@ -2,6 +2,8 @@ package app.domain.model;
 
 import app.domain.model.VaccinationCenterDependencies.Tempo;
 import app.domain.model.VaccinationCenterDependencies.TimeSlot;
+
+import java.io.Serializable;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
@@ -12,7 +14,7 @@ import java.util.regex.Pattern;
 /**
  * The type Vaccination center.
  */
-public class VaccinationCenter {
+public class VaccinationCenter implements Serializable {
 
     private String name;
     private String address;

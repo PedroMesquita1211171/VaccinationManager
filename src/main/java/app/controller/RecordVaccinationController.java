@@ -9,6 +9,7 @@ import app.domain.model.Company;
 import app.domain.model.Vaccination;
 import app.domain.model.Vaccine;
 import app.domain.model.VaccineDependencies.AdministrationProcess;
+import app.domain.shared.CommonMethods;
 
 import java.util.List;
 
@@ -20,10 +21,18 @@ public class RecordVaccinationController {
     private Company company;
     private Vaccination vaccination;
 
+    /**
+     * Instantiates a new Record vaccination controller.
+     */
     public RecordVaccinationController() {
         this(App.getInstance().getCompany());
     }
 
+    /**
+     * Instantiates a new Record vaccination controller.
+     *
+     * @param company the company
+     */
     public RecordVaccinationController(Company company) {
         this.company = company;
     }
@@ -53,7 +62,10 @@ public class RecordVaccinationController {
      * @return the boolean
      */
     public boolean saveVaccination(){
-        return this.company.getVaccinationStore().addVaccination(this.vaccination);
+        boolean a = this.company.getVaccinationStore().addVaccination(this.vaccination);
+
+        CommonMethods.serializeStore(this.company.getVaccinationStore().getVaccinations(),"data\\vaccination.dat");
+        return a;
     }
 
     /**

@@ -101,4 +101,10 @@ public class VaccinationCenterStore {
     public List<VaccinationCenter> getVaccinationCenters() {
         return vaccinationCenters;
     }
+
+    public void setVaccinationCenterList(List<VaccinationCenter> readObject) {
+        for ( VaccinationCenter vac : readObject) {
+            vaccinationCenters.add(vac);
+        }
+    }
 }

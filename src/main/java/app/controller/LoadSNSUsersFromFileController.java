@@ -2,6 +2,7 @@ package app.controller;
 
 import app.domain.model.Company;
 import app.domain.model.SNSUser;
+import app.domain.shared.CommonMethods;
 import app.domain.shared.Constants;
 import app.ui.console.utils.Generators;
 
@@ -65,5 +66,6 @@ public class LoadSNSUsersFromFileController {
                }
 
            }
+        CommonMethods.serializeStore(this.company.getSNSUserStore().getSNSUserList(), "data\\SNSUser.dat");
        }
 }

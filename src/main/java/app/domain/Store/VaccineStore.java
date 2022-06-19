@@ -72,4 +72,10 @@ public class VaccineStore {
         return VaccineList;
     }
 
-}
+    public void setVaccines(List<Vaccine> readObject) {
+        for ( Vaccine vac : readObject) {
+            VaccineList.add(vac);
+        }
+
+        }
+    }

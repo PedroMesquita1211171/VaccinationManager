@@ -3,10 +3,12 @@ package app.DTO;
 import app.domain.model.SNSUser;
 import app.domain.model.VaccinationCenter;
 
+import java.io.Serializable;
+
 /**
  * The type Adverse reaction dto.
  */
-public class AdverseReactionDTO {
+public class AdverseReactionDTO implements Serializable {
 
     private SNSUser snsu;
     private String ARText;

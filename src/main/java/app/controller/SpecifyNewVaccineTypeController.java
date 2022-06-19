@@ -4,6 +4,7 @@ import app.DTO.Mappers.VaccineTypeMapper;
 import app.DTO.VaccineTypeDTO;
 import app.domain.model.VaccineType;
 import app.domain.model.Company;
+import app.domain.shared.CommonMethods;
 
 /**
  * The type Specify new vaccine type controller.
@@ -59,7 +60,9 @@ public class SpecifyNewVaccineTypeController {
      * @return the boolean
      */
     public boolean saveVaccineType() {
-        return this.company.getVaccineTypeStore().addVaccineType(vt);
+        boolean a = this.company.getVaccineTypeStore().addVaccineType(this.vt);
+        CommonMethods.serializeStore(this.company.getVaccineTypeStore().getVaccineTypeList(),"data\\vaccineType.dat");
+        return a;
     }
 
     /**

@@ -1,12 +1,13 @@
 package app.domain.model;
 
+import java.io.Serializable;
 import java.util.Objects;
 import java.util.regex.Pattern;
 
 /**
  * The type Employee.
  */
-public class Employee {
+public class Employee implements Serializable {
 
     private String name;
     private String email;

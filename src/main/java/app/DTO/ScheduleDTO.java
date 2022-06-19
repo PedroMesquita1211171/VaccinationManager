@@ -8,10 +8,12 @@ import app.domain.model.VaccinationCenterDependencies.TimeSlot;
 import app.domain.model.Vaccine;
 import app.domain.model.VaccineDependencies.AdministrationProcess;
 
+import java.io.Serializable;
+
 /**
  * The type Schedule dto.
  */
-public class ScheduleDTO {
+public class ScheduleDTO implements Serializable {
     private SNSUser snsu;
     private VaccinationCenter vc;
     private Vaccine vaccine;

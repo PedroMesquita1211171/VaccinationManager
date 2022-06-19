@@ -3,12 +3,13 @@ package app.DTO;
 import app.domain.model.VaccineDependencies.AdministrationProcess;
 import app.domain.model.VaccineType;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
  * The type Vaccine dto.
  */
-public class VaccineDTO {
+public class VaccineDTO implements Serializable {
 
     private String brand;
     private String lotNumber;

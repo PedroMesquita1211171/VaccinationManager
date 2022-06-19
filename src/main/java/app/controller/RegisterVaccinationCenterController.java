@@ -8,6 +8,7 @@ import app.domain.model.Company;
 import app.domain.model.Employee;
 import app.domain.model.VaccinationCenter;
 import app.domain.model.VaccinationCenterDependencies.Tempo;
+import app.domain.shared.CommonMethods;
 
 import java.util.List;
 
@@ -90,7 +91,9 @@ public class RegisterVaccinationCenterController {
      * @return the boolean
      */
     public boolean saveVaccinationCenter() {
-        return this.company.getVaccinationCenterStore().addVaccinationCenter(this.vaccinationCenter);
+        boolean a = this.company.getVaccinationCenterStore().addVaccinationCenter(this.vaccinationCenter);
+        CommonMethods.serializeStore(this.company.getVaccinationCenterStore().getVaccinationCenters(),"data\\VaccinationCenter.dat");
+        return a;
     }
 
     /**

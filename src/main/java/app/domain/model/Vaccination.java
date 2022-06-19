@@ -2,12 +2,13 @@ package app.domain.model;
 
 import app.domain.model.VaccineDependencies.AdministrationProcess;
 
+import java.io.Serializable;
 import java.util.Objects;
 
 /**
  * The type Vaccination.
  */
-public class Vaccination {
+public class Vaccination implements Serializable {
     private AdverseReaction ar;
     private Vaccine v;
     private int dose;

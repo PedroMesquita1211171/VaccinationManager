@@ -4,6 +4,7 @@ import app.DTO.Mappers.SNSUserMapper;
 import app.DTO.SNSUserDTO;
 import app.domain.model.Company;
 import app.domain.model.SNSUser;
+import app.domain.shared.CommonMethods;
 import app.domain.shared.Constants;
 import app.ui.console.utils.Generators;
 import java.util.Date;
@@ -75,6 +76,9 @@ public class RegisterSNSUserController {
 
         if(a && b){
             System.out.println("\nSNS User" +"\n" + "Name: " + snsu.getName() + "\n" + "Email: " + snsu.getEmail() + "\n" + "Password: " + password + "\n");
+
+            CommonMethods.serializeStore(this.company.getSNSUserStore().getSNSUserList(),"data\\SNSUser.dat");
+
             return true;
         }
         return false;

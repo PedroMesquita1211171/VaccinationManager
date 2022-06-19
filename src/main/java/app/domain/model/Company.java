@@ -4,6 +4,12 @@ import app.domain.Store.*;
 import pt.isep.lei.esoft.auth.AuthFacade;
 import org.apache.commons.lang3.StringUtils;
 
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * The type Company.
  */
@@ -34,16 +40,114 @@ public class Company {
 
         this.designation = designation;
         this.authFacade = new AuthFacade();
-        this.snsUserStore = new SNSUserStore();
-        this.employeeStore = new EmployeeStore();
-        this.vaccineTypeStore = new VaccineTypeStore();
-        this.vaccineStore = new VaccineStore();
-        this.vaccinationCenterStore = new VaccinationCenterStore();
-        this.scheduleStore = new ScheduleStore();
-        this.waitingRoomStore = new WaitingRoomStore();
-        this.adverseReactionStore = new AdverseReactionStore();
-        this.vaccinationStore = new VaccinationStore();
+        this.snsUserStore = new SNSUserStore(); // a
+        this.employeeStore = new EmployeeStore(); // a
+        this.vaccineTypeStore = new VaccineTypeStore(); // a
+        this.vaccineStore = new VaccineStore(); //
+        this.vaccinationCenterStore = new VaccinationCenterStore(); //
+        this.scheduleStore = new ScheduleStore(); //
+        this.waitingRoomStore = new WaitingRoomStore(); //
+        this.adverseReactionStore = new AdverseReactionStore(); //
+        this.vaccinationStore = new VaccinationStore(); //
         this.legacyDataStore = new LegacyDataStore();
+        //de-serialize the stores
+        setSNSUserStore();
+        setEmployeeStore();
+        setVaccineTypeStore();
+        setVaccineStore();
+        setVaccinationCenterStore();
+        setScheduleStore();
+        setWaitingRoomStore();
+        setAdverseReactionStore();
+        setVaccinationStore();
+        setLegacyDataStore();
+
+    }
+
+    private void setLegacyDataStore() {
+        try {
+            FileInputStream fis = new FileInputStream("data\\legacyData.dat");ObjectInputStream ois = new ObjectInputStream(fis);
+            getLegacyDataStore().setLegacyDataList((List<LegacyData>) ois.readObject());
+        } catch (Exception e) {
+        }
+    }
+
+    private void setVaccinationStore() {
+        try {
+            FileInputStream inputStream = new FileInputStream("data\\vaccination.dat");ObjectInputStream objectInputStream = new ObjectInputStream(inputStream);
+            getVaccinationStore().setVaccinationList((List<Vaccination>) objectInputStream.readObject());
+        } catch (Exception e) {
+
+        }
+    }
+
+    private void setAdverseReactionStore() {
+        try {
+            FileInputStream inputStream = new FileInputStream("data\\AdverseReaction.dat");ObjectInputStream objectInputStream = new ObjectInputStream(inputStream);
+            getAdverseReactionStore().setStore((List<AdverseReaction>) objectInputStream.readObject());
+        } catch (Exception e) {
+
+        }
+    }
+
+    private void setWaitingRoomStore() {
+        try {
+            FileInputStream in = new FileInputStream("data\\WaitingRoom.dat");ObjectInputStream inputStream = new ObjectInputStream(in);
+            getWaitingRoomStore().setWaitingRoomList((List<WaitingRoom>) inputStream.readObject());
+        } catch (Exception e) {
+        }
+    }
+
+    private void setScheduleStore() {
+        try {
+            FileInputStream inputStream = new FileInputStream("data\\Schedule.dat");ObjectInputStream objectInputStream = new ObjectInputStream(inputStream);
+            getScheduleStore().setScheduleList((List<Schedule>) objectInputStream.readObject());
+        } catch (Exception e) {
+        }
+    }
+
+    private void setVaccinationCenterStore() {
+        try {
+            FileInputStream fis = new FileInputStream("data\\VaccinationCenter.dat"); ObjectInputStream ois = new ObjectInputStream(fis);
+            getVaccinationCenterStore().setVaccinationCenterList((List<VaccinationCenter>) ois.readObject());
+        } catch (Exception e) {
+        }
+    }
+
+    private void setVaccineStore() {
+        try {
+            FileInputStream inputStream = new FileInputStream("data\\vaccines.dat"); ObjectInputStream objectInputStream = new ObjectInputStream(inputStream);
+            getVaccineStore().setVaccines((List<Vaccine>) objectInputStream.readObject());
+        } catch (Exception e) {
+        }
+    }
+
+    private void setVaccineTypeStore() {
+        try  {
+            FileInputStream in = new FileInputStream("data\\vaccineType.dat");ObjectInputStream inputStream = new ObjectInputStream(in);
+            getVaccineTypeStore().setVaccineTypes((List<VaccineType>) inputStream.readObject());
+        } catch (Exception e) {
+        }
+    }
+
+    private void setSNSUserStore() {
+        try {
+            FileInputStream input = new FileInputStream("data\\SNSUser.dat"); ObjectInputStream in = new ObjectInputStream(input);
+            List<SNSUser> userList = new ArrayList<>((List<SNSUser>) in.readObject());
+            getSNSUserStore().setSNSUserList(userList);
+        }catch (Exception e){
+            e.getLocalizedMessage();
+        }
+    }
+
+    private void setEmployeeStore(){
+        try {
+            FileInputStream input = new FileInputStream("data\\Employee.dat"); ObjectInputStream in = new ObjectInputStream(input);
+            List<Employee> empList = new ArrayList<>((List<Employee>) in.readObject());
+            getEmployeeStore().setEmployeeList(empList);
+        }catch (Exception e){
+            e.getLocalizedMessage();
+        }
     }
 
     /**

@@ -1,5 +1,6 @@
 package app.domain.model;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.Period;
 import java.util.Date;
@@ -11,7 +12,7 @@ import java.util.regex.Pattern;
  *
  * @author Henrique Pinto - 1211201
  */
-public class SNSUser {
+public class SNSUser implements Serializable {
 
     /**
      * SNSUser Attributes

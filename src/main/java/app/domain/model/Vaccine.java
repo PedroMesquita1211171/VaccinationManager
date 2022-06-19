@@ -2,13 +2,14 @@ package app.domain.model;
 
 import app.domain.model.VaccineDependencies.AdministrationProcess;
 
+import java.io.Serializable;
 import java.util.List;
 import java.util.Objects;
 
 /**
  * The type Vaccine.
  */
-public class Vaccine implements Comparable<Vaccine> {
+public class Vaccine implements Comparable<Vaccine>, Serializable {
 
     private String brand;
     private String lotNumber;

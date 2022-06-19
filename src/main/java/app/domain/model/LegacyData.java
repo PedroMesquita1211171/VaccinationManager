@@ -1,5 +1,6 @@
 package app.domain.model;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
@@ -7,7 +8,7 @@ import java.util.List;
 /**
  * The type Legacy data.
  */
-public class LegacyData {
+public class LegacyData implements Serializable {
     private String SNSNumber;
     private String VaccineName;
     private String Dose;

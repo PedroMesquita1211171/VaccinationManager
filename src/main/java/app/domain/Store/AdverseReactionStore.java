@@ -93,4 +93,10 @@ public class AdverseReactionStore {
         }
         throw new IllegalArgumentException("Not saved since the adverse reaction was already registered.");
     }
+
+    public void setStore(List<AdverseReaction> readObject) {
+        for (AdverseReaction ar : readObject) {
+            arList.add(ar);
+        }
+    }
 }

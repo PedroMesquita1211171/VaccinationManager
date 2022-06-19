@@ -11,6 +11,7 @@ import app.domain.model.Schedule;
 import app.domain.model.VaccinationCenter;
 import app.domain.model.VaccinationCenterDependencies.Tempo;
 import app.domain.model.WaitingRoom;
+import app.domain.shared.CommonMethods;
 
 import java.util.List;
 
@@ -64,6 +65,7 @@ public class WaitingRoomController {
     public boolean saveWaitingRoom(){
         if(this.company.getWaitingRoomStore().saveWaitingRoom(this.wt)){
             this.company.getScheduleStore().removeSchedule(schedule);
+            CommonMethods.serializeStore(this.company.getWaitingRoomStore().getWaitingRoomList(),"data\\WaitingRoom.dat");
             return true;
         }
         return false;

@@ -111,4 +111,14 @@ public class ScheduleStore {
     public void removeSchedule(Schedule schedule) {
        scheduleList.remove(schedule);
     }
+
+    public void setScheduleList(List<Schedule> readObject) {
+        for ( Schedule s : readObject) {
+            scheduleList.add(s);
+        }
+    }
+
+    public List<Schedule> getScheduleList() {
+        return scheduleList;
+    }
 }

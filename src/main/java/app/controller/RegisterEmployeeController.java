@@ -4,6 +4,7 @@ import app.DTO.EmployeeDTO;
 import app.DTO.Mappers.EmployeeMapper;
 import app.domain.model.Company;
 import app.domain.model.Employee;
+import app.domain.shared.CommonMethods;
 import app.ui.console.utils.Generators;
 
 /**
@@ -68,6 +69,9 @@ public class RegisterEmployeeController {
         boolean b = this.company.getAuthFacade().addUserWithRole(this.emp.getName(), this.emp.getEmail(),password, this.emp.getRole());
          if(a && b){
              System.out.println("\nEmployee" +"\n" + "Name: " + this.emp.getName() + "\n" + "Email: " + this.emp.getEmail() + "\n" + "Password: " + password + "\n" + "Role: " + this.emp.getRole() + "\n" + "Employee ID: " + emp.getId() + "\n");
+
+             CommonMethods.serializeStore(this.company.getEmployeeStore().getEmployeeList(),"data\\Employee.dat");
+
              return true;
          }
          return false;

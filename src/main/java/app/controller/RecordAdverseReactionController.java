@@ -6,6 +6,7 @@ import app.domain.model.AdverseReaction;
 import app.domain.model.Company;
 import app.domain.model.SNSUser;
 import app.domain.model.VaccinationCenter;
+import app.domain.shared.CommonMethods;
 
 /**
  * The type Record adverse reaction controller.
@@ -56,7 +57,10 @@ public class RecordAdverseReactionController {
      * @return the boolean
      */
     public boolean saveAdverseReaction() {
-        return this.company.getAdverseReactionStore().addAR(this.ar);
+        boolean a = this.company.getAdverseReactionStore().addAR(this.ar);
+        CommonMethods.serializeStore(this.company.getAdverseReactionStore().getArList(),"data\\AdverseReaction.dat");
+
+        return a;
     }
 
     /**

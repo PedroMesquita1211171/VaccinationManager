@@ -119,4 +119,10 @@ public class EmployeeStore {
         return !getEmployeeList().contains(emp);
     }
 
-}
+    public void setEmployeeList(List<Employee> empList) {
+        for (Employee e: empList) {
+            addEmployee(e);
+        }
+
+        }
+    }

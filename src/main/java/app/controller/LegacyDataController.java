@@ -2,6 +2,7 @@ package app.controller;
 
 import app.domain.model.Company;
 import app.domain.model.LegacyData;
+import app.domain.shared.CommonMethods;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -64,6 +65,7 @@ public class LegacyDataController {
                 }
                 }
             }
+                 CommonMethods.serializeStore(this.company.getLegacyDataStore().getLegacyDataList(),"data\\legacyData.dat");
         }
 public void printLegacyDataList(List<LegacyData> arr){
     for(int i =0; i < arr.size(); i++){

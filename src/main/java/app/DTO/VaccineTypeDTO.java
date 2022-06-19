@@ -1,9 +1,11 @@
 package app.DTO;
 
+import java.io.Serializable;
+
 /**
  * The type Vaccine type dto.
  */
-public class VaccineTypeDTO {
+public class VaccineTypeDTO implements Serializable {
     private String code;
     private String designation;
     private String whoId;

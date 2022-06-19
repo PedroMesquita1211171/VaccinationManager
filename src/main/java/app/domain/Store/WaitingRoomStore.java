@@ -116,4 +116,11 @@ public class WaitingRoomStore {
         }
         throw new IllegalArgumentException("There is no SNS User in the waiting room with such SNS Number");
     }
-}
+
+    public void setWaitingRoomList(List<WaitingRoom> readObject) {
+        for (WaitingRoom w : readObject) {
+            this.waitingRoomList.add(w);
+        }
+
+        }
+    }

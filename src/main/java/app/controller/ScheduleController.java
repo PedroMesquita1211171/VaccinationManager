@@ -12,6 +12,7 @@ import app.domain.model.*;
 import app.domain.model.ScheduleDependencies.Data;
 import app.domain.model.VaccinationCenterDependencies.TimeSlot;
 import app.domain.model.VaccineDependencies.AdministrationProcess;
+import app.domain.shared.CommonMethods;
 
 import java.util.List;
 
@@ -70,7 +71,9 @@ public class ScheduleController {
      * @return the boolean
      */
     public boolean saveSchedule(){
-        return this.company.getScheduleStore().addSchedule(this.schedule);
+        boolean a = this.company.getScheduleStore().addSchedule(this.schedule);
+        CommonMethods.serializeStore(this.company.getScheduleStore().getScheduleList(),"data\\Schedule.dat");
+        return a;
     }
 
     /**

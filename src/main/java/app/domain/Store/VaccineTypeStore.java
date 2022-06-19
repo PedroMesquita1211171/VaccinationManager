@@ -71,4 +71,10 @@ public class VaccineTypeStore {
         return new VaccineType(code, designation, vaccineTechnology);
     }
 
+    public void setVaccineTypes(List<VaccineType> readObject) {
+        for (VaccineType v : readObject) {
+            this.vaccineTypeList.add(v);
+        }
+
+        }
 }

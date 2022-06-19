@@ -1,9 +1,11 @@
 package app.domain.model.VaccineDependencies;
 
+import java.io.Serializable;
+
 /**
  * The type Administration process.
  */
-public class AdministrationProcess {
+public class AdministrationProcess implements Serializable {
 
     private AgeGroup ageGroup;
     private Integer dosesPerGroup;

@@ -5,12 +5,13 @@ import app.domain.model.ScheduleDependencies.Data;
 import app.domain.model.VaccinationCenterDependencies.TimeSlot;
 import app.domain.model.VaccineDependencies.AdministrationProcess;
 
+import java.io.Serializable;
 import java.util.Objects;
 
 /**
  * The type Schedule.
  */
-public class Schedule {
+public class Schedule implements Serializable {
 
     private SNSUser snsu;
     private VaccinationCenter vc;

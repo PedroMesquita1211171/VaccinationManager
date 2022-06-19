@@ -71,4 +71,10 @@ public class LegacyDataStore {
     public LegacyData createLegacyData(String SNSNumber, String VaccineName, String Dose, String LotNumber, Calendar ScheduleDateTime, Calendar ArrivalDateTime, Calendar AdministrationDateTime, Calendar LeavingTime) {
     return new LegacyData(SNSNumber, VaccineName, Dose, LotNumber, ScheduleDateTime, ArrivalDateTime, AdministrationDateTime, LeavingTime);
 }
+
+    public void setLegacyDataList(List<LegacyData> readObject) {
+        for ( LegacyData legacyData : readObject) {
+            this.legacyDataList.add(legacyData);
+        }
+    }
 }

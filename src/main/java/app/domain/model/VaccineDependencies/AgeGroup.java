@@ -1,9 +1,11 @@
 package app.domain.model.VaccineDependencies;
 
+import java.io.Serializable;
+
 /**
  * The type Age group.
  */
-public class AgeGroup {
+public class AgeGroup implements Serializable {
     private int ageInit;
     private int ageEnd;
 

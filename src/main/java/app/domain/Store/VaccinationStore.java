@@ -74,4 +74,9 @@ public class VaccinationStore {
         return vaccinations;
     }
 
+    public void setVaccinationList(List<Vaccination> readObject) {
+        for ( Vaccination vac : readObject) {
+            vaccinations.add(vac);
+        }
+    }
 }

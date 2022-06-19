@@ -126,4 +126,7 @@ public class SNSUserStore {
         return null;
     }
 
+    public void setSNSUserList(List<SNSUser> userList) {
+        this.snsUserList = userList;
+    }
 }

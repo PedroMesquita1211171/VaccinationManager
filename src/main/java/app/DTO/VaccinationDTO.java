@@ -4,10 +4,12 @@ import app.domain.model.AdverseReaction;
 import app.domain.model.Vaccine;
 import app.domain.model.VaccineDependencies.AdministrationProcess;
 
+import java.io.Serializable;
+
 /**
  * The type Vaccination dto.
  */
-public class VaccinationDTO {
+public class VaccinationDTO implements Serializable {
 
     private AdverseReaction ar;
     private Vaccine v;

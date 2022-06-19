@@ -1,11 +1,12 @@
 package app.domain.model;
 
+import java.io.Serializable;
 import java.util.Objects;
 
 /**
  * The type Adverse reaction.
  */
-public class AdverseReaction {
+public class AdverseReaction implements Serializable {
 
     private SNSUser snsu;
     private String ARText;

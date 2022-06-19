@@ -4,10 +4,12 @@ import app.domain.model.Schedule;
 import app.domain.model.VaccinationCenter;
 import app.domain.model.VaccinationCenterDependencies.Tempo;
 
+import java.io.Serializable;
+
 /**
  * The type Waiting room dto.
  */
-public class WaitingRoomDTO {
+public class WaitingRoomDTO implements Serializable {
     private VaccinationCenter vaccinationCenter;
     private Schedule schedule;
     private Tempo arrivalHour;

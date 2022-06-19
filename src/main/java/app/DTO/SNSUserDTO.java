@@ -1,5 +1,6 @@
 package app.DTO;
 
+import java.io.Serializable;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.Period;
@@ -10,7 +11,7 @@ import java.util.Date;
  *
  * @author Henrique Pinto - 1211201
  */
-public class SNSUserDTO {
+public class SNSUserDTO implements Serializable {
     private String name;
     private String address;
     private String sex;

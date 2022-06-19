@@ -2,12 +2,14 @@ package app.domain.model;
 
 import org.junit.platform.commons.util.StringUtils;
 
+import java.io.Serializable;
+
 /**
  * The type Vaccine type.
  *
  * @author Henrique Pinto - 1211201
  */
-public class VaccineType {
+public class VaccineType implements Serializable {
 
     private String code;
     private String designation;
