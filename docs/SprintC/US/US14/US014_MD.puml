@@ -3,7 +3,6 @@ hide methods
 left to right direction
 skinparam classAttributeIconSize 0
 
-
 class Company {
   -designation
 }
@@ -38,10 +37,5 @@ Company "1"---"*" Admin : knows >
 Admin "*"---"*" SNSUser : Loads a set through CSV file >
 SNSUser "*"---"1" User : is a >
 User .. N1
-
-
-
-
-
 
 @enduml

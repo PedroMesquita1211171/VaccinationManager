@@ -2,6 +2,8 @@ package app.ui;
 
 import app.domain.model.VaccinationRecord;
 import app.ui.console.MainMenuUI;
+import app.ui.gui.Utils.Scheduler;
+import javafx.scene.Scene;
 
 import java.text.DateFormat;
 import java.text.ParseException;
@@ -17,7 +19,7 @@ import java.util.TimerTask;
  * @author Paulo Maio <pam@isep.ipp.pt>
  */
 //Teste
-public class Main extends TimerTask {
+public class Main {
 
     /**
      * The entry point of application.
@@ -26,31 +28,16 @@ public class Main extends TimerTask {
      */
     public static void main(String[] args) throws ParseException {
 
+
+        new Scheduler();
         try
         {
             MainMenuUI menu = new MainMenuUI();
-
             menu.run();
         }
         catch( Exception e )
         {
             e.printStackTrace();
         }
-
-        //the Date and time at which you want to execute
-        DateFormat dateFormatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-        Date date = dateFormatter.parse("2022-06-19 21:23:00");
-
-        //Now create the time and schedule it
-        Timer timer = new Timer();
-
-        timer.schedule(new Main(), date, 86400000);
-        //int period = 10000;//10secs ---> 86400000 = 1 day
-
-    }
-
-    @Override
-    public void run() {
-        VaccinationRecord.main();
     }
 }

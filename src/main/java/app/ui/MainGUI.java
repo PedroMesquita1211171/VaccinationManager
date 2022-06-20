@@ -1,6 +1,7 @@
 package app.ui;
 
 import app.ui.gui.LoginUI;
+import app.ui.gui.Utils.Scheduler;
 import javafx.animation.PauseTransition;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;

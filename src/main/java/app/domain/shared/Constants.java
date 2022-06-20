@@ -87,4 +87,6 @@ public class Constants {
      * The constant PARAMS_COMPANY_DESIGNATION.
      */
     public static final String PARAMS_COMPANY_DESIGNATION = "Company.Designation";
+
+    public static final String PARAMS_REPORT_HOUR = "Report.Hours";
 }

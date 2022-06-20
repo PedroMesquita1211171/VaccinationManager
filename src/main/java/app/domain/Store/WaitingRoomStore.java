@@ -123,4 +123,13 @@ public class WaitingRoomStore {
         }
 
         }
+        public int vaccinationsperCenter(VaccinationCenter vaccinationCenter){
+            int count = 0;
+            for (WaitingRoom w:waitingRoomList) {
+                if (w.getVaccinationCenter().equals(vaccinationCenter)){
+                    count++;
+                }
+            }
+            return count;
+        }
     }

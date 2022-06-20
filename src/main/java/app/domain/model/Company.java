@@ -51,17 +51,18 @@ public class Company {
         this.vaccinationStore = new VaccinationStore(); //
         this.legacyDataStore = new LegacyDataStore();
         //de-serialize the stores
-        setSNSUserStore();
-        setEmployeeStore();
-        setVaccineTypeStore();
-        setVaccineStore();
-        setVaccinationCenterStore();
-        setScheduleStore();
-        setWaitingRoomStore();
-        setAdverseReactionStore();
-        setVaccinationStore();
-        setLegacyDataStore();
-
+        try {
+            setSNSUserStore();
+            setEmployeeStore();
+            setVaccineTypeStore();
+            setVaccineStore();
+            setVaccinationCenterStore();
+            setScheduleStore();
+            setWaitingRoomStore();
+            setAdverseReactionStore();
+            setVaccinationStore();
+            setLegacyDataStore();
+        } catch(Exception e){}
     }
 
     private void setLegacyDataStore() {
