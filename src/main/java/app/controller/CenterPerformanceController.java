@@ -2,7 +2,8 @@ package app.controller;
 
 
 import app.ui.console.utils.CSVConverter;
-import com.isep.mdis.Sum;
+import app.ui.gui.Utils.Sum;
+
 
 import java.io.IOException;
 import java.util.ArrayList;

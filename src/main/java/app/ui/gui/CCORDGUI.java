@@ -2,6 +2,8 @@ package app.ui.gui;
 
 import app.controller.App;
 import app.ui.MainGUI;
+import app.ui.console.CenterPerformanceUI;
+import app.ui.console.ListVaccinesUI;
 import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
 
@@ -41,5 +43,25 @@ public class CCORDGUI implements Initializable {
         App.getInstance().doLogout();
         LoginUI loginUI = (LoginUI) this.main.changeStageContent("/fxml/LoginScreen.fxml");
         loginUI.setMainApp(this.main);
+    }
+
+    /**
+     * When us 18 clicked.
+     *
+     * @param actionEvent the action event
+     */
+    @javafx.fxml.FXML
+    public void whenUS18clicked(ActionEvent actionEvent) {
+        new ListVaccinesUI().run();
+    }
+
+    /**
+     * When us 16 clicked.
+     *
+     * @param actionEvent the action event
+     */
+    @javafx.fxml.FXML
+    public void whenUS16clicked(ActionEvent actionEvent) {
+        new CenterPerformanceUI().run();
     }
 }
