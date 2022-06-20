@@ -168,4 +168,8 @@ public class App {
         }
         return singleton;
     }
+
+    public String getTimerHours(){
+        return this.getProperties().getProperty(Constants.PARAMS_REPORT_HOUR);
+    }
 }
