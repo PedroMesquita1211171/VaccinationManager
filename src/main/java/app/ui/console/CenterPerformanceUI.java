@@ -2,10 +2,10 @@ package app.ui.console;
 
 
 import app.controller.CenterPerformanceController;
-import app.ui.console.utils.CSVConverter;
 import app.ui.console.utils.Utils;
 
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -22,6 +22,7 @@ public class CenterPerformanceUI implements Runnable {
 
     @Override
     public void run() {
+
         String confirmation, filePath;
         do {
 
@@ -29,7 +30,6 @@ public class CenterPerformanceUI implements Runnable {
             confirmation = askConfirmation();
 
         } while (!((confirmation.equals("y") || confirmation.equals("Y"))));
-        System.out.println("Select the duration of time intervals to analyze:");
         int m;
         do {
             m = validateTimeIntervalDuration();
@@ -49,7 +49,7 @@ public class CenterPerformanceUI implements Runnable {
         System.out.println("The max sum contiguous sublist is:");
         System.out.print("[");
         for (int i = 0; i <= ctrl.maxsumsublist(performanceList).size()-1; i++) {
-            if (i < ctrl.maxsumsublist(performanceList).size()) {
+            if (i < ctrl.maxsumsublist(performanceList).size()-1) {
                 System.out.print(ctrl.maxsumsublist(performanceList).get(i) + ",");
             } else System.out.print(ctrl.maxsumsublist(performanceList).get(i));
         }
@@ -59,8 +59,13 @@ public class CenterPerformanceUI implements Runnable {
         System.out.println(ctrl.maxsum(performanceList));
         System.out.println("");
         System.out.println("The time interval corresponding to the maximum sum of sublist elements is:");
-        System.out.println(ctrl.timeIntervalOfSublist(performanceList));
-
+        try {
+            System.out.println(ctrl.timeIntervalOfSublist(performanceList,filePath,m));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        long sytemRunTime = System.currentTimeMillis();
+        ctrl.benchmarkComparrission(performanceList, sytemRunTime);
     }
 
     private String askFilePath() {

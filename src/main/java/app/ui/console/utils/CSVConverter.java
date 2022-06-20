@@ -64,17 +64,23 @@ public class CSVConverter {
             Calendar timeSlotLimit = (Calendar) arrivalTime.get(0).clone();
             timeSlotLimit.set(Calendar.HOUR, 8);
             timeSlotLimit.set(Calendar.MINUTE, m);
+            Calendar timeSlotLimitAux = (Calendar) arrivalTime.get(0).clone();
+            timeSlotLimit.set(Calendar.HOUR, 8);
+            timeSlotLimit.set(Calendar.MINUTE, 0);
             int centerPerformance = 0;
             for (int n = 0; n < intervalTime; n++) {
                 for (int i = 0; i < arrivalTime.size(); i++) {
-                    if (isDateInSlot(arrivalTime.get(i), timeSlotLimit)) {
+                    if (isDateInSlot(arrivalTime.get(i), timeSlotLimit,timeSlotLimitAux)) {
                             centerPerformance++;
                     }
-                    if (isDateInSlot(departureTime.get(i), timeSlotLimit)) {
-                            centerPerformance--;
-                    }
-                    timeSlotLimit.add(Calendar.MINUTE, m);
                 }
+                for (int i = 0; i < departureTime.size(); i++) {
+                    if (isDateInSlot(departureTime.get(i), timeSlotLimit,timeSlotLimitAux)) {
+                        centerPerformance--;
+                    }
+                }
+                timeSlotLimitAux.add(Calendar.MINUTE, m);
+                timeSlotLimit.add(Calendar.MINUTE, m);
                 mdiscArray.add(centerPerformance);
                 centerPerformance = 0;
             }
@@ -88,8 +94,27 @@ public class CSVConverter {
      * @param timeSlotLimit the time slot limit
      * @return the boolean
      */
-    public boolean isDateInSlot(Calendar calendar, Calendar timeSlotLimit){
-        return calendar.before(timeSlotLimit);
+    public boolean isDateInSlot(Calendar calendar, Calendar timeSlotLimit, Calendar timeSlotLimitAux){
+        return !(calendar.before(timeSlotLimit) || calendar.after(timeSlotLimitAux));
     }
 
+    public Calendar  timeSlot(String filePath) throws IOException {
+        Path pathToFile = Paths.get(filePath);
+        Calendar calendar = GregorianCalendar.getInstance();
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy HH:mm");
+        BufferedReader br = Files.newBufferedReader(pathToFile, StandardCharsets.US_ASCII);
+            ArrayList<String> arrivalDate = new ArrayList<>();
+            String line;
+            String[] tokens1;
+            ArrayList<Calendar> arrivalTime = new ArrayList<>();
+            br.readLine();
+            while ((line = br.readLine()) != null) {
+                tokens1 = line.split(";",8);
+                arrivalDate.add(tokens1[5].trim());
+            }
+            arrivalTime = DateParser.StringToCalendar(arrivalDate);
+            Calendar time = (Calendar) arrivalTime.get(0).clone();
+
+        return (Calendar) time.clone();
+    }
 }

@@ -8,7 +8,7 @@ left to right direction
  +readInfoFromCSV
  +arrayListToMatrix
  +isDateInSlot
-
++timeSlot
  }
 
  class DateParser{
@@ -31,12 +31,13 @@ left to right direction
   +maxsumsublist
   +maxsum
   +readInfoFromCSV
+  +timeIntervalOfSublist
   }
 
 
 
- CenterPerformanceUI ..> CenterPerformanceController
- CenterPerformanceController "*" ..> "1" CSVConverter
- CSVConverter "*" --> "1" DateParser: uses >
+ CenterPerformanceUI <.. CenterPerformanceController
+ CenterPerformanceController "*" <.. "1" CSVConverter
+ CSVConverter "*" <-- "1" DateParser: uses >
 
 @enduml

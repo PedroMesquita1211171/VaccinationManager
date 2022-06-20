@@ -46,5 +46,8 @@ CTRL --> UI : maxsum (ArrayList<Integer>  sublist)
 UI --> CC : shows sum of all the elemts of the max sum contiguous sublist
 CTRL --> UI : intervalStart (ArrayList<Integer>  sublist)
 CTRL --> UI : intervalEnd (ArrayList<Integer>  sublist)
+CTRL -> UI : timeIntervalOfSublist( performanceList, filepath, m)
 UI --> CC : shows time the time interval relative to the max sum contiguous sublist
+CTRL -> UI : benchmarkComparrission(ArrayList<Integer> performanceList, long runtime)
+UI --> CC : shows the execution times of the benchmark algorithm and of the developed algorithm
 @enduml
