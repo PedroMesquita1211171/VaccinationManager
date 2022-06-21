@@ -12,14 +12,22 @@ import java.util.*;
 /**
  * The type Vaccination record.
  */
-public class VaccinationRecord extends TimerTask {
+public class VaccinationRecord {
 
     private Company company;
 
+    /**
+     * Instantiates a new Vaccination record.
+     *
+     * @param company the company
+     */
     public VaccinationRecord(Company company) {
         this.company = company;
     }
 
+    /**
+     * Instantiates a new Vaccination record.
+     */
     public VaccinationRecord() {
         this(App.getInstance().getCompany());
     }

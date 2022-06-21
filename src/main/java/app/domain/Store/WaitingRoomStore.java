@@ -117,13 +117,25 @@ public class WaitingRoomStore {
         throw new IllegalArgumentException("There is no SNS User in the waiting room with such SNS Number");
     }
 
+    /**
+     * Sets waiting room list.
+     *
+     * @param readObject the read object
+     */
     public void setWaitingRoomList(List<WaitingRoom> readObject) {
         for (WaitingRoom w : readObject) {
             this.waitingRoomList.add(w);
         }
 
         }
-        public int vaccinationsperCenter(VaccinationCenter vaccinationCenter){
+
+    /**
+     * Vaccinationsper center int.
+     *
+     * @param vaccinationCenter the vaccination center
+     * @return the int
+     */
+    public int vaccinationsperCenter(VaccinationCenter vaccinationCenter){
             int count = 0;
             for (WaitingRoom w:waitingRoomList) {
                 if (w.getVaccinationCenter().equals(vaccinationCenter)){
