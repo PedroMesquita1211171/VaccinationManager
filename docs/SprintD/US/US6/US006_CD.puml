@@ -1,30 +1,67 @@
 @startuml
-skinparam classAttributeIconSize 0
+
 
 class Main{
-+TimerTask
++main()
 }
 
-class ReceptionistUI{
-+RegisterArrivalUI
+class App{
++getProperties()
++getTimerHours()
 }
 
 class VaccinationRecord{
-+Counter
-+VaccinationCenterStore
+-date
+-WaitingRoomList
+-vaccinespercenter
++run()
 }
 
-class VaccinationCenterStore{
-+getVaccinationCenter();
+class Scheduler{
+
 }
 
-Main ..> VaccinationRecord
-Main ..> Menu
-Menu ..> ReceptionistUI
-ReceptionistUI ..> RegisterArrivalUI
-RegisterArrivalUI --> VaccinationRecord
-VaccinationRecord ..> VaccinationCenterStore
-VaccinationRecord ..> Counter
+
+abstract class TimerTask{
++run()
+}
+
+class Runnable{
++run()
+}
+
+class Company{
++getWaitingRoomStore()
+}
+
+class WaitingRoomStore{
+-count
++vaccinationsperCenter()
+}
+
+class vaccinationsperCenter{
+-count
+}
+
+class VaccinationCenter{
+-vaccinationcenter
+}
 
 
+
+
+
+Main --> App : executes
+App --> Scheduler : executes
+Scheduler ..> VaccinationRecord
+VaccinationRecord ..> Company
+Company "1" --> "1" WaitingRoomStore : uses >
+WaitingRoomStore --> VaccinationCenter : knows >
+VaccinationCenter "1" --> "1" Schedule : has >
+WaitingRoomStore --> vaccinationsperCenter : knows >
+VaccinationRecord ..> vaccinationsperCenter
+VaccinationRecord ..> WaitingRoomStore
+VaccinationRecord ..> VaccinationCenter
+TimerTask --> Runnable : implements >
+Scheduler --> TimerTask : extends >
 @enduml

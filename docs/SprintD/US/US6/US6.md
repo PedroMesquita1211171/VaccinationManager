@@ -1,4 +1,4 @@
-# US006 - XXXX XXXX
+# US006
 
 ## 1. Requirements Engineering
 
@@ -95,23 +95,25 @@
 
 ### 3.1. Rationale
 
-| Interaction ID | Question: Which class is responsible for...                                                              | Answer            | Justification (with patterns)  |
-|:-------------  |:---------------------------------------------------------------------------------------------------------|:------------------|:---------------------------- |
-| Step 1  		 | creating the csv file with the information required?							                                              | VaccinationRecord |                              |
-| Step 2  		 | getting the vaccination center and the total number of people vaccinated in it throughout the day?						 | CounterStore      |                              |
-| Step 3  		 | counting the total number of people vaccinated in each vaccination center throughout the day?							     | CounterStore      |                              |
-| Step 4  		 | 							                                                                                                  |                   |                              |
-| Step 5  		 | 							                                                                                                  |                   |                              |
+| Interaction ID | Question: Which class is responsible for...                                                              | Answer            | Justification (with patterns)                                                                                                                                                             |
+|:-------------  |:---------------------------------------------------------------------------------------------------------|:------------------|:------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Step 1  		 | automatically run the algorithm?							                                                                  | Scheduler         | Main calls class Scheduler once program run, which is responsible for running the algorithm at a certain time, using TimerTask                                                            |
+| Step 2  		 | getting the vaccination center and the total number of people vaccinated in it throughout the day?						 | WaitingRoomStore  | Class WaitingRoomStore has its information and there's a method that counts how many people are vaccinated in each waiting room throughout the day                                        |                                                                                                                               |
+| Step 3  		 | save the given information?								                                                                      | WaitingRoomStore  | As we're using the counter as an attribute to each waiting room of each vaccination center, this means it can be stored as a parameter.                                                   |
+| Step 4  		 | send the information to a csv file?						                                                                | VaccinationRecord | Using the class FileWriter, VaccinationRecord creates and writes the date, name of each vaccination center, along with the number of people vaccinated in that center throughout the day. |
+| Step 5  		 | 							                                                                                                  |                   |                                                                                                                                                                                           |
 
 ### Systematization ##
 
-According to the taken rationale, the conceptual classes promoted to software classes are: 
+According to the taken rationale, the conceptual classes promoted to software classes are:
+* Company
+* WaitingRoomStore
+* Scheduler
+* Main
+* WaitingRoom
+* VaccinationRecord
 
- * CounterStore
- * VaccinationRecord
-
-Other software classes (i.e. Pure Fabrication) identified: 
- * RegisterArrivalUI
+Other software classes (i.e. Pure Fabrication) identified:
 
 ## 3.2. Sequence Diagram (SD)
 

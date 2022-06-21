@@ -1,34 +1,31 @@
 @startuml
-hide methods
-left to right direction
-skinparam classAttributeIconSize 0
+'https://plantuml.com/class-diagram
 
-
-class Counter {
-  -counter
+hide empty members
+class DGS{
 }
 
-class RegisterArrivalUI {
-  -vaccinationCenter
-  -SNSUserNumber
+class Timer{
 }
 
-class Main {
--time
+class VaccinationsperCenter{
+-centername
+-count
+}
+
+class Company{
 }
 
 class VaccinationRecord{
+-date
+-centername
+-count
 }
 
-class ReceptionistUI{
-}
-
-RegisterArrivalUI "1" -- "*" Counter : updates >
-Counter "*" -- "1" VaccinationRecord : gets information from <
-Main "1" -- "1" VaccinationRecord : calls at certain hour >
-Main "1" -- "*" ReceptionistUI : gives access to >
-ReceptionistUI "*" -- "*" RegisterArrivalUI : operates >
 
 
-
-@endumll
+DGS "1" - "1" Timer: runs >
+Timer "1" - "1" VaccinationRecord: creates >
+Company "1" - "1*" WaitingRoomStore: has >
+WaitingRoomStore "1" - "1" VaccinationsperCenter : belongs to <
+VaccinationRecord "1" -- "* " VaccinationsperCenter: gets >ll

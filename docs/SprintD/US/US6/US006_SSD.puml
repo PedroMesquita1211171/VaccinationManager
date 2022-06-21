@@ -8,9 +8,8 @@ activate ":System"
 ":System" --> OE : transmits the data requested
 deactivate ":System"
 
-OE -> ":System" : calls the file writing class when time comes
-activate ":System"
-":System" --> OE : executes and creates what's asked of that class
+OE -> ":System" : asks to record daily the total number of vaccinated people
+":System" --> OE : executes what's asked of the class
 deactivate ":System"
 
 
