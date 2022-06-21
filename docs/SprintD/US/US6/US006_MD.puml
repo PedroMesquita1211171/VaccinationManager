@@ -1,5 +1,5 @@
 @startuml
-'https://plantuml.com/class-diagram
+
 
 hide empty members
 class DGS{
@@ -28,4 +28,6 @@ DGS "1" - "1" Timer: runs >
 Timer "1" - "1" VaccinationRecord: creates >
 Company "1" - "1*" WaitingRoomStore: has >
 WaitingRoomStore "1" - "1" VaccinationsperCenter : belongs to <
-VaccinationRecord "1" -- "* " VaccinationsperCenter: gets >ll
+VaccinationRecord "1" -- "*" VaccinationsperCenter: gets >
+
+@enduml

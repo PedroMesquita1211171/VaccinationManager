@@ -34,6 +34,7 @@ public class MainGUI extends Application{
      */
     public static void main(String[] args) {
         try{
+            new Scheduler();
             launch(args);
         }catch (Exception e){
             System.out.println("\nError while initializing Application.\nTry again.\n");

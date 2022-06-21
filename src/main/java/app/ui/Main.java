@@ -29,11 +29,12 @@ public class Main {
     public static void main(String[] args) throws ParseException {
 
 
-        new Scheduler();
+
         try
         {
             MainMenuUI menu = new MainMenuUI();
             menu.run();
+            new Scheduler();
         }
         catch( Exception e )
         {

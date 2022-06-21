@@ -82,8 +82,8 @@ n/a
 | Step 3  		     | 	...saving the inputted data?                                                                    | AdverseReaction                 | IE: object created in step 1 has its own data.                                                                |
 | Step 4  		     | 	...knowing the Adverse Reaction categories to show?                                             | AdverseReactionDTO              | IE: AdverseReactionDTO defines the categories of the AdverseReaction to show.                                 |
 | Step 5  		     | 	... saving the Adverse Reaction?                                                                | RecordAdverseReactionController | Controller: coordinates the user story so it has its trigger method to be activated by the UI.                |
-| 			  		        | 	... validating the created Adverse Reaction (global validation)?                                | AdverseReactionStore            | IE: knows all SNS Users.                                                                                      | 
-| 			  		        | 	... saving the created Adverse Reaction?                                                        | AdverseReactionStore            | IE: owns all SNS Users.                                                                                       | 
+| 			  		        | 	... validating the created Adverse Reaction (global validation)?                                | AdverseReactionStore            | IE: knows all Adverse Reaction Objects.                                                                       | 
+| 			  		        | 	... saving the created Adverse Reaction?                                                        | AdverseReactionStore            | IE: owns all Adverse Reaction Objects.                                                                        | 
 | Step 6 		      | 	... informing operation success?                                                                | RecordAdverseReactionUI         | IE: is responsible for user interactions.                                                                     | 
 
 ### Systematization ##
