@@ -14,6 +14,10 @@ System --> Coordinator: Requests data (which sort method to use)
 deactivate System
 Coordinator -> System: Types requested data
 activate System
+System --> Coordinator: Requests data (by which date to sort by)
+deactivate System
+Coordinator -> System: Types requested data
+activate System
 System --> Coordinator: Shows data and requests confirmation
 deactivate System
 Coordinator -> System: Confirms the data

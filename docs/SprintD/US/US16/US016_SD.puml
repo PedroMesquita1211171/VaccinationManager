@@ -8,6 +8,8 @@ participant ":\nCenterPerformanceUI" as UI
 participant ":\nCenterPerformanceController" as CTRL
 participant ":\nCSVConverter" as FILE
 participant ":\nDateParser" as DATE
+participant ":\nLegacyDataStor" as STORE
+participant ":\nLegacyData" as DATA
 
 activate CC
 CC -> UI : starts loading a set of Users through a CSV file

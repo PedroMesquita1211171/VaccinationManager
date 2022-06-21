@@ -2,10 +2,61 @@
 'https://plantuml.com/sequence-diagram
 
 autonumber
+actor "Center coordinator" as CC
 
-Alice -> Bob: Authentication Request
-Bob --> Alice: Authentication Response
+participant ":\nLegacyDataUIUI" as UI
+participant ":\nLegacyDataController" as CTRL
+participant ":\nCSVConverter" as FILE
+participant ":\nDateParser" as DATE
+participant ":\nCompany" as COM
+participant ":\nLegacyData" as LEG
+participant ":\nLegacyDataStore" as STORE
+participant ":\nSort" as SORT
 
-Alice -> Bob: Another authentication Request
-Alice <-- Bob: another authentication Response
+activate CC
+CC -> UI : starts loading legacy data
+activate UI
+UI --> CC : requests File Path
+deactivate UI
+CC-> UI : types File Path  (CSV file)
+
+activate UI
+activate CTRL
+UI -> CTRL : regex = returnregex(filepath
+UI -> CTRL : loadData(filepath, regex)
+activate FILE
+CTRL -> FILE : loadData(filepath, regex)
+activate  DATE
+FILE-> DATE : StringToCalendar(arrivalDate)
+FILE-> DATE : StringToCalendar(departureDate)
+deactivate DATE
+FILE --> CTRL :arrayListToMatrix(ArrayList<Calendar> arrivalTime, ArrayList<Calendar> departureTime, int m)
+deactivate FILE
+CTRL -> LEG : legacydata = new LegacyData( SNSNumber,  VaccineName,  Dose,  LotNumber,  ScheduleDateTime,ArrivalDateTime,AdministrationDateTime,LeavingTime)
+CTRL -> CTRL : validateLegacyData()
+CTRL -> COM : saveLegacyData(legacydata)
+COM -> STORE : saveLegacyDataList(legacydata)
+activate UI
+UI --> CC : shows data and asks for confirmation
+deactivate UI
+CC -> UI : confirms data
+activate UI
+UI --> CC: requests sorting method
+deactivate UI
+CC -> UI : chooses method
+activate UI
+UI --> CC : requests date by which to sort by
+deactivate UI
+UI --> CTRL : legacydatalist = ctrl.getlegacydatalist()
+CTRL -> COM :getlegacydatalist()
+COM -> STORE : saveLegacyDataList(legacydatalist)
+COM -> STORE : legacydatalist
+STORE -> STORE : legacydatalist
+CTRL -> SORT : sort(legacydatalist)
+SORT -> BUBBLE : bubbleSort(legacydatalist)
+SORT -> QUICK : quickSort(legacydatalist)
+SORT -> CTRL : legacydatalist
+CTRL -> UI : printLegacyData(legacydatalist)
+UI --> CC : shows data and informs user of success
+
 @enduml

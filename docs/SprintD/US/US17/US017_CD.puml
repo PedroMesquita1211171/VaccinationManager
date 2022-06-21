@@ -4,12 +4,43 @@
 hide empty members
 
 
-class ImportLegacyDataUI {
+class LegacyDataUI {
++askFilePath
++askConfirmation
++askSort
++askData
 }
 
-class ImportLegacyDataController {
+class LegacyDataController {
 +readInfoFromCSV(filepath)
++DateParser(date)
 +sortData(data)
++loadData(path, regex)
++printLegacyDataList(List<LegacyData>)
+}
+class LegacyData{
+-arr
+ -sch
+ -admin
+ -leave
+ -SNSnumber
+ -lot
+ -vaccineName
+ -currentDose
+ +CenterData(arrDate, arrTime, schDate, schTime, adminDate, adminTime, leaveDate, leaveTime, SNSnum, lot, vacName, currentDose)
+ +toString()
+ +validateSNSnumber()
+ +validateCenterData()
+ +validateLotNumber()
+}
+class LegacyDataStore{
++createLegacyData()
++createLegacyDataList(SNS number, vaccine name , ...)
++getLegacyDataList()
++setLegacyDataList(List<LegacyData>)
++saveLegacyDataList()
++addLegacyData(LegacyData)
++validateLegacyData(LegacyData)
 }
 interface Sort{
 }
@@ -19,10 +50,15 @@ class QuickSort implements Sort {
 
 class BubbleSort implements Sort{
 }
+class Company{
++getLegacyDataStore()
+}
 
-
-ImportLegacyDataUI ..> ImportLegacyDataController
-ImportLegacyDataController ..> Sort
+LegacyDataUI ..> LegacyDataController
+LegacyDataController ..> Company
+LegacyDataController ..> Sort
+Company --> LegacyDataStore : uses
+LegacyDataStore ..> LegacyData : keeps info
 
 
 

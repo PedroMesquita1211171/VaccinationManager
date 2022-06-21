@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentStyleType="text/css" height="1009px" preserveAspectRatio="none" style="width:901px;height:1009px;background:#FFFFFF;" version="1.1" viewBox="0 0 901 1009" width="901px" zoomAndPan="magnify"><defs/><g><!--MD5=[bec986c36157d476546b60c97b614c8d]
+class LegacyDataUI--><g id="elem_LegacyDataUI"><rect codeLine="6" fill="#F1F1F1" height="110.4375" id="LegacyDataUI" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="128" x="196" y="7"/><ellipse cx="214.6" cy="23" fill="#ADD1B2" rx="11" ry="11" style="stroke:#181818;stroke-width:1.0;"/><path d="M216.6,19.5 Q216.8031,19 217.0375,18.75 Q217.2719,18.5 217.5375,18.5 Q218.0063,18.5 218.3031,18.7813 Q218.6,19.0625 218.6,19.7188 L218.6,21.2813 Q218.6,21.9375 218.3188,22.2188 Q218.0375,22.5 217.6,22.5 Q217.2094,22.5 216.9594,22.3281 Q216.7094,22.1563 216.6,21.7031 Q216.5531,21.3906 216.3813,21.2188 Q216.0688,20.8906 215.5063,20.7031 Q214.9438,20.5 214.3813,20.5 Q213.6781,20.5 213.0844,20.7813 Q212.5063,21.0625 212.0531,21.6875 Q211.6,22.3125 211.6,23.1719 L211.6,24.0938 Q211.6,25.125 212.4438,25.8125 Q213.2875,26.5 214.7875,26.5 Q215.6781,26.5 216.3031,26.2969 Q216.6625,26.1875 217.0688,25.8281 Q217.3344,25.625 217.475,25.5625 Q217.6156,25.5 217.7875,25.5 Q218.1156,25.5 218.35,25.7656 Q218.6,26.0156 218.6,26.375 Q218.6,26.7188 218.2563,27.125 Q217.7563,27.7188 216.9594,28.0469 Q215.9125,28.5 214.6313,28.5 Q213.1313,28.5 211.9281,27.9063 Q210.9594,27.4375 210.2719,26.4219 Q209.6,25.4063 209.6,24.2031 L209.6,23.1094 Q209.6,21.8594 210.1938,20.7656 Q210.8031,19.6719 211.85,19.0938 Q212.9125,18.5 214.1,18.5 Q214.8188,18.5 215.4438,18.75 Q216.0688,19 216.6,19.5 Z " fill="#000000"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="88" x="229.4" y="28.7285">LegacyDataUI</text><line style="stroke:#181818;stroke-width:0.5;" x1="197" x2="323" y1="39" y2="39"/><ellipse cx="207" cy="50" fill="none" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="74" x="216" y="57.5332">askFilePath</text><ellipse cx="207" cy="67.6094" fill="none" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="102" x="216" y="75.1426">askConfirmation</text><ellipse cx="207" cy="85.2188" fill="none" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="48" x="216" y="92.752">askSort</text><ellipse cx="207" cy="102.8281" fill="none" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="52" x="216" y="110.3613">askData</text></g><!--MD5=[ac5247d56522b591bb47c10d8e445b9b]
+class LegacyDataController--><g id="elem_LegacyDataController"><rect codeLine="13" fill="#F1F1F1" height="110.4375" id="LegacyDataController" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="276" x="122" y="178"/><ellipse cx="186.75" cy="194" fill="#ADD1B2" rx="11" ry="11" style="stroke:#181818;stroke-width:1.0;"/><path d="M188.75,190.5 Q188.9531,190 189.1875,189.75 Q189.4219,189.5 189.6875,189.5 Q190.1563,189.5 190.4531,189.7813 Q190.75,190.0625 190.75,190.7188 L190.75,192.2813 Q190.75,192.9375 190.4688,193.2188 Q190.1875,193.5 189.75,193.5 Q189.3594,193.5 189.1094,193.3281 Q188.8594,193.1563 188.75,192.7031 Q188.7031,192.3906 188.5313,192.2188 Q188.2188,191.8906 187.6563,191.7031 Q187.0938,191.5 186.5313,191.5 Q185.8281,191.5 185.2344,191.7813 Q184.6563,192.0625 184.2031,192.6875 Q183.75,193.3125 183.75,194.1719 L183.75,195.0938 Q183.75,196.125 184.5938,196.8125 Q185.4375,197.5 186.9375,197.5 Q187.8281,197.5 188.4531,197.2969 Q188.8125,197.1875 189.2188,196.8281 Q189.4844,196.625 189.625,196.5625 Q189.7656,196.5 189.9375,196.5 Q190.2656,196.5 190.5,196.7656 Q190.75,197.0156 190.75,197.375 Q190.75,197.7188 190.4063,198.125 Q189.9063,198.7188 189.1094,199.0469 Q188.0625,199.5 186.7813,199.5 Q185.2813,199.5 184.0781,198.9063 Q183.1094,198.4375 182.4219,197.4219 Q181.75,196.4063 181.75,195.2031 L181.75,194.1094 Q181.75,192.8594 182.3438,191.7656 Q182.9531,190.6719 184,190.0938 Q185.0625,189.5 186.25,189.5 Q186.9688,189.5 187.5938,189.75 Q188.2188,190 188.75,190.5 Z " fill="#000000"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="138" x="207.25" y="199.7285">LegacyDataController</text><line style="stroke:#181818;stroke-width:0.5;" x1="123" x2="397" y1="210" y2="210"/><ellipse cx="133" cy="221" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="169" x="142" y="228.5332">readInfoFromCSV(filepath)</text><ellipse cx="133" cy="238.6094" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="92" x="142" y="246.1426">sortData(data)</text><ellipse cx="133" cy="256.2188" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="138" x="142" y="263.752">loadData(path, regex)</text><ellipse cx="133" cy="273.8281" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="250" x="142" y="281.3613">printLegacyDataList(List&lt;LegacyData&gt;)</text></g><!--MD5=[c8a4164c9d75f217cc7b284a4eae0676]
+class LegacyData--><g id="elem_LegacyData"><rect codeLine="19" fill="#F1F1F1" height="276.9219" id="LegacyData" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="870" x="24" y="726"/><ellipse cx="416.75" cy="742" fill="#ADD1B2" rx="11" ry="11" style="stroke:#181818;stroke-width:1.0;"/><path d="M418.75,738.5 Q418.9531,738 419.1875,737.75 Q419.4219,737.5 419.6875,737.5 Q420.1563,737.5 420.4531,737.7813 Q420.75,738.0625 420.75,738.7188 L420.75,740.2813 Q420.75,740.9375 420.4688,741.2188 Q420.1875,741.5 419.75,741.5 Q419.3594,741.5 419.1094,741.3281 Q418.8594,741.1563 418.75,740.7031 Q418.7031,740.3906 418.5313,740.2188 Q418.2188,739.8906 417.6563,739.7031 Q417.0938,739.5 416.5313,739.5 Q415.8281,739.5 415.2344,739.7813 Q414.6563,740.0625 414.2031,740.6875 Q413.75,741.3125 413.75,742.1719 L413.75,743.0938 Q413.75,744.125 414.5938,744.8125 Q415.4375,745.5 416.9375,745.5 Q417.8281,745.5 418.4531,745.2969 Q418.8125,745.1875 419.2188,744.8281 Q419.4844,744.625 419.625,744.5625 Q419.7656,744.5 419.9375,744.5 Q420.2656,744.5 420.5,744.7656 Q420.75,745.0156 420.75,745.375 Q420.75,745.7188 420.4063,746.125 Q419.9063,746.7188 419.1094,747.0469 Q418.0625,747.5 416.7813,747.5 Q415.2813,747.5 414.0781,746.9063 Q413.1094,746.4375 412.4219,745.4219 Q411.75,744.4063 411.75,743.2031 L411.75,742.1094 Q411.75,740.8594 412.3438,739.7656 Q412.9531,738.6719 414,738.0938 Q415.0625,737.5 416.25,737.5 Q416.9688,737.5 417.5938,737.75 Q418.2188,738 418.75,738.5 Z " fill="#000000"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="76" x="437.25" y="747.7285">LegacyData</text><line style="stroke:#181818;stroke-width:0.5;" x1="25" x2="893" y1="758" y2="758"/><rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="32" y="766"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="18" x="44" y="776.5332">arr</text><rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="32" y="783.6094"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="22" x="44" y="794.1426">sch</text><rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="32" y="801.2188"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="38" x="44" y="811.752">admin</text><rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="32" y="818.8281"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="34" x="44" y="829.3613">leave</text><rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="32" y="836.4375"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="75" x="44" y="846.9707">SNSnumber</text><rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="32" y="854.0469"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="15" x="44" y="864.5801">lot</text><rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="32" y="871.6563"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="84" x="44" y="882.1895">vaccineName</text><rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="32" y="889.2656"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="78" x="44" y="899.7988">currentDose</text><line style="stroke:#181818;stroke-width:0.5;" x1="25" x2="893" y1="906.875" y2="906.875"/><ellipse cx="35" cy="917.875" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="844" x="44" y="925.4082">CenterData(arrDate, arrTime, schDate, schTime, adminDate, adminTime, leaveDate, leaveTime, SNSnum, lot, vacName, currentDose)</text><ellipse cx="35" cy="935.4844" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="59" x="44" y="943.0176">toString()</text><ellipse cx="35" cy="953.0938" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="134" x="44" y="960.627">validateSNSnumber()</text><ellipse cx="35" cy="970.7031" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="132" x="44" y="978.2363">validateCenterData()</text><ellipse cx="35" cy="988.3125" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="128" x="44" y="995.8457">validateLotNumber()</text></g><!--MD5=[768b5f9a07d47058e12aae6c0192a13c]
+class LegacyDataStore--><g id="elem_LegacyDataStore"><rect codeLine="34" fill="#F1F1F1" height="163.2656" id="LegacyDataStore" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="372" x="273" y="485"/><ellipse cx="399.75" cy="501" fill="#ADD1B2" rx="11" ry="11" style="stroke:#181818;stroke-width:1.0;"/><path d="M401.75,497.5 Q401.9531,497 402.1875,496.75 Q402.4219,496.5 402.6875,496.5 Q403.1563,496.5 403.4531,496.7813 Q403.75,497.0625 403.75,497.7188 L403.75,499.2813 Q403.75,499.9375 403.4688,500.2188 Q403.1875,500.5 402.75,500.5 Q402.3594,500.5 402.1094,500.3281 Q401.8594,500.1563 401.75,499.7031 Q401.7031,499.3906 401.5313,499.2188 Q401.2188,498.8906 400.6563,498.7031 Q400.0938,498.5 399.5313,498.5 Q398.8281,498.5 398.2344,498.7813 Q397.6563,499.0625 397.2031,499.6875 Q396.75,500.3125 396.75,501.1719 L396.75,502.0938 Q396.75,503.125 397.5938,503.8125 Q398.4375,504.5 399.9375,504.5 Q400.8281,504.5 401.4531,504.2969 Q401.8125,504.1875 402.2188,503.8281 Q402.4844,503.625 402.625,503.5625 Q402.7656,503.5 402.9375,503.5 Q403.2656,503.5 403.5,503.7656 Q403.75,504.0156 403.75,504.375 Q403.75,504.7188 403.4063,505.125 Q402.9063,505.7188 402.1094,506.0469 Q401.0625,506.5 399.7813,506.5 Q398.2813,506.5 397.0781,505.9063 Q396.1094,505.4375 395.4219,504.4219 Q394.75,503.4063 394.75,502.2031 L394.75,501.1094 Q394.75,499.8594 395.3438,498.7656 Q395.9531,497.6719 397,497.0938 Q398.0625,496.5 399.25,496.5 Q399.9688,496.5 400.5938,496.75 Q401.2188,497 401.75,497.5 Z " fill="#000000"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="110" x="420.25" y="506.7285">LegacyDataStore</text><line style="stroke:#181818;stroke-width:0.5;" x1="274" x2="644" y1="517" y2="517"/><ellipse cx="284" cy="528" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="126" x="293" y="535.5332">createLegacyData()</text><ellipse cx="284" cy="545.6094" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="346" x="293" y="553.1426">createLegacyDataList(SNS number, vaccine name , ...)</text><ellipse cx="284" cy="563.2188" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="128" x="293" y="570.752">getLegacyDataList()</text><ellipse cx="284" cy="580.8281" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="241" x="293" y="588.3613">setLegacyDataList(List&lt;LegacyData&gt;)</text><ellipse cx="284" cy="598.4375" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="138" x="293" y="605.9707">saveLegacyDataList()</text><ellipse cx="284" cy="616.0469" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="186" x="293" y="623.5801">addLegacyData(LegacyData)</text><ellipse cx="284" cy="633.6563" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="211" x="293" y="641.1895">validateLegacyData(LegacyData)</text></g><!--MD5=[1e9a764d87e7c58eda8681113f5d03cd]
+class Sort--><g id="elem_Sort"><rect codeLine="43" fill="#F1F1F1" height="32" id="Sort" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="58" x="158" y="362"/><ellipse cx="173" cy="378" fill="#B4A7E5" rx="11" ry="11" style="stroke:#181818;stroke-width:1.0;"/><path d="M174,375 L174,381 L176,381 L176.4844,381 L177,381.625 L177,382 L177,382.375 L176.4844,383 L176,383 L170,383 L169.5156,383 L169,382.375 L169,382 L169,381.625 L169.5156,381 L170,381 L172,381 L172,375 L170,375 L169.5156,375 L169,374.375 L169,374 L169,373.625 L169.5156,373 L170,373 L176,373 L176.4844,373 L177,373.625 L177,374 L177,374.375 L176.4844,375 L176,375 L174,375 Z " fill="#000000"/><text fill="#000000" font-family="sans-serif" font-size="14" font-style="italic" lengthAdjust="spacing" textLength="26" x="187" y="383.7285">Sort</text></g><!--MD5=[500199353f67df45419cc9a6586ba553]
+class QuickSort--><g id="elem_QuickSort"><rect codeLine="46" fill="#F1F1F1" height="32" id="QuickSort" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="94" x="7" y="550.5"/><ellipse cx="22" cy="566.5" fill="#ADD1B2" rx="11" ry="11" style="stroke:#181818;stroke-width:1.0;"/><path d="M24,563 Q24.2031,562.5 24.4375,562.25 Q24.6719,562 24.9375,562 Q25.4063,562 25.7031,562.2813 Q26,562.5625 26,563.2188 L26,564.7813 Q26,565.4375 25.7188,565.7188 Q25.4375,566 25,566 Q24.6094,566 24.3594,565.8281 Q24.1094,565.6563 24,565.2031 Q23.9531,564.8906 23.7813,564.7188 Q23.4688,564.3906 22.9063,564.2031 Q22.3438,564 21.7813,564 Q21.0781,564 20.4844,564.2813 Q19.9063,564.5625 19.4531,565.1875 Q19,565.8125 19,566.6719 L19,567.5938 Q19,568.625 19.8438,569.3125 Q20.6875,570 22.1875,570 Q23.0781,570 23.7031,569.7969 Q24.0625,569.6875 24.4688,569.3281 Q24.7344,569.125 24.875,569.0625 Q25.0156,569 25.1875,569 Q25.5156,569 25.75,569.2656 Q26,569.5156 26,569.875 Q26,570.2188 25.6563,570.625 Q25.1563,571.2188 24.3594,571.5469 Q23.3125,572 22.0313,572 Q20.5313,572 19.3281,571.4063 Q18.3594,570.9375 17.6719,569.9219 Q17,568.9063 17,567.7031 L17,566.6094 Q17,565.3594 17.5938,564.2656 Q18.2031,563.1719 19.25,562.5938 Q20.3125,562 21.5,562 Q22.2188,562 22.8438,562.25 Q23.4688,562.5 24,563 Z " fill="#000000"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="62" x="36" y="572.2285">QuickSort</text></g><!--MD5=[4470f398350dbdcb65208a86d6ef793f]
+class BubbleSort--><g id="elem_BubbleSort"><rect codeLine="49" fill="#F1F1F1" height="32" id="BubbleSort" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="102" x="136" y="550.5"/><ellipse cx="151" cy="566.5" fill="#ADD1B2" rx="11" ry="11" style="stroke:#181818;stroke-width:1.0;"/><path d="M153,563 Q153.2031,562.5 153.4375,562.25 Q153.6719,562 153.9375,562 Q154.4063,562 154.7031,562.2813 Q155,562.5625 155,563.2188 L155,564.7813 Q155,565.4375 154.7188,565.7188 Q154.4375,566 154,566 Q153.6094,566 153.3594,565.8281 Q153.1094,565.6563 153,565.2031 Q152.9531,564.8906 152.7813,564.7188 Q152.4688,564.3906 151.9063,564.2031 Q151.3438,564 150.7813,564 Q150.0781,564 149.4844,564.2813 Q148.9063,564.5625 148.4531,565.1875 Q148,565.8125 148,566.6719 L148,567.5938 Q148,568.625 148.8438,569.3125 Q149.6875,570 151.1875,570 Q152.0781,570 152.7031,569.7969 Q153.0625,569.6875 153.4688,569.3281 Q153.7344,569.125 153.875,569.0625 Q154.0156,569 154.1875,569 Q154.5156,569 154.75,569.2656 Q155,569.5156 155,569.875 Q155,570.2188 154.6563,570.625 Q154.1563,571.2188 153.3594,571.5469 Q152.3125,572 151.0313,572 Q149.5313,572 148.3281,571.4063 Q147.3594,570.9375 146.6719,569.9219 Q146,568.9063 146,567.7031 L146,566.6094 Q146,565.3594 146.5938,564.2656 Q147.2031,563.1719 148.25,562.5938 Q149.3125,562 150.5,562 Q151.2188,562 151.8438,562.25 Q152.4688,562.5 153,563 Z " fill="#000000"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="70" x="165" y="572.2285">BubbleSort</text></g><!--MD5=[02e4b9b7573f1156f41e60aa5b4e25a4]
+class Company--><g id="elem_Company"><rect codeLine="51" fill="#F1F1F1" height="57.6094" id="Company" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="166" x="313" y="349"/><ellipse cx="361.75" cy="365" fill="#ADD1B2" rx="11" ry="11" style="stroke:#181818;stroke-width:1.0;"/><path d="M363.75,361.5 Q363.9531,361 364.1875,360.75 Q364.4219,360.5 364.6875,360.5 Q365.1563,360.5 365.4531,360.7813 Q365.75,361.0625 365.75,361.7188 L365.75,363.2813 Q365.75,363.9375 365.4688,364.2188 Q365.1875,364.5 364.75,364.5 Q364.3594,364.5 364.1094,364.3281 Q363.8594,364.1563 363.75,363.7031 Q363.7031,363.3906 363.5313,363.2188 Q363.2188,362.8906 362.6563,362.7031 Q362.0938,362.5 361.5313,362.5 Q360.8281,362.5 360.2344,362.7813 Q359.6563,363.0625 359.2031,363.6875 Q358.75,364.3125 358.75,365.1719 L358.75,366.0938 Q358.75,367.125 359.5938,367.8125 Q360.4375,368.5 361.9375,368.5 Q362.8281,368.5 363.4531,368.2969 Q363.8125,368.1875 364.2188,367.8281 Q364.4844,367.625 364.625,367.5625 Q364.7656,367.5 364.9375,367.5 Q365.2656,367.5 365.5,367.7656 Q365.75,368.0156 365.75,368.375 Q365.75,368.7188 365.4063,369.125 Q364.9063,369.7188 364.1094,370.0469 Q363.0625,370.5 361.7813,370.5 Q360.2813,370.5 359.0781,369.9063 Q358.1094,369.4375 357.4219,368.4219 Q356.75,367.4063 356.75,366.2031 L356.75,365.1094 Q356.75,363.8594 357.3438,362.7656 Q357.9531,361.6719 359,361.0938 Q360.0625,360.5 361.25,360.5 Q361.9688,360.5 362.5938,360.75 Q363.2188,361 363.75,361.5 Z " fill="#000000"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="60" x="382.25" y="370.7285">Company</text><line style="stroke:#181818;stroke-width:0.5;" x1="314" x2="478" y1="381" y2="381"/><ellipse cx="324" cy="392" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="140" x="333" y="399.5332">getLegacyDataStore()</text></g><!--MD5=[2ffe8929562b739090e57cb112869b49]
+reverse link Sort to QuickSort--><g id="link_Sort_QuickSort"><path d="M164.4,410.69 C135.47,451.25 86.5,519.93 64.85,550.29 " fill="none" id="Sort-backto-QuickSort" style="stroke:#181818;stroke-width:1.0;stroke-dasharray:7.0,7.0;"/><polygon fill="none" points="158.8,406.48,176.12,394.26,170.2,414.61,158.8,406.48" style="stroke:#181818;stroke-width:1.0;"/></g><!--MD5=[a1d45e549600b8084754f5249b23c521]
+reverse link Sort to BubbleSort--><g id="link_Sort_BubbleSort"><path d="M187,414.32 C187,455.24 187,520.82 187,550.29 " fill="none" id="Sort-backto-BubbleSort" style="stroke:#181818;stroke-width:1.0;stroke-dasharray:7.0,7.0;"/><polygon fill="none" points="180,414.26,187,394.26,194,414.26,180,414.26" style="stroke:#181818;stroke-width:1.0;"/></g><!--MD5=[6261310c74ab06e2e3f4d3a9699af156]
+link LegacyDataUI to LegacyDataController--><g id="link_LegacyDataUI_LegacyDataController"><path codeLine="55" d="M260,117.4 C260,135.13 260,154.89 260,172.94 " fill="none" id="LegacyDataUI-to-LegacyDataController" style="stroke:#181818;stroke-width:1.0;stroke-dasharray:7.0,7.0;"/><polygon fill="#181818" points="260,177.99,264,168.99,260,172.99,256,168.99,260,177.99" style="stroke:#181818;stroke-width:1.0;"/></g><!--MD5=[0624c89e0f541e7a19cd4416fd4fbff8]
+link LegacyDataController to Company--><g id="link_LegacyDataController_Company"><path codeLine="56" d="M311.42,288.06 C329.74,307.33 349.77,328.39 365.74,345.18 " fill="none" id="LegacyDataController-to-Company" style="stroke:#181818;stroke-width:1.0;stroke-dasharray:7.0,7.0;"/><polygon fill="#181818" points="369.29,348.92,365.9787,339.6445,365.8414,345.2997,360.1862,345.1623,369.29,348.92" style="stroke:#181818;stroke-width:1.0;"/></g><!--MD5=[a33a87e88d49d4c3b8e2eea5733ef416]
+link LegacyDataController to Sort--><g id="link_LegacyDataController_Sort"><path codeLine="57" d="M232.4,288.06 C220.08,312.21 206.31,339.18 197.2,357.02 " fill="none" id="LegacyDataController-to-Sort" style="stroke:#181818;stroke-width:1.0;stroke-dasharray:7.0,7.0;"/><polygon fill="#181818" points="194.76,361.8,202.4104,355.5974,197.0303,357.3451,195.2826,351.965,194.76,361.8" style="stroke:#181818;stroke-width:1.0;"/></g><!--MD5=[8f16e38c281cac8f28779c99118ebcd4]
+link Company to LegacyDataStore--><g id="link_Company_LegacyDataStore"><path codeLine="58" d="M405.57,407.33 C412.15,426.8 421.26,453.77 430.1,479.93 " fill="none" id="Company-to-LegacyDataStore" style="stroke:#181818;stroke-width:1.0;"/><polygon fill="#181818" points="431.74,484.81,432.6533,475.0036,430.1417,480.0723,425.073,477.5608,431.74,484.81" style="stroke:#181818;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="28" x="421" y="451.4951">uses</text></g><!--MD5=[d6e01042a49fea8162003fa74143f7d9]
+link LegacyDataStore to LegacyData--><g id="link_LegacyDataStore_LegacyData"><path codeLine="59" d="M459,648.38 C459,670.76 459,695.72 459,720.51 " fill="none" id="LegacyDataStore-to-LegacyData" style="stroke:#181818;stroke-width:1.0;stroke-dasharray:7.0,7.0;"/><polygon fill="#181818" points="459,725.79,463,716.79,459,720.79,455,716.79,459,725.79" style="stroke:#181818;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="59" x="460" y="692.4951">keeps info</text></g><!--MD5=[a3c4b489887660033462d9fd9adc8aa6]
+@startuml
+'https://plantuml.com/sequence-diagram
+
+hide empty members
+
+
+class LegacyDataUI {
++askFilePath
++askConfirmation
++askSort
++askData
+}
+
+class LegacyDataController {
++readInfoFromCSV(filepath)
++sortData(data)
++loadData(path, regex)
++printLegacyDataList(List<LegacyData>)
+}
+class LegacyData{
+-arr
+ -sch
+ -admin
+ -leave
+ -SNSnumber
+ -lot
+ -vaccineName
+ -currentDose
+ +CenterData(arrDate, arrTime, schDate, schTime, adminDate, adminTime, leaveDate, leaveTime, SNSnum, lot, vacName, currentDose)
+ +toString()
+ +validateSNSnumber()
+ +validateCenterData()
+ +validateLotNumber()
+}
+class LegacyDataStore{
++createLegacyData()
++createLegacyDataList(SNS number, vaccine name , ...)
++getLegacyDataList()
++setLegacyDataList(List<LegacyData>)
++saveLegacyDataList()
++addLegacyData(LegacyData)
++validateLegacyData(LegacyData)
+}
+interface Sort{
+}
+
+class QuickSort implements Sort {
+}
+
+class BubbleSort implements Sort{
+}
+class Company{
++getLegacyDataStore()
+}
+
+LegacyDataUI ..> LegacyDataController
+LegacyDataController ..> Company
+LegacyDataController ..> Sort
+Company - -> LegacyDataStore : uses
+LegacyDataStore ..> LegacyData : keeps info
+
+
+
+@enduml
+
+@startuml
+
+hide empty members
+
+
+class LegacyDataUI {
++askFilePath
++askConfirmation
++askSort
++askData
+}
+
+class LegacyDataController {
++readInfoFromCSV(filepath)
++sortData(data)
++loadData(path, regex)
++printLegacyDataList(List<LegacyData>)
+}
+class LegacyData{
+-arr
+ -sch
+ -admin
+ -leave
+ -SNSnumber
+ -lot
+ -vaccineName
+ -currentDose
+ +CenterData(arrDate, arrTime, schDate, schTime, adminDate, adminTime, leaveDate, leaveTime, SNSnum, lot, vacName, currentDose)
+ +toString()
+ +validateSNSnumber()
+ +validateCenterData()
+ +validateLotNumber()
+}
+class LegacyDataStore{
++createLegacyData()
++createLegacyDataList(SNS number, vaccine name , ...)
++getLegacyDataList()
++setLegacyDataList(List<LegacyData>)
++saveLegacyDataList()
++addLegacyData(LegacyData)
++validateLegacyData(LegacyData)
+}
+interface Sort{
+}
+
+class QuickSort implements Sort {
+}
+
+class BubbleSort implements Sort{
+}
+class Company{
++getLegacyDataStore()
+}
+
+LegacyDataUI ..> LegacyDataController
+LegacyDataController ..> Company
+LegacyDataController ..> Sort
+Company - -> LegacyDataStore : uses
+LegacyDataStore ..> LegacyData : keeps info
+
+
+
+@enduml
+
+PlantUML version 1.2022.5(Sat Apr 30 11:55:52 BST 2022)
+(GPL source distribution)
+Java Runtime: OpenJDK Runtime Environment
+JVM: OpenJDK 64-Bit Server VM
+Default Encoding: Cp1252
+Language: pt
+Country: PT
+--></g></svg>

@@ -4,14 +4,74 @@
 hide methods
 left to right direction
 
-class Coordinator {
+class Coordinator implements Employee {
+}
+class Company {
+-designation
+}
+class Employee{
+-name
+     -email
+     -address
+     -phoneNumber
+     -citizenCardNumber
+     -employeeId
+}
+class SNSUser {
+-phoneNumber
+  -email
+  -birthDate
+  -SNSNumber
+  -citizenCardNumber
+  -name
+  -gender
+}
+class LegacyData{
+}
+class ArrivalDate {
+-date
+}
+class LeavingDate{
+-date
+}
+class ScheduleDate {
+-date
+}
+class AdministrationTime {
+-date
+}
+class Vaccine {
+-brand
+-vaccineproperties
+}
+class TypeOfVaccine {
+-code
+-type
 }
 class LegacyData {
 }
 class VaccinationCenter {
+- name
+  - address
+  - emailAddress
+  - phoneNumber
+  - faxNumber
+  - websiteAddress
+  - openingHours
+  - closingHours
+  - typeofcenter
 }
 
-Coordinator "1" -- "*" LegacyData : imports
-Coordinator "1" -- "*" VaccinationCenter : works at
-LegacyData "1" -- "1" VaccinationCenter : from
+Company --> Employee : employees
+Company --> SNSUser : provides services for
+Coordinator --> LegacyData : has access to
+Coordinator --> VaccinationCenter : manages
+ScheduleDate --> VaccinationCenter : designation
+ArrivalDate --> VaccinationCenter : designation
+LeavingDate --> VaccinationCenter : designation
+AdministrationTime --> VaccinationCenter : designation
+Vaccine --> TypeOfVaccine : has
+VaccinationCenter --> Vaccine : applies
+
+
 @enduml
