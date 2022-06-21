@@ -25,6 +25,7 @@ public class QuickSort {
         // check for empty or null array
         if (arr ==null || arr.size()==0){
             System.out.println("Array empty");
+            return arr;
         }
 
         number = arr.size();
@@ -35,7 +36,8 @@ public class QuickSort {
     private void quicksort(int low, int high, List<LegacyData> arr, int a) {
         int i = low, j = high;
         // Get the pivot element from the middle of the list
-        if (a==1){int pivot =  arr.get(low + (high-low)/2).getArrivalDateTime().get(Calendar.HOUR_OF_DAY)*60+arr.get(i).getArrivalDateTime().get(Calendar.MINUTE);
+        if (a==1){
+            int pivot =  arr.get(low + (high-low)/2).getArrivalDateTime().get(Calendar.HOUR_OF_DAY)*60+arr.get(i).getArrivalDateTime().get(Calendar.MINUTE);
             while (i <= j) {
                 // If the current value from the left list is smaller than the pivot
                 // element then get the next element from the left list
@@ -44,7 +46,7 @@ public class QuickSort {
                 }
                 // If the current value from the right list is larger than the pivot
                 // element then get the next element from the right list
-                while (arr.get(j).getArrivalDateTime().get(Calendar.HOUR_OF_DAY)*60+arr.get(i).getArrivalDateTime().get(Calendar.MINUTE) > pivot) {
+                while (arr.get(j).getArrivalDateTime().get(Calendar.HOUR_OF_DAY)*60+arr.get(j).getArrivalDateTime().get(Calendar.MINUTE) > pivot) {
                     j--;
                 }
 
@@ -62,9 +64,10 @@ public class QuickSort {
             // Recursion
             if (low < j)
                 quicksort(low, j,arr,a);
-            if (i < high)
-                quicksort(i, high,arr,a);
-        } else {int pivot =  arr.get(low + (high-low)/2).getLeavingTime().get(Calendar.HOUR_OF_DAY)*60+arr.get(i).getLeavingTime().get(Calendar.MINUTE);
+            if (i < high&&i>=0)
+               quicksort(i, high,arr,a);
+        } else {
+            int pivot =  arr.get(low + (high-low)/2).getLeavingTime().get(Calendar.HOUR_OF_DAY)*60+arr.get(i).getLeavingTime().get(Calendar.MINUTE);
             while (i <= j) {
                 // If the current value from the left list is smaller than the pivot
                 // element then get the next element from the left list
@@ -73,7 +76,7 @@ public class QuickSort {
                 }
                 // If the current value from the right list is larger than the pivot
                 // element then get the next element from the right list
-                while (arr.get(j).getLeavingTime().get(Calendar.HOUR_OF_DAY)*60+arr.get(i).getLeavingTime().get(Calendar.MINUTE) > pivot) {
+                while (arr.get(j).getLeavingTime().get(Calendar.HOUR_OF_DAY)*60+arr.get(j).getLeavingTime().get(Calendar.MINUTE) > pivot) {
                     j--;
                 }
 
@@ -91,7 +94,7 @@ public class QuickSort {
             // Recursion
             if (low < j)
                 quicksort(low, j,arr,a);
-            if (i < high)
+            if (i < high&&i>=0)
                 quicksort(i, high,arr,a);
 
         }

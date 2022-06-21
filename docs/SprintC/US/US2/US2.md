@@ -90,8 +90,8 @@ once.
 | Step 5  		     | 	showing the vaccination centers and asking to select one?						 | ReceptionistScheduleVaccineUI             | Information Expert(responsible for user interaction)                       |
 | Step 6  		     | 	showing the vaccine and asking to select one?						             | ReceptionistScheduleVaccineUI             | Information Expert(responsible for user interaction) |              
 | Step 7  		     | 	requesting the date to schedule?						                          | ReceptionistScheduleVaccineUI | Information Expert(responsible for user interaction)                             |
-| Step 8  		     | 	Validating the date (if any vaccine is already scheduled)						 | ScheduleVaccineStore          | Information Expert(knows all the ScheduleVaccine Objects).                       |
-| Step 9  		     | 	Saving the scheduling of a vaccine?						                       | ScheduleVaccineStore          | Information Expert(in charge of managing/recording all ScheduleVaccine Objects). |              
+| Step 8  		     | 	Validating the date (if any vaccine is already scheduled)						 | ScheduleVaccineStore          | HCLC                       |
+| Step 9  		     | 	Saving the scheduling of a vaccine?						                       | ScheduleVaccineStore          | HCLC |              
 | Step 7  		     | 	Informing operation sucess?						                               | ReceptionistScheduleVaccineUI | Information Expert(responsible for user interaction)                             |
 
 ### Systematization ##
@@ -104,7 +104,7 @@ According to the taken rationale, the conceptual classes promoted to software cl
 Other software classes (i.e. Pure Fabrication) identified: 
  * ReceptionistScheduleVaccineUI  (Pure Fabrication)
  * ReceptionistScheduleVaccineController (Controller)
- * ScheduleVaccineStore (Information Expert)
+ * ScheduleVaccineStore (HCLC)
 
 ## 3.2. Sequence Diagram (SD)
 

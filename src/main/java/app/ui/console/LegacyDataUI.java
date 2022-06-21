@@ -57,7 +57,11 @@ public class LegacyDataUI implements Runnable {
                 sorts = askSort();
                 if(sorts.equals("1")){
                     int a = Integer.parseInt(askData());
-                    ctrl.printLegacyDataList(quick.sort(list, a));
+                    try {
+                        ctrl.printLegacyDataList(quick.sort(list, a));
+                    }catch (StackOverflowError e){
+                        System.out.println("Data too big for this method!");
+                    }
                 }else if(sorts.equals("2")){
                     int b= Integer.parseInt(askData());
                     ctrl.printLegacyDataList(bubble.bubbleSort(list, b));
