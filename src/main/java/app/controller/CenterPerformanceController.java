@@ -166,7 +166,7 @@ public class CenterPerformanceController {
         maxsumsublist(performanceList);
         long oursEnd = System.currentTimeMillis();
         System.out.println("");
-        System.out.println("Benchmark algorithm execution: ");
+        System.out.println("Our algorithm execution: ");
         System.out.print(Math.subtractExact(oursEnd, runtime));
         System.out.print(" millissecons");
     }
