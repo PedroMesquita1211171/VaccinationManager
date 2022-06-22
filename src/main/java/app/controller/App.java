@@ -6,6 +6,7 @@ import app.domain.model.VaccineDependencies.AdministrationProcess;
 import app.domain.model.VaccineDependencies.AgeGroup;
 import app.domain.shared.Constants;
 import app.ui.console.utils.Generators;
+import app.ui.gui.Utils.Scheduler;
 import pt.isep.lei.esoft.auth.AuthFacade;
 import pt.isep.lei.esoft.auth.UserSession;
 
@@ -101,6 +102,7 @@ public class App {
 
     private void bootstrap()
     {
+
         //bootstrap of an example date(18 yo)
         Date date = null;
         String birthDay = "10-02-2003";
