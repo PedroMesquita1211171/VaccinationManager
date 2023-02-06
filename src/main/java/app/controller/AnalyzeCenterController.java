@@ -43,7 +43,7 @@ public class AnalyzeCenterController {
                     && registo.getArrivalDateTime().toLocalTime().isBefore(end)){
 
 
-                int index = getTimeInterval(registo.getArrivalDateTime().toLocalTime(), timeInterval, i);
+                int index = getTimeInterval(registo.getArrivalDateTime().toLocalTime(), timeInterval);
                 list[index] ++;// se a pessoa chegar em tal intervalo de tempo, incrementa o numero de pessoas nesse intervalo
             }
 
@@ -51,22 +51,22 @@ public class AnalyzeCenterController {
                     && registo.getLeavingDateTime().toLocalTime().isAfter(start)
                     && registo.getLeavingDateTime().toLocalTime().isBefore(end)) {
 
-                int index = getTimeInterval(registo.getLeavingDateTime().toLocalTime(), timeInterval, i);
+                int index = getTimeInterval(registo.getLeavingDateTime().toLocalTime(), timeInterval);
                 list[index]--; // se a pessoa sair em tal intervalo de tempo, decrementa o numero de pessoas nesse intervalo
             }
         }
         return list;
     }
 
-    private int getTimeInterval(LocalTime arrivalDateTime, int timeInterval, int i) {
+    private int getTimeInterval(LocalTime arrivalDateTime, int timeInterval) {
         int index = 0;
         for (LocalTime time = LocalTime.of(start.getHour(), start.getMinute()); time.isBefore(end); time = time.plusMinutes(timeInterval)) {
-            if (arrivalDateTime.isAfter(time) && arrivalDateTime.isBefore(time.plusMinutes(timeInterval))) {
-                index = i;
+            if ((arrivalDateTime.isAfter(time) || arrivalDateTime.equals(time)) && arrivalDateTime.isBefore(time.plusMinutes(timeInterval))) {
+                return index;
             }
-            i++;
+            index++;
         }
-        return index;
+        return (720 / timeInterval) + 1;// if invalid will give IndexOutOfBoundsException, indicating that the time is invalid
     }
 
     private int[] maxSumSubcontiguousList(int[] list){

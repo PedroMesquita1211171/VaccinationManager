@@ -30,7 +30,7 @@ public class AnalyzeCenterUI implements Runnable{
             verifyTimeInterval(timeInterval);
 
             int[] result = ctrl.result(timeInterval, localDate);
-            System.out.print("Subcontiguous max sublist: ");
+            System.out.print("Contiguous max sublist: ");
 
             for (int i = 0; i < result.length; i++) {
                 System.out.print(result[i] + " ");
@@ -38,18 +38,16 @@ public class AnalyzeCenterUI implements Runnable{
 
             int[] resultMDISC = Sum.Max(ctrl.getList(timeInterval, localDate));
 
-            System.out.print("\nMax Disc Sublist: ");
+            System.out.print("\nMDISC contiguous max Sublist: ");
 
             for (int i = 0; i < resultMDISC.length; i++) {
                 System.out.print(resultMDISC[i] + " ");
             }
         }catch(NumberFormatException nfe){
             System.out.println("Invalid input\nTry again.");
-            run();
         }
         catch (IllegalArgumentException iae){
             System.out.println(iae.getMessage());
-            run();
         }
 
 
