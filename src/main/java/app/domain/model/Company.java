@@ -1,6 +1,7 @@
 package app.domain.model;
 
 import app.domain.Store.*;
+import app.domain.model.US16.CenterData;
 import pt.isep.lei.esoft.auth.AuthFacade;
 import org.apache.commons.lang3.StringUtils;
 
@@ -27,6 +28,7 @@ public class Company {
     private AdverseReactionStore adverseReactionStore;
     private VaccinationStore vaccinationStore;
     private LegacyDataStore legacyDataStore;
+    private CenterData centerData;
 
     /**
      * Instantiates a new Company.
@@ -50,18 +52,19 @@ public class Company {
         this.adverseReactionStore = new AdverseReactionStore(); //
         this.vaccinationStore = new VaccinationStore(); //
         this.legacyDataStore = new LegacyDataStore();
+        this.centerData = new CenterData();
         //de-serialize the stores
         try {
-            setSNSUserStore();
-            setEmployeeStore();
-            setVaccineTypeStore();
-            setVaccineStore();
-            setVaccinationCenterStore();
-            setScheduleStore();
-            setWaitingRoomStore();
-            setAdverseReactionStore();
-            setVaccinationStore();
-            setLegacyDataStore();
+            //setSNSUserStore();
+            //setEmployeeStore();
+            //setVaccineTypeStore();
+            //setVaccineStore();
+            //setVaccinationCenterStore();
+            //setScheduleStore();
+            //setWaitingRoomStore();
+            //setAdverseReactionStore();
+            //setVaccinationStore();
+            //setLegacyDataStore();
         } catch(Exception e){}
     }
 
@@ -257,4 +260,11 @@ public class Company {
         return legacyDataStore;
     }
 
+    public CenterData getCenterData() {
+        return centerData;
+    }
+
+    public void setCenterData(CenterData centerData) {
+        this.centerData = centerData;
+    }
 }

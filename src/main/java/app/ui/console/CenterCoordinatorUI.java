@@ -14,8 +14,9 @@ public class CenterCoordinatorUI implements Runnable{
     public void run() {
         List<MenuItem> options = new ArrayList<>();
         options.add(new MenuItem("Get a List of all Vaccines ", new ListVaccinesUI()));
-        options.add(new MenuItem("Get a the analysis of a Vaccinaton Center's performance ", new CenterPerformanceUI()));
-        options.add(new MenuItem("Load data from a legacy system",new LegacyDataUI()));
+        options.add(new MenuItem("Load data from a legacy system",new LoadCenterDataUI()));
+        options.add(new MenuItem("Show data sorted by user choice",new ShowDataUI()));
+        options.add(new MenuItem("Analyze performance of center", new AnalyzeCenterUI()));
 
 
         int option;

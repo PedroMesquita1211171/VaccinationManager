@@ -8,7 +8,7 @@ import java.util.*;
 /**
  * The type Bubble sort.
  */
-public class BubbleSort {
+public class BubbleSort <E>{
     /**
      * Bubble sort.
      *
@@ -38,6 +38,26 @@ public class BubbleSort {
                     }
                 }
             }return arr;
+        }
+
+
+        public List<E> bubbleSort(List<E> list, Comparator<E> comp){
+            int n = list.size();
+            boolean swapped;
+            for (int i = 0; i < n; i++) {
+                swapped = false;
+                for (int j = 1; j < (n - i); j++) {
+                    if (comp.compare(list.get(j - 1), list.get(j)) > 0) {
+                        Collections.swap(list, j - 1, j);
+                        swapped = true;
+                    }
+                }
+
+                if (!swapped) {
+                    break;
+                }
+            }
+            return list;
         }
     }
 

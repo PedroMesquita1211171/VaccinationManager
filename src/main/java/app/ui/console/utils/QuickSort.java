@@ -3,15 +3,12 @@ package app.ui.console.utils;
 import app.domain.model.LegacyData;
 
 import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Collections;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 
 /**
  * The type Quick sort.
  */
-public class QuickSort {
+public class QuickSort <E>{
     private int[] numbers;
     private int number;
 
@@ -98,5 +95,44 @@ public class QuickSort {
                 quicksort(i, high,arr,a);
 
         }
+         }
+
+         public List<E> quickSort(List<E> arr, Comparator<E> comparator) {
+            if (arr == null || arr.size() == 0)
+                return arr;
+
+            int low = 0;
+            int high = arr.size() - 1;
+
+            quickSort(arr, low, high, comparator);
+
+            return arr;
+         }
+
+         private void quickSort(List<E> arr, int low, int high, Comparator<E> comparator) {
+             int i = low;
+             int j = high;
+             E pivot = arr.get(low + (high - low) / 2);
+
+             while (i <= j) {
+                 while (comparator.compare(arr.get(i), pivot) < 0) {
+                     i++;
+                 }
+
+                 while (comparator.compare(arr.get(j), pivot) > 0) {
+                     j--;
+                 }
+
+                 if (i <= j) {
+                     Collections.swap(arr, i, j);
+                     i++;
+                     j--;
+                 }
+             }
+
+             if (low < j)
+                 quickSort(arr, low, j, comparator);
+             if (i < high)
+                 quickSort(arr, i, high, comparator);
          }
     }
