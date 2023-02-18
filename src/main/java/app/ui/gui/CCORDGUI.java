@@ -2,8 +2,7 @@ package app.ui.gui;
 
 import app.controller.App;
 import app.ui.MainGUI;
-import app.ui.console.CenterPerformanceUI;
-import app.ui.console.ListVaccinesUI;
+import app.ui.console.*;
 import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
 
@@ -62,6 +61,14 @@ public class CCORDGUI implements Initializable {
      */
     @javafx.fxml.FXML
     public void whenUS16clicked(ActionEvent actionEvent) {
-        new CenterPerformanceUI().run();
+        new AnalyzeCenterUI().run();
+    }
+
+    public void whenUS17clicked(ActionEvent actionEvent) {
+        new ShowDataUI().run();
+    }
+
+    public void importDataClicked(ActionEvent actionEvent) {
+        new LoadCenterDataUI().run();
     }
 }

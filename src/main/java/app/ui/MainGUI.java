@@ -13,6 +13,9 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.stage.Stage;
 import javafx.util.Duration;
+
+import java.net.URL;
+import java.text.ParseException;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -32,7 +35,7 @@ public class MainGUI extends Application{
      *
      * @param args the input arguments
      */
-    public static void main(String[] args) {
+    public static void main(String[] args) throws ParseException {
         try{
             new Scheduler();
             launch(args);
@@ -45,10 +48,11 @@ public class MainGUI extends Application{
     public void start(Stage stage) throws Exception {
         this.stage = stage;
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/LoadingScreen.fxml"));
+            URL location = getClass().getResource("/fxml/LoadingScreen.fxml");
+
+
+            FXMLLoader loader = new FXMLLoader(location);
             Parent root = loader.load();
-            String css = this.getClass().getResource("/styles/Styles.css").toExternalForm();
-            root.getStylesheets().add(css);
 
             Scene scene = new Scene(root);
 
